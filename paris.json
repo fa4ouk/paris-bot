@@ -3,15 +3,15 @@
     {
       "type": "ULTRA SAFE",
       "style": "Simple",
-      "match": "Uruguay vs Saudi Arabia",
+      "match": "Spain vs Cape Verde",
       "competition": "FIFA World Cup",
-      "heure": "15/06 23:00",
-      "selection": "Victoire Uruguay",
-      "cote": 1.53,
-      "bookmaker": "Matchbook",
+      "heure": "15/06 17:00",
+      "selection": "Handicap Spain -2.5",
+      "cote": 1.71,
+      "bookmaker": "GTbets",
       "mise_tnd": 4.0,
-      "ev_pct": 10.0,
-      "raison": "Uruguay a une équipe plus solide et une meilleure préparation pour la Coupe du Monde"
+      "ev_pct": 12.0,
+      "raison": "Probabilité élevée de victoire de l'Espagne avec un handicap raisonnable"
     },
     {
       "type": "VALEUR",
@@ -20,39 +20,39 @@
       "competition": "FIFA World Cup",
       "heure": "15/06 20:00",
       "selection": "Victoire Belgium",
-      "cote": 1.69,
-      "bookmaker": "GTbets",
+      "cote": 1.62,
+      "bookmaker": "Coolbet",
       "mise_tnd": 2.5,
       "ev_pct": 8.0,
-      "raison": "La Belgique a une équipe talentueuse et bien équilibrée, avec de fortes chances de gagner"
+      "raison": "Cote sous-évaluée par le marché pour la victoire de la Belgique"
     },
     {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
-      "match": "Spain vs Cape Verde",
+      "match": "Saudi Arabia vs Uruguay",
       "competition": "FIFA World Cup",
-      "heure": "15/06 17:00",
-      "selection": "Handicap Spain -2.5",
-      "cote": 1.8,
-      "bookmaker": "MyBookie.ag",
+      "heure": "15/06 23:00",
+      "selection": "Victoire Uruguay",
+      "cote": 1.49,
+      "bookmaker": "Betfair",
       "mise_tnd": 1.5,
-      "ev_pct": 12.0,
-      "raison": "À combiner avec le pari suivant pour un combiné logique"
+      "ev_pct": 5.0,
+      "raison": "À combiner avec le match Iran vs New Zealand, sélection 'Victoire Iran'"
     },
     {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
-      "match": "Belgium vs Egypt",
+      "match": "Iran vs New Zealand",
       "competition": "FIFA World Cup",
-      "heure": "15/06 20:00",
-      "selection": "Plus de 2.5",
-      "cote": 2.08,
+      "heure": "16/06 02:00",
+      "selection": "Victoire Iran",
+      "cote": 1.87,
       "bookmaker": "Matchbook",
       "mise_tnd": 1.5,
-      "ev_pct": 12.0,
-      "raison": "À combiner avec le pari précédent pour un combiné logique, avec des équipes offensives qui pourraient créer des occasions de but"
+      "ev_pct": 5.0,
+      "raison": "À combiner avec le match Saudi Arabia vs Uruguay, sélection 'Victoire Uruguay'"
     }
   ],
-  "note_du_jour": "La journée offre quelques opportunités intéressantes, notamment avec les matchs de la Coupe du Monde",
+  "note_du_jour": "Journée avec quelques opportunités intéressantes, notamment dans la Coupe du Monde",
   "confiance": "Moyen"
 }
