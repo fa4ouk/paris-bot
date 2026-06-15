@@ -3,318 +3,475 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Paris Pro — Dashboard</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Paris Pro</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0a0a0f;
-    --surface: #111118;
-    --surface2: #1a1a24;
-    --border: rgba(255,255,255,0.07);
-    --border2: rgba(255,255,255,0.12);
-    --text: #f0f0f5;
-    --muted: #8888a0;
-    --dim: #555568;
-    --green: #22c55e;
-    --green-bg: rgba(34,197,94,0.08);
-    --green-bd: rgba(34,197,94,0.2);
-    --red: #ef4444;
-    --red-bg: rgba(239,68,68,0.08);
-    --red-bd: rgba(239,68,68,0.2);
-    --blue: #60a5fa;
-    --blue-bg: rgba(96,165,250,0.08);
-    --blue-bd: rgba(96,165,250,0.2);
-    --amber: #f59e0b;
-    --amber-bg: rgba(245,158,11,0.08);
-    --amber-bd: rgba(245,158,11,0.2);
-    --accent: #6366f1;
-    --r: 10px;
-    --rs: 6px;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.6; min-height: 100vh; }
+:root {
+  --bg: #08080f;
+  --surface: #101018;
+  --surface2: #181824;
+  --surface3: #20202e;
+  --border: rgba(255,255,255,0.06);
+  --border2: rgba(255,255,255,0.11);
+  --text: #ededf5;
+  --muted: #7878a0;
+  --dim: #44445a;
+  --green: #22c55e; --gbg: rgba(34,197,94,0.09); --gbd: rgba(34,197,94,0.22);
+  --red: #ef4444; --rbg: rgba(239,68,68,0.09); --rbd: rgba(239,68,68,0.22);
+  --blue: #60a5fa; --bbg: rgba(96,165,250,0.09); --bbd: rgba(96,165,250,0.22);
+  --amber: #f59e0b; --abg: rgba(245,158,11,0.09); --abd: rgba(245,158,11,0.22);
+  --purple: #a78bfa; --pbg: rgba(167,139,250,0.09);
+  --accent: #6366f1;
+  --r: 12px; --rs: 7px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.6; min-height: 100vh; display: flex; }
 
-  .app { display: flex; min-height: 100vh; }
-  .sidebar { width: 220px; background: var(--surface); border-right: 1px solid var(--border); padding: 1.5rem 1rem; display: flex; flex-direction: column; gap: 4px; flex-shrink: 0; position: fixed; height: 100vh; }
-  .main { margin-left: 220px; flex: 1; padding: 2rem; max-width: 900px; }
+/* SIDEBAR */
+.sidebar { width: 210px; background: var(--surface); border-right: 1px solid var(--border); padding: 1.25rem 0.875rem; display: flex; flex-direction: column; gap: 3px; flex-shrink: 0; position: fixed; height: 100vh; z-index: 10; }
+.logo { font-size: 15px; font-weight: 600; padding: 0.4rem 0.75rem 1rem; display: flex; align-items: center; gap: 9px; color: var(--text); }
+.logo-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent); flex-shrink: 0; }
+.nav-item { display: flex; align-items: center; gap: 9px; padding: 0.55rem 0.75rem; border-radius: var(--rs); color: var(--muted); cursor: pointer; font-size: 13px; transition: all 0.15s; border: none; background: none; width: 100%; text-align: left; }
+.nav-item:hover { background: var(--surface2); color: var(--text); }
+.nav-item.active { background: var(--surface2); color: var(--text); font-weight: 500; }
+.nav-item .icon { font-size: 15px; width: 18px; text-align: center; }
+.sep { height: 1px; background: var(--border); margin: 6px 0; }
+.sidebar-bottom { margin-top: auto; }
+.bk-row { display: flex; align-items: center; justify-content: space-between; padding: 0.55rem 0.75rem; border-radius: var(--rs); color: var(--muted); cursor: pointer; font-size: 12px; }
+.bk-row:hover { color: var(--text); }
+.toggle { width: 30px; height: 17px; background: var(--surface3); border: 1px solid var(--border2); border-radius: 9px; position: relative; transition: background 0.2s; flex-shrink: 0; }
+.toggle.on { background: var(--accent); border-color: var(--accent); }
+.toggle::after { content:''; position: absolute; width: 11px; height: 11px; background: white; border-radius: 50%; top: 2px; left: 2px; transition: transform 0.2s; }
+.toggle.on::after { transform: translateX(13px); }
 
-  .logo { font-size: 15px; font-weight: 600; padding: 0.5rem 0.75rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
-  .logo-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 8px var(--accent); flex-shrink: 0; }
-  .nav-sep { height: 1px; background: var(--border); margin: 6px 0; }
-  .sidebar-bottom { margin-top: auto; }
+/* MAIN */
+.main { margin-left: 210px; flex: 1; padding: 2rem 2.5rem; max-width: 920px; }
 
-  .bk-toggle { display: flex; align-items: center; gap: 8px; padding: 0.6rem 0.75rem; border-radius: var(--rs); color: var(--muted); cursor: pointer; font-size: 12px; user-select: none; }
-  .bk-toggle:hover { color: var(--text); }
-  .toggle { width: 28px; height: 16px; background: var(--surface2); border: 1px solid var(--border2); border-radius: 8px; position: relative; transition: background 0.2s; flex-shrink: 0; }
-  .toggle.on { background: var(--accent); border-color: var(--accent); }
-  .toggle::after { content: ''; position: absolute; width: 10px; height: 10px; background: white; border-radius: 50%; top: 2px; left: 2px; transition: transform 0.2s; }
-  .toggle.on::after { transform: translateX(12px); }
+/* PAGE HEADER */
+.ph { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.75rem; flex-wrap: wrap; gap: 12px; }
+.ph-title { font-size: 19px; font-weight: 600; }
+.ph-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.live { display: flex; align-items: center; gap: 6px; font-size: 12px; padding: 5px 13px; border-radius: 20px; font-weight: 500; }
+.live.active { color: var(--green); background: var(--gbg); border: 1px solid var(--gbd); }
+.live.waiting { color: var(--muted); background: var(--surface2); border: 1px solid var(--border); }
+.live-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.live.active .live-dot { background: var(--green); animation: pulse 2s infinite; }
+.live.waiting .live-dot { background: var(--muted); }
+@keyframes pulse { 0%,100%{opacity:1}50%{opacity:0.3} }
 
-  .page-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.75rem; flex-wrap: wrap; gap: 12px; }
-  .page-title { font-size: 20px; font-weight: 600; }
-  .page-sub { font-size: 13px; color: var(--muted); margin-top: 2px; }
-  .live-badge { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--green); background: var(--green-bg); border: 1px solid var(--green-bd); padding: 5px 12px; border-radius: 20px; }
-  .live-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
-  @keyframes pulse { 0%,100%{opacity:1}50%{opacity:0.3} }
+/* STATS */
+.stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-bottom: 1.75rem; }
+.stat { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 1rem 1.2rem; }
+.stat-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--dim); margin-bottom: 8px; }
+.stat-val { font-size: 22px; font-weight: 600; font-family: 'JetBrains Mono', monospace; line-height: 1.2; }
+.stat-sub { font-size: 12px; color: var(--muted); margin-top: 5px; }
+.g { color: var(--green); } .r { color: var(--red); } .a { color: var(--amber); }
 
-  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 1.75rem; }
-  .stat { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 1rem 1.25rem; }
-  .stat-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--dim); margin-bottom: 8px; }
-  .stat-value { font-size: 22px; font-weight: 600; font-family: 'JetBrains Mono', monospace; }
-  .stat-sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
-  .up { color: var(--green); }
-  .down { color: var(--red); }
-  .warn { color: var(--amber); }
+/* SECTION */
+.section { margin-bottom: 1.75rem; }
+.sh { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.sh-title { font-size: 12px; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.sh-badge { font-size: 12px; color: var(--dim); background: var(--surface2); padding: 2px 9px; border-radius: 20px; }
 
-  .section { margin-bottom: 1.75rem; }
-  .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-  .section-title { font-size: 13px; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
-  .section-count { font-size: 12px; color: var(--dim); background: var(--surface2); padding: 2px 8px; border-radius: 20px; }
+/* TABS */
+.tabs { display: flex; gap: 4px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 4px; margin-bottom: 1.5rem; width: fit-content; }
+.tab { padding: 6px 16px; border-radius: 8px; font-size: 13px; cursor: pointer; color: var(--muted); border: none; background: none; transition: all 0.15s; font-family: 'Inter', sans-serif; }
+.tab:hover { color: var(--text); }
+.tab.active { background: var(--surface2); color: var(--text); font-weight: 500; }
 
-  .pari-list { display: flex; flex-direction: column; gap: 10px; }
-  .pari-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 1.1rem 1.25rem; transition: border-color 0.15s; }
-  .pari-card:hover { border-color: var(--border2); }
-  .pari-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 6px; }
-  .badges { display: flex; gap: 6px; flex-wrap: wrap; }
-  .badge { font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 20px; }
-  .b-safe { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-bd); }
-  .b-valeur { background: var(--blue-bg); color: var(--blue); border: 1px solid var(--blue-bd); }
-  .b-opport { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-bd); }
-  .b-neutral { background: var(--surface2); color: var(--muted); border: 1px solid var(--border); }
-  .status { font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 20px; }
-  .s-win { background: var(--green-bg); color: var(--green); }
-  .s-loss { background: var(--red-bg); color: var(--red); }
-  .s-pending { background: var(--surface2); color: var(--muted); border: 1px solid var(--border); }
+/* PARI CARDS */
+.pari-list { display: flex; flex-direction: column; gap: 10px; }
+.pari-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 1.1rem 1.25rem; transition: border-color 0.15s, transform 0.15s; }
+.pari-card:hover { border-color: var(--border2); transform: translateY(-1px); }
+.pari-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 6px; }
+.badges { display: flex; gap: 6px; flex-wrap: wrap; }
+.badge { font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 20px; }
+.b-safe  { background: var(--gbg); color: var(--green); border: 1px solid var(--gbd); }
+.b-val   { background: var(--bbg); color: var(--blue);  border: 1px solid var(--bbd); }
+.b-opp   { background: var(--abg); color: var(--amber); border: 1px solid var(--abd); }
+.b-neu   { background: var(--surface2); color: var(--muted); border: 1px solid var(--border); }
+.status  { font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 20px; }
+.s-win   { background: var(--gbg); color: var(--green); }
+.s-loss  { background: var(--rbg); color: var(--red); }
+.s-pend  { background: var(--surface2); color: var(--muted); border: 1px solid var(--border); }
+.pari-match { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+.pari-meta { font-size: 12px; color: var(--muted); display: flex; gap: 14px; margin-bottom: 12px; flex-wrap: wrap; }
+.pari-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
+.fl { font-size: 11px; color: var(--dim); margin-bottom: 3px; }
+.fv { font-size: 13px; font-weight: 500; font-family: 'JetBrains Mono', monospace; }
+.pari-raison { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); font-size: 12px; color: var(--muted); font-style: italic; }
 
-  .pari-match { font-size: 15px; font-weight: 500; margin-bottom: 3px; }
-  .pari-meta { font-size: 12px; color: var(--muted); display: flex; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
-  .pari-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
-  .field-label { font-size: 11px; color: var(--dim); margin-bottom: 3px; }
-  .field-value { font-size: 13px; font-weight: 500; font-family: 'JetBrains Mono', monospace; }
-  .pari-raison { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); font-size: 12px; color: var(--muted); font-style: italic; }
+/* PERF BARS */
+.perf-list { display: flex; flex-direction: column; gap: 12px; }
+.perf-row { display: flex; align-items: center; gap: 12px; }
+.perf-label { font-size: 12px; color: var(--muted); width: 100px; flex-shrink: 0; }
+.perf-bg { flex: 1; height: 6px; background: var(--surface2); border-radius: 3px; overflow: hidden; }
+.perf-bar { height: 100%; border-radius: 3px; transition: width 1s ease; width: 0; }
+.perf-val { font-size: 12px; font-family: 'JetBrains Mono', monospace; font-weight: 500; width: 36px; text-align: right; }
 
-  .perf-list { display: flex; flex-direction: column; gap: 10px; }
-  .perf-row { display: flex; align-items: center; gap: 12px; }
-  .perf-label { font-size: 12px; color: var(--muted); width: 100px; flex-shrink: 0; }
-  .perf-bg { flex: 1; height: 6px; background: var(--surface2); border-radius: 3px; overflow: hidden; }
-  .perf-bar { height: 100%; border-radius: 3px; transition: width 1s ease; }
-  .perf-val { font-size: 12px; font-family: 'JetBrains Mono', monospace; font-weight: 500; width: 36px; text-align: right; }
+/* NOTE */
+.note-box { font-size: 13px; color: var(--muted); background: var(--surface); border-radius: var(--r); padding: 12px 16px; border-left: 3px solid var(--accent); line-height: 1.6; }
 
-  .note-box { font-size: 13px; color: var(--muted); background: var(--surface); border-radius: var(--r); padding: 12px 16px; border-left: 3px solid var(--accent); }
+/* STATES */
+.loading { display: flex; align-items: center; justify-content: center; height: 180px; color: var(--muted); font-size: 13px; gap: 10px; }
+.spinner { width: 16px; height: 16px; border: 2px solid var(--border2); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.7s linear infinite; flex-shrink: 0; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.empty { text-align: center; padding: 3rem 1rem; color: var(--muted); }
+.empty-icon { font-size: 36px; margin-bottom: 12px; }
+.empty-title { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 6px; }
+.empty-sub { font-size: 12px; }
 
-  .loading { display: flex; align-items: center; justify-content: center; height: 200px; color: var(--muted); font-size: 13px; gap: 10px; }
-  .spinner { width: 16px; height: 16px; border: 2px solid var(--border2); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.7s linear infinite; }
-  @keyframes spin { to { transform: rotate(360deg); } }
+/* HISTORIQUE TABLE */
+.table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; }
+.table { width: 100%; border-collapse: collapse; }
+.table th { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--dim); padding: 10px 16px; text-align: left; border-bottom: 1px solid var(--border); font-weight: 500; background: var(--surface); }
+.table td { padding: 12px 16px; border-bottom: 1px solid var(--border); font-size: 13px; color: var(--text); }
+.table tr:last-child td { border-bottom: none; }
+.table tr:hover td { background: var(--surface2); }
+.table .mono { font-family: 'JetBrains Mono', monospace; font-size: 12px; }
 
-  .empty { text-align: center; padding: 3rem 1rem; color: var(--muted); font-size: 13px; }
-  .empty-icon { font-size: 32px; margin-bottom: 12px; }
+.result-btns { display: flex; gap: 8px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
+.rbtn { padding: 6px 16px; border-radius: var(--rs); font-size: 12px; font-weight: 500; cursor: pointer; border: 1px solid; font-family: 'Inter', sans-serif; transition: all 0.15s; }
+.rbtn.win { background: var(--gbg); color: var(--green); border-color: var(--gbd); }
+.rbtn.win:hover { background: var(--green); color: white; }
+.rbtn.loss { background: var(--rbg); color: var(--red); border-color: var(--rbd); }
+.rbtn.loss:hover { background: var(--red); color: white; }
 
-  .blur { filter: blur(6px); user-select: none; pointer-events: none; }
+/* BLUR */
+.blur { filter: blur(7px); user-select: none; pointer-events: none; }
 
-  @media (max-width: 768px) {
-    .sidebar { display: none; }
-    .main { margin-left: 0; padding: 1rem; }
-    .stats { grid-template-columns: repeat(2, 1fr); }
-    .pari-grid { grid-template-columns: repeat(2, 1fr); }
-  }
+/* PAGE VIEWS */
+.page-view { display: none; }
+.page-view.active { display: block; }
+
+/* RESPONSIVE */
+@media (max-width: 800px) {
+  .sidebar { transform: translateX(-100%); transition: transform 0.25s; }
+  .sidebar.open { transform: translateX(0); }
+  .main { margin-left: 0; padding: 1rem; }
+  .stats { grid-template-columns: repeat(2,1fr); }
+  .pari-grid { grid-template-columns: repeat(2,1fr); }
+}
 </style>
 </head>
 <body>
-<div class="app">
-  <aside class="sidebar">
-    <div class="logo"><div class="logo-dot"></div>Paris Pro</div>
-    <div class="nav-sep"></div>
-    <div class="sidebar-bottom">
-      <div class="bk-toggle" id="bkToggle">
-        <div class="toggle" id="bkDot"></div>
-        <span id="bkLabel">Masquer bankroll</span>
-      </div>
-    </div>
-  </aside>
 
-  <main class="main">
-    <div class="page-header">
+<aside class="sidebar" id="sidebar">
+  <div class="logo"><div class="logo-dot"></div>Paris Pro</div>
+  <button class="nav-item active" onclick="showPage('dashboard', this)"><span class="icon">📊</span> Dashboard</button>
+  <button class="nav-item" onclick="showPage('historique', this)"><span class="icon">📋</span> Historique</button>
+  <button class="nav-item" onclick="showPage('stats', this)"><span class="icon">📈</span> Statistiques</button>
+  <div class="sep"></div>
+  <button class="nav-item" onclick="showPage('settings', this)"><span class="icon">⚙️</span> Paramètres</button>
+  <div class="sidebar-bottom">
+    <div class="sep"></div>
+    <div class="bk-row" id="bkToggle">
+      <span id="bkLabel">Masquer bankroll</span>
+      <div class="toggle" id="bkDot"></div>
+    </div>
+  </div>
+</aside>
+
+<main class="main">
+
+  <!-- DASHBOARD -->
+  <div class="page-view active" id="page-dashboard">
+    <div class="ph">
       <div>
-        <div class="page-title">Bons plans du jour</div>
-        <div class="page-sub" id="dateLabel">Chargement...</div>
+        <div class="ph-title">Bons plans du jour</div>
+        <div class="ph-sub" id="dateLabel">Chargement...</div>
       </div>
-      <div class="live-badge"><div class="live-dot"></div><span id="liveBadge">Chargement...</span></div>
+      <div class="live waiting" id="liveBadge"><div class="live-dot"></div><span id="liveText">Chargement...</span></div>
     </div>
 
     <div class="stats">
       <div class="stat">
         <div class="stat-label">Bankroll</div>
-        <div class="stat-value bk-val" id="statBankroll">— TND</div>
-        <div class="stat-sub bk-val" id="statMise">Mise du jour : —</div>
+        <div class="stat-val bk-val" id="sBankroll">— <span style="font-size:14px;color:var(--muted)">TND</span></div>
+        <div class="stat-sub bk-val" id="sMise">Mise du jour : —</div>
       </div>
       <div class="stat">
         <div class="stat-label">Paris générés</div>
-        <div class="stat-value" id="statCount">—</div>
-        <div class="stat-sub" id="statDate">—</div>
+        <div class="stat-val" id="sCount">—</div>
+        <div class="stat-sub" id="sDate">—</div>
       </div>
       <div class="stat">
         <div class="stat-label">EV moyen</div>
-        <div class="stat-value up" id="statEV">—</div>
+        <div class="stat-val g" id="sEV">—</div>
         <div class="stat-sub">Expected Value</div>
       </div>
       <div class="stat">
         <div class="stat-label">Confiance</div>
-        <div class="stat-value" id="statConfiance">—</div>
-        <div class="stat-sub" id="statConfianceSub">—</div>
+        <div class="stat-val" id="sConf">—</div>
+        <div class="stat-sub" id="sConfSub">—</div>
       </div>
     </div>
 
     <div class="section">
-      <div class="section-header">
-        <div class="section-title">Paris du jour</div>
-        <div class="section-count" id="parisCount">—</div>
-      </div>
+      <div class="sh"><div class="sh-title">Paris du jour</div><div class="sh-badge" id="parisCount">—</div></div>
       <div class="pari-list" id="pariList">
         <div class="loading"><div class="spinner"></div>Chargement des paris...</div>
       </div>
     </div>
 
-    <div class="section" id="perfSection" style="display:none;">
-      <div class="section-header"><div class="section-title">Répartition du jour</div></div>
+    <div class="section" id="perfSec" style="display:none">
+      <div class="sh"><div class="sh-title">Répartition du jour</div></div>
       <div class="perf-list" id="perfList"></div>
     </div>
 
-    <div class="section" id="noteSection" style="display:none;">
+    <div class="section" id="noteSec" style="display:none">
       <div class="note-box" id="noteBox"></div>
     </div>
-  </main>
-</div>
+  </div>
+
+  <!-- HISTORIQUE -->
+  <div class="page-view" id="page-historique">
+    <div class="ph"><div><div class="ph-title">Historique</div><div class="ph-sub">Tous vos paris enregistrés</div></div></div>
+    <div class="table-wrap">
+      <table class="table">
+        <thead><tr>
+          <th>Match</th><th>Sélection</th><th>Cote</th><th>Mise</th><th>Résultat</th><th>Date</th>
+        </tr></thead>
+        <tbody id="histoBody">
+          <tr><td colspan="6" style="text-align:center;padding:2rem;color:var(--muted)">
+            Fonctionnalité à venir — les paris seront enregistrés automatiquement ici.
+          </td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="page-view" id="page-stats">
+    <div class="ph"><div><div class="ph-title">Statistiques</div><div class="ph-sub">Performance globale de l'agent</div></div></div>
+    <div class="stats">
+      <div class="stat"><div class="stat-label">Taux de réussite</div><div class="stat-val g">—%</div><div class="stat-sub">À venir</div></div>
+      <div class="stat"><div class="stat-label">ROI global</div><div class="stat-val g">—%</div><div class="stat-sub">À venir</div></div>
+      <div class="stat"><div class="stat-label">Paris gagnés</div><div class="stat-val">—</div><div class="stat-sub">À venir</div></div>
+      <div class="stat"><div class="stat-label">Profit net</div><div class="stat-val bk-val">— TND</div><div class="stat-sub">À venir</div></div>
+    </div>
+    <div class="empty"><div class="empty-icon">📊</div><div class="empty-title">Statistiques à venir</div><div class="empty-sub">Les stats se construiront au fil des paris enregistrés.</div></div>
+  </div>
+
+  <!-- SETTINGS -->
+  <div class="page-view" id="page-settings">
+    <div class="ph"><div><div class="ph-title">Paramètres</div><div class="ph-sub">Configurer votre dashboard</div></div></div>
+    <div class="section">
+      <div class="sh"><div class="sh-title">Bankroll</div></div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem;">
+        <div style="font-size:13px;color:var(--muted);margin-bottom:10px;">Montant de votre bankroll en TND</div>
+        <div style="display:flex;gap:10px;align-items:center;">
+          <input id="bkInput" type="number" value="100" min="1"
+            style="background:var(--surface2);border:1px solid var(--border2);border-radius:var(--rs);padding:8px 12px;color:var(--text);font-size:14px;font-family:'JetBrains Mono',monospace;width:140px;outline:none;" />
+          <button onclick="saveBankroll()"
+            style="background:var(--accent);border:none;border-radius:var(--rs);padding:8px 18px;color:white;font-size:13px;cursor:pointer;font-family:'Inter',sans-serif;font-weight:500;">
+            Enregistrer
+          </button>
+          <span id="bkSaved" style="font-size:12px;color:var(--green);display:none;">✓ Enregistré</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
 
 <script>
-const GITHUB_USER = 'iamfxrouk';
+const GITHUB_USER = 'fa4ouk';
 const GITHUB_REPO = 'paris-bot';
 const JSON_URL = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/paris.json`;
 
-const TYPE_CLASS = { 'ULTRA SAFE': 'b-safe', 'VALEUR': 'b-valeur', 'OPPORTUNISTE': 'b-opport' };
-const TYPE_LABEL = { 'ULTRA SAFE': '🛡 Ultra Safe', 'VALEUR': '💎 Valeur', 'OPPORTUNISTE': '🎯 Opportuniste' };
-const CONFIANCE_COLOR = { 'Élevé': 'up', 'Moyen': 'warn', 'Faible': 'down' };
+const TYPE_CLASS = {'ULTRA SAFE':'b-safe','VALEUR':'b-val','OPPORTUNISTE':'b-opp'};
+const TYPE_LABEL = {'ULTRA SAFE':'🛡 Ultra Safe','VALEUR':'💎 Valeur','OPPORTUNISTE':'🎯 Opportuniste'};
+const CONF_COLOR = {'Élevé':'g','Moyen':'a','Faible':'r'};
 
 let bkHidden = false;
-let bankroll = 100;
+let bankroll = parseFloat(localStorage.getItem('bankroll') || '100');
 
-function setBkHidden(hidden) {
-  bkHidden = hidden;
-  document.getElementById('bkDot').classList.toggle('on', hidden);
-  document.getElementById('bkLabel').textContent = hidden ? 'Afficher bankroll' : 'Masquer bankroll';
-  document.querySelectorAll('.bk-val').forEach(el => el.classList.toggle('blur', hidden));
+// Navigation
+function showPage(id, el) {
+  document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  el.classList.add('active');
+}
+
+// Bankroll toggle
+function setBkHidden(h) {
+  bkHidden = h;
+  document.getElementById('bkDot').classList.toggle('on', h);
+  document.getElementById('bkLabel').textContent = h ? 'Afficher bankroll' : 'Masquer bankroll';
+  document.querySelectorAll('.bk-val').forEach(el => el.classList.toggle('blur', h));
 }
 document.getElementById('bkToggle').addEventListener('click', () => setBkHidden(!bkHidden));
 
-function makeCard(pari) {
-  const type = pari.type || 'PARI';
-  const style = pari.style || 'Simple';
-  const typeClass = TYPE_CLASS[type] || 'b-neutral';
-  const typeLabel = TYPE_LABEL[type] || type;
-  const mise = pari.mise_tnd ? pari.mise_tnd.toFixed(2) + ' TND' : '—';
-  const ev = pari.ev_pct ? '+' + pari.ev_pct + '%' : '—';
+// Bankroll settings
+function saveBankroll() {
+  const val = parseFloat(document.getElementById('bkInput').value);
+  if (!val || val <= 0) return;
+  bankroll = val;
+  localStorage.setItem('bankroll', val);
+  const saved = document.getElementById('bkSaved');
+  saved.style.display = 'inline';
+  setTimeout(() => saved.style.display = 'none', 2000);
+  document.getElementById('sBankroll').innerHTML = val.toFixed(0) + ' <span style="font-size:14px;color:var(--muted)">TND</span>';
+}
+
+// Card builder
+const pariResults = JSON.parse(localStorage.getItem('pari_results') || '{}');
+
+function makeCard(p, idx) {
+  const tc = TYPE_CLASS[p.type] || 'b-neu';
+  const tl = TYPE_LABEL[p.type] || p.type;
+  const mise = p.mise_tnd ? p.mise_tnd.toFixed(2) + ' TND' : '—';
+  const ev = p.ev_pct ? '+' + p.ev_pct + '%' : '—';
+  const key = p.match + '_' + idx;
+  const res = pariResults[key];
+  const statusHtml = res === 'gagné'
+    ? '<span class="status s-win">✓ Gagné</span>'
+    : res === 'perdu'
+    ? '<span class="status s-loss">✗ Perdu</span>'
+    : '<span class="status s-pend">En attente</span>';
+
+  const btns = res ? '' : `
+    <div class="result-btns">
+      <button class="rbtn win" onclick="saveResult(${idx}, '${p.match.replace(/'/g,"\'")}', 'gagné')">✅ Gagné</button>
+      <button class="rbtn loss" onclick="saveResult(${idx}, '${p.match.replace(/'/g,"\'")}', 'perdu')">❌ Perdu</button>
+    </div>`;
 
   return `
-  <div class="pari-card">
+  <div class="pari-card" id="card-${idx}">
     <div class="pari-top">
       <div class="badges">
-        <span class="badge ${typeClass}">${typeLabel}</span>
-        <span class="badge b-neutral">${style}</span>
+        <span class="badge ${tc}">${tl}</span>
+        <span class="badge b-neu">${p.style || 'Simple'}</span>
       </div>
-      <span class="status s-pending">En attente</span>
+      ${statusHtml}
     </div>
-    <div class="pari-match">${pari.match || '—'}</div>
+    <div class="pari-match">${p.match || '—'}</div>
     <div class="pari-meta">
-      <span>🏆 ${pari.competition || '—'}</span>
-      <span>⏰ ${pari.heure || '—'}</span>
+      <span>🏆 ${p.competition || '—'}</span>
+      <span>⏰ ${p.heure || '—'}</span>
     </div>
     <div class="pari-grid">
-      <div><div class="field-label">Sélection</div><div class="field-value">${pari.selection || '—'}</div></div>
-      <div><div class="field-label">Cote</div><div class="field-value">${pari.cote || '—'}</div></div>
-      <div><div class="field-label">Mise</div><div class="field-value bk-val">${mise}</div></div>
-      <div><div class="field-label">EV estimé</div><div class="field-value up">${ev}</div></div>
+      <div><div class="fl">Sélection</div><div class="fv">${p.selection || '—'}</div></div>
+      <div><div class="fl">Cote</div><div class="fv">${p.cote || '—'}</div></div>
+      <div><div class="fl">Mise</div><div class="fv bk-val">${mise}</div></div>
+      <div><div class="fl">EV estimé</div><div class="fv g">${ev}</div></div>
     </div>
-    ${pari.raison ? `<div class="pari-raison">${pari.raison}</div>` : ''}
+    ${p.raison ? `<div class="pari-raison">${p.raison}</div>` : ''}
+    ${btns}
   </div>`;
 }
 
+let currentParis = [];
+
+async function saveResult(idx, match, resultat) {
+  const pari = currentParis[idx];
+  const key = pari.match + '_' + idx;
+  const btn = document.querySelector(`#card-${idx} .result-btns`);
+  if (btn) btn.innerHTML = '<span style="color:var(--muted);font-size:12px;">Enregistrement...</span>';
+
+  try {
+    const r = await fetch('/.netlify/functions/save-result', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ pari, resultat }),
+    });
+    const data = await r.json();
+    if (data.success) {
+      pariResults[key] = resultat;
+      localStorage.setItem('pari_results', JSON.stringify(pariResults));
+      const card = document.getElementById('card-' + idx);
+      const statusEl = card.querySelector('.status');
+      if (resultat === 'gagné') {
+        statusEl.className = 'status s-win';
+        statusEl.textContent = '✓ Gagné';
+      } else {
+        statusEl.className = 'status s-loss';
+        statusEl.textContent = '✗ Perdu';
+      }
+      if (btn) btn.remove();
+    }
+  } catch(e) {
+    if (btn) btn.innerHTML = '<span style="color:var(--red);font-size:12px;">Erreur — réessaie</span>';
+  }
+}
+
+// Load data
 async function loadData() {
   try {
     const r = await fetch(JSON_URL, { headers: { 'Accept': 'application/vnd.github.v3+json' } });
-    if (!r.ok) throw new Error('Fichier non trouvé');
-    const ghData = await r.json();
-    const cleaned = ghData.content.split('\n').join('');
-    const decoded = atob(cleaned);
-    const data = JSON.parse(decoded);
+    if (!r.ok) throw new Error('404');
+    const gh = await r.json();
+    const cleaned = gh.content.split('\n').join('');
+    const data = JSON.parse(atob(cleaned));
 
     const paris = data.paris || [];
     const note = data.note_du_jour || '';
-    const confiance = data.confiance || '—';
+    const conf = data.confiance || '—';
 
-    // Date
+    // Header
     const now = new Date();
-    document.getElementById('dateLabel').textContent = now.toLocaleDateString('fr-FR', { weekday:'long', day:'numeric', month:'long', year:'numeric' }) + ' — ' + now.toLocaleTimeString('fr-FR', { hour:'2-digit', minute:'2-digit' });
-    document.getElementById('liveBadge').textContent = 'Coupe du Monde active';
-
-    // Bankroll
-    bankroll = parseFloat(localStorage.getItem('bankroll') || '100');
-    const totalMise = paris.reduce((s, p) => s + (p.mise_tnd || 0), 0);
-    document.getElementById('statBankroll').textContent = bankroll.toFixed(0) + ' TND';
-    document.getElementById('statMise').textContent = 'Mise du jour : ' + totalMise.toFixed(2) + ' TND';
+    document.getElementById('dateLabel').textContent = now.toLocaleDateString('fr-FR', {weekday:'long',day:'numeric',month:'long',year:'numeric'}) + ' — ' + now.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
+    const lb = document.getElementById('liveBadge');
+    lb.className = 'live active';
+    document.getElementById('liveText').textContent = 'Coupe du Monde active';
 
     // Stats
-    document.getElementById('statCount').textContent = paris.length;
-    document.getElementById('statDate').textContent = data.date || '—';
-    const avgEV = paris.length ? (paris.reduce((s,p) => s + (p.ev_pct || 0), 0) / paris.length).toFixed(1) : '—';
-    document.getElementById('statEV').textContent = avgEV !== '—' ? '+' + avgEV + '%' : '—';
-
-    const confEl = document.getElementById('statConfiance');
-    confEl.textContent = confiance;
-    confEl.className = 'stat-value ' + (CONFIANCE_COLOR[confiance] || '');
-    document.getElementById('statConfianceSub').textContent = paris.length + ' paris générés';
-
-    // Paris
-    const list = document.getElementById('pariList');
+    document.getElementById('sBankroll').innerHTML = bankroll.toFixed(0) + ' <span style="font-size:14px;color:var(--muted)">TND</span>';
+    document.getElementById('bkInput').value = bankroll;
+    const totalMise = paris.reduce((s,p) => s + (p.mise_tnd || 0), 0);
+    document.getElementById('sMise').textContent = 'Mise du jour : ' + totalMise.toFixed(2) + ' TND';
+    document.getElementById('sCount').textContent = paris.length;
+    document.getElementById('sDate').textContent = data.date || '—';
+    const avgEV = paris.length ? (paris.reduce((s,p) => s+(p.ev_pct||0),0)/paris.length).toFixed(1) : null;
+    document.getElementById('sEV').textContent = avgEV ? '+' + avgEV + '%' : '—';
+    const confEl = document.getElementById('sConf');
+    confEl.textContent = conf;
+    confEl.className = 'stat-val ' + (CONF_COLOR[conf] || '');
+    document.getElementById('sConfSub').textContent = paris.length + ' paris générés';
     document.getElementById('parisCount').textContent = paris.length + ' paris';
-    if (paris.length === 0) {
-      list.innerHTML = '<div class="empty"><div class="empty-icon">📭</div>Aucun paris généré aujourd\'hui.</div>';
+
+    // Cards
+    const list = document.getElementById('pariList');
+    if (!paris.length) {
+      list.innerHTML = '<div class="empty"><div class="empty-icon">📭</div><div class="empty-title">Aucun paris aujourd\'hui</div><div class="empty-sub">L\'agent tourne à 9h30 et 21h00.</div></div>';
     } else {
-      list.innerHTML = paris.map(makeCard).join('');
+      currentParis = paris;
+      list.innerHTML = paris.map((p,i) => makeCard(p,i)).join('');
     }
 
-    // Perf par type
-    const types = ['ULTRA SAFE', 'VALEUR', 'OPPORTUNISTE'];
+    // Perf
+    const types = ['ULTRA SAFE','VALEUR','OPPORTUNISTE'];
+    const colors = {'ULTRA SAFE':'var(--green)','VALEUR':'var(--blue)','OPPORTUNISTE':'var(--amber)'};
     const counts = {};
     types.forEach(t => counts[t] = paris.filter(p => p.type === t).length);
-    const total = paris.length || 1;
-    const perfColors = { 'ULTRA SAFE': 'var(--green)', 'VALEUR': 'var(--blue)', 'OPPORTUNISTE': 'var(--amber)' };
-    if (paris.length > 0) {
-      document.getElementById('perfSection').style.display = '';
+    if (paris.length) {
+      document.getElementById('perfSec').style.display = '';
       document.getElementById('perfList').innerHTML = types.map(t => `
         <div class="perf-row">
           <div class="perf-label">${TYPE_LABEL[t]}</div>
-          <div class="perf-bg"><div class="perf-bar" style="width:${Math.round(counts[t]/total*100)}%;background:${perfColors[t]};"></div></div>
+          <div class="perf-bg"><div class="perf-bar" style="background:${colors[t]}" data-w="${Math.round(counts[t]/paris.length*100)}"></div></div>
           <div class="perf-val">${counts[t]}</div>
         </div>`).join('');
+      setTimeout(() => document.querySelectorAll('.perf-bar').forEach(b => b.style.width = b.dataset.w + '%'), 100);
     }
 
     // Note
     if (note) {
-      document.getElementById('noteSection').style.display = '';
+      document.getElementById('noteSec').style.display = '';
       document.getElementById('noteBox').textContent = '📝 ' + note;
     }
 
-    // Réapplique blur si actif
     if (bkHidden) setBkHidden(true);
 
-  } catch (e) {
-    document.getElementById('pariList').innerHTML = `
-      <div class="empty">
-        <div class="empty-icon">⏳</div>
-        Aucun paris disponible pour l'instant.<br>
-        <span style="font-size:12px;margin-top:6px;display:block;">L'agent tourne à 9h30 et 21h00 chaque jour.</span>
-      </div>`;
-    document.getElementById('dateLabel').textContent = new Date().toLocaleDateString('fr-FR', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
-    document.getElementById('liveBadge').textContent = 'En attente de l\'agent';
+  } catch(e) {
+    const lb = document.getElementById('liveBadge');
+    lb.className = 'live waiting';
+    document.getElementById('liveText').textContent = 'En attente de l\'agent';
+    const now = new Date();
+    document.getElementById('dateLabel').textContent = now.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+    document.getElementById('pariList').innerHTML = '<div class="empty"><div class="empty-icon">⏳</div><div class="empty-title">Aucun paris disponible</div><div class="empty-sub">L\'agent tourne à 9h30 et 21h00 chaque jour.</div></div>';
   }
 }
 
