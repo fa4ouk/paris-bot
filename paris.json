@@ -3,41 +3,28 @@
     {
       "type": "ULTRA SAFE",
       "style": "Simple",
-      "match": "Saudi Arabia vs Uruguay",
-      "competition": "FIFA World Cup",
-      "heure": "15/06 23:03",
-      "selection": "Victoire Uruguay",
-      "cote": 1.81,
-      "bookmaker": "Pinnacle",
-      "mise_tnd": 4.0,
-      "ev_pct": 10.0,
-      "raison": "Uruguay a une équipe plus expérimentée et mieux préparée pour la Coupe du Monde"
-    },
-    {
-      "type": "VALEUR",
-      "style": "Simple",
       "match": "Iran vs New Zealand",
       "competition": "FIFA World Cup",
       "heure": "16/06 02:00",
       "selection": "Victoire Iran",
       "cote": 1.86,
       "bookmaker": "GTbets",
-      "mise_tnd": 2.5,
-      "ev_pct": 8.0,
-      "raison": "L'Iran a une bonne chance de gagner contre la Nouvelle-Zélande, qui est considérée comme l'une des équipes les plus faibles de la compétition"
+      "mise_tnd": 4.0,
+      "ev_pct": 10.0,
+      "raison": "Iran est favori pour cette rencontre et a une bonne chance de gagner"
     },
     {
-      "type": "OPPORTUNISTE",
-      "style": "Combiné",
-      "match": "Saudi Arabia vs Uruguay",
+      "type": "VALEUR",
+      "style": "Simple",
+      "match": "France vs Senegal",
       "competition": "FIFA World Cup",
-      "heure": "15/06 23:03",
-      "selection": "Victoire Uruguay et Plus de 1.5 buts",
-      "cote": 2.36,
-      "bookmaker": "Betfair",
-      "mise_tnd": 1.5,
-      "ev_pct": 12.0,
-      "raison": "Ce pari combiné offre une bonne valeur, car l'Uruguay a une attaque puissante et devrait marquer au moins un but contre l'Arabie Saoudite"
+      "heure": "16/06 20:00",
+      "selection": "Moins de 2.5",
+      "cote": 1.98,
+      "bookmaker": "Matchbook",
+      "mise_tnd": 2.5,
+      "ev_pct": 8.0,
+      "raison": "Les deux équipes ont une bonne défense et le match devrait être serré"
     },
     {
       "type": "OPPORTUNISTE",
@@ -45,14 +32,27 @@
       "match": "Iran vs New Zealand",
       "competition": "FIFA World Cup",
       "heure": "16/06 02:00",
-      "selection": "Victoire Iran et Moins de 2.5 buts",
-      "cote": 2.45,
-      "bookmaker": "Betsson",
+      "selection": "Victoire Iran et Moins de 2.5",
+      "cote": 3.1,
+      "bookmaker": "GTbets et Matchbook",
       "mise_tnd": 1.5,
-      "ev_pct": 10.0,
-      "raison": "Ce pari combiné est à combiner avec le pari précédent, car l'Iran devrait gagner contre la Nouvelle-Zélande et le match devrait être défensif"
+      "ev_pct": 15.0,
+      "raison": "À combiner avec le pari ULTRA SAFE sur la victoire de l'Iran, le match devrait être serré et avec peu de buts"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "France vs Senegal",
+      "competition": "FIFA World Cup",
+      "heure": "16/06 20:00",
+      "selection": "Victoire France et Moins de 2.5",
+      "cote": 3.5,
+      "bookmaker": "1xBet et Matchbook",
+      "mise_tnd": 1.5,
+      "ev_pct": 12.0,
+      "raison": "À combiner, la France est favorite et le match devrait être serré avec peu de buts"
     }
   ],
-  "note_du_jour": "La journée est intéressante avec plusieurs matchs de la Coupe du Monde, mais il faut être prudent avec les paris combinés",
+  "note_du_jour": "La journée est intéressante avec plusieurs matchs de la Coupe du Monde",
   "confiance": "Moyen"
 }
