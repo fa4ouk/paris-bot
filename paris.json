@@ -1,0 +1,71 @@
+{
+  "paris": [
+    {
+      "type": "ULTRA SAFE",
+      "style": "Simple",
+      "match": "Uruguay vs Saudi Arabia",
+      "competition": "FIFA World Cup",
+      "heure": "15/06 23:00",
+      "selection": "Victoire Uruguay",
+      "cote": 1.53,
+      "bookmaker": "Matchbook",
+      "mise_tnd": 4.0,
+      "ev_pct": 10.0,
+      "raison": "Uruguay a une équipe plus forte et expérimentée, avec une bonne forme actuelle."
+    },
+    {
+      "type": "VALEUR",
+      "style": "Simple",
+      "match": "Belgium vs Egypt",
+      "competition": "FIFA World Cup",
+      "heure": "15/06 20:00",
+      "selection": "Plus de 2.5",
+      "cote": 2.08,
+      "bookmaker": "Matchbook",
+      "mise_tnd": 2.5,
+      "ev_pct": 12.0,
+      "raison": "Les deux équipes ont une attaque puissante et une défense fragile, ce qui devrait conduire à un match ouvert avec plusieurs buts."
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Spain vs Cape Verde et Belgium vs Egypt",
+      "competition": "FIFA World Cup",
+      "heure": "15/06 17:00 et 20:00",
+      "selection": "Handicap Spain -2.75 et Plus de 2.5",
+      "cote": 3.92,
+      "bookmaker": "Matchbook",
+      "mise_tnd": 1.5,
+      "ev_pct": 15.0,
+      "raison": "Ces deux sélections peuvent être combinées pour créer un pari opportuniste avec une cote intéressante. Il est recommandé de les combiner ensemble."
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Spain vs Cape Verde et Belgium vs Egypt",
+      "competition": "FIFA World Cup",
+      "heure": "15/06 17:00 et 20:00",
+      "selection": "Handicap Spain -2.75",
+      "cote": 1.99,
+      "bookmaker": "Matchbook",
+      "mise_tnd": 1.5,
+      "ev_pct": 10.0,
+      "raison": "Cette sélection doit être combinée avec 'Plus de 2.5' dans le match Belgium vs Egypt pour créer un pari opportuniste."
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Spain vs Cape Verde et Belgium vs Egypt",
+      "competition": "FIFA World Cup",
+      "heure": "15/06 17:00 et 20:00",
+      "selection": "Plus de 2.5",
+      "cote": 2.08,
+      "bookmaker": "Matchbook",
+      "mise_tnd": 1.5,
+      "ev_pct": 12.0,
+      "raison": "Cette sélection doit être combinée avec 'Handicap Spain -2.75' dans le match Spain vs Cape Verde pour créer un pari opportuniste."
+    }
+  ],
+  "note_du_jour": "La journée offre quelques opportunités intéressantes, notamment dans les matchs de la Coupe du Monde.",
+  "confiance": "Moyen"
+}
