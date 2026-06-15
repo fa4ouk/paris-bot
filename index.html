@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paris Pro — Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #111118;
+    --surface2: #1a1a24;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.12);
+    --text: #f0f0f5;
+    --text-muted: #8888a0;
+    --text-dim: #555568;
+    --green: #22c55e;
+    --green-bg: rgba(34,197,94,0.08);
+    --green-border: rgba(34,197,94,0.2);
+    --red: #ef4444;
+    --red-bg: rgba(239,68,68,0.08);
+    --red-border: rgba(239,68,68,0.2);
+    --blue: #60a5fa;
+    --blue-bg: rgba(96,165,250,0.08);
+    --blue-border: rgba(96,165,250,0.2);
+    --amber: #f59e0b;
+    --amber-bg: rgba(245,158,11,0.08);
+    --amber-border: rgba(245,158,11,0.2);
+    --purple: #a78bfa;
+    --purple-bg: rgba(167,139,250,0.08);
+    --accent: #6366f1;
+    --radius: 10px;
+    --radius-sm: 6px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.6; min-height: 100vh; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+
+  /* Layout */
+  .app { display: flex; min-height: 100vh; }
+  .sidebar { width: 220px; background: var(--surface); border-right: 1px solid var(--border); padding: 1.5rem 1rem; display: flex; flex-direction: column; gap: 0.5rem; flex-shrink: 0; position: fixed; height: 100vh; }
+  .main { margin-left: 220px; flex: 1; padding: 2rem; max-width: 900px; }
+
+  /* Sidebar */
+  .logo { font-size: 15px; font-weight: 600; color: var(--text); padding: 0.5rem 0.75rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
+  .logo-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 8px var(--accent); }
+  .nav-item { display: flex; align-items: center; gap: 10px; padding: 0.6rem 0.75rem; border-radius: var(--radius-sm); color: var(--text-muted); cursor: pointer; font-size: 13px; transition: all 0.15s; text-decoration: none; }
+  .nav-item:hover { background: var(--surface2); color: var(--text); }
+  .nav-item.active { background: var(--surface2); color: var(--text); border-left: 2px solid var(--accent); padding-left: calc(0.75rem - 2px); }
+  .nav-icon { font-size: 16px; opacity: 0.7; }
+  .nav-sep { height: 1px; background: var(--border); margin: 0.5rem 0; }
+  .sidebar-bottom { margin-top: auto; }
+  .bk-toggle { display: flex; align-items: center; gap: 8px; padding: 0.6rem 0.75rem; border-radius: var(--radius-sm); color: var(--text-muted); cursor: pointer; font-size: 12px; user-select: none; }
+  .bk-toggle:hover { color: var(--text); }
+  .toggle-dot { width: 28px; height: 16px; background: var(--surface2); border: 1px solid var(--border2); border-radius: 8px; position: relative; transition: background 0.2s; flex-shrink: 0; }
+  .toggle-dot.on { background: var(--accent); border-color: var(--accent); }
+  .toggle-dot::after { content: ''; position: absolute; width: 10px; height: 10px; background: white; border-radius: 50%; top: 2px; left: 2px; transition: transform 0.2s; }
+  .toggle-dot.on::after { transform: translateX(12px); }
+
+  /* Header */
+  .page-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.75rem; }
+  .page-title { font-size: 20px; font-weight: 600; }
+  .page-sub { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+  .header-right { display: flex; align-items: center; gap: 10px; }
+  .live-badge { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--green); background: var(--green-bg); border: 1px solid var(--green-border); padding: 5px 12px; border-radius: 20px; }
+  .live-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  .btn { display: flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: var(--radius-sm); font-size: 13px; cursor: pointer; border: 1px solid var(--border2); background: var(--surface2); color: var(--text-muted); transition: all 0.15s; }
+  .btn:hover { color: var(--text); border-color: var(--border2); }
+
+  /* Stats grid */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 1.75rem; }
+  .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; }
+  .stat-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-dim); margin-bottom: 8px; }
+  .stat-value { font-size: 22px; font-weight: 600; font-family: 'JetBrains Mono', monospace; }
+  .stat-sub { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+  .up { color: var(--green); }
+  .down { color: var(--red); }
+
+  /* Section */
+  .section { margin-bottom: 1.75rem; }
+  .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  .section-title { font-size: 13px; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  .section-count { font-size: 12px; color: var(--text-dim); background: var(--surface2); padding: 2px 8px; border-radius: 20px; }
+
+  /* Pari cards */
+  .pari-list { display: flex; flex-direction: column; gap: 10px; }
+  .pari-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem 1.25rem; transition: border-color 0.15s; }
+  .pari-card:hover { border-color: var(--border2); }
+  .pari-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .pari-badges { display: flex; gap: 6px; }
+  .badge { font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 20px; display: flex; align-items: center; gap: 4px; }
+  .badge-safe { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
+  .badge-valeur { background: var(--blue-bg); color: var(--blue); border: 1px solid var(--blue-border); }
+  .badge-opport { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-border); }
+  .status { font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 20px; }
+  .status-win { background: var(--green-bg); color: var(--green); }
+  .status-loss { background: var(--red-bg); color: var(--red); }
+  .status-pending { background: var(--surface2); color: var(--text-muted); border: 1px solid var(--border); }
+  .pari-match { font-size: 15px; font-weight: 500; margin-bottom: 3px; }
+  .pari-meta { font-size: 12px; color: var(--text-muted); display: flex; gap: 12px; margin-bottom: 12px; }
+  .pari-meta span { display: flex; align-items: center; gap: 4px; }
+  .pari-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
+  .pari-field-label { font-size: 11px; color: var(--text-dim); margin-bottom: 3px; }
+  .pari-field-value { font-size: 13px; font-weight: 500; font-family: 'JetBrains Mono', monospace; }
+  .pari-raison { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); font-size: 12px; color: var(--text-muted); font-style: italic; }
+  .ev-pos { color: var(--green); }
+
+  /* Perf bars */
+  .perf-list { display: flex; flex-direction: column; gap: 10px; }
+  .perf-row { display: flex; align-items: center; gap: 12px; }
+  .perf-label { font-size: 12px; color: var(--text-muted); width: 90px; flex-shrink: 0; }
+  .perf-bar-bg { flex: 1; height: 6px; background: var(--surface2); border-radius: 3px; overflow: hidden; }
+  .perf-bar { height: 100%; border-radius: 3px; }
+  .perf-val { font-size: 12px; font-family: 'JetBrains Mono', monospace; font-weight: 500; width: 36px; text-align: right; }
+
+  /* Bankroll hidden */
+  .bk-hidden { filter: blur(6px); pointer-events: none; user-select: none; }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .sidebar { display: none; }
+    .main { margin-left: 0; padding: 1rem; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .pari-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">
+      <div class="logo-dot"></div>
+      Paris Pro
+    </div>
+    <a class="nav-item active" href="#">
+      <span class="nav-icon">📊</span> Dashboard
+    </a>
+    <a class="nav-item" href="#">
+      <span class="nav-icon">📋</span> Historique
+    </a>
+    <a class="nav-item" href="#">
+      <span class="nav-icon">📈</span> Statistiques
+    </a>
+    <div class="nav-sep"></div>
+    <a class="nav-item" href="#">
+      <span class="nav-icon">⚙️</span> Paramètres
+    </a>
+
+    <div class="sidebar-bottom">
+      <div class="nav-sep"></div>
+      <div class="bk-toggle" id="bkToggle">
+        <div class="toggle-dot" id="bkDot"></div>
+        <span id="bkLabel">Masquer bankroll</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+    <div class="page-header">
+      <div>
+        <div class="page-title">Bons plans du jour</div>
+        <div class="page-sub" id="currentDate">Dimanche 15 juin 2026 — 09:30</div>
+      </div>
+      <div class="header-right">
+        <div class="live-badge">
+          <div class="live-dot"></div>
+          Coupe du Monde active
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-label">Bankroll</div>
+        <div class="stat-value bk-val">100 <span style="font-size:14px;color:var(--text-muted);">TND</span></div>
+        <div class="stat-sub bk-val up">Mise du jour : 8 TND</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Taux de réussite</div>
+        <div class="stat-value up">67<span style="font-size:14px;">%</span></div>
+        <div class="stat-sub">4 gagnés / 6 joués</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">ROI global</div>
+        <div class="stat-value up">+12<span style="font-size:14px;">%</span></div>
+        <div class="stat-sub bk-val up">+12 TND net</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Confiance du jour</div>
+        <div class="stat-value" style="color:var(--amber);">Moyen</div>
+        <div class="stat-sub">3 paris générés</div>
+      </div>
+    </div>
+
+    <!-- Paris du jour -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-title">Paris du jour</div>
+        <div class="section-count">3 paris</div>
+      </div>
+      <div class="pari-list">
+
+        <div class="pari-card">
+          <div class="pari-top">
+            <div class="pari-badges">
+              <span class="badge badge-safe">🛡 Ultra Safe</span>
+              <span class="badge" style="background:var(--surface2);color:var(--text-muted);border:1px solid var(--border);">Simple</span>
+            </div>
+            <span class="status status-pending">En attente</span>
+          </div>
+          <div class="pari-match">Belgium vs Egypt</div>
+          <div class="pari-meta">
+            <span>🏆 FIFA World Cup</span>
+            <span>⏰ 20:00</span>
+            <span>📅 15/06</span>
+          </div>
+          <div class="pari-grid">
+            <div>
+              <div class="pari-field-label">Sélection</div>
+              <div class="pari-field-value">Victoire Belgium</div>
+            </div>
+            <div>
+              <div class="pari-field-label">Cote</div>
+              <div class="pari-field-value">1.69</div>
+            </div>
+            <div>
+              <div class="pari-field-label">Mise</div>
+              <div class="pari-field-value bk-val">4.00 TND</div>
+            </div>
+            <div>
+              <div class="pari-field-label">EV estimé</div>
+              <div class="pari-field-value ev-pos">+8.0%</div>
+            </div>
+          </div>
+          <div class="pari-raison">La Belgique est largement favorisée, cote correcte avec bonne probabilité implicite.</div>
+        </div>
+
+        <div class="pari-card">
+          <div class="pari-top">
+            <div class="pari-badges">
+              <span class="badge badge-valeur">💎 Valeur</span>
+              <span class="badge" style="background:var(--surface2);color:var(--text-muted);border:1px solid var(--border);">Simple</span>
+            </div>
+            <span class="status status-win">✓ Gagné</span>
+          </div>
+          <div class="pari-match">France vs Senegal</div>
+          <div class="pari-meta">
+            <span>🏆 FIFA World Cup</span>
+            <span>⏰ 20:00</span>
+            <span>📅 14/06</span>
+          </div>
+          <div class="pari-grid">
+            <div>
+              <div class="pari-field-label">Sélection</div>
+              <div class="pari-field-value">Victoire France</div>
+            </div>
+            <div>
+              <div class="pari-field-label">Cote</div>
+              <div class="pari-field-value">1.51</div>
+            </div>
+            <div>
+              <div class="pari-field-label">Mise</div>
+              <div class="pari-field-value bk-val">2.50 TND</div>
+            </div>
+            <div>
+              <div class="pari-field-label">EV estimé</div>
+              <div class="pari-field-value ev-pos">+10.0%</div>
+            </div>
+          </div>
+          <div class="pari-raison">Cote sous-évaluée par le marché — EV positif confirmé sur 3 bookmakers.</div>
+        </div>
+
+        <div class="pari-card">
+          <div class="pari-top">
+            <div class="pari-badges">
+              <span class="badge badge-opport">🎯 Opportuniste</span>
+              <span class="badge" style="background:var(--surface2);color:var(--text-muted);border:1px solid var(--border);">Combiné</span>
+            </div>
+            <span class="status status-loss">✗ Perdu</span>
+          </div>
+          <div class="pari-match">Portugal vs DR Congo</div>
+          <div class="pari-meta">
+            <span>🏆 FIFA World Cup</span>
+            <span>⏰ 23:00</span>
+            <span>📅 14/06</span>
+          </div>
+          <div class="pari-grid">
+            <div>
+              <div class="pari-field-label">Sélection</div>
+              <div class="pari-field-value">Plus de 2.5</div>
+            </div>
+            <div>
+              <div class="pari-field-label">Cote</div>
+              <div class="pari-field-value">1.73</div>
+            </div>
+            <div>
+              <div class="pari-field-label">Mise</div>
+              <div class="pari-field-value bk-val">1.50 TND</div>
+            </div>
+            <div>
+              <div class="pari-field-label">EV estimé</div>
+              <div class="pari-field-value ev-pos">+5.0%</div>
+            </div>
+          </div>
+          <div class="pari-raison">Combiné avec France vs Senegal — logique offensive des deux équipes.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Perf -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-title">Performance par type</div>
+      </div>
+      <div class="perf-list">
+        <div class="perf-row">
+          <div class="perf-label">🛡 Ultra Safe</div>
+          <div class="perf-bar-bg"><div class="perf-bar" style="width:80%;background:var(--green);"></div></div>
+          <div class="perf-val up">80%</div>
+        </div>
+        <div class="perf-row">
+          <div class="perf-label">💎 Valeur</div>
+          <div class="perf-bar-bg"><div class="perf-bar" style="width:67%;background:var(--blue);"></div></div>
+          <div class="perf-val" style="color:var(--blue);">67%</div>
+        </div>
+        <div class="perf-row">
+          <div class="perf-label">🎯 Opportuniste</div>
+          <div class="perf-bar-bg"><div class="perf-bar" style="width:40%;background:var(--amber);"></div></div>
+          <div class="perf-val" style="color:var(--amber);">40%</div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+  // Date dynamique
+  const d = new Date();
+  const opts = { weekday:'long', day:'numeric', month:'long', year:'numeric' };
+  const dateStr = d.toLocaleDateString('fr-FR', opts);
+  const h = d.getHours().toString().padStart(2,'0');
+  const m = d.getMinutes().toString().padStart(2,'0');
+  document.getElementById('currentDate').textContent = dateStr + ' — ' + h + ':' + m;
+
+  // Toggle bankroll
+  let bkHidden = false;
+  const bkDot = document.getElementById('bkDot');
+  const bkLabel = document.getElementById('bkLabel');
+  const bkVals = document.querySelectorAll('.bk-val');
+
+  document.getElementById('bkToggle').addEventListener('click', () => {
+    bkHidden = !bkHidden;
+    bkDot.classList.toggle('on', bkHidden);
+    bkLabel.textContent = bkHidden ? 'Afficher bankroll' : 'Masquer bankroll';
+    bkVals.forEach(el => el.classList.toggle('bk-hidden', bkHidden));
+  });
+</script>
+</body>
+</html>
