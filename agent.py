@@ -7,6 +7,7 @@ import requests
 import json
 from datetime import datetime
 import os
+import base64
 
 # Lecture depuis variables d'environnement (GitHub Actions)
 # ou depuis config.py en local
@@ -16,6 +17,8 @@ try:
         TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID,
         BANKROLL, COTE_MIN, COTE_MAX
     )
+    GH_TOKEN = os.environ.get("GH_TOKEN", "")
+    GH_REPO = os.environ.get("GH_REPO", "")
 except ImportError:
     ODDS_API_KEY = os.environ.get("ODDS_API_KEY", "")
     GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
@@ -24,6 +27,8 @@ except ImportError:
     BANKROLL = float(os.environ.get("BANKROLL", "100"))
     COTE_MIN = 1.4
     COTE_MAX = 2.5
+    GH_TOKEN = os.environ.get("GH_TOKEN", "")
+    GH_REPO = os.environ.get("GH_REPO", "")
 
 SPORTS_ACTIFS = [
     "soccer_fifa_world_cup",
@@ -314,7 +319,53 @@ def build_message(result: dict) -> str:
 
 
 # ─────────────────────────────────────────
-# 5. ENVOI TELEGRAM
+# 5. PUSH VERS GITHUB (pour le dashboard web)
+# ─────────────────────────────────────────
+
+def push_to_github(result: dict):
+    """Pousse paris.json sur le repo GitHub pour le dashboard web."""
+    if not GH_TOKEN or not GH_REPO:
+        print("⚠️  GH_TOKEN ou GH_REPO manquant, skip push GitHub")
+        return
+
+    url = f"https://api.github.com/repos/{GH_REPO}/contents/paris.json"
+    headers = {
+        "Authorization": f"token {GH_TOKEN}",
+        "Accept": "application/vnd.github.v3+json",
+    }
+
+    # Récupère le SHA du fichier existant si il existe
+    sha = None
+    try:
+        r = requests.get(url, headers=headers, timeout=10)
+        if r.status_code == 200:
+            sha = r.json().get("sha")
+    except Exception:
+        pass
+
+    # Encode le contenu en base64
+    content_str = json.dumps(result, ensure_ascii=False, indent=2)
+    content_b64 = base64.b64encode(content_str.encode()).decode()
+
+    payload = {
+        "message": f"🏆 Paris du {datetime.now().strftime('%d/%m/%Y %H:%M')}",
+        "content": content_b64,
+    }
+    if sha:
+        payload["sha"] = sha
+
+    try:
+        r = requests.put(url, headers=headers, json=payload, timeout=15)
+        if r.status_code in [200, 201]:
+            print("✅ paris.json mis à jour sur GitHub !")
+        else:
+            print(f"❌ Erreur GitHub : {r.status_code} — {r.text[:150]}")
+    except Exception as e:
+        print(f"❌ Erreur push GitHub : {e}")
+
+
+# ─────────────────────────────────────────
+# 6. ENVOI TELEGRAM
 # ─────────────────────────────────────────
 
 def send_telegram(message: str):
@@ -380,10 +431,15 @@ def main():
         send_telegram(f"❌ Erreur de parsing. Réponse IA :\n{raw[:500]}")
         return
 
-    # Sauvegarde
+    # Sauvegarde locale
     with open("paris_du_jour.json", "w", encoding="utf-8") as f:
         json.dump(result, f, ensure_ascii=False, indent=2)
     print("💾 Résultats sauvegardés dans paris_du_jour.json")
+
+    # Push GitHub pour le dashboard web
+    print("
+📤 Push vers GitHub...")
+    push_to_github(result)
 
     # Message & envoi
     message = build_message(result)
