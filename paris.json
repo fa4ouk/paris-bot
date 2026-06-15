@@ -3,56 +3,56 @@
     {
       "type": "ULTRA SAFE",
       "style": "Simple",
-      "match": "Spain vs Cape Verde",
-      "competition": "FIFA World Cup",
-      "heure": "15/06 17:00",
-      "selection": "Handicap Spain -2.5",
-      "cote": 1.71,
-      "bookmaker": "GTbets",
-      "mise_tnd": 4.0,
-      "ev_pct": 12.0,
-      "raison": "Probabilité élevée de victoire de l'Espagne avec un handicap raisonnable"
-    },
-    {
-      "type": "VALEUR",
-      "style": "Simple",
-      "match": "Belgium vs Egypt",
-      "competition": "FIFA World Cup",
-      "heure": "15/06 20:00",
-      "selection": "Victoire Belgium",
-      "cote": 1.62,
-      "bookmaker": "Coolbet",
-      "mise_tnd": 2.5,
-      "ev_pct": 8.0,
-      "raison": "Cote sous-évaluée par le marché pour la victoire de la Belgique"
-    },
-    {
-      "type": "OPPORTUNISTE",
-      "style": "Combiné",
       "match": "Saudi Arabia vs Uruguay",
       "competition": "FIFA World Cup",
       "heure": "15/06 23:00",
       "selection": "Victoire Uruguay",
-      "cote": 1.49,
+      "cote": 1.57,
       "bookmaker": "Betfair",
-      "mise_tnd": 1.5,
-      "ev_pct": 5.0,
-      "raison": "À combiner avec le match Iran vs New Zealand, sélection 'Victoire Iran'"
+      "mise_tnd": 4.0,
+      "ev_pct": 10.0,
+      "raison": "Uruguay a une équipe plus expérimentée et mieux préparée pour la Coupe du Monde"
     },
     {
-      "type": "OPPORTUNISTE",
-      "style": "Combiné",
+      "type": "VALEUR",
+      "style": "Simple",
       "match": "Iran vs New Zealand",
       "competition": "FIFA World Cup",
       "heure": "16/06 02:00",
       "selection": "Victoire Iran",
-      "cote": 1.87,
+      "cote": 1.86,
+      "bookmaker": "GTbets",
+      "mise_tnd": 2.5,
+      "ev_pct": 8.0,
+      "raison": "L'Iran a une bonne équipe et devrait gagner contre la Nouvelle-Zélande"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Philadelphia Phillies vs Miami Marlins",
+      "competition": "MLB",
+      "heure": "15/06 23:41",
+      "selection": "Victoire Philadelphia Phillies",
+      "cote": 1.55,
+      "bookmaker": "1xBet",
+      "mise_tnd": 1.5,
+      "ev_pct": 5.0,
+      "raison": "À combiner avec le match suivant pour un pari opportuniste"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Washington Nationals vs Kansas City Royals",
+      "competition": "MLB",
+      "heure": "15/06 23:46",
+      "selection": "Victoire Washington Nationals",
+      "cote": 1.81,
       "bookmaker": "Matchbook",
       "mise_tnd": 1.5,
       "ev_pct": 5.0,
-      "raison": "À combiner avec le match Saudi Arabia vs Uruguay, sélection 'Victoire Uruguay'"
+      "raison": "À combiner avec le match précédent pour un pari opportuniste"
     }
   ],
-  "note_du_jour": "Journée avec quelques opportunités intéressantes, notamment dans la Coupe du Monde",
+  "note_du_jour": "Journée avec quelques bons matchs de Coupe du Monde et de MLB",
   "confiance": "Moyen"
 }
