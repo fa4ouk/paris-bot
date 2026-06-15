@@ -437,8 +437,7 @@ def main():
     print("💾 Résultats sauvegardés dans paris_du_jour.json")
 
     # Push GitHub pour le dashboard web
-    print("
-📤 Push vers GitHub...")
+    print("\n📤 Push vers GitHub...")
     push_to_github(result)
 
     # Message & envoi
