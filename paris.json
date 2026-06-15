@@ -5,10 +5,10 @@
       "style": "Simple",
       "match": "Saudi Arabia vs Uruguay",
       "competition": "FIFA World Cup",
-      "heure": "15/06 23:00",
+      "heure": "15/06 23:03",
       "selection": "Victoire Uruguay",
-      "cote": 1.57,
-      "bookmaker": "Betfair",
+      "cote": 1.81,
+      "bookmaker": "Pinnacle",
       "mise_tnd": 4.0,
       "ev_pct": 10.0,
       "raison": "Uruguay a une équipe plus expérimentée et mieux préparée pour la Coupe du Monde"
@@ -24,35 +24,35 @@
       "bookmaker": "GTbets",
       "mise_tnd": 2.5,
       "ev_pct": 8.0,
-      "raison": "L'Iran a une bonne équipe et devrait gagner contre la Nouvelle-Zélande"
+      "raison": "L'Iran a une bonne chance de gagner contre la Nouvelle-Zélande, qui est considérée comme l'une des équipes les plus faibles de la compétition"
     },
     {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
-      "match": "Philadelphia Phillies vs Miami Marlins",
-      "competition": "MLB",
-      "heure": "15/06 23:41",
-      "selection": "Victoire Philadelphia Phillies",
-      "cote": 1.55,
-      "bookmaker": "1xBet",
+      "match": "Saudi Arabia vs Uruguay",
+      "competition": "FIFA World Cup",
+      "heure": "15/06 23:03",
+      "selection": "Victoire Uruguay et Plus de 1.5 buts",
+      "cote": 2.36,
+      "bookmaker": "Betfair",
       "mise_tnd": 1.5,
-      "ev_pct": 5.0,
-      "raison": "À combiner avec le match suivant pour un pari opportuniste"
+      "ev_pct": 12.0,
+      "raison": "Ce pari combiné offre une bonne valeur, car l'Uruguay a une attaque puissante et devrait marquer au moins un but contre l'Arabie Saoudite"
     },
     {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
-      "match": "Washington Nationals vs Kansas City Royals",
-      "competition": "MLB",
-      "heure": "15/06 23:46",
-      "selection": "Victoire Washington Nationals",
-      "cote": 1.81,
-      "bookmaker": "Matchbook",
+      "match": "Iran vs New Zealand",
+      "competition": "FIFA World Cup",
+      "heure": "16/06 02:00",
+      "selection": "Victoire Iran et Moins de 2.5 buts",
+      "cote": 2.45,
+      "bookmaker": "Betsson",
       "mise_tnd": 1.5,
-      "ev_pct": 5.0,
-      "raison": "À combiner avec le match précédent pour un pari opportuniste"
+      "ev_pct": 10.0,
+      "raison": "Ce pari combiné est à combiner avec le pari précédent, car l'Iran devrait gagner contre la Nouvelle-Zélande et le match devrait être défensif"
     }
   ],
-  "note_du_jour": "Journée avec quelques bons matchs de Coupe du Monde et de MLB",
+  "note_du_jour": "La journée est intéressante avec plusieurs matchs de la Coupe du Monde, mais il faut être prudent avec les paris combinés",
   "confiance": "Moyen"
 }
