@@ -6,11 +6,24 @@ Analyse les marchés du jour et génère des paris via Groq AI.
 import requests
 import json
 from datetime import datetime
-from config import (
-    ODDS_API_KEY, GROQ_API_KEY,
-    TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID,
-    BANKROLL, COTE_MIN, COTE_MAX
-)
+import os
+
+# Lecture depuis variables d'environnement (GitHub Actions)
+# ou depuis config.py en local
+try:
+    from config import (
+        ODDS_API_KEY, GROQ_API_KEY,
+        TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID,
+        BANKROLL, COTE_MIN, COTE_MAX
+    )
+except ImportError:
+    ODDS_API_KEY = os.environ.get("ODDS_API_KEY", "")
+    GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
+    TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
+    TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "")
+    BANKROLL = float(os.environ.get("BANKROLL", "100"))
+    COTE_MIN = 1.4
+    COTE_MAX = 2.5
 
 SPORTS_ACTIFS = [
     "soccer_fifa_world_cup",
