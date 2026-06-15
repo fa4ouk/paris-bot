@@ -1,7 +1,7 @@
 {
   "paris": [
     {
-      "type": "ULTRA SAFE",
+      "type": "VALEUR",
       "style": "Simple",
       "match": "Iran vs New Zealand",
       "competition": "FIFA World Cup",
@@ -9,22 +9,22 @@
       "selection": "Victoire Iran",
       "cote": 1.86,
       "bookmaker": "GTbets",
-      "mise_tnd": 4.0,
-      "ev_pct": 10.0,
-      "raison": "Iran est favori pour cette rencontre et a une bonne chance de gagner"
+      "mise_tnd": 2.0,
+      "ev_pct": 5.5,
+      "raison": "L'Iran a une équipe solide et devrait gagner contre la Nouvelle-Zélande"
     },
     {
-      "type": "VALEUR",
+      "type": "ULTRA SAFE",
       "style": "Simple",
       "match": "France vs Senegal",
       "competition": "FIFA World Cup",
       "heure": "16/06 20:00",
-      "selection": "Moins de 2.5",
-      "cote": 1.98,
-      "bookmaker": "Matchbook",
-      "mise_tnd": 2.5,
-      "ev_pct": 8.0,
-      "raison": "Les deux équipes ont une bonne défense et le match devrait être serré"
+      "selection": "Victoire France",
+      "cote": 1.53,
+      "bookmaker": "1xBet",
+      "mise_tnd": 4.0,
+      "ev_pct": 2.1,
+      "raison": "La France est l'une des meilleures équipes du monde et devrait gagner contre le Sénégal"
     },
     {
       "type": "OPPORTUNISTE",
@@ -32,12 +32,12 @@
       "match": "Iran vs New Zealand",
       "competition": "FIFA World Cup",
       "heure": "16/06 02:00",
-      "selection": "Victoire Iran et Moins de 2.5",
-      "cote": 3.1,
-      "bookmaker": "GTbets et Matchbook",
+      "selection": "Victoire Iran et Plus de 2.0",
+      "cote": 2.45,
+      "bookmaker": "Betsson",
       "mise_tnd": 1.5,
-      "ev_pct": 15.0,
-      "raison": "À combiner avec le pari ULTRA SAFE sur la victoire de l'Iran, le match devrait être serré et avec peu de buts"
+      "ev_pct": 8.2,
+      "raison": "À combiner avec le pari suivant pour un pari combiné"
     },
     {
       "type": "OPPORTUNISTE",
@@ -46,13 +46,13 @@
       "competition": "FIFA World Cup",
       "heure": "16/06 20:00",
       "selection": "Victoire France et Moins de 2.5",
-      "cote": 3.5,
-      "bookmaker": "1xBet et Matchbook",
+      "cote": 2.0,
+      "bookmaker": "Matchbook",
       "mise_tnd": 1.5,
-      "ev_pct": 12.0,
-      "raison": "À combiner, la France est favorite et le match devrait être serré avec peu de buts"
+      "ev_pct": 6.5,
+      "raison": "À combiner avec le pari précédent pour un pari combiné"
     }
   ],
-  "note_du_jour": "La journée est intéressante avec plusieurs matchs de la Coupe du Monde",
+  "note_du_jour": "Journée avec quelques opportunités intéressantes, notamment dans la Coupe du Monde",
   "confiance": "Moyen"
 }
