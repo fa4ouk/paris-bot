@@ -188,7 +188,7 @@
 <script>
 const GITHUB_USER = 'iamfxrouk';
 const GITHUB_REPO = 'paris-bot';
-const JSON_URL = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/main/paris.json`;
+const JSON_URL = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/paris.json`;
 
 const TYPE_CLASS = { 'ULTRA SAFE': 'b-safe', 'VALEUR': 'b-valeur', 'OPPORTUNISTE': 'b-opport' };
 const TYPE_LABEL = { 'ULTRA SAFE': '🛡 Ultra Safe', 'VALEUR': '💎 Valeur', 'OPPORTUNISTE': '🎯 Opportuniste' };
@@ -239,9 +239,12 @@ function makeCard(pari) {
 
 async function loadData() {
   try {
-    const r = await fetch(JSON_URL + '?t=' + Date.now());
+    const r = await fetch(JSON_URL, { headers: { 'Accept': 'application/vnd.github.v3+json' } });
     if (!r.ok) throw new Error('Fichier non trouvé');
-    const data = await r.json();
+    const ghData = await r.json();
+    const cleaned = ghData.content.split('\n').join('');
+    const decoded = atob(cleaned);
+    const data = JSON.parse(decoded);
 
     const paris = data.paris || [];
     const note = data.note_du_jour || '';
