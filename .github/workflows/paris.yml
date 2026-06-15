@@ -2,9 +2,9 @@ name: Agent Paris Sportifs
 
 on:
   schedule:
-    - cron: '30 8 * * *'   # 9h30 heure tunisienne (UTC+1)
-    - cron: '0 20 * * *'   # 21h00 heure tunisienne
-  workflow_dispatch:         # Permet de lancer manuellement depuis GitHub
+    - cron: '30 8 * * *'
+    - cron: '0 20 * * *'
+  workflow_dispatch:
 
 jobs:
   run-agent:
@@ -29,4 +29,6 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           BANKROLL: ${{ secrets.BANKROLL }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_REPO: ${{ github.repository }}
         run: python agent.py
