@@ -3,41 +3,41 @@
     {
       "type": "ULTRA SAFE",
       "style": "Simple",
-      "match": "France vs Senegal",
+      "match": "Argentina vs Algeria",
       "competition": "FIFA World Cup",
-      "heure": "16/06 20:00",
-      "selection": "Victoire France",
-      "cote": 2.12,
-      "bookmaker": "Betfair",
+      "heure": "17/06 02:00",
+      "selection": "Victoire Argentina",
+      "cote": 1.49,
+      "bookmaker": "Matchbook",
       "mise_tnd": 4.0,
-      "ev_pct": 10.0,
-      "raison": "Probabilité élevée de victoire de la France contre le Sénégal"
+      "ev_pct": 5.0,
+      "raison": "Argentina est nettement favorite dans ce match et la cote de 1.49 est raisonnable"
     },
     {
       "type": "VALEUR",
       "style": "Simple",
-      "match": "Argentina vs Algeria",
+      "match": "Austria vs Jordan",
       "competition": "FIFA World Cup",
-      "heure": "17/06 02:00",
-      "selection": "Victoire Argentina",
-      "cote": 1.47,
-      "bookmaker": "Unibet (NL)",
-      "mise_tnd": 2.5,
-      "ev_pct": 5.0,
-      "raison": "Cote sous-évaluée pour la victoire de l'Argentine contre l'Algérie"
-    },
-    {
-      "type": "OPPORTUNISTE",
-      "style": "Combiné",
-      "match": "France vs Senegal",
-      "competition": "FIFA World Cup",
-      "heure": "16/06 20:00",
-      "selection": "Victoire France",
-      "cote": 2.12,
+      "heure": "17/06 05:00",
+      "selection": "Austria",
+      "cote": 1.4,
       "bookmaker": "Betfair",
-      "mise_tnd": 1.5,
+      "mise_tnd": 2.5,
       "ev_pct": 8.0,
-      "raison": "Combiner avec le pari suivant pour un pari combiné"
+      "raison": "La cote de 1.4 pour l'Austria est sous-évaluée par le marché"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Iraq vs Norway",
+      "competition": "FIFA World Cup",
+      "heure": "16/06 23:00",
+      "selection": "Plus de 2.75",
+      "cote": 1.77,
+      "bookmaker": "BetOnline.ag",
+      "mise_tnd": 1.5,
+      "ev_pct": 10.0,
+      "raison": "À combiner avec le match Argentina vs Algeria, Victoire Argentina"
     },
     {
       "type": "OPPORTUNISTE",
@@ -46,13 +46,13 @@
       "competition": "FIFA World Cup",
       "heure": "17/06 02:00",
       "selection": "Victoire Argentina",
-      "cote": 1.47,
-      "bookmaker": "Unibet (NL)",
+      "cote": 1.49,
+      "bookmaker": "Matchbook",
       "mise_tnd": 1.5,
-      "ev_pct": 8.0,
-      "raison": "Combiner avec le pari précédent pour un pari combiné"
+      "ev_pct": 10.0,
+      "raison": "À combiner avec le match Iraq vs Norway, Plus de 2.75"
     }
   ],
-  "note_du_jour": "Journée avec des opportunités de paris intéressantes",
+  "note_du_jour": "Journée avec quelques opportunités intéressantes, notamment dans les matchs de la Coupe du Monde",
   "confiance": "Moyen"
 }
