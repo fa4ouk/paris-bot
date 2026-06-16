@@ -7,10 +7,10 @@
       "competition": "FIFA World Cup",
       "heure": "16/06 20:00",
       "selection": "Victoire France",
-      "cote": 1.54,
+      "cote": 1.5,
       "bookmaker": "1xBet",
       "mise_tnd": 4.0,
-      "ev_pct": 5.0,
+      "ev_pct": 10.0,
       "raison": "Probabilité élevée de victoire de la France"
     },
     {
@@ -19,12 +19,12 @@
       "match": "Boston Red Sox vs Toronto Blue Jays",
       "competition": "MLB",
       "heure": "16/06 23:45",
-      "selection": "Victoire Boston Red Sox",
-      "cote": 2.05,
-      "bookmaker": "GTbets",
+      "selection": "Victoire Toronto Blue Jays",
+      "cote": 1.88,
+      "bookmaker": "1xBet",
       "mise_tnd": 2.5,
       "ev_pct": 8.0,
-      "raison": "Cote sous-évaluée par le marché"
+      "raison": "Cote sous-évaluée pour la victoire des Blue Jays"
     },
     {
       "type": "OPPORTUNISTE",
@@ -32,12 +32,12 @@
       "match": "France vs Senegal",
       "competition": "FIFA World Cup",
       "heure": "16/06 20:00",
-      "selection": "Victoire France",
-      "cote": 1.54,
-      "bookmaker": "1xBet",
+      "selection": "Victoire France et Plus de 2.5",
+      "cote": 2.5,
+      "bookmaker": "Pinnacle",
       "mise_tnd": 1.5,
-      "ev_pct": 10.0,
-      "raison": "À combiner avec le match Iraq vs Norway"
+      "ev_pct": 12.0,
+      "raison": "Combiné logique à combiner avec le match Iraq vs Norway"
     },
     {
       "type": "OPPORTUNISTE",
@@ -45,12 +45,12 @@
       "match": "Iraq vs Norway",
       "competition": "FIFA World Cup",
       "heure": "16/06 23:00",
-      "selection": "Moins de 3.0",
-      "cote": 1.89,
-      "bookmaker": "BetOnline.ag",
+      "selection": "Plus de 2.5 et Victoire Norway",
+      "cote": 2.5,
+      "bookmaker": "Pinnacle",
       "mise_tnd": 1.5,
-      "ev_pct": 10.0,
-      "raison": "À combiner avec le match France vs Senegal"
+      "ev_pct": 12.0,
+      "raison": "Combiné logique à combiner avec le match France vs Senegal"
     }
   ],
   "note_du_jour": "Journée avec quelques opportunités intéressantes",
