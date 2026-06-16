@@ -7,24 +7,24 @@
       "competition": "FIFA World Cup",
       "heure": "16/06 20:00",
       "selection": "Victoire France",
-      "cote": 1.5,
-      "bookmaker": "1xBet",
+      "cote": 2.12,
+      "bookmaker": "Betfair",
       "mise_tnd": 4.0,
       "ev_pct": 10.0,
-      "raison": "Probabilité élevée de victoire de la France"
+      "raison": "Probabilité élevée de victoire de la France contre le Sénégal"
     },
     {
       "type": "VALEUR",
       "style": "Simple",
-      "match": "Boston Red Sox vs Toronto Blue Jays",
-      "competition": "MLB",
-      "heure": "16/06 23:45",
-      "selection": "Victoire Toronto Blue Jays",
-      "cote": 1.88,
-      "bookmaker": "1xBet",
+      "match": "Argentina vs Algeria",
+      "competition": "FIFA World Cup",
+      "heure": "17/06 02:00",
+      "selection": "Victoire Argentina",
+      "cote": 1.47,
+      "bookmaker": "Unibet (NL)",
       "mise_tnd": 2.5,
-      "ev_pct": 8.0,
-      "raison": "Cote sous-évaluée pour la victoire des Blue Jays"
+      "ev_pct": 5.0,
+      "raison": "Cote sous-évaluée pour la victoire de l'Argentine contre l'Algérie"
     },
     {
       "type": "OPPORTUNISTE",
@@ -32,27 +32,27 @@
       "match": "France vs Senegal",
       "competition": "FIFA World Cup",
       "heure": "16/06 20:00",
-      "selection": "Victoire France et Plus de 2.5",
-      "cote": 2.5,
-      "bookmaker": "Pinnacle",
+      "selection": "Victoire France",
+      "cote": 2.12,
+      "bookmaker": "Betfair",
       "mise_tnd": 1.5,
-      "ev_pct": 12.0,
-      "raison": "Combiné logique à combiner avec le match Iraq vs Norway"
+      "ev_pct": 8.0,
+      "raison": "Combiner avec le pari suivant pour un pari combiné"
     },
     {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
-      "match": "Iraq vs Norway",
+      "match": "Argentina vs Algeria",
       "competition": "FIFA World Cup",
-      "heure": "16/06 23:00",
-      "selection": "Plus de 2.5 et Victoire Norway",
-      "cote": 2.5,
-      "bookmaker": "Pinnacle",
+      "heure": "17/06 02:00",
+      "selection": "Victoire Argentina",
+      "cote": 1.47,
+      "bookmaker": "Unibet (NL)",
       "mise_tnd": 1.5,
-      "ev_pct": 12.0,
-      "raison": "Combiné logique à combiner avec le match France vs Senegal"
+      "ev_pct": 8.0,
+      "raison": "Combiner avec le pari précédent pour un pari combiné"
     }
   ],
-  "note_du_jour": "Journée avec quelques opportunités intéressantes",
+  "note_du_jour": "Journée avec des opportunités de paris intéressantes",
   "confiance": "Moyen"
 }
