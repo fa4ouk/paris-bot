@@ -1,43 +1,30 @@
 {
   "paris": [
     {
-      "type": "VALEUR",
-      "style": "Simple",
-      "match": "Iran vs New Zealand",
-      "competition": "FIFA World Cup",
-      "heure": "16/06 02:00",
-      "selection": "Victoire Iran",
-      "cote": 1.86,
-      "bookmaker": "GTbets",
-      "mise_tnd": 2.0,
-      "ev_pct": 5.5,
-      "raison": "L'Iran a une équipe solide et devrait gagner contre la Nouvelle-Zélande"
-    },
-    {
       "type": "ULTRA SAFE",
       "style": "Simple",
       "match": "France vs Senegal",
       "competition": "FIFA World Cup",
       "heure": "16/06 20:00",
       "selection": "Victoire France",
-      "cote": 1.53,
+      "cote": 1.54,
       "bookmaker": "1xBet",
       "mise_tnd": 4.0,
-      "ev_pct": 2.1,
-      "raison": "La France est l'une des meilleures équipes du monde et devrait gagner contre le Sénégal"
+      "ev_pct": 5.0,
+      "raison": "Probabilité élevée de victoire de la France"
     },
     {
-      "type": "OPPORTUNISTE",
-      "style": "Combiné",
-      "match": "Iran vs New Zealand",
-      "competition": "FIFA World Cup",
-      "heure": "16/06 02:00",
-      "selection": "Victoire Iran et Plus de 2.0",
-      "cote": 2.45,
-      "bookmaker": "Betsson",
-      "mise_tnd": 1.5,
-      "ev_pct": 8.2,
-      "raison": "À combiner avec le pari suivant pour un pari combiné"
+      "type": "VALEUR",
+      "style": "Simple",
+      "match": "Boston Red Sox vs Toronto Blue Jays",
+      "competition": "MLB",
+      "heure": "16/06 23:45",
+      "selection": "Victoire Boston Red Sox",
+      "cote": 2.05,
+      "bookmaker": "GTbets",
+      "mise_tnd": 2.5,
+      "ev_pct": 8.0,
+      "raison": "Cote sous-évaluée par le marché"
     },
     {
       "type": "OPPORTUNISTE",
@@ -45,14 +32,27 @@
       "match": "France vs Senegal",
       "competition": "FIFA World Cup",
       "heure": "16/06 20:00",
-      "selection": "Victoire France et Moins de 2.5",
-      "cote": 2.0,
-      "bookmaker": "Matchbook",
+      "selection": "Victoire France",
+      "cote": 1.54,
+      "bookmaker": "1xBet",
       "mise_tnd": 1.5,
-      "ev_pct": 6.5,
-      "raison": "À combiner avec le pari précédent pour un pari combiné"
+      "ev_pct": 10.0,
+      "raison": "À combiner avec le match Iraq vs Norway"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Iraq vs Norway",
+      "competition": "FIFA World Cup",
+      "heure": "16/06 23:00",
+      "selection": "Moins de 3.0",
+      "cote": 1.89,
+      "bookmaker": "BetOnline.ag",
+      "mise_tnd": 1.5,
+      "ev_pct": 10.0,
+      "raison": "À combiner avec le match France vs Senegal"
     }
   ],
-  "note_du_jour": "Journée avec quelques opportunités intéressantes, notamment dans la Coupe du Monde",
+  "note_du_jour": "Journée avec quelques opportunités intéressantes",
   "confiance": "Moyen"
 }
