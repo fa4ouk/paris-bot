@@ -1,10 +1,7 @@
 name: Agent Paris Sportifs
 
 on:
-  schedule:
-    - cron: '30 8 * * *'
-    - cron: '0 20 * * *'
-  workflow_dispatch:
+  workflow_dispatch:  # Déclenché uniquement par cron-job.org ou manuellement
 
 jobs:
   run-agent:
