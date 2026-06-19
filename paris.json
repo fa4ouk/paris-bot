@@ -3,56 +3,56 @@
     {
       "type": "ULTRA SAFE",
       "style": "Simple",
-      "match": "Switzerland vs Bosnia & Herzegovina",
+      "match": "USA vs Australia",
       "competition": "FIFA World Cup",
-      "heure": "18/06 20:00",
-      "selection": "Victoire Switzerland",
-      "cote": 1.85,
-      "bookmaker": "Matchbook",
+      "heure": "19/06 20:00",
+      "selection": "Handicap USA -0.5",
+      "cote": 1.61,
+      "bookmaker": "GTbets",
       "mise_tnd": 4.0,
       "ev_pct": 10.0,
-      "raison": "Probabilité élevée de victoire de la Suisse"
+      "raison": "Probabilité élevée de victoire de l'USA avec un handicap raisonnable"
     },
     {
       "type": "VALEUR",
       "style": "Simple",
-      "match": "Canada vs Qatar",
+      "match": "Scotland vs Morocco",
       "competition": "FIFA World Cup",
-      "heure": "18/06 23:00",
-      "selection": "Plus de 2.5",
-      "cote": 1.75,
-      "bookmaker": "Coolbet",
+      "heure": "19/06 23:00",
+      "selection": "Moins de 2.5",
+      "cote": 1.71,
+      "bookmaker": "Unibet (SE)",
       "mise_tnd": 2.5,
       "ev_pct": 8.0,
-      "raison": "Cote sous-évaluée par le marché"
+      "raison": "Cote sous-évaluée par le marché pour un match qui pourrait être défensif"
     },
     {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
-      "match": "Mexico vs South Korea",
+      "match": "USA vs Australia",
       "competition": "FIFA World Cup",
-      "heure": "19/06 02:00",
-      "selection": "Victoire Mexico",
-      "cote": 2.16,
+      "heure": "19/06 20:00",
+      "selection": "Victoire USA",
+      "cote": 1.65,
       "bookmaker": "Betfair",
       "mise_tnd": 1.5,
       "ev_pct": 12.0,
-      "raison": "À combiner avec le match suivant"
+      "raison": "À combiner avec le pari suivant pour un combiné logique"
     },
     {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
-      "match": "Indiana Fever vs Atlanta Dream",
-      "competition": "WNBA",
-      "heure": "19/06 00:40",
-      "selection": "Victoire Atlanta Dream",
-      "cote": 1.94,
-      "bookmaker": "Matchbook",
+      "match": "Scotland vs Morocco",
+      "competition": "FIFA World Cup",
+      "heure": "19/06 23:00",
+      "selection": "Moins de 2.5",
+      "cote": 1.71,
+      "bookmaker": "Unibet (SE)",
       "mise_tnd": 1.5,
-      "ev_pct": 10.0,
-      "raison": "À combiner avec le match précédent"
+      "ev_pct": 12.0,
+      "raison": "À combiner avec le pari précédent pour un combiné logique"
     }
   ],
-  "note_du_jour": "Journée avec quelques opportunités intéressantes",
+  "note_du_jour": "Journée avec quelques opportunités intéressantes, notamment dans la Coupe du Monde",
   "confiance": "Moyen"
 }
