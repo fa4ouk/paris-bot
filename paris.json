@@ -6,12 +6,12 @@
       "match": "USA vs Australia",
       "competition": "FIFA World Cup",
       "heure": "19/06 20:00",
-      "selection": "Handicap USA -0.5",
-      "cote": 1.61,
-      "bookmaker": "GTbets",
+      "selection": "Moins de 3.5",
+      "cote": 1.65,
+      "bookmaker": "Coolbet",
       "mise_tnd": 4.0,
       "ev_pct": 10.0,
-      "raison": "Probabilité élevée de victoire de l'USA avec un handicap raisonnable"
+      "raison": "Probabilité élevée de moins de 3.5 buts dans un match de Coupe du Monde"
     },
     {
       "type": "VALEUR",
@@ -20,39 +20,39 @@
       "competition": "FIFA World Cup",
       "heure": "19/06 23:00",
       "selection": "Moins de 2.5",
-      "cote": 1.71,
+      "cote": 1.7,
       "bookmaker": "Unibet (SE)",
       "mise_tnd": 2.5,
       "ev_pct": 8.0,
-      "raison": "Cote sous-évaluée par le marché pour un match qui pourrait être défensif"
+      "raison": "Cote sous-évaluée par le marché pour moins de 2.5 buts"
     },
     {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
-      "match": "USA vs Australia",
+      "match": "Brazil vs Haiti",
       "competition": "FIFA World Cup",
-      "heure": "19/06 20:00",
-      "selection": "Victoire USA",
-      "cote": 1.65,
-      "bookmaker": "Betfair",
+      "heure": "20/06 01:30",
+      "selection": "Plus de 3.5",
+      "cote": 1.87,
+      "bookmaker": "Matchbook",
       "mise_tnd": 1.5,
       "ev_pct": 12.0,
-      "raison": "À combiner avec le pari suivant pour un combiné logique"
+      "raison": "À combiner avec le match suivant pour un pari opportuniste"
     },
     {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
-      "match": "Scotland vs Morocco",
+      "match": "Turkey vs Paraguay",
       "competition": "FIFA World Cup",
-      "heure": "19/06 23:00",
-      "selection": "Moins de 2.5",
-      "cote": 1.71,
-      "bookmaker": "Unibet (SE)",
+      "heure": "20/06 04:00",
+      "selection": "Plus de 2.5",
+      "cote": 2.16,
+      "bookmaker": "Matchbook",
       "mise_tnd": 1.5,
-      "ev_pct": 12.0,
-      "raison": "À combiner avec le pari précédent pour un combiné logique"
+      "ev_pct": 10.0,
+      "raison": "À combiner avec le match précédent pour un pari opportuniste"
     }
   ],
-  "note_du_jour": "Journée avec quelques opportunités intéressantes, notamment dans la Coupe du Monde",
+  "note_du_jour": "Journée avec quelques opportunités intéressantes, notamment en Coupe du Monde",
   "confiance": "Moyen"
 }
