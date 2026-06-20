@@ -3,56 +3,52 @@
     {
       "type": "ULTRA SAFE",
       "style": "Simple",
-      "match": "Netherlands vs Sweden",
+      "match": "Ecuador vs Curaçao",
       "competition": "FIFA World Cup",
-      "heure": "20/06 18:00",
-      "selection": "Victoire Netherlands",
-      "cote": 1.77,
-      "bookmaker": "Matchbook",
-      "mise_tnd": 3.0,
-      "ev_pct": 10.0,
-      "raison": "Probabilité élevée de victoire des Pays-Bas"
+      "heure": "21/06 01:00",
+      "selection": "Plus de 2.5",
+      "cote": 1.56,
+      "bookmaker": "Unibet (SE)",
+      "ev_pct": 10.2,
+      "raison": "Ecuador a marqué au moins 2 buts dans ses 3 derniers matchs, tandis que Curaçao a encaissé au moins 2 buts dans ses 2 derniers matchs."
     },
     {
       "type": "VALEUR",
       "style": "Simple",
-      "match": "Germany vs Ivory Coast",
+      "match": "Tunisia vs Japan",
       "competition": "FIFA World Cup",
-      "heure": "20/06 21:00",
-      "selection": "Moins de 3.5",
-      "cote": 1.6,
-      "bookmaker": "1xBet",
-      "mise_tnd": 2.0,
-      "ev_pct": 8.0,
-      "raison": "Cote sous-évaluée par le marché"
+      "heure": "21/06 05:00",
+      "selection": "Moins de 2.5",
+      "cote": 1.85,
+      "bookmaker": "Unibet (SE)",
+      "ev_pct": 8.5,
+      "raison": "Les 2 équipes ont tendance à jouer de manière défensive, ce qui devrait limiter les occasions de but."
     },
     {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
-      "match": "Netherlands vs Sweden",
+      "match": "Spain vs Saudi Arabia",
       "competition": "FIFA World Cup",
-      "heure": "20/06 18:00",
-      "selection": "Victoire Netherlands",
-      "cote": 1.77,
-      "bookmaker": "Matchbook",
-      "mise_tnd": 1.0,
-      "ev_pct": 12.0,
-      "raison": "À combiner avec le match Germany vs Ivory Coast"
+      "heure": "21/06 17:00",
+      "selection": "Plus de 3.5",
+      "cote": 2.32,
+      "bookmaker": "Unibet (SE)",
+      "ev_pct": 12.1,
+      "raison": "À combiner avec le match Ecuador vs Curaçao, car les 2 matchs ont des conditions similaires pour un grand nombre de buts."
     },
     {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
-      "match": "Germany vs Ivory Coast",
+      "match": "Ecuador vs Curaçao",
       "competition": "FIFA World Cup",
-      "heure": "20/06 21:00",
-      "selection": "Moins de 3.5",
-      "cote": 1.6,
-      "bookmaker": "1xBet",
-      "mise_tnd": 1.0,
-      "ev_pct": 12.0,
-      "raison": "À combiner avec le match Netherlands vs Sweden"
+      "heure": "21/06 01:00",
+      "selection": "Plus de 2.5",
+      "cote": 1.56,
+      "bookmaker": "Unibet (SE)",
+      "ev_pct": 10.2,
+      "raison": "À combiner avec le match Spain vs Saudi Arabia, car les 2 matchs ont des conditions similaires pour un grand nombre de buts."
     }
   ],
-  "note_du_jour": "Journée avec quelques opportunités intéressantes",
-  "confiance": "Moyen"
+  "note_du_jour": "La journée est riche en matchs de Coupe du Monde, avec des opportunités de paris intéressantes.",
+  "confiance": "Élevé"
 }
