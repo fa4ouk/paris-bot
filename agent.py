@@ -15,7 +15,7 @@ try:
     from config import (
         ODDS_API_KEY, GROQ_API_KEY,
         TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID,
-        BANKROLL, COTE_MIN, COTE_MAX
+        COTE_MIN, COTE_MAX
     )
     GH_TOKEN = os.environ.get("GH_TOKEN", "")
     GH_REPO = os.environ.get("GH_REPO", "")
@@ -24,7 +24,6 @@ except ImportError:
     GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
     TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
     TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "")
-    BANKROLL = float(os.environ.get("BANKROLL", "100"))
     COTE_MIN = 1.4
     COTE_MAX = 2.5
     GH_TOKEN = os.environ.get("GH_TOKEN", "")
@@ -179,7 +178,77 @@ def prepare_data(matches: list) -> list:
 
 
 # ─────────────────────────────────────────
-# 3. ANALYSE PAR L'IA (Groq)
+# 3. LECTURE DE L'HISTORIQUE
+# ─────────────────────────────────────────
+
+def get_historique() -> dict:
+    """Récupère et analyse l'historique des paris depuis GitHub."""
+    if not GH_TOKEN or not GH_REPO:
+        return {}
+    try:
+        url = f"https://api.github.com/repos/{GH_REPO}/contents/historique.json"
+        r = requests.get(url, headers={
+            "Authorization": f"token {GH_TOKEN}",
+            "Accept": "application/vnd.github.v3+json",
+        }, timeout=10)
+        if r.status_code != 200:
+            return {}
+
+        import base64
+        content = json.loads(base64.b64decode(r.json()["content"]).decode())
+        paris = content.get("paris", [])
+        if not paris:
+            return {}
+
+        # Analyse par type
+        types = ["ULTRA SAFE", "VALEUR", "OPPORTUNISTE"]
+        analyse = {}
+        for t in types:
+            subset = [p for p in paris if p.get("type") == t]
+            gagnes = [p for p in subset if p.get("resultat") == "gagné"]
+            taux = round(len(gagnes) / len(subset) * 100) if subset else None
+            analyse[t] = {"total": len(subset), "gagnes": len(gagnes), "taux": taux}
+
+        # Analyse par marché
+        marches = {}
+        for p in paris:
+            sel = p.get("selection", "")
+            if "Plus de" in sel or "Moins de" in sel:
+                m = "over_under"
+            elif "Victoire" in sel:
+                m = "1x2"
+            elif "Nul" in sel:
+                m = "nul"
+            else:
+                m = "autre"
+            if m not in marches:
+                marches[m] = {"total": 0, "gagnes": 0}
+            marches[m]["total"] += 1
+            if p.get("resultat") == "gagné":
+                marches[m]["gagnes"] += 1
+
+        for m in marches:
+            t = marches[m]["total"]
+            marches[m]["taux"] = round(marches[m]["gagnes"] / t * 100) if t else 0
+
+        # Stats globales
+        stats = content.get("stats", {})
+
+        return {
+            "total_paris": len(paris),
+            "taux_global": stats.get("taux", 0),
+            "profit_net": stats.get("profit_net", 0),
+            "par_type": analyse,
+            "par_marche": marches,
+            "derniers_paris": paris[:5],  # 5 derniers pour contexte
+        }
+    except Exception as e:
+        print(f"⚠️  Impossible de lire l'historique : {e}")
+        return {}
+
+
+# ─────────────────────────────────────────
+# 4. ANALYSE PAR L'IA (Groq)
 # ─────────────────────────────────────────
 
 def analyze_with_ai(data: list) -> str:
@@ -198,12 +267,44 @@ def analyze_with_ai(data: list) -> str:
 
     summary = json.dumps(compressed, ensure_ascii=False, separators=(",", ":"))
 
-    prompt = f"""Tu es un parieur professionnel rentable sur le long terme. Bankroll du joueur : {BANKROLL} TND.
+    # Prépare le contexte historique
+    histo_context = ""
+    if historique and historique.get("total_paris", 0) > 0:
+        h = historique
+        histo_context = f"""
+HISTORIQUE DE TES PERFORMANCES ({h['total_paris']} paris) :
+- Taux de réussite global : {h['taux_global']}%
+- Profit net : {h['profit_net']} TND
+
+Par type :"""
+        for t, stats in h.get("par_type", {}).items():
+            if stats["total"] > 0:
+                histo_context += f"\n  • {t}: {stats['taux']}% ({stats['gagnes']}/{stats['total']})"
+
+        histo_context += "\n\nPar marché :"
+        for m, stats in h.get("par_marche", {}).items():
+            if stats["total"] > 0:
+                histo_context += f"\n  • {m}: {stats['taux']}% ({stats['total']} paris)"
+
+        histo_context += """
+
+RÈGLES D'ADAPTATION basées sur l'historique :
+- Si taux < 50% sur un type → sois plus sélectif, exige un niveau de confiance plus élevé
+- Si taux > 70% sur un type → tu peux être plus généreux sur le nombre de pronostics de ce type
+- Évite les marchés où tu te trompes souvent
+- Mentionne dans ta note comment tu adaptes ta stratégie
+"""
+    else:
+        histo_context = "Pas encore d'historique disponible — applique une stratégie prudente par défaut."
+
+    prompt = f"""Tu es un pronostiqueur sportif professionnel, reconnu pour la fiabilité de tes analyses sur le long terme.
+
+{histo_context}
 
 Matchs disponibles aujourd'hui (cotes entre {COTE_MIN} et {COTE_MAX}) :
 {summary}
 
-Génère les meilleurs paris du jour en JSON uniquement, sans texte autour, sans markdown :
+Génère les meilleurs pronostics du jour en JSON uniquement, sans texte autour, sans markdown :
 
 {{
   "paris": [
@@ -216,7 +317,6 @@ Génère les meilleurs paris du jour en JSON uniquement, sans texte autour, sans
       "selection": "...",
       "cote": 1.XX,
       "bookmaker": "...",
-      "mise_tnd": XX.XX,
       "ev_pct": XX.X,
       "raison": "..."
     }}
@@ -226,15 +326,14 @@ Génère les meilleurs paris du jour en JSON uniquement, sans texte autour, sans
 }}
 
 RÈGLES STRICTES :
-- Génère entre 2 et 5 paris maximum selon la qualité du jour
+- Génère entre 2 et 5 pronostics maximum selon la qualité du jour
 - ULTRA SAFE = probabilité >70%, cote modeste mais très fiable
 - VALEUR = cote sous-évaluée par le marché (EV positif)
 - OPPORTUNISTE = combiné logique 2-3 sélections max
-- Pour les combinés : mets chaque sélection comme un pari séparé avec le même type "OPPORTUNISTE" et indique dans la raison que c'est à combiner ensemble
-- mise_tnd : ULTRA SAFE=3-5% bankroll, VALEUR=2-3%, OPPORTUNISTE=1-2%
+- Pour les combinés : mets chaque sélection comme un pronostic séparé avec le même type "OPPORTUNISTE" et indique dans la raison que c'est à combiner ensemble
 - ev_pct : ton estimation de l'Expected Value en %
 - Priorise la Coupe du Monde
-- Si la journée est vraiment pauvre, génère seulement 1-2 paris ULTRA SAFE
+- Si la journée est vraiment pauvre, génère seulement 1-2 pronostics ULTRA SAFE
 - Réponds UNIQUEMENT avec le JSON, rien d'autre"""
 
     try:
@@ -289,23 +388,21 @@ def build_message(result: dict) -> str:
 
     lines = []
     lines.append(f"📅 {now}")
-    lines.append(f"💰 Bankroll : {BANKROLL} TND")
     lines.append(f"📊 Confiance du jour : {confiance}")
     lines.append("")
 
     for i, pari in enumerate(paris, 1):
-        ptype = pari.get("type", "PARI")
+        ptype = pari.get("type", "PRONO")
         emoji_type = TYPE_EMOJI.get(ptype, "⚽️")
         comp = pari.get("competition", "")
         emoji_sport = next((v for k, v in SPORT_EMOJI.items() if k.lower() in comp.lower()), "⚽️")
 
-        lines.append(f"{emoji_type} PARI {i} — {ptype}")
+        lines.append(f"{emoji_type} PRONO {i} — {ptype}")
         lines.append(f"📋 {pari.get('match', '?')}")
         lines.append(f"🏆 {comp}")
         lines.append(f"⏰ {pari.get('heure', '?')}")
         lines.append(f"🎲 {pari.get('selection', '?')} ({pari.get('style', '')})")
         lines.append(f"📉 Cote : {pari.get('cote', '?')} sur {pari.get('bookmaker', '?')}")
-        lines.append(f"💶 Mise : {pari.get('mise_tnd', '?')} TND")
         lines.append(f"📈 EV estimé : +{pari.get('ev_pct', '?')}%")
         lines.append(f"💡 {pari.get('raison', '')}")
         lines.append("")
@@ -313,7 +410,7 @@ def build_message(result: dict) -> str:
     if note:
         lines.append(f"📝 {note}")
     lines.append("")
-    lines.append("⚠️ Joue responsable. Aucun gain garanti.")
+    lines.append("⚠️ Pronostics fournis à titre informatif. Aucune garantie de résultat.")
 
     return "\n".join(lines)
 
@@ -394,7 +491,7 @@ def main():
     print("=" * 50)
     print("🏆 AGENT PARIEUR PRO — Démarrage")
     print(f"📅 {datetime.now().strftime('%d/%m/%Y %H:%M')}")
-    print(f"💰 Bankroll : {BANKROLL} TND | Cotes : {COTE_MIN}→{COTE_MAX}")
+    print(f"🎯 Cotes : {COTE_MIN}→{COTE_MAX}")
     print("=" * 50)
 
     # Collecte
@@ -412,9 +509,17 @@ def main():
         send_telegram(f"📋 Aucune cote entre {COTE_MIN} et {COTE_MAX} aujourd'hui.")
         return
 
+    # Lecture historique
+    print("\n📚 Lecture de l'historique...")
+    historique = get_historique()
+    if historique.get("total_paris", 0) > 0:
+        print(f"   {historique['total_paris']} paris en historique | Taux : {historique['taux_global']}% | Profit : {historique['profit_net']} TND")
+    else:
+        print("   Pas encore d'historique")
+
     # Analyse IA
     print("\n🤖 Analyse IA en cours...")
-    raw = analyze_with_ai(data)
+    raw = analyze_with_ai(data, historique)
 
     if not raw:
         send_telegram("❌ Erreur lors de l'analyse IA.")
