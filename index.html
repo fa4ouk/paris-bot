@@ -3,120 +3,211 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Paris Pro — Dashboard</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<title>Paris Pro — Pronostics</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #08080f;
-  --surface: #101018;
-  --surface2: #181824;
-  --surface3: #20202e;
-  --border: rgba(255,255,255,0.06);
-  --border2: rgba(255,255,255,0.11);
-  --text: #ededf5;
-  --muted: #7878a0;
-  --dim: #44445a;
-  --green: #22c55e; --gbg: rgba(34,197,94,0.09); --gbd: rgba(34,197,94,0.22);
-  --red: #ef4444; --rbg: rgba(239,68,68,0.09); --rbd: rgba(239,68,68,0.22);
-  --blue: #60a5fa; --bbg: rgba(96,165,250,0.09); --bbd: rgba(96,165,250,0.22);
-  --amber: #f59e0b; --abg: rgba(245,158,11,0.09); --abd: rgba(245,158,11,0.22);
-  --accent: #6366f1;
-  --r: 12px; --rs: 7px;
+  --bg: #08080c;
+  --surface: #0f0f15;
+  --surface2: #16161f;
+  --surface3: #1d1d28;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.13);
+  --text: #f0f0f5;
+  --muted: #82829c;
+  --dim: #46465a;
+
+  --gold: #e8a23d;
+  --gold-bg: rgba(232,162,61,0.10);
+  --gold-bd: rgba(232,162,61,0.28);
+
+  --green: #34c77b; --gbg: rgba(52,199,123,0.10); --gbd: rgba(52,199,123,0.25);
+  --red: #ef5a5a; --rbg: rgba(239,90,90,0.10); --rbd: rgba(239,90,90,0.25);
+  --blue: #5b9fef; --bbg: rgba(91,159,239,0.10); --bbd: rgba(91,159,239,0.25);
+
+  --r: 14px; --rs: 8px;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.6; min-height: 100vh; display: flex; }
+html { -webkit-tap-highlight-color: transparent; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  background-image:
+    radial-gradient(circle at 15% 0%, rgba(232,162,61,0.05), transparent 45%);
+}
+.mono { font-family: 'JetBrains Mono', monospace; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 4px; }
 
-.sidebar { width: 210px; background: var(--surface); border-right: 1px solid var(--border); padding: 1.25rem 0.875rem; display: flex; flex-direction: column; gap: 3px; flex-shrink: 0; position: fixed; height: 100vh; z-index: 10; }
-.logo { font-size: 15px; font-weight: 600; padding: 0.4rem 0.75rem 1rem; display: flex; align-items: center; gap: 9px; color: var(--text); }
-.logo-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent); flex-shrink: 0; }
-.nav-item { display: flex; align-items: center; gap: 9px; padding: 0.55rem 0.75rem; border-radius: var(--rs); color: var(--muted); cursor: pointer; font-size: 13px; transition: all 0.15s; border: none; background: none; width: 100%; text-align: left; }
+/* ───────── SIDEBAR (desktop) ───────── */
+.sidebar {
+  width: 216px; background: var(--surface); border-right: 1px solid var(--border);
+  padding: 1.4rem 1rem; display: flex; flex-direction: column; gap: 3px;
+  flex-shrink: 0; position: fixed; height: 100vh; z-index: 20;
+}
+.logo { font-size: 15px; font-weight: 700; padding: 0.3rem 0.6rem 1.2rem; display: flex; align-items: center; gap: 10px; letter-spacing: -0.01em; }
+.logo-mark {
+  width: 26px; height: 26px; border-radius: 7px;
+  background: linear-gradient(135deg, var(--gold), #b9762a);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700; color: #1a1206; flex-shrink: 0;
+}
+.nav-item {
+  display: flex; align-items: center; gap: 10px; padding: 0.6rem 0.7rem;
+  border-radius: var(--rs); color: var(--muted); cursor: pointer; font-size: 13px;
+  transition: all 0.15s; border: none; background: none; width: 100%; text-align: left;
+  font-family: inherit;
+}
 .nav-item:hover { background: var(--surface2); color: var(--text); }
-.nav-item.active { background: var(--surface2); color: var(--text); font-weight: 500; }
+.nav-item.active { background: var(--surface2); color: var(--gold); font-weight: 600; }
 .nav-item .icon { font-size: 15px; width: 18px; text-align: center; }
-.sep { height: 1px; background: var(--border); margin: 6px 0; }
+.sidebar-foot { margin-top: auto; font-size: 11px; color: var(--dim); padding: 0.6rem 0.7rem; }
 
-.main { margin-left: 210px; flex: 1; padding: 2rem 2.5rem; max-width: 920px; }
+/* ───────── MAIN ───────── */
+.main { margin-left: 216px; flex: 1; padding: 2.25rem 2.5rem 6rem; max-width: 960px; width: 100%; }
 
-.ph { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.75rem; flex-wrap: wrap; gap: 12px; }
-.ph-title { font-size: 19px; font-weight: 600; }
-.ph-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
-.live { display: flex; align-items: center; gap: 6px; font-size: 12px; padding: 5px 13px; border-radius: 20px; font-weight: 500; }
+.ph { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 12px; }
+.ph-title { font-size: 21px; font-weight: 700; letter-spacing: -0.01em; }
+.ph-sub { font-size: 12.5px; color: var(--muted); margin-top: 3px; text-transform: capitalize; }
+.live { display: flex; align-items: center; gap: 6px; font-size: 11.5px; padding: 6px 13px; border-radius: 20px; font-weight: 600; letter-spacing: 0.02em; }
 .live.active { color: var(--green); background: var(--gbg); border: 1px solid var(--gbd); }
 .live.waiting { color: var(--muted); background: var(--surface2); border: 1px solid var(--border); }
 .live-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
 .live.active .live-dot { background: var(--green); animation: pulse 2s infinite; }
 .live.waiting .live-dot { background: var(--muted); }
-@keyframes pulse { 0%,100%{opacity:1}50%{opacity:0.3} }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.25} }
 
-.stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-bottom: 1.75rem; }
-.stat { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 1rem 1.2rem; }
-.stat-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--dim); margin-bottom: 8px; }
-.stat-val { font-size: 22px; font-weight: 600; font-family: 'JetBrains Mono', monospace; line-height: 1.2; }
-.stat-sub { font-size: 12px; color: var(--muted); margin-top: 5px; }
-.g { color: var(--green); } .r { color: var(--red); } .a { color: var(--amber); }
+/* ───────── SCOREBOARD STRIP (signature element) ───────── */
+.scoreboard {
+  display: flex; gap: 0; margin-bottom: 1.75rem; background: var(--surface);
+  border: 1px solid var(--border); border-radius: var(--r); overflow: hidden;
+}
+.sb-cell {
+  flex: 1; padding: 0.95rem 1.1rem; position: relative;
+  border-right: 1px solid var(--border);
+}
+.sb-cell:last-child { border-right: none; }
+.sb-label { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--dim); margin-bottom: 7px; font-weight: 600; }
+.sb-value { font-size: 23px; font-weight: 700; font-family: 'JetBrains Mono', monospace; line-height: 1; }
+.sb-sub { font-size: 11.5px; color: var(--muted); margin-top: 6px; }
+.gold { color: var(--gold); } .g { color: var(--green); } .r { color: var(--red); }
 
+/* ───────── SECTION ───────── */
 .section { margin-bottom: 1.75rem; }
 .sh { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-.sh-title { font-size: 12px; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
-.sh-badge { font-size: 12px; color: var(--dim); background: var(--surface2); padding: 2px 9px; border-radius: 20px; }
+.sh-title { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; }
+.sh-badge { font-size: 11.5px; color: var(--dim); background: var(--surface2); padding: 3px 10px; border-radius: 20px; font-weight: 500; }
 
+/* ───────── PRONO CARDS ───────── */
 .pari-list { display: flex; flex-direction: column; gap: 10px; }
-.pari-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 1.1rem 1.25rem; transition: border-color 0.15s, transform 0.15s; }
+.pari-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--r);
+  padding: 1.15rem 1.3rem 1.15rem 1.1rem; transition: border-color 0.15s, transform 0.15s;
+  border-left: 3px solid var(--border2); position: relative;
+}
+.pari-card.t-safe { border-left-color: var(--green); }
+.pari-card.t-val  { border-left-color: var(--blue); }
+.pari-card.t-opp  { border-left-color: var(--gold); }
 .pari-card:hover { border-color: var(--border2); transform: translateY(-1px); }
-.pari-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 6px; }
-.badges { display: flex; gap: 6px; flex-wrap: wrap; }
-.badge { font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 20px; }
-.b-safe  { background: var(--gbg); color: var(--green); border: 1px solid var(--gbd); }
-.b-val   { background: var(--bbg); color: var(--blue);  border: 1px solid var(--bbd); }
-.b-opp   { background: var(--abg); color: var(--amber); border: 1px solid var(--abd); }
-.b-neu   { background: var(--surface2); color: var(--muted); border: 1px solid var(--border); }
-.status  { font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 20px; }
-.s-win   { background: var(--gbg); color: var(--green); }
-.s-loss  { background: var(--rbg); color: var(--red); }
-.s-pend  { background: var(--surface2); color: var(--muted); border: 1px solid var(--border); }
-.pari-match { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
-.pari-meta { font-size: 12px; color: var(--muted); display: flex; gap: 14px; margin-bottom: 12px; flex-wrap: wrap; }
+
+.pari-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 11px; flex-wrap: wrap; gap: 6px; }
+.badges { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.badge { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; letter-spacing: 0.01em; }
+.b-safe { background: var(--gbg); color: var(--green); border: 1px solid var(--gbd); }
+.b-val  { background: var(--bbg); color: var(--blue); border: 1px solid var(--bbd); }
+.b-opp  { background: var(--gold-bg); color: var(--gold); border: 1px solid var(--gold-bd); }
+.b-neu  { background: var(--surface2); color: var(--muted); border: 1px solid var(--border); font-weight: 500; }
+.status { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; }
+.s-win  { background: var(--gbg); color: var(--green); }
+.s-loss { background: var(--rbg); color: var(--red); }
+.s-pend { background: var(--surface2); color: var(--muted); border: 1px solid var(--border); }
+
+.pari-match { font-size: 16px; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.005em; }
+.pari-meta { font-size: 12px; color: var(--muted); display: flex; gap: 14px; margin-bottom: 13px; flex-wrap: wrap; }
+.pari-meta span { display: inline-flex; align-items: center; gap: 4px; }
+
 .pari-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
-.fl { font-size: 11px; color: var(--dim); margin-bottom: 3px; }
-.fv { font-size: 13px; font-weight: 500; font-family: 'JetBrains Mono', monospace; }
-.pari-raison { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); font-size: 12px; color: var(--muted); font-style: italic; }
+.fl { font-size: 10.5px; color: var(--dim); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+.fv { font-size: 13.5px; font-weight: 600; font-family: 'JetBrains Mono', monospace; }
+.pari-raison { margin-top: 11px; padding-top: 11px; border-top: 1px solid var(--border); font-size: 12.5px; color: var(--muted); line-height: 1.55; }
 
-.perf-list { display: flex; flex-direction: column; gap: 12px; }
+/* ───────── PERF BARS ───────── */
+.perf-list { display: flex; flex-direction: column; gap: 13px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 1.2rem 1.3rem; }
 .perf-row { display: flex; align-items: center; gap: 12px; }
-.perf-label { font-size: 12px; color: var(--muted); width: 100px; flex-shrink: 0; }
-.perf-bg { flex: 1; height: 6px; background: var(--surface2); border-radius: 3px; overflow: hidden; }
-.perf-bar { height: 100%; border-radius: 3px; transition: width 1s ease; width: 0; }
-.perf-val { font-size: 12px; font-family: 'JetBrains Mono', monospace; font-weight: 500; width: 36px; text-align: right; }
+.perf-label { font-size: 12.5px; color: var(--muted); width: 110px; flex-shrink: 0; font-weight: 500; }
+.perf-bg { flex: 1; height: 7px; background: var(--surface3); border-radius: 4px; overflow: hidden; }
+.perf-bar { height: 100%; border-radius: 4px; transition: width 1s cubic-bezier(.22,1,.36,1); width: 0; }
+.perf-val { font-size: 12.5px; font-family: 'JetBrains Mono', monospace; font-weight: 600; width: 38px; text-align: right; }
 
-.note-box { font-size: 13px; color: var(--muted); background: var(--surface); border-radius: var(--r); padding: 12px 16px; border-left: 3px solid var(--accent); line-height: 1.6; }
+/* ───────── NOTE ───────── */
+.note-box {
+  font-size: 13px; color: var(--muted); background: var(--surface); border-radius: var(--r);
+  padding: 14px 18px; border-left: 3px solid var(--gold); line-height: 1.6;
+}
+.note-box b { color: var(--text); }
 
+/* ───────── STATES ───────── */
 .loading { display: flex; align-items: center; justify-content: center; height: 180px; color: var(--muted); font-size: 13px; gap: 10px; }
-.spinner { width: 16px; height: 16px; border: 2px solid var(--border2); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.7s linear infinite; flex-shrink: 0; }
+.spinner { width: 16px; height: 16px; border: 2px solid var(--border2); border-top-color: var(--gold); border-radius: 50%; animation: spin 0.7s linear infinite; flex-shrink: 0; }
 @keyframes spin { to { transform: rotate(360deg); } }
-.empty { text-align: center; padding: 3rem 1rem; color: var(--muted); }
-.empty-icon { font-size: 36px; margin-bottom: 12px; }
-.empty-title { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 6px; }
-.empty-sub { font-size: 12px; }
+.empty { text-align: center; padding: 3rem 1rem; color: var(--muted); background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); }
+.empty-icon { font-size: 34px; margin-bottom: 12px; opacity: 0.7; }
+.empty-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+.empty-sub { font-size: 12.5px; }
 
+/* ───────── TABLE (historique) ───────── */
 .table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; }
 .table { width: 100%; border-collapse: collapse; }
-.table th { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--dim); padding: 10px 16px; text-align: left; border-bottom: 1px solid var(--border); font-weight: 500; background: var(--surface); }
-.table td { padding: 12px 16px; border-bottom: 1px solid var(--border); font-size: 13px; color: var(--text); }
+.table th {
+  font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--dim);
+  padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border); font-weight: 700; background: var(--surface2);
+}
+.table td { padding: 13px 16px; border-bottom: 1px solid var(--border); font-size: 13px; color: var(--text); }
 .table tr:last-child td { border-bottom: none; }
 .table tr:hover td { background: var(--surface2); }
 .table .mono { font-family: 'JetBrains Mono', monospace; font-size: 12px; }
-.tag-win { color: var(--green); font-weight: 500; }
-.tag-loss { color: var(--red); font-weight: 500; }
+.tag-win { color: var(--green); font-weight: 600; }
+.tag-loss { color: var(--red); font-weight: 600; }
 .tag-pending { color: var(--muted); }
 
+/* ───────── PAGES ───────── */
 .page-view { display: none; }
-.page-view.active { display: block; }
+.page-view.active { display: block; animation: fade .25s ease; }
+@keyframes fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
+/* ───────── BOTTOM NAV (mobile) ───────── */
+.bottom-nav {
+  display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 30;
+  background: rgba(15,15,21,0.92); backdrop-filter: blur(14px);
+  border-top: 1px solid var(--border);
+  padding: 8px max(8px, env(safe-area-inset-left)) calc(8px + env(safe-area-inset-bottom));
+  justify-content: space-around;
+}
+.bn-item {
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  background: none; border: none; color: var(--dim); font-family: inherit;
+  font-size: 10.5px; font-weight: 600; padding: 6px 18px; border-radius: 10px; flex: 1;
+  transition: color 0.15s;
+}
+.bn-item .icon { font-size: 18px; line-height: 1; }
+.bn-item.active { color: var(--gold); }
+
+/* ───────── RESPONSIVE ───────── */
 @media (max-width: 800px) {
-  .sidebar { transform: translateX(-100%); transition: transform 0.25s; }
-  .sidebar.open { transform: translateX(0); }
-  .main { margin-left: 0; padding: 1rem; }
-  .stats { grid-template-columns: repeat(2,1fr); }
+  .sidebar { display: none; }
+  .main { margin-left: 0; padding: 1.25rem 1rem 5.5rem; }
+  .bottom-nav { display: flex; }
+  .scoreboard { flex-wrap: wrap; }
+  .sb-cell { flex: 1 1 45%; border-bottom: 1px solid var(--border); }
+  .pari-grid { grid-template-columns: repeat(3,1fr); gap: 8px; }
+  .fv { font-size: 12px; }
+  .ph-title { font-size: 19px; }
+}
+@media (max-width: 420px) {
   .pari-grid { grid-template-columns: repeat(2,1fr); }
 }
 </style>
@@ -124,10 +215,11 @@ body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-ser
 <body>
 
 <aside class="sidebar" id="sidebar">
-  <div class="logo"><div class="logo-dot"></div>Paris Pro</div>
-  <button class="nav-item active" onclick="showPage('dashboard', this)"><span class="icon">📊</span> Dashboard</button>
-  <button class="nav-item" onclick="showPage('historique', this)"><span class="icon">📋</span> Historique</button>
-  <button class="nav-item" onclick="showPage('stats', this)"><span class="icon">📈</span> Statistiques</button>
+  <div class="logo"><div class="logo-mark">P</div>Paris Pro</div>
+  <button class="nav-item active" data-page="dashboard" onclick="showPage('dashboard', this)"><span class="icon">◆</span> Dashboard</button>
+  <button class="nav-item" data-page="historique" onclick="showPage('historique', this)"><span class="icon">▤</span> Historique</button>
+  <button class="nav-item" data-page="stats" onclick="showPage('stats', this)"><span class="icon">◷</span> Statistiques</button>
+  <div class="sidebar-foot">Agent pronostiqueur · auto</div>
 </aside>
 
 <main class="main">
@@ -142,26 +234,26 @@ body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-ser
       <div class="live waiting" id="liveBadge"><div class="live-dot"></div><span id="liveText">Chargement...</span></div>
     </div>
 
-    <div class="stats">
-      <div class="stat">
-        <div class="stat-label">Pronostics du jour</div>
-        <div class="stat-val" id="sCount">—</div>
-        <div class="stat-sub" id="sDate">—</div>
+    <div class="scoreboard">
+      <div class="sb-cell">
+        <div class="sb-label">Pronostics</div>
+        <div class="sb-value" id="sCount">—</div>
+        <div class="sb-sub" id="sDate">—</div>
       </div>
-      <div class="stat">
-        <div class="stat-label">Taux de réussite global</div>
-        <div class="stat-val g" id="sTaux">—%</div>
-        <div class="stat-sub" id="sTauxSub">sur tout l'historique</div>
+      <div class="sb-cell">
+        <div class="sb-label">Taux réussite</div>
+        <div class="sb-value g" id="sTaux">—%</div>
+        <div class="sb-sub" id="sTauxSub">historique global</div>
       </div>
-      <div class="stat">
-        <div class="stat-label">EV moyen</div>
-        <div class="stat-val g" id="sEV">—</div>
-        <div class="stat-sub">Expected Value</div>
+      <div class="sb-cell">
+        <div class="sb-label">EV moyen</div>
+        <div class="sb-value gold" id="sEV">—</div>
+        <div class="sb-sub">Expected Value</div>
       </div>
-      <div class="stat">
-        <div class="stat-label">Confiance</div>
-        <div class="stat-val" id="sConf">—</div>
-        <div class="stat-sub" id="sConfSub">—</div>
+      <div class="sb-cell">
+        <div class="sb-label">Confiance</div>
+        <div class="sb-value" id="sConf">—</div>
+        <div class="sb-sub" id="sConfSub">—</div>
       </div>
     </div>
 
@@ -184,7 +276,7 @@ body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-ser
 
   <!-- HISTORIQUE -->
   <div class="page-view" id="page-historique">
-    <div class="ph"><div><div class="ph-title">Historique</div><div class="ph-sub">Tous les pronostics vérifiés automatiquement</div></div></div>
+    <div class="ph"><div><div class="ph-title">Historique</div><div class="ph-sub" style="text-transform:none">Pronostics vérifiés automatiquement après chaque match</div></div></div>
     <div class="table-wrap">
       <table class="table">
         <thead><tr>
@@ -199,20 +291,28 @@ body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-ser
 
   <!-- STATS -->
   <div class="page-view" id="page-stats">
-    <div class="ph"><div><div class="ph-title">Statistiques</div><div class="ph-sub">Performance globale de l'agent pronostiqueur</div></div></div>
-    <div class="stats">
-      <div class="stat"><div class="stat-label">Taux de réussite</div><div class="stat-val g" id="statTaux">—%</div><div class="stat-sub" id="statTotal">— pronostics</div></div>
-      <div class="stat"><div class="stat-label">Gagnés</div><div class="stat-val g" id="statGagnes">—</div><div class="stat-sub">au total</div></div>
-      <div class="stat"><div class="stat-label">Perdus</div><div class="stat-val r" id="statPerdus">—</div><div class="stat-sub">au total</div></div>
-      <div class="stat"><div class="stat-label">Dernière mise à jour</div><div class="stat-val" style="font-size:14px;" id="statMaj">—</div><div class="stat-sub">automatique</div></div>
+    <div class="ph"><div><div class="ph-title">Statistiques</div><div class="ph-sub" style="text-transform:none">Performance globale de l'agent pronostiqueur</div></div></div>
+    <div class="scoreboard">
+      <div class="sb-cell"><div class="sb-label">Taux réussite</div><div class="sb-value g" id="statTaux">—%</div><div class="sb-sub" id="statTotal">— pronostics</div></div>
+      <div class="sb-cell"><div class="sb-label">Gagnés</div><div class="sb-value g" id="statGagnes">—</div><div class="sb-sub">au total</div></div>
+      <div class="sb-cell"><div class="sb-label">Perdus</div><div class="sb-value r" id="statPerdus">—</div><div class="sb-sub">au total</div></div>
+      <div class="sb-cell"><div class="sb-label">Dernière maj</div><div class="sb-value" style="font-size:15px;" id="statMaj">—</div><div class="sb-sub">vérification auto</div></div>
     </div>
     <div class="section">
       <div class="sh"><div class="sh-title">Performance par type</div></div>
-      <div class="perf-list" id="statsTypeList"><div class="empty"><div class="empty-icon">📊</div><div class="empty-title">Pas encore assez de données</div><div class="empty-sub">Les statistiques se construisent au fil des vérifications automatiques.</div></div></div>
+      <div id="statsTypeList">
+        <div class="empty"><div class="empty-icon">◷</div><div class="empty-title">Pas encore assez de données</div><div class="empty-sub">Les statistiques se construisent au fil des vérifications automatiques.</div></div>
+      </div>
     </div>
   </div>
 
 </main>
+
+<nav class="bottom-nav" id="bottomNav">
+  <button class="bn-item active" data-page="dashboard" onclick="showPage('dashboard', this)"><span class="icon">◆</span>Dashboard</button>
+  <button class="bn-item" data-page="historique" onclick="showPage('historique', this)"><span class="icon">▤</span>Historique</button>
+  <button class="bn-item" data-page="stats" onclick="showPage('stats', this)"><span class="icon">◷</span>Stats</button>
+</nav>
 
 <script>
 const GITHUB_USER = 'fa4ouk';
@@ -221,14 +321,16 @@ const PARIS_URL = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/co
 const HISTO_URL = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/historique.json`;
 
 const TYPE_CLASS = {'ULTRA SAFE':'b-safe','VALEUR':'b-val','OPPORTUNISTE':'b-opp'};
-const TYPE_LABEL = {'ULTRA SAFE':'🛡 Ultra Safe','VALEUR':'💎 Valeur','OPPORTUNISTE':'🎯 Opportuniste'};
-const CONF_COLOR = {'Élevé':'g','Moyen':'a','Faible':'r'};
+const TYPE_CARD_CLASS = {'ULTRA SAFE':'t-safe','VALEUR':'t-val','OPPORTUNISTE':'t-opp'};
+const TYPE_LABEL = {'ULTRA SAFE':'Ultra Safe','VALEUR':'Valeur','OPPORTUNISTE':'Opportuniste'};
+const CONF_COLOR = {'Élevé':'g','Moyen':'gold','Faible':'r'};
 
 function showPage(id, el) {
   document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.querySelectorAll('.nav-item, .bn-item').forEach(n => n.classList.remove('active'));
   document.getElementById('page-' + id).classList.add('active');
-  el.classList.add('active');
+  document.querySelectorAll(`[data-page="${id}"]`).forEach(n => n.classList.add('active'));
+  window.scrollTo({ top: 0, behavior: 'instant' });
 }
 
 async function fetchGithubJson(url) {
@@ -241,10 +343,11 @@ async function fetchGithubJson(url) {
 
 function makeCard(p) {
   const tc = TYPE_CLASS[p.type] || 'b-neu';
+  const cardClass = TYPE_CARD_CLASS[p.type] || '';
   const tl = TYPE_LABEL[p.type] || p.type;
   const ev = p.ev_pct ? '+' + p.ev_pct + '%' : '—';
   return `
-  <div class="pari-card">
+  <div class="pari-card ${cardClass}">
     <div class="pari-top">
       <div class="badges">
         <span class="badge ${tc}">${tl}</span>
@@ -285,8 +388,8 @@ async function loadDashboard() {
     document.getElementById('sEV').textContent = avgEV ? '+' + avgEV + '%' : '—';
     const confEl = document.getElementById('sConf');
     confEl.textContent = conf;
-    confEl.className = 'stat-val ' + (CONF_COLOR[conf] || '');
-    document.getElementById('sConfSub').textContent = paris.length + ' pronostics générés';
+    confEl.className = 'sb-value ' + (CONF_COLOR[conf] || '');
+    document.getElementById('sConfSub').textContent = paris.length + ' générés';
     document.getElementById('parisCount').textContent = paris.length + ' pronostics';
 
     const list = document.getElementById('pariList');
@@ -297,7 +400,7 @@ async function loadDashboard() {
     }
 
     const types = ['ULTRA SAFE','VALEUR','OPPORTUNISTE'];
-    const colors = {'ULTRA SAFE':'var(--green)','VALEUR':'var(--blue)','OPPORTUNISTE':'var(--amber)'};
+    const colors = {'ULTRA SAFE':'var(--green)','VALEUR':'var(--blue)','OPPORTUNISTE':'var(--gold)'};
     const counts = {};
     types.forEach(t => counts[t] = paris.filter(p => p.type === t).length);
     if (paris.length) {
@@ -308,12 +411,12 @@ async function loadDashboard() {
           <div class="perf-bg"><div class="perf-bar" style="background:${colors[t]}" data-w="${Math.round(counts[t]/paris.length*100)}"></div></div>
           <div class="perf-val">${counts[t]}</div>
         </div>`).join('');
-      setTimeout(() => document.querySelectorAll('.perf-bar').forEach(b => b.style.width = b.dataset.w + '%'), 100);
+      setTimeout(() => document.querySelectorAll('#perfList .perf-bar').forEach(b => b.style.width = b.dataset.w + '%'), 100);
     }
 
     if (note) {
       document.getElementById('noteSec').style.display = '';
-      document.getElementById('noteBox').textContent = '📝 ' + note;
+      document.getElementById('noteBox').innerHTML = '<b>Note du jour —</b> ' + note;
     }
   } catch(e) {
     const lb = document.getElementById('liveBadge');
@@ -324,12 +427,11 @@ async function loadDashboard() {
     document.getElementById('pariList').innerHTML = '<div class="empty"><div class="empty-icon">⏳</div><div class="empty-title">Aucun pronostic disponible</div><div class="empty-sub">L\'agent tourne à 9h30 et 21h00 chaque jour.</div></div>';
   }
 
-  // Charge le taux global depuis l'historique pour le stat card du dashboard
   try {
     const histo = await fetchGithubJson(HISTO_URL);
     const stats = histo.stats || {};
     document.getElementById('sTaux').textContent = (stats.taux ?? '—') + '%';
-    document.getElementById('sTauxSub').textContent = (stats.total || 0) + ' pronostics vérifiés';
+    document.getElementById('sTauxSub').textContent = (stats.total || 0) + ' vérifiés';
   } catch(e) {
     document.getElementById('sTaux').textContent = '—%';
     document.getElementById('sTauxSub').textContent = 'Pas encore de données';
@@ -380,7 +482,7 @@ async function loadStats() {
     }
 
     const types = ['ULTRA SAFE','VALEUR','OPPORTUNISTE'];
-    const colors = {'ULTRA SAFE':'var(--green)','VALEUR':'var(--blue)','OPPORTUNISTE':'var(--amber)'};
+    const colors = {'ULTRA SAFE':'var(--green)','VALEUR':'var(--blue)','OPPORTUNISTE':'var(--gold)'};
     const counts = {};
     types.forEach(t => {
       const subset = paris.filter(p => p.type === t && p.resultat);
@@ -389,16 +491,16 @@ async function loadStats() {
     });
 
     if (paris.some(p => p.resultat)) {
-      document.getElementById('statsTypeList').innerHTML = types.map(t => `
+      document.getElementById('statsTypeList').innerHTML = `<div class="perf-list">` + types.map(t => `
         <div class="perf-row">
           <div class="perf-label">${TYPE_LABEL[t]}</div>
           <div class="perf-bg"><div class="perf-bar" style="background:${colors[t]}" data-w="${counts[t].taux}"></div></div>
           <div class="perf-val">${counts[t].taux}%</div>
-        </div>`).join('');
+        </div>`).join('') + `</div>`;
       setTimeout(() => document.querySelectorAll('#statsTypeList .perf-bar').forEach(b => b.style.width = b.dataset.w + '%'), 100);
     }
   } catch(e) {
-    // garde l'état "pas encore de données" déjà affiché par défaut
+    // garde l'état vide par défaut
   }
 }
 
