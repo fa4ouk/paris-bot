@@ -1,6 +1,7 @@
 """
 🔍 Vérificateur automatique de résultats
-Tourne 3h après les matchs, vérifie les scores et met à jour l'historique.
+Tourne après les matchs, vérifie les scores et met à jour l'historique
+des pronostics (gagné/perdu). Pas de gestion d'argent — agent pronostiqueur pur.
 """
 
 import requests
@@ -9,27 +10,26 @@ import os
 import base64
 from datetime import datetime, timezone, timedelta
 
-# Config
 try:
-    from config import FOOTBALL_API_KEY, GH_TOKEN, BANKROLL, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
+    from config import FOOTBALL_API_KEY, GH_TOKEN, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
     GH_REPO = os.environ.get("GH_REPO", "")
 except ImportError:
     FOOTBALL_API_KEY = os.environ.get("FOOTBALL_API_KEY", "")
     GH_TOKEN = os.environ.get("GH_TOKEN", "")
     GH_REPO = os.environ.get("GH_REPO", "")
-    BANKROLL = float(os.environ.get("BANKROLL", "100"))
     TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
     TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "")
 
 TZ_TUNIS = timezone(timedelta(hours=1))
 FOOTBALL_API_URL = "https://v3.football.api-sports.io"
+SAISON_FOOTBALL = 2026  # Obligatoire avec league= sur API-Football, sinon 0 résultat
 
 # Mapping compétitions → IDs API-Football
 COMPETITION_IDS = {
     "FIFA World Cup": 1,
     "Copa Libertadores": 13,
     "Copa Sudamericana": 11,
-    "WNBA": None,  # Pas de foot
+    "WNBA": None,  # Pas de foot, pas encore vérifiable automatiquement
     "MLB": None,
 }
 
@@ -68,48 +68,43 @@ def github_save(filename, content, sha, message):
 # API FOOTBALL
 # ─────────────────────────────────────────
 
-def get_fixtures(competition_id, date_str):
-    """Récupère les matchs d'une compétition pour une date."""
+def get_fixtures(competition_id, date_str, season=SAISON_FOOTBALL):
+    """Récupère les matchs terminés d'une compétition pour une date donnée.
+    IMPORTANT : API-Football exige league + season ensemble, sinon elle
+    ne retourne jamais de résultat (c'était le bug qui bloquait tout)."""
     r = requests.get(
         f"{FOOTBALL_API_URL}/fixtures",
-        headers={
-            "x-apisports-key": FOOTBALL_API_KEY,
-        },
+        headers={"x-apisports-key": FOOTBALL_API_KEY},
         params={
             "league": competition_id,
+            "season": season,
             "date": date_str,
-            "status": "FT",  # Full Time seulement
         },
         timeout=10,
     )
     if r.status_code == 200:
-        return r.json().get("response", [])
+        fixtures = r.json().get("response", [])
+        return [f for f in fixtures if f.get("fixture", {}).get("status", {}).get("short") == "FT"]
+    print(f"   ⚠️  API-Football erreur {r.status_code} pour league={competition_id}")
     return []
 
 
 def check_result(pari, fixtures):
-    """
-    Vérifie si un pari est gagné ou perdu en comparant avec les scores.
-    Retourne 'gagné', 'perdu' ou None si pas trouvé.
-    """
+    """Vérifie si un pronostic est gagné ou perdu. Retourne 'gagné', 'perdu' ou None."""
     match_name = pari.get("match", "")
     selection = pari.get("selection", "")
 
-    # Cherche le match dans les fixtures
     for fixture in fixtures:
         home = fixture["teams"]["home"]["name"]
         away = fixture["teams"]["away"]["name"]
         score_home = fixture["goals"]["home"]
         score_away = fixture["goals"]["away"]
 
-        # Vérifie si c'est le bon match (comparaison flexible)
         if not (home.lower() in match_name.lower() or away.lower() in match_name.lower()):
             continue
-
         if score_home is None or score_away is None:
             continue
 
-        # Vérifie le résultat selon la sélection
         if f"Victoire {home}" in selection:
             return "gagné" if score_home > score_away else "perdu"
         elif f"Victoire {away}" in selection:
@@ -119,19 +114,17 @@ def check_result(pari, fixtures):
         elif "Plus de" in selection:
             try:
                 seuil = float(selection.split("Plus de")[1].strip().split()[0])
-                total = score_home + score_away
-                return "gagné" if total > seuil else "perdu"
+                return "gagné" if (score_home + score_away) > seuil else "perdu"
             except Exception:
                 pass
         elif "Moins de" in selection:
             try:
                 seuil = float(selection.split("Moins de")[1].strip().split()[0])
-                total = score_home + score_away
-                return "gagné" if total < seuil else "perdu"
+                return "gagné" if (score_home + score_away) < seuil else "perdu"
             except Exception:
                 pass
 
-    return None  # Match pas trouvé
+    return None
 
 
 # ─────────────────────────────────────────
@@ -139,24 +132,18 @@ def check_result(pari, fixtures):
 # ─────────────────────────────────────────
 
 def analyze_patterns(historique):
-    """
-    Analyse les patterns d'échec et retourne des ajustements de stratégie.
-    Si 2-3 pertes consécutives sur un type → alerte.
-    """
+    """Détecte les échecs répétés par type/marché pour ajuster la stratégie future."""
     paris = historique.get("paris", [])
     if len(paris) < 3:
         return {}
 
     alertes = []
-
-    # Vérifie les pertes consécutives par type
     types = ["ULTRA SAFE", "VALEUR", "OPPORTUNISTE"]
     for t in types:
         subset = [p for p in paris if p.get("type") == t and p.get("resultat") in ["gagné", "perdu"]]
         if len(subset) >= 2:
-            # Compte les pertes consécutives récentes
             pertes_consecutives = 0
-            for p in subset[:5]:  # 5 derniers
+            for p in subset[:5]:
                 if p.get("resultat") == "perdu":
                     pertes_consecutives += 1
                 else:
@@ -165,10 +152,9 @@ def analyze_patterns(historique):
                 alertes.append({
                     "type": t,
                     "pertes_consecutives": pertes_consecutives,
-                    "action": "réduire_mise" if pertes_consecutives == 2 else "éviter",
+                    "action": "etre_plus_selectif" if pertes_consecutives == 2 else "eviter",
                 })
 
-    # Taux par marché
     marches_faibles = []
     marches = {}
     for p in paris:
@@ -181,8 +167,7 @@ def analyze_patterns(historique):
             m = "nul"
         else:
             m = "autre"
-        if m not in marches:
-            marches[m] = {"total": 0, "gagnes": 0}
+        marches.setdefault(m, {"total": 0, "gagnes": 0})
         marches[m]["total"] += 1
         if p.get("resultat") == "gagné":
             marches[m]["gagnes"] += 1
@@ -201,7 +186,7 @@ def analyze_patterns(historique):
 
 
 # ─────────────────────────────────────────
-# ENVOI TELEGRAM
+# TELEGRAM
 # ─────────────────────────────────────────
 
 def send_telegram(message):
@@ -213,43 +198,41 @@ def send_telegram(message):
             "disable_web_page_preview": True,
         }, timeout=10)
         if r.status_code == 200:
-            print("✅ Récap envoyé sur Telegram !")
+            print("✅ Message envoyé sur Telegram !")
+        else:
+            print(f"❌ Telegram : {r.status_code} — {r.text[:150]}")
     except Exception as e:
         print(f"❌ Telegram : {e}")
 
 
 def build_recap(resultats, stats, patterns):
-    """Construit le message récap des résultats."""
+    """Récap des résultats juste vérifiés."""
     now = datetime.now(TZ_TUNIS).strftime("%d/%m/%Y %H:%M")
     lines = []
-    lines.append(f"📊 RÉSULTATS DU JOUR — {now}")
+    lines.append(f"📊 RÉSULTATS DES PRONOSTICS — {now}")
     lines.append("━━━━━━━━━━━━━━━━━━━━━━")
     lines.append("")
 
-    bilan = 0
+    gagnes = 0
     for r in resultats:
         emoji = "✅" if r["resultat"] == "gagné" else "❌"
-        gain = r["gain_tnd"]
-        bilan += gain
+        if r["resultat"] == "gagné":
+            gagnes += 1
         lines.append(f"{emoji} {r['match']}")
-        lines.append(f"   {r['selection']} @ {r['cote']} — {gain:+.2f} TND")
+        lines.append(f"   {r['selection']} @ {r['cote']} — {r['resultat'].upper()}")
 
     lines.append("")
     lines.append("━━━━━━━━━━━━━━━━━━━━━━")
-    lines.append(f"💰 Bilan du jour : {bilan:+.2f} TND")
-    lines.append(f"📈 Taux global : {stats.get('taux', 0)}%")
-    lines.append(f"💵 Profit net total : {stats.get('profit_net', 0):+.2f} TND")
+    lines.append(f"🎯 Bilan : {gagnes}/{len(resultats)} pronostics gagnés")
+    lines.append(f"📈 Taux de réussite global : {stats.get('taux', 0)}%")
 
-    # Alertes stratégie
     alertes = patterns.get("alertes", [])
     if alertes:
         lines.append("")
-        lines.append("⚠️ ALERTES STRATÉGIE :")
+        lines.append("⚠️ AJUSTEMENT STRATÉGIE :")
         for a in alertes:
-            if a["action"] == "réduire_mise":
-                lines.append(f"   • {a['type']} : {a['pertes_consecutives']} pertes consécutives → mises réduites demain")
-            else:
-                lines.append(f"   • {a['type']} : {a['pertes_consecutives']} pertes consécutives → ÉVITÉ demain")
+            action = "plus sélectif" if a["action"] == "etre_plus_selectif" else "ÉVITÉ"
+            lines.append(f"   • {a['type']} : {a['pertes_consecutives']} échecs consécutifs → {action} demain")
 
     marches_faibles = patterns.get("marches_faibles", [])
     if marches_faibles:
@@ -258,8 +241,64 @@ def build_recap(resultats, stats, patterns):
         for m in marches_faibles:
             lines.append(f"   • {m['marche']} : {m['taux']}% de réussite seulement")
 
+    return "\n".join(lines)
+
+
+def build_bilan_periodique(historique, periode="jour"):
+    """Construit un bilan quotidien ou hebdomadaire des performances."""
+    paris = historique.get("paris", [])
+    now = datetime.now(TZ_TUNIS)
+
+    if periode == "jour":
+        cutoff = now - timedelta(days=1)
+        titre = "📅 BILAN DU JOUR"
+    else:
+        cutoff = now - timedelta(days=7)
+        titre = "📆 BILAN DE LA SEMAINE"
+
+    recents = []
+    for p in paris:
+        date_str = p.get("date_resultat")
+        if not date_str:
+            continue
+        try:
+            d = datetime.fromisoformat(date_str)
+            if d >= cutoff:
+                recents.append(p)
+        except Exception:
+            continue
+
+    if not recents:
+        return None
+
+    total = len(recents)
+    gagnes = len([p for p in recents if p.get("resultat") == "gagné"])
+    taux = round(gagnes / total * 100) if total else 0
+
+    par_type = {}
+    for p in recents:
+        t = p.get("type", "?")
+        par_type.setdefault(t, {"total": 0, "gagnes": 0})
+        par_type[t]["total"] += 1
+        if p.get("resultat") == "gagné":
+            par_type[t]["gagnes"] += 1
+
+    lines = []
+    lines.append(f"{titre} — {now.strftime('%d/%m/%Y')}")
+    lines.append("━━━━━━━━━━━━━━━━━━━━━━")
     lines.append("")
-    lines.append("⚠️ Joue responsable.")
+    lines.append(f"🎯 {gagnes}/{total} pronostics gagnés ({taux}%)")
+    lines.append("")
+    lines.append("Détail par type :")
+    for t, s in par_type.items():
+        t_taux = round(s["gagnes"] / s["total"] * 100) if s["total"] else 0
+        lines.append(f"   • {t} : {s['gagnes']}/{s['total']} ({t_taux}%)")
+
+    stats_globales = historique.get("stats", {})
+    lines.append("")
+    lines.append(f"📈 Taux de réussite global (tout l'historique) : {stats_globales.get('taux', 0)}%")
+    lines.append(f"📊 Total pronostics enregistrés : {stats_globales.get('total', 0)}")
+
     return "\n".join(lines)
 
 
@@ -273,32 +312,27 @@ def main():
     print(f"📅 {datetime.now(TZ_TUNIS).strftime('%d/%m/%Y %H:%M')}")
     print("=" * 50)
 
-    # 1. Charge les paris du jour
-    paris_data, paris_sha = github_get("paris.json")
+    paris_data, _ = github_get("paris.json")
     if not paris_data:
         print("⚠️  Pas de paris.json trouvé")
         return
 
     paris = paris_data.get("paris", [])
     if not paris:
-        print("⚠️  Aucun pari à vérifier")
+        print("⚠️  Aucun pronostic à vérifier")
         return
 
-    print(f"\n📋 {len(paris)} paris à vérifier...")
+    print(f"\n📋 {len(paris)} pronostics à vérifier...")
 
-    # 2. Charge l'historique
     historique, histo_sha = github_get("historique.json")
     if not historique:
         historique = {"paris": [], "stats": {}, "strategie": {}}
 
-    # 3. Vérifie chaque pari
-    date_hier = (datetime.now(TZ_TUNIS) - timedelta(days=0)).strftime("%Y-%m-%d")
+    date_today = datetime.now(TZ_TUNIS).strftime("%Y-%m-%d")
     fixtures_cache = {}
     nouveaux_resultats = 0
 
     for pari in paris:
-        # Skip si déjà vérifié
-        match_key = f"{pari.get('match')}_{pari.get('heure')}"
         deja_dans_histo = any(
             h.get("match") == pari.get("match") and h.get("heure") == pari.get("heure")
             for h in historique["paris"]
@@ -307,89 +341,94 @@ def main():
             print(f"   ⏭️  {pari.get('match')} — déjà enregistré")
             continue
 
-        # Trouve l'ID de la compétition
         comp = pari.get("competition", "")
         comp_id = next((v for k, v in COMPETITION_IDS.items() if k.lower() in comp.lower()), None)
 
         if comp_id is None:
-            print(f"   ⚠️  {pari.get('match')} — compétition non supportée ({comp})")
+            print(f"   ⚠️  {pari.get('match')} — compétition non vérifiable automatiquement ({comp})")
             continue
 
-        # Récupère les fixtures (avec cache)
-        cache_key = f"{comp_id}_{date_hier}"
+        cache_key = f"{comp_id}_{date_today}"
         if cache_key not in fixtures_cache:
-            fixtures_cache[cache_key] = get_fixtures(comp_id, date_hier)
+            fixtures_cache[cache_key] = get_fixtures(comp_id, date_today)
 
-        fixtures = fixtures_cache[cache_key]
-        resultat = check_result(pari, fixtures)
+        resultat = check_result(pari, fixtures_cache[cache_key])
 
         if resultat is None:
             print(f"   ⏳ {pari.get('match')} — match pas encore terminé ou pas trouvé")
             continue
 
-        # Calcule le gain/perte
-        mise = pari.get("mise_tnd", 0)
-        cote = pari.get("cote", 1)
-        gain = round(mise * cote - mise, 2) if resultat == "gagné" else -round(mise, 2)
-
-        # Ajoute à l'historique
         entry = {
             **pari,
             "resultat": resultat,
-            "gain_tnd": gain,
             "date_resultat": datetime.now(TZ_TUNIS).isoformat(),
             "verifie_auto": True,
         }
+        # On enlève les anciens champs liés à l'argent si jamais présents (historique précédent)
+        entry.pop("mise_tnd", None)
+        entry.pop("gain_tnd", None)
+
         historique["paris"].insert(0, entry)
         nouveaux_resultats += 1
 
         emoji = "✅" if resultat == "gagné" else "❌"
-        print(f"   {emoji} {pari.get('match')} — {resultat} ({gain:+.2f} TND)")
+        print(f"   {emoji} {pari.get('match')} — {resultat}")
 
     if nouveaux_resultats == 0:
         print("\n⏳ Aucun nouveau résultat disponible pour l'instant.")
         return
 
-    # 4. Recalcule les stats
+    # Recalcule les stats globales
     total = len(historique["paris"])
     gagnes = len([p for p in historique["paris"] if p.get("resultat") == "gagné"])
-    profit = sum(p.get("gain_tnd", 0) for p in historique["paris"])
-
     historique["stats"] = {
         "total": total,
         "gagnes": gagnes,
         "perdus": total - gagnes,
         "taux": round(gagnes / total * 100) if total else 0,
-        "profit_net": round(profit, 2),
         "derniere_maj": datetime.now(TZ_TUNIS).isoformat(),
     }
 
-    # 5. Analyse les patterns et révise la stratégie
+    # Analyse les patterns
     patterns = analyze_patterns(historique)
     historique["strategie"] = patterns
 
     if patterns.get("alertes"):
-        print("\n⚠️  ALERTES STRATÉGIE :")
+        print("\n⚠️  AJUSTEMENT STRATÉGIE :")
         for alerte in patterns["alertes"]:
-            action = "Réduire les mises" if alerte["action"] == "réduire_mise" else "ÉVITER ce type"
-            print(f"   • {alerte['type']} : {alerte['pertes_consecutives']} pertes consécutives → {action}")
+            action = "plus sélectif" if alerte["action"] == "etre_plus_selectif" else "ÉVITÉ"
+            print(f"   • {alerte['type']} : {alerte['pertes_consecutives']} échecs consécutifs → {action}")
 
     if patterns.get("marches_faibles"):
         print("\n📉 MARCHÉS FAIBLES :")
         for m in patterns["marches_faibles"]:
             print(f"   • {m['marche']} : seulement {m['taux']}% de réussite")
 
-    # 6. Sauvegarde
+    # Sauvegarde
     if github_save("historique.json", historique, histo_sha, f"🔍 {nouveaux_resultats} résultats vérifiés auto"):
         print(f"\n✅ Historique mis à jour ({nouveaux_resultats} nouveaux résultats)")
-        print(f"📊 Stats : {historique['stats']['taux']}% | Profit : {historique['stats']['profit_net']} TND")
+        print(f"📊 Taux global : {historique['stats']['taux']}%")
     else:
         print("\n❌ Erreur lors de la sauvegarde")
+        return
 
-    # 7. Envoi récap Telegram
-    nouveaux = [p for p in historique["paris"][:nouveaux_resultats]]
+    # Envoi récap immédiat
+    nouveaux = historique["paris"][:nouveaux_resultats]
     recap = build_recap(nouveaux, historique["stats"], patterns)
     send_telegram(recap)
+
+    # Bilan quotidien (envoyé uniquement lors du dernier check du jour, vers 02h)
+    heure_actuelle = datetime.now(TZ_TUNIS).hour
+    if heure_actuelle <= 4:  # check de nuit = fin de journée sportive
+        bilan_jour = build_bilan_periodique(historique, "jour")
+        if bilan_jour:
+            send_telegram(bilan_jour)
+
+        # Bilan hebdomadaire le dimanche soir/nuit
+        if datetime.now(TZ_TUNIS).weekday() == 6:  # dimanche
+            bilan_semaine = build_bilan_periodique(historique, "semaine")
+            if bilan_semaine:
+                send_telegram(bilan_semaine)
 
 
 if __name__ == "__main__":
