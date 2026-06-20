@@ -237,7 +237,6 @@ def get_historique() -> dict:
         return {
             "total_paris": len(paris),
             "taux_global": stats.get("taux", 0),
-            "profit_net": stats.get("profit_net", 0),
             "par_type": analyse,
             "par_marche": marches,
             "derniers_paris": paris[:5],  # 5 derniers pour contexte
@@ -251,9 +250,12 @@ def get_historique() -> dict:
 # 4. ANALYSE PAR L'IA (Groq)
 # ─────────────────────────────────────────
 
-def analyze_with_ai(data: list) -> str:
+def analyze_with_ai(data: list, historique: dict = None) -> str:
     if not data:
         return None
+
+    if historique is None:
+        historique = {}
 
     # Compression pour rester sous la limite de tokens
     compressed = []
@@ -272,9 +274,8 @@ def analyze_with_ai(data: list) -> str:
     if historique and historique.get("total_paris", 0) > 0:
         h = historique
         histo_context = f"""
-HISTORIQUE DE TES PERFORMANCES ({h['total_paris']} paris) :
+HISTORIQUE DE TES PERFORMANCES ({h['total_paris']} pronostics) :
 - Taux de réussite global : {h['taux_global']}%
-- Profit net : {h['profit_net']} TND
 
 Par type :"""
         for t, stats in h.get("par_type", {}).items():
@@ -513,7 +514,7 @@ def main():
     print("\n📚 Lecture de l'historique...")
     historique = get_historique()
     if historique.get("total_paris", 0) > 0:
-        print(f"   {historique['total_paris']} paris en historique | Taux : {historique['taux_global']}% | Profit : {historique['profit_net']} TND")
+        print(f"   {historique['total_paris']} pronostics en historique | Taux : {historique['taux_global']}%")
     else:
         print("   Pas encore d'historique")
 
