@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Paris Pro</title>
+<title>Paris Pro — Dashboard</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -20,14 +20,12 @@
   --red: #ef4444; --rbg: rgba(239,68,68,0.09); --rbd: rgba(239,68,68,0.22);
   --blue: #60a5fa; --bbg: rgba(96,165,250,0.09); --bbd: rgba(96,165,250,0.22);
   --amber: #f59e0b; --abg: rgba(245,158,11,0.09); --abd: rgba(245,158,11,0.22);
-  --purple: #a78bfa; --pbg: rgba(167,139,250,0.09);
   --accent: #6366f1;
   --r: 12px; --rs: 7px;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.6; min-height: 100vh; display: flex; }
 
-/* SIDEBAR */
 .sidebar { width: 210px; background: var(--surface); border-right: 1px solid var(--border); padding: 1.25rem 0.875rem; display: flex; flex-direction: column; gap: 3px; flex-shrink: 0; position: fixed; height: 100vh; z-index: 10; }
 .logo { font-size: 15px; font-weight: 600; padding: 0.4rem 0.75rem 1rem; display: flex; align-items: center; gap: 9px; color: var(--text); }
 .logo-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent); flex-shrink: 0; }
@@ -36,18 +34,9 @@ body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-ser
 .nav-item.active { background: var(--surface2); color: var(--text); font-weight: 500; }
 .nav-item .icon { font-size: 15px; width: 18px; text-align: center; }
 .sep { height: 1px; background: var(--border); margin: 6px 0; }
-.sidebar-bottom { margin-top: auto; }
-.bk-row { display: flex; align-items: center; justify-content: space-between; padding: 0.55rem 0.75rem; border-radius: var(--rs); color: var(--muted); cursor: pointer; font-size: 12px; }
-.bk-row:hover { color: var(--text); }
-.toggle { width: 30px; height: 17px; background: var(--surface3); border: 1px solid var(--border2); border-radius: 9px; position: relative; transition: background 0.2s; flex-shrink: 0; }
-.toggle.on { background: var(--accent); border-color: var(--accent); }
-.toggle::after { content:''; position: absolute; width: 11px; height: 11px; background: white; border-radius: 50%; top: 2px; left: 2px; transition: transform 0.2s; }
-.toggle.on::after { transform: translateX(13px); }
 
-/* MAIN */
 .main { margin-left: 210px; flex: 1; padding: 2rem 2.5rem; max-width: 920px; }
 
-/* PAGE HEADER */
 .ph { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.75rem; flex-wrap: wrap; gap: 12px; }
 .ph-title { font-size: 19px; font-weight: 600; }
 .ph-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
@@ -59,7 +48,6 @@ body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-ser
 .live.waiting .live-dot { background: var(--muted); }
 @keyframes pulse { 0%,100%{opacity:1}50%{opacity:0.3} }
 
-/* STATS */
 .stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-bottom: 1.75rem; }
 .stat { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 1rem 1.2rem; }
 .stat-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--dim); margin-bottom: 8px; }
@@ -67,19 +55,11 @@ body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-ser
 .stat-sub { font-size: 12px; color: var(--muted); margin-top: 5px; }
 .g { color: var(--green); } .r { color: var(--red); } .a { color: var(--amber); }
 
-/* SECTION */
 .section { margin-bottom: 1.75rem; }
 .sh { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
 .sh-title { font-size: 12px; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
 .sh-badge { font-size: 12px; color: var(--dim); background: var(--surface2); padding: 2px 9px; border-radius: 20px; }
 
-/* TABS */
-.tabs { display: flex; gap: 4px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 4px; margin-bottom: 1.5rem; width: fit-content; }
-.tab { padding: 6px 16px; border-radius: 8px; font-size: 13px; cursor: pointer; color: var(--muted); border: none; background: none; transition: all 0.15s; font-family: 'Inter', sans-serif; }
-.tab:hover { color: var(--text); }
-.tab.active { background: var(--surface2); color: var(--text); font-weight: 500; }
-
-/* PARI CARDS */
 .pari-list { display: flex; flex-direction: column; gap: 10px; }
 .pari-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 1.1rem 1.25rem; transition: border-color 0.15s, transform 0.15s; }
 .pari-card:hover { border-color: var(--border2); transform: translateY(-1px); }
@@ -96,12 +76,11 @@ body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-ser
 .s-pend  { background: var(--surface2); color: var(--muted); border: 1px solid var(--border); }
 .pari-match { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
 .pari-meta { font-size: 12px; color: var(--muted); display: flex; gap: 14px; margin-bottom: 12px; flex-wrap: wrap; }
-.pari-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
+.pari-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
 .fl { font-size: 11px; color: var(--dim); margin-bottom: 3px; }
 .fv { font-size: 13px; font-weight: 500; font-family: 'JetBrains Mono', monospace; }
 .pari-raison { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); font-size: 12px; color: var(--muted); font-style: italic; }
 
-/* PERF BARS */
 .perf-list { display: flex; flex-direction: column; gap: 12px; }
 .perf-row { display: flex; align-items: center; gap: 12px; }
 .perf-label { font-size: 12px; color: var(--muted); width: 100px; flex-shrink: 0; }
@@ -109,10 +88,8 @@ body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-ser
 .perf-bar { height: 100%; border-radius: 3px; transition: width 1s ease; width: 0; }
 .perf-val { font-size: 12px; font-family: 'JetBrains Mono', monospace; font-weight: 500; width: 36px; text-align: right; }
 
-/* NOTE */
 .note-box { font-size: 13px; color: var(--muted); background: var(--surface); border-radius: var(--r); padding: 12px 16px; border-left: 3px solid var(--accent); line-height: 1.6; }
 
-/* STATES */
 .loading { display: flex; align-items: center; justify-content: center; height: 180px; color: var(--muted); font-size: 13px; gap: 10px; }
 .spinner { width: 16px; height: 16px; border: 2px solid var(--border2); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.7s linear infinite; flex-shrink: 0; }
 @keyframes spin { to { transform: rotate(360deg); } }
@@ -121,7 +98,6 @@ body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-ser
 .empty-title { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 6px; }
 .empty-sub { font-size: 12px; }
 
-/* HISTORIQUE TABLE */
 .table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; }
 .table { width: 100%; border-collapse: collapse; }
 .table th { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--dim); padding: 10px 16px; text-align: left; border-bottom: 1px solid var(--border); font-weight: 500; background: var(--surface); }
@@ -129,22 +105,13 @@ body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-ser
 .table tr:last-child td { border-bottom: none; }
 .table tr:hover td { background: var(--surface2); }
 .table .mono { font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+.tag-win { color: var(--green); font-weight: 500; }
+.tag-loss { color: var(--red); font-weight: 500; }
+.tag-pending { color: var(--muted); }
 
-.result-btns { display: flex; gap: 8px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
-.rbtn { padding: 6px 16px; border-radius: var(--rs); font-size: 12px; font-weight: 500; cursor: pointer; border: 1px solid; font-family: 'Inter', sans-serif; transition: all 0.15s; }
-.rbtn.win { background: var(--gbg); color: var(--green); border-color: var(--gbd); }
-.rbtn.win:hover { background: var(--green); color: white; }
-.rbtn.loss { background: var(--rbg); color: var(--red); border-color: var(--rbd); }
-.rbtn.loss:hover { background: var(--red); color: white; }
-
-/* BLUR */
-.blur { filter: blur(7px); user-select: none; pointer-events: none; }
-
-/* PAGE VIEWS */
 .page-view { display: none; }
 .page-view.active { display: block; }
 
-/* RESPONSIVE */
 @media (max-width: 800px) {
   .sidebar { transform: translateX(-100%); transition: transform 0.25s; }
   .sidebar.open { transform: translateX(0); }
@@ -161,15 +128,6 @@ body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-ser
   <button class="nav-item active" onclick="showPage('dashboard', this)"><span class="icon">📊</span> Dashboard</button>
   <button class="nav-item" onclick="showPage('historique', this)"><span class="icon">📋</span> Historique</button>
   <button class="nav-item" onclick="showPage('stats', this)"><span class="icon">📈</span> Statistiques</button>
-  <div class="sep"></div>
-  <button class="nav-item" onclick="showPage('settings', this)"><span class="icon">⚙️</span> Paramètres</button>
-  <div class="sidebar-bottom">
-    <div class="sep"></div>
-    <div class="bk-row" id="bkToggle">
-      <span id="bkLabel">Masquer bankroll</span>
-      <div class="toggle" id="bkDot"></div>
-    </div>
-  </div>
 </aside>
 
 <main class="main">
@@ -178,7 +136,7 @@ body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-ser
   <div class="page-view active" id="page-dashboard">
     <div class="ph">
       <div>
-        <div class="ph-title">Bons plans du jour</div>
+        <div class="ph-title">Pronostics du jour</div>
         <div class="ph-sub" id="dateLabel">Chargement...</div>
       </div>
       <div class="live waiting" id="liveBadge"><div class="live-dot"></div><span id="liveText">Chargement...</span></div>
@@ -186,14 +144,14 @@ body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-ser
 
     <div class="stats">
       <div class="stat">
-        <div class="stat-label">Bankroll</div>
-        <div class="stat-val bk-val" id="sBankroll">— <span style="font-size:14px;color:var(--muted)">TND</span></div>
-        <div class="stat-sub bk-val" id="sMise">Mise du jour : —</div>
-      </div>
-      <div class="stat">
-        <div class="stat-label">Paris générés</div>
+        <div class="stat-label">Pronostics du jour</div>
         <div class="stat-val" id="sCount">—</div>
         <div class="stat-sub" id="sDate">—</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Taux de réussite global</div>
+        <div class="stat-val g" id="sTaux">—%</div>
+        <div class="stat-sub" id="sTauxSub">sur tout l'historique</div>
       </div>
       <div class="stat">
         <div class="stat-label">EV moyen</div>
@@ -208,9 +166,9 @@ body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-ser
     </div>
 
     <div class="section">
-      <div class="sh"><div class="sh-title">Paris du jour</div><div class="sh-badge" id="parisCount">—</div></div>
+      <div class="sh"><div class="sh-title">Pronostics du jour</div><div class="sh-badge" id="parisCount">—</div></div>
       <div class="pari-list" id="pariList">
-        <div class="loading"><div class="spinner"></div>Chargement des paris...</div>
+        <div class="loading"><div class="spinner"></div>Chargement des pronostics...</div>
       </div>
     </div>
 
@@ -226,16 +184,14 @@ body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-ser
 
   <!-- HISTORIQUE -->
   <div class="page-view" id="page-historique">
-    <div class="ph"><div><div class="ph-title">Historique</div><div class="ph-sub">Tous vos paris enregistrés</div></div></div>
+    <div class="ph"><div><div class="ph-title">Historique</div><div class="ph-sub">Tous les pronostics vérifiés automatiquement</div></div></div>
     <div class="table-wrap">
       <table class="table">
         <thead><tr>
-          <th>Match</th><th>Sélection</th><th>Cote</th><th>Mise</th><th>Résultat</th><th>Date</th>
+          <th>Match</th><th>Sélection</th><th>Cote</th><th>Type</th><th>Résultat</th><th>Date</th>
         </tr></thead>
         <tbody id="histoBody">
-          <tr><td colspan="6" style="text-align:center;padding:2rem;color:var(--muted)">
-            Fonctionnalité à venir — les paris seront enregistrés automatiquement ici.
-          </td></tr>
+          <tr><td colspan="6" style="text-align:center;padding:2rem;color:var(--muted)">Chargement...</td></tr>
         </tbody>
       </table>
     </div>
@@ -243,33 +199,16 @@ body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-ser
 
   <!-- STATS -->
   <div class="page-view" id="page-stats">
-    <div class="ph"><div><div class="ph-title">Statistiques</div><div class="ph-sub">Performance globale de l'agent</div></div></div>
+    <div class="ph"><div><div class="ph-title">Statistiques</div><div class="ph-sub">Performance globale de l'agent pronostiqueur</div></div></div>
     <div class="stats">
-      <div class="stat"><div class="stat-label">Taux de réussite</div><div class="stat-val g">—%</div><div class="stat-sub">À venir</div></div>
-      <div class="stat"><div class="stat-label">ROI global</div><div class="stat-val g">—%</div><div class="stat-sub">À venir</div></div>
-      <div class="stat"><div class="stat-label">Paris gagnés</div><div class="stat-val">—</div><div class="stat-sub">À venir</div></div>
-      <div class="stat"><div class="stat-label">Profit net</div><div class="stat-val bk-val">— TND</div><div class="stat-sub">À venir</div></div>
+      <div class="stat"><div class="stat-label">Taux de réussite</div><div class="stat-val g" id="statTaux">—%</div><div class="stat-sub" id="statTotal">— pronostics</div></div>
+      <div class="stat"><div class="stat-label">Gagnés</div><div class="stat-val g" id="statGagnes">—</div><div class="stat-sub">au total</div></div>
+      <div class="stat"><div class="stat-label">Perdus</div><div class="stat-val r" id="statPerdus">—</div><div class="stat-sub">au total</div></div>
+      <div class="stat"><div class="stat-label">Dernière mise à jour</div><div class="stat-val" style="font-size:14px;" id="statMaj">—</div><div class="stat-sub">automatique</div></div>
     </div>
-    <div class="empty"><div class="empty-icon">📊</div><div class="empty-title">Statistiques à venir</div><div class="empty-sub">Les stats se construiront au fil des paris enregistrés.</div></div>
-  </div>
-
-  <!-- SETTINGS -->
-  <div class="page-view" id="page-settings">
-    <div class="ph"><div><div class="ph-title">Paramètres</div><div class="ph-sub">Configurer votre dashboard</div></div></div>
     <div class="section">
-      <div class="sh"><div class="sh-title">Bankroll</div></div>
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem;">
-        <div style="font-size:13px;color:var(--muted);margin-bottom:10px;">Montant de votre bankroll en TND</div>
-        <div style="display:flex;gap:10px;align-items:center;">
-          <input id="bkInput" type="number" value="100" min="1"
-            style="background:var(--surface2);border:1px solid var(--border2);border-radius:var(--rs);padding:8px 12px;color:var(--text);font-size:14px;font-family:'JetBrains Mono',monospace;width:140px;outline:none;" />
-          <button onclick="saveBankroll()"
-            style="background:var(--accent);border:none;border-radius:var(--rs);padding:8px 18px;color:white;font-size:13px;cursor:pointer;font-family:'Inter',sans-serif;font-weight:500;">
-            Enregistrer
-          </button>
-          <span id="bkSaved" style="font-size:12px;color:var(--green);display:none;">✓ Enregistré</span>
-        </div>
-      </div>
+      <div class="sh"><div class="sh-title">Performance par type</div></div>
+      <div class="perf-list" id="statsTypeList"><div class="empty"><div class="empty-icon">📊</div><div class="empty-title">Pas encore assez de données</div><div class="empty-sub">Les statistiques se construisent au fil des vérifications automatiques.</div></div></div>
     </div>
   </div>
 
@@ -278,16 +217,13 @@ body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-ser
 <script>
 const GITHUB_USER = 'fa4ouk';
 const GITHUB_REPO = 'paris-bot';
-const JSON_URL = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/paris.json`;
+const PARIS_URL = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/paris.json`;
+const HISTO_URL = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/historique.json`;
 
 const TYPE_CLASS = {'ULTRA SAFE':'b-safe','VALEUR':'b-val','OPPORTUNISTE':'b-opp'};
 const TYPE_LABEL = {'ULTRA SAFE':'🛡 Ultra Safe','VALEUR':'💎 Valeur','OPPORTUNISTE':'🎯 Opportuniste'};
 const CONF_COLOR = {'Élevé':'g','Moyen':'a','Faible':'r'};
 
-let bkHidden = false;
-let bankroll = parseFloat(localStorage.getItem('bankroll') || '100');
-
-// Navigation
 function showPage(id, el) {
   document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
@@ -295,57 +231,26 @@ function showPage(id, el) {
   el.classList.add('active');
 }
 
-// Bankroll toggle
-function setBkHidden(h) {
-  bkHidden = h;
-  document.getElementById('bkDot').classList.toggle('on', h);
-  document.getElementById('bkLabel').textContent = h ? 'Afficher bankroll' : 'Masquer bankroll';
-  document.querySelectorAll('.bk-val').forEach(el => el.classList.toggle('blur', h));
-}
-document.getElementById('bkToggle').addEventListener('click', () => setBkHidden(!bkHidden));
-
-// Bankroll settings
-function saveBankroll() {
-  const val = parseFloat(document.getElementById('bkInput').value);
-  if (!val || val <= 0) return;
-  bankroll = val;
-  localStorage.setItem('bankroll', val);
-  const saved = document.getElementById('bkSaved');
-  saved.style.display = 'inline';
-  setTimeout(() => saved.style.display = 'none', 2000);
-  document.getElementById('sBankroll').innerHTML = val.toFixed(0) + ' <span style="font-size:14px;color:var(--muted)">TND</span>';
+async function fetchGithubJson(url) {
+  const r = await fetch(url, { headers: { 'Accept': 'application/vnd.github.v3+json' } });
+  if (!r.ok) throw new Error('404');
+  const gh = await r.json();
+  const cleaned = gh.content.split('\n').join('');
+  return JSON.parse(atob(cleaned));
 }
 
-// Card builder
-const pariResults = JSON.parse(localStorage.getItem('pari_results') || '{}');
-
-function makeCard(p, idx) {
+function makeCard(p) {
   const tc = TYPE_CLASS[p.type] || 'b-neu';
   const tl = TYPE_LABEL[p.type] || p.type;
-  const mise = p.mise_tnd ? p.mise_tnd.toFixed(2) + ' TND' : '—';
   const ev = p.ev_pct ? '+' + p.ev_pct + '%' : '—';
-  const key = p.match + '_' + idx;
-  const res = pariResults[key];
-  const statusHtml = res === 'gagné'
-    ? '<span class="status s-win">✓ Gagné</span>'
-    : res === 'perdu'
-    ? '<span class="status s-loss">✗ Perdu</span>'
-    : '<span class="status s-pend">En attente</span>';
-
-  const btns = res ? '' : `
-    <div class="result-btns">
-      <button class="rbtn win" onclick="saveResult(${idx}, '${p.match.replace(/'/g,"\'")}', 'gagné')">✅ Gagné</button>
-      <button class="rbtn loss" onclick="saveResult(${idx}, '${p.match.replace(/'/g,"\'")}', 'perdu')">❌ Perdu</button>
-    </div>`;
-
   return `
-  <div class="pari-card" id="card-${idx}">
+  <div class="pari-card">
     <div class="pari-top">
       <div class="badges">
         <span class="badge ${tc}">${tl}</span>
         <span class="badge b-neu">${p.style || 'Simple'}</span>
       </div>
-      ${statusHtml}
+      <span class="status s-pend">En attente</span>
     </div>
     <div class="pari-match">${p.match || '—'}</div>
     <div class="pari-meta">
@@ -355,73 +260,25 @@ function makeCard(p, idx) {
     <div class="pari-grid">
       <div><div class="fl">Sélection</div><div class="fv">${p.selection || '—'}</div></div>
       <div><div class="fl">Cote</div><div class="fv">${p.cote || '—'}</div></div>
-      <div><div class="fl">Mise</div><div class="fv bk-val">${mise}</div></div>
       <div><div class="fl">EV estimé</div><div class="fv g">${ev}</div></div>
     </div>
     ${p.raison ? `<div class="pari-raison">${p.raison}</div>` : ''}
-    ${btns}
   </div>`;
 }
 
-let currentParis = [];
-
-async function saveResult(idx, match, resultat) {
-  const pari = currentParis[idx];
-  const key = pari.match + '_' + idx;
-  const btn = document.querySelector(`#card-${idx} .result-btns`);
-  if (btn) btn.innerHTML = '<span style="color:var(--muted);font-size:12px;">Enregistrement...</span>';
-
+async function loadDashboard() {
   try {
-    const r = await fetch('/.netlify/functions/save-result', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ pari, resultat }),
-    });
-    const data = await r.json();
-    if (data.success) {
-      pariResults[key] = resultat;
-      localStorage.setItem('pari_results', JSON.stringify(pariResults));
-      const card = document.getElementById('card-' + idx);
-      const statusEl = card.querySelector('.status');
-      if (resultat === 'gagné') {
-        statusEl.className = 'status s-win';
-        statusEl.textContent = '✓ Gagné';
-      } else {
-        statusEl.className = 'status s-loss';
-        statusEl.textContent = '✗ Perdu';
-      }
-      if (btn) btn.remove();
-    }
-  } catch(e) {
-    if (btn) btn.innerHTML = '<span style="color:var(--red);font-size:12px;">Erreur — réessaie</span>';
-  }
-}
-
-// Load data
-async function loadData() {
-  try {
-    const r = await fetch(JSON_URL, { headers: { 'Accept': 'application/vnd.github.v3+json' } });
-    if (!r.ok) throw new Error('404');
-    const gh = await r.json();
-    const cleaned = gh.content.split('\n').join('');
-    const data = JSON.parse(atob(cleaned));
-
+    const data = await fetchGithubJson(PARIS_URL);
     const paris = data.paris || [];
     const note = data.note_du_jour || '';
     const conf = data.confiance || '—';
 
-    // Header
     const now = new Date();
     document.getElementById('dateLabel').textContent = now.toLocaleDateString('fr-FR', {weekday:'long',day:'numeric',month:'long',year:'numeric'}) + ' — ' + now.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
     const lb = document.getElementById('liveBadge');
     lb.className = 'live active';
     document.getElementById('liveText').textContent = 'Coupe du Monde active';
 
-    // Stats
-    document.getElementById('sBankroll').innerHTML = bankroll.toFixed(0) + ' <span style="font-size:14px;color:var(--muted)">TND</span>';
-    document.getElementById('bkInput').value = bankroll;
-    const totalMise = paris.reduce((s,p) => s + (p.mise_tnd || 0), 0);
-    document.getElementById('sMise').textContent = 'Mise du jour : ' + totalMise.toFixed(2) + ' TND';
     document.getElementById('sCount').textContent = paris.length;
     document.getElementById('sDate').textContent = data.date || '—';
     const avgEV = paris.length ? (paris.reduce((s,p) => s+(p.ev_pct||0),0)/paris.length).toFixed(1) : null;
@@ -429,19 +286,16 @@ async function loadData() {
     const confEl = document.getElementById('sConf');
     confEl.textContent = conf;
     confEl.className = 'stat-val ' + (CONF_COLOR[conf] || '');
-    document.getElementById('sConfSub').textContent = paris.length + ' paris générés';
-    document.getElementById('parisCount').textContent = paris.length + ' paris';
+    document.getElementById('sConfSub').textContent = paris.length + ' pronostics générés';
+    document.getElementById('parisCount').textContent = paris.length + ' pronostics';
 
-    // Cards
     const list = document.getElementById('pariList');
     if (!paris.length) {
-      list.innerHTML = '<div class="empty"><div class="empty-icon">📭</div><div class="empty-title">Aucun paris aujourd\'hui</div><div class="empty-sub">L\'agent tourne à 9h30 et 21h00.</div></div>';
+      list.innerHTML = '<div class="empty"><div class="empty-icon">📭</div><div class="empty-title">Aucun pronostic aujourd\'hui</div><div class="empty-sub">L\'agent tourne à 9h30 et 21h00.</div></div>';
     } else {
-      currentParis = paris;
-      list.innerHTML = paris.map((p,i) => makeCard(p,i)).join('');
+      list.innerHTML = paris.map(makeCard).join('');
     }
 
-    // Perf
     const types = ['ULTRA SAFE','VALEUR','OPPORTUNISTE'];
     const colors = {'ULTRA SAFE':'var(--green)','VALEUR':'var(--blue)','OPPORTUNISTE':'var(--amber)'};
     const counts = {};
@@ -457,25 +311,100 @@ async function loadData() {
       setTimeout(() => document.querySelectorAll('.perf-bar').forEach(b => b.style.width = b.dataset.w + '%'), 100);
     }
 
-    // Note
     if (note) {
       document.getElementById('noteSec').style.display = '';
       document.getElementById('noteBox').textContent = '📝 ' + note;
     }
-
-    if (bkHidden) setBkHidden(true);
-
   } catch(e) {
     const lb = document.getElementById('liveBadge');
     lb.className = 'live waiting';
     document.getElementById('liveText').textContent = 'En attente de l\'agent';
     const now = new Date();
     document.getElementById('dateLabel').textContent = now.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
-    document.getElementById('pariList').innerHTML = '<div class="empty"><div class="empty-icon">⏳</div><div class="empty-title">Aucun paris disponible</div><div class="empty-sub">L\'agent tourne à 9h30 et 21h00 chaque jour.</div></div>';
+    document.getElementById('pariList').innerHTML = '<div class="empty"><div class="empty-icon">⏳</div><div class="empty-title">Aucun pronostic disponible</div><div class="empty-sub">L\'agent tourne à 9h30 et 21h00 chaque jour.</div></div>';
+  }
+
+  // Charge le taux global depuis l'historique pour le stat card du dashboard
+  try {
+    const histo = await fetchGithubJson(HISTO_URL);
+    const stats = histo.stats || {};
+    document.getElementById('sTaux').textContent = (stats.taux ?? '—') + '%';
+    document.getElementById('sTauxSub').textContent = (stats.total || 0) + ' pronostics vérifiés';
+  } catch(e) {
+    document.getElementById('sTaux').textContent = '—%';
+    document.getElementById('sTauxSub').textContent = 'Pas encore de données';
   }
 }
 
-loadData();
+async function loadHistorique() {
+  const tbody = document.getElementById('histoBody');
+  try {
+    const histo = await fetchGithubJson(HISTO_URL);
+    const paris = histo.paris || [];
+    if (!paris.length) {
+      tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:2rem;color:var(--muted)">Aucun résultat enregistré pour l\'instant.</td></tr>';
+      return;
+    }
+    tbody.innerHTML = paris.map(p => {
+      const tag = p.resultat === 'gagné' ? '<span class="tag-win">✓ Gagné</span>' : p.resultat === 'perdu' ? '<span class="tag-loss">✗ Perdu</span>' : '<span class="tag-pending">En attente</span>';
+      let dateStr = '—';
+      if (p.date_resultat) {
+        try { dateStr = new Date(p.date_resultat).toLocaleDateString('fr-FR', {day:'2-digit',month:'2-digit',year:'numeric'}); } catch(e) {}
+      }
+      return `<tr>
+        <td>${p.match || '—'}</td>
+        <td>${p.selection || '—'}</td>
+        <td class="mono">${p.cote || '—'}</td>
+        <td>${TYPE_LABEL[p.type] || p.type || '—'}</td>
+        <td>${tag}</td>
+        <td class="mono">${dateStr}</td>
+      </tr>`;
+    }).join('');
+  } catch(e) {
+    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:2rem;color:var(--muted)">Aucun historique disponible pour l\'instant.</td></tr>';
+  }
+}
+
+async function loadStats() {
+  try {
+    const histo = await fetchGithubJson(HISTO_URL);
+    const stats = histo.stats || {};
+    const paris = histo.paris || [];
+
+    document.getElementById('statTaux').textContent = (stats.taux ?? 0) + '%';
+    document.getElementById('statTotal').textContent = (stats.total || 0) + ' pronostics';
+    document.getElementById('statGagnes').textContent = stats.gagnes ?? 0;
+    document.getElementById('statPerdus').textContent = stats.perdus ?? 0;
+    if (stats.derniere_maj) {
+      try { document.getElementById('statMaj').textContent = new Date(stats.derniere_maj).toLocaleDateString('fr-FR', {day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}); } catch(e) {}
+    }
+
+    const types = ['ULTRA SAFE','VALEUR','OPPORTUNISTE'];
+    const colors = {'ULTRA SAFE':'var(--green)','VALEUR':'var(--blue)','OPPORTUNISTE':'var(--amber)'};
+    const counts = {};
+    types.forEach(t => {
+      const subset = paris.filter(p => p.type === t && p.resultat);
+      const gagnes = subset.filter(p => p.resultat === 'gagné').length;
+      counts[t] = { total: subset.length, gagnes, taux: subset.length ? Math.round(gagnes/subset.length*100) : 0 };
+    });
+
+    if (paris.some(p => p.resultat)) {
+      document.getElementById('statsTypeList').innerHTML = types.map(t => `
+        <div class="perf-row">
+          <div class="perf-label">${TYPE_LABEL[t]}</div>
+          <div class="perf-bg"><div class="perf-bar" style="background:${colors[t]}" data-w="${counts[t].taux}"></div></div>
+          <div class="perf-val">${counts[t].taux}%</div>
+        </div>`).join('');
+      setTimeout(() => document.querySelectorAll('#statsTypeList .perf-bar').forEach(b => b.style.width = b.dataset.w + '%'), 100);
+    }
+  } catch(e) {
+    // garde l'état "pas encore de données" déjà affiché par défaut
+  }
+}
+
+loadDashboard();
+loadHistorique();
+loadStats();
 </script>
 </body>
 </html>
