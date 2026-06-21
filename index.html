@@ -346,23 +346,16 @@ async function fetchGithubJson(url) {
   return JSON.parse(decodeURIComponent(escape(atob(cleaned))));
 }
 
-// Compétitions pour lesquelles check_results.py n'a pas d'API branchée
-const NON_VERIFIABLE = ['WNBA', 'MLB'];
-
 function makeCard(p, resultatConnu) {
   const tc = TYPE_CLASS[p.type] || 'b-neu';
   const cardClass = TYPE_CARD_CLASS[p.type] || '';
   const tl = TYPE_LABEL[p.type] || p.type;
   const ev = p.ev_pct ? '+' + p.ev_pct + '%' : '—';
-  const comp = p.competition || '';
-  const isNonVerifiable = NON_VERIFIABLE.some(c => comp.toUpperCase().includes(c));
   let statusHtml;
   if (resultatConnu === 'gagné') {
     statusHtml = '<span class="status s-win">✓ Gagné</span>';
   } else if (resultatConnu === 'perdu') {
     statusHtml = '<span class="status s-loss">✗ Perdu</span>';
-  } else if (isNonVerifiable) {
-    statusHtml = '<span class="status s-pend" title="Pas d\'API de résultats branchée pour ce sport">Non vérifiable auto</span>';
   } else {
     statusHtml = '<span class="status s-pend">En attente</span>';
   }
