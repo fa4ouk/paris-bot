@@ -339,22 +339,33 @@ async function fetchGithubJson(url) {
   if (!r.ok) throw new Error('404');
   const gh = await r.json();
   const cleaned = gh.content.split('\n').join('');
-  return JSON.parse(atob(cleaned));
+  // atob() décode le base64 octet par octet (façon Latin-1), pas en UTF-8.
+  // Sans ce correctif, les caractères accentués (é, à, ç...) sortent
+  // corrompus ("Ã©" au lieu de "é"). decodeURIComponent(escape(...)) force
+  // la bonne réinterprétation en UTF-8.
+  return JSON.parse(decodeURIComponent(escape(atob(cleaned))));
 }
 
 // Compétitions pour lesquelles check_results.py n'a pas d'API branchée
 const NON_VERIFIABLE = ['WNBA', 'MLB'];
 
-function makeCard(p) {
+function makeCard(p, resultatConnu) {
   const tc = TYPE_CLASS[p.type] || 'b-neu';
   const cardClass = TYPE_CARD_CLASS[p.type] || '';
   const tl = TYPE_LABEL[p.type] || p.type;
   const ev = p.ev_pct ? '+' + p.ev_pct + '%' : '—';
   const comp = p.competition || '';
   const isNonVerifiable = NON_VERIFIABLE.some(c => comp.toUpperCase().includes(c));
-  const statusHtml = isNonVerifiable
-    ? '<span class="status s-pend" title="Pas d\'API de résultats branchée pour ce sport">Non vérifiable auto</span>'
-    : '<span class="status s-pend">En attente</span>';
+  let statusHtml;
+  if (resultatConnu === 'gagné') {
+    statusHtml = '<span class="status s-win">✓ Gagné</span>';
+  } else if (resultatConnu === 'perdu') {
+    statusHtml = '<span class="status s-loss">✗ Perdu</span>';
+  } else if (isNonVerifiable) {
+    statusHtml = '<span class="status s-pend" title="Pas d\'API de résultats branchée pour ce sport">Non vérifiable auto</span>';
+  } else {
+    statusHtml = '<span class="status s-pend">En attente</span>';
+  }
   return `
   <div class="pari-card ${cardClass}">
     <div class="pari-top">
@@ -385,6 +396,21 @@ async function loadDashboard() {
     const note = data.note_du_jour || '';
     const conf = data.confiance || '—';
 
+    // Croise avec historique.json pour afficher le vrai statut (gagné/perdu)
+    // d'un pronostic du jour si son résultat est déjà tombé, plutôt que de
+    // toujours afficher "En attente" même quand check_results.py est déjà passé
+    let resultatsConnus = [];
+    try {
+      const histo = await fetchGithubJson(HISTO_URL);
+      resultatsConnus = histo.paris || [];
+    } catch (e) {
+      // pas grave si historique.json n'existe pas encore
+    }
+    const trouverResultat = (p) => {
+      const m = resultatsConnus.find(h => h.match === p.match && h.heure === p.heure && h.selection === p.selection);
+      return m ? m.resultat : null;
+    };
+
     const now = new Date();
     document.getElementById('dateLabel').textContent = now.toLocaleDateString('fr-FR', {weekday:'long',day:'numeric',month:'long',year:'numeric'}) + ' — ' + now.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
     const lb = document.getElementById('liveBadge');
@@ -405,7 +431,7 @@ async function loadDashboard() {
     if (!paris.length) {
       list.innerHTML = '<div class="empty"><div class="empty-icon">📭</div><div class="empty-title">Aucun pronostic aujourd\'hui</div><div class="empty-sub">L\'agent tourne à 9h30 et 21h00.</div></div>';
     } else {
-      list.innerHTML = paris.map(makeCard).join('');
+      list.innerHTML = paris.map(p => makeCard(p, trouverResultat(p))).join('');
     }
 
     const types = ['ULTRA SAFE','VALEUR','OPPORTUNISTE'];
