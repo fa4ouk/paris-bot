@@ -1,1 +1,27 @@
-{"paris": [], "stats": {}, "strategie": {}}
+{
+  "paris": [
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Tunisia vs Japan",
+      "competition": "FIFA World Cup",
+      "heure": "21/06 05:00",
+      "selection": "Moins de 3.5",
+      "cote": 1.78,
+      "bookmaker": "Pinnacle",
+      "ev_pct": 10.1,
+      "raison": "À combiner avec le match suivant",
+      "resultat": "perdu",
+      "date_resultat": "2026-06-21T08:30:17.698449+01:00",
+      "verifie_auto": true
+    }
+  ],
+  "stats": {
+    "total": 1,
+    "gagnes": 0,
+    "perdus": 1,
+    "taux": 0,
+    "derniere_maj": "2026-06-21T08:30:18.311212+01:00"
+  },
+  "strategie": {}
+}
