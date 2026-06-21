@@ -334,21 +334,32 @@ def main():
         attente = {"paris": []}
 
     # Récupère les derniers pronostics générés et les ajoute à la file
-    # d'attente s'ils n'y sont pas déjà (et pas déjà dans l'historique)
+    # d'attente s'ils n'y sont pas déjà (et pas déjà dans l'historique).
+    # Déduplication sur match + heure + sélection : si agent.py est relancé
+    # plusieurs fois le même jour (manuellement ou par erreur), on évite
+    # d'empiler plusieurs fois le même pronostic exact dans la file d'attente
+    # ou l'historique, ce qui fausserait les statistiques d'apprentissage.
+    def meme_pronostic(a, b):
+        return (
+            a.get("match") == b.get("match")
+            and a.get("heure") == b.get("heure")
+            and a.get("selection") == b.get("selection")
+        )
+
     paris_data, _ = github_get("paris.json")
+    doublons_ignores = 0
     if paris_data:
         nouveaux = paris_data.get("paris", [])
         for p in nouveaux:
-            deja_attente = any(
-                a.get("match") == p.get("match") and a.get("heure") == p.get("heure")
-                for a in attente["paris"]
-            )
-            deja_histo = any(
-                h.get("match") == p.get("match") and h.get("heure") == p.get("heure")
-                for h in historique["paris"]
-            )
+            deja_attente = any(meme_pronostic(a, p) for a in attente["paris"])
+            deja_histo = any(meme_pronostic(h, p) for h in historique["paris"])
             if not deja_attente and not deja_histo:
                 attente["paris"].append(p)
+            else:
+                doublons_ignores += 1
+
+    if doublons_ignores:
+        print(f"   ℹ️  {doublons_ignores} pronostic(s) déjà connu(s), ignoré(s) pour éviter les doublons")
 
     if not attente["paris"]:
         print("⚠️  Aucun pronostic en attente à vérifier")
