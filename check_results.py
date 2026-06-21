@@ -29,8 +29,8 @@ COMPETITION_SPORT_KEYS = {
     "FIFA World Cup": "soccer_fifa_world_cup",
     "Copa Libertadores": "soccer_conmebol_libertadores",
     "Copa Sudamericana": "soccer_conmebol_sudamericana",
-    "WNBA": None,   # Pas encore mappé — The Odds API couvre basketball_wnba, à activer si besoin
-    "MLB": None,    # Idem pour baseball_mlb
+    "WNBA": "basketball_wnba",
+    "MLB": "baseball_mlb",
 }
 
 
@@ -320,39 +320,53 @@ def main():
     print(f"📅 {datetime.now(TZ_TUNIS).strftime('%d/%m/%Y %H:%M')}")
     print("=" * 50)
 
-    paris_data, _ = github_get("paris.json")
-    if not paris_data:
-        print("⚠️  Pas de paris.json trouvé")
-        return
-
-    paris = paris_data.get("paris", [])
-    if not paris:
-        print("⚠️  Aucun pronostic à vérifier")
-        return
-
-    print(f"\n📋 {len(paris)} pronostics à vérifier...")
-
     historique, histo_sha = github_get("historique.json")
     if not historique:
         historique = {"paris": [], "stats": {}, "strategie": {}}
 
+    # ── File d'attente persistante ───────────────────────────────
+    # paris.json est ÉCRASÉ à chaque lancement de agent.py (4x/jour),
+    # donc on ne peut pas s'y fier seul pour retrouver d'anciens pronostics
+    # pas encore joués. On maintient ici une liste à part qui survit
+    # entre les exécutions, peuplée à partir de paris.json à chaque run.
+    attente, attente_sha = github_get("pronostics_en_attente.json")
+    if not attente:
+        attente = {"paris": []}
+
+    # Récupère les derniers pronostics générés et les ajoute à la file
+    # d'attente s'ils n'y sont pas déjà (et pas déjà dans l'historique)
+    paris_data, _ = github_get("paris.json")
+    if paris_data:
+        nouveaux = paris_data.get("paris", [])
+        for p in nouveaux:
+            deja_attente = any(
+                a.get("match") == p.get("match") and a.get("heure") == p.get("heure")
+                for a in attente["paris"]
+            )
+            deja_histo = any(
+                h.get("match") == p.get("match") and h.get("heure") == p.get("heure")
+                for h in historique["paris"]
+            )
+            if not deja_attente and not deja_histo:
+                attente["paris"].append(p)
+
+    if not attente["paris"]:
+        print("⚠️  Aucun pronostic en attente à vérifier")
+        return
+
+    print(f"\n📋 {len(attente['paris'])} pronostics en attente de résultat...")
+
     scores_cache = {}
     nouveaux_resultats = 0
+    toujours_en_attente = []
 
-    for pari in paris:
-        deja_dans_histo = any(
-            h.get("match") == pari.get("match") and h.get("heure") == pari.get("heure")
-            for h in historique["paris"]
-        )
-        if deja_dans_histo:
-            print(f"   ⏭️  {pari.get('match')} — déjà enregistré")
-            continue
-
+    for pari in attente["paris"]:
         comp = pari.get("competition", "")
         sport_key = next((v for k, v in COMPETITION_SPORT_KEYS.items() if k.lower() in comp.lower()), None)
 
         if sport_key is None:
             print(f"   ⚠️  {pari.get('match')} — compétition non vérifiable automatiquement ({comp})")
+            toujours_en_attente.append(pari)
             continue
 
         if sport_key not in scores_cache:
@@ -362,6 +376,7 @@ def main():
 
         if resultat is None:
             print(f"   ⏳ {pari.get('match')} — match pas encore terminé ou pas trouvé")
+            toujours_en_attente.append(pari)
             continue
 
         entry = {
@@ -379,6 +394,10 @@ def main():
 
         emoji = "✅" if resultat == "gagné" else "❌"
         print(f"   {emoji} {pari.get('match')} — {resultat}")
+
+    # Met à jour la file d'attente : ne garde que ceux pas encore résolus
+    attente["paris"] = toujours_en_attente
+    github_save("pronostics_en_attente.json", attente, attente_sha, f"⏳ {len(toujours_en_attente)} pronostics en attente")
 
     if nouveaux_resultats == 0:
         print("\n⏳ Aucun nouveau résultat disponible pour l'instant.")
@@ -438,4 +457,21 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as e:
+        import traceback
+        erreur = traceback.format_exc()
+        print(f"\n❌ ERREUR FATALE : {e}")
+        print(erreur)
+        try:
+            send_telegram(
+                f"⚠️ ERREUR — Vérification résultats\n"
+                f"━━━━━━━━━━━━━━━━━━━━━━\n\n"
+                f"Le script check_results.py a planté :\n"
+                f"{type(e).__name__}: {e}\n\n"
+                f"Vérifie les logs sur GitHub Actions pour le détail."
+            )
+        except Exception:
+            print("❌ Impossible d'envoyer l'alerte Telegram non plus.")
+        raise
