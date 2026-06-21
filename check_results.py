@@ -11,26 +11,26 @@ import base64
 from datetime import datetime, timezone, timedelta
 
 try:
-    from config import FOOTBALL_API_KEY, GH_TOKEN, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
+    from config import ODDS_API_KEY, GH_TOKEN, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
     GH_REPO = os.environ.get("GH_REPO", "")
 except ImportError:
-    FOOTBALL_API_KEY = os.environ.get("FOOTBALL_API_KEY", "")
+    ODDS_API_KEY = os.environ.get("ODDS_API_KEY", "")
     GH_TOKEN = os.environ.get("GH_TOKEN", "")
     GH_REPO = os.environ.get("GH_REPO", "")
     TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
     TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "")
 
 TZ_TUNIS = timezone(timedelta(hours=1))
-FOOTBALL_API_URL = "https://v3.football.api-sports.io"
-SAISON_FOOTBALL = 2026  # Obligatoire avec league= sur API-Football, sinon 0 résultat
+ODDS_API_URL = "https://api.the-odds-api.com/v4"
 
-# Mapping compétitions → IDs API-Football
-COMPETITION_IDS = {
-    "FIFA World Cup": 1,
-    "Copa Libertadores": 13,
-    "Copa Sudamericana": 11,
-    "WNBA": None,  # Pas de foot, pas encore vérifiable automatiquement
-    "MLB": None,
+# Mapping compétitions → sport_key The Odds API (même source que les cotes,
+# donc même quota, même clé, et couverture garantie de la saison en cours)
+COMPETITION_SPORT_KEYS = {
+    "FIFA World Cup": "soccer_fifa_world_cup",
+    "Copa Libertadores": "soccer_conmebol_libertadores",
+    "Copa Sudamericana": "soccer_conmebol_sudamericana",
+    "WNBA": None,   # Pas encore mappé — The Odds API couvre basketball_wnba, à activer si besoin
+    "MLB": None,    # Idem pour baseball_mlb
 }
 
 
@@ -68,41 +68,49 @@ def github_save(filename, content, sha, message):
 # API FOOTBALL
 # ─────────────────────────────────────────
 
-def get_fixtures(competition_id, date_str, season=SAISON_FOOTBALL):
-    """Récupère les matchs terminés d'une compétition pour une date donnée.
-    IMPORTANT : API-Football exige league + season ensemble, sinon elle
-    ne retourne jamais de résultat (c'était le bug qui bloquait tout)."""
+def get_scores(sport_key, days_from=3):
+    """Récupère les scores des matchs récents via The Odds API — même source
+    que les cotes, donc couverture garantie de la saison/édition en cours
+    (contrairement à API-Football dont le plan gratuit est limité à 2022-2024)."""
     r = requests.get(
-        f"{FOOTBALL_API_URL}/fixtures",
-        headers={"x-apisports-key": FOOTBALL_API_KEY},
+        f"{ODDS_API_URL}/sports/{sport_key}/scores/",
         params={
-            "league": competition_id,
-            "season": season,
-            "date": date_str,
+            "apiKey": ODDS_API_KEY,
+            "daysFrom": days_from,
         },
         timeout=10,
     )
     if r.status_code == 200:
-        fixtures = r.json().get("response", [])
-        return [f for f in fixtures if f.get("fixture", {}).get("status", {}).get("short") == "FT"]
-    print(f"   ⚠️  API-Football erreur {r.status_code} pour league={competition_id}")
+        matches = r.json()
+        return [m for m in matches if m.get("completed") is True]
+    print(f"   ⚠️  The Odds API erreur {r.status_code} pour {sport_key} — {r.text[:150]}")
     return []
 
 
-def check_result(pari, fixtures):
-    """Vérifie si un pronostic est gagné ou perdu. Retourne 'gagné', 'perdu' ou None."""
+def check_result(pari, matches):
+    """Vérifie si un pronostic est gagné ou perdu à partir des scores The Odds API.
+    Format de match attendu : home_team, away_team, scores=[{"name":..., "score":"X"}]."""
     match_name = pari.get("match", "")
     selection = pari.get("selection", "")
 
-    for fixture in fixtures:
-        home = fixture["teams"]["home"]["name"]
-        away = fixture["teams"]["away"]["name"]
-        score_home = fixture["goals"]["home"]
-        score_away = fixture["goals"]["away"]
+    for m in matches:
+        home = m.get("home_team", "")
+        away = m.get("away_team", "")
 
         if not (home.lower() in match_name.lower() or away.lower() in match_name.lower()):
             continue
-        if score_home is None or score_away is None:
+
+        scores = m.get("scores")
+        if not scores:
+            continue
+
+        score_map = {s["name"]: s["score"] for s in scores}
+        if home not in score_map or away not in score_map:
+            continue
+        try:
+            score_home = int(score_map[home])
+            score_away = int(score_map[away])
+        except (TypeError, ValueError):
             continue
 
         if f"Victoire {home}" in selection:
@@ -328,8 +336,7 @@ def main():
     if not historique:
         historique = {"paris": [], "stats": {}, "strategie": {}}
 
-    date_today = datetime.now(TZ_TUNIS).strftime("%Y-%m-%d")
-    fixtures_cache = {}
+    scores_cache = {}
     nouveaux_resultats = 0
 
     for pari in paris:
@@ -342,17 +349,16 @@ def main():
             continue
 
         comp = pari.get("competition", "")
-        comp_id = next((v for k, v in COMPETITION_IDS.items() if k.lower() in comp.lower()), None)
+        sport_key = next((v for k, v in COMPETITION_SPORT_KEYS.items() if k.lower() in comp.lower()), None)
 
-        if comp_id is None:
+        if sport_key is None:
             print(f"   ⚠️  {pari.get('match')} — compétition non vérifiable automatiquement ({comp})")
             continue
 
-        cache_key = f"{comp_id}_{date_today}"
-        if cache_key not in fixtures_cache:
-            fixtures_cache[cache_key] = get_fixtures(comp_id, date_today)
+        if sport_key not in scores_cache:
+            scores_cache[sport_key] = get_scores(sport_key)
 
-        resultat = check_result(pari, fixtures_cache[cache_key])
+        resultat = check_result(pari, scores_cache[sport_key])
 
         if resultat is None:
             print(f"   ⏳ {pari.get('match')} — match pas encore terminé ou pas trouvé")
