@@ -319,6 +319,7 @@ const GITHUB_USER = 'fa4ouk';
 const GITHUB_REPO = 'paris-bot';
 const PARIS_URL = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/paris.json`;
 const HISTO_URL = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/historique.json`;
+const ATTENTE_URL = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/pronostics_en_attente.json`;
 
 const TYPE_CLASS = {'ULTRA SAFE':'b-safe','VALEUR':'b-val','OPPORTUNISTE':'b-opp'};
 const TYPE_CARD_CLASS = {'ULTRA SAFE':'t-safe','VALEUR':'t-val','OPPORTUNISTE':'t-opp'};
@@ -341,11 +342,19 @@ async function fetchGithubJson(url) {
   return JSON.parse(atob(cleaned));
 }
 
+// Compétitions pour lesquelles check_results.py n'a pas d'API branchée
+const NON_VERIFIABLE = ['WNBA', 'MLB'];
+
 function makeCard(p) {
   const tc = TYPE_CLASS[p.type] || 'b-neu';
   const cardClass = TYPE_CARD_CLASS[p.type] || '';
   const tl = TYPE_LABEL[p.type] || p.type;
   const ev = p.ev_pct ? '+' + p.ev_pct + '%' : '—';
+  const comp = p.competition || '';
+  const isNonVerifiable = NON_VERIFIABLE.some(c => comp.toUpperCase().includes(c));
+  const statusHtml = isNonVerifiable
+    ? '<span class="status s-pend" title="Pas d\'API de résultats branchée pour ce sport">Non vérifiable auto</span>'
+    : '<span class="status s-pend">En attente</span>';
   return `
   <div class="pari-card ${cardClass}">
     <div class="pari-top">
@@ -353,7 +362,7 @@ function makeCard(p) {
         <span class="badge ${tc}">${tl}</span>
         <span class="badge b-neu">${p.style || 'Simple'}</span>
       </div>
-      <span class="status s-pend">En attente</span>
+      ${statusHtml}
     </div>
     <div class="pari-match">${p.match || '—'}</div>
     <div class="pari-meta">
@@ -442,14 +451,38 @@ async function loadHistorique() {
   const tbody = document.getElementById('histoBody');
   try {
     const histo = await fetchGithubJson(HISTO_URL);
-    const paris = histo.paris || [];
-    if (!paris.length) {
-      tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:2rem;color:var(--muted)">Aucun résultat enregistré pour l\'instant.</td></tr>';
+    const resolus = (histo.paris || []).map(p => ({ ...p, _statut: 'resolu' }));
+
+    // Pronostics encore en attente d'un résultat (fichier séparé maintenu
+    // par check_results.py au fil des exécutions, indépendant de paris.json
+    // qui lui est écrasé à chaque génération de l'agent)
+    let enAttente = [];
+    try {
+      const attente = await fetchGithubJson(ATTENTE_URL);
+      enAttente = (attente.paris || []).map(p => ({ ...p, _statut: 'attente' }));
+    } catch (e) {
+      // pas grave si le fichier n'existe pas encore (avant le premier check)
+    }
+
+    const tous = [...enAttente, ...resolus];
+
+    if (!tous.length) {
+      tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:2rem;color:var(--muted)">Aucun pronostic enregistré pour l\'instant.</td></tr>';
       return;
     }
-    tbody.innerHTML = paris.map(p => {
-      const tag = p.resultat === 'gagné' ? '<span class="tag-win">✓ Gagné</span>' : p.resultat === 'perdu' ? '<span class="tag-loss">✗ Perdu</span>' : '<span class="tag-pending">En attente</span>';
-      let dateStr = '—';
+
+    tbody.innerHTML = tous.map(p => {
+      let tag;
+      if (p._statut === 'attente') {
+        tag = '<span class="tag-pending">En attente</span>';
+      } else if (p.resultat === 'gagné') {
+        tag = '<span class="tag-win">✓ Gagné</span>';
+      } else if (p.resultat === 'perdu') {
+        tag = '<span class="tag-loss">✗ Perdu</span>';
+      } else {
+        tag = '<span class="tag-pending">En attente</span>';
+      }
+      let dateStr = p.heure || '—';
       if (p.date_resultat) {
         try { dateStr = new Date(p.date_resultat).toLocaleDateString('fr-FR', {day:'2-digit',month:'2-digit',year:'numeric'}); } catch(e) {}
       }
