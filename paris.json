@@ -3,52 +3,52 @@
     {
       "type": "ULTRA SAFE",
       "style": "Simple",
-      "match": "Ecuador vs Curaçao",
+      "match": "Spain vs Saudi Arabia",
       "competition": "FIFA World Cup",
-      "heure": "21/06 01:00",
-      "selection": "Plus de 2.5",
-      "cote": 1.56,
-      "bookmaker": "Unibet (SE)",
-      "ev_pct": 10.2,
-      "raison": "Ecuador a marqué au moins 2 buts dans ses 3 derniers matchs, tandis que Curaçao a encaissé au moins 2 buts dans ses 2 derniers matchs."
+      "heure": "21/06 17:00",
+      "selection": "Handicap Saudi Arabia 2.5",
+      "cote": 1.98,
+      "bookmaker": "Matchbook",
+      "ev_pct": 12.5,
+      "raison": "Spain est favori, mais Saudi Arabia peut résister"
     },
     {
       "type": "VALEUR",
       "style": "Simple",
+      "match": "Belgium vs Iran",
+      "competition": "FIFA World Cup",
+      "heure": "21/06 20:00",
+      "selection": "Victoire Belgium",
+      "cote": 1.48,
+      "bookmaker": "1xBet",
+      "ev_pct": 8.2,
+      "raison": "Belgium est plus fort que Iran"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
       "match": "Tunisia vs Japan",
       "competition": "FIFA World Cup",
       "heure": "21/06 05:00",
+      "selection": "Moins de 3.5",
+      "cote": 1.78,
+      "bookmaker": "Pinnacle",
+      "ev_pct": 10.1,
+      "raison": "À combiner avec le match suivant"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Uruguay vs Cape Verde",
+      "competition": "FIFA World Cup",
+      "heure": "21/06 23:00",
       "selection": "Moins de 2.5",
-      "cote": 1.85,
+      "cote": 1.67,
       "bookmaker": "Unibet (SE)",
-      "ev_pct": 8.5,
-      "raison": "Les 2 équipes ont tendance à jouer de manière défensive, ce qui devrait limiter les occasions de but."
-    },
-    {
-      "type": "OPPORTUNISTE",
-      "style": "Combiné",
-      "match": "Spain vs Saudi Arabia",
-      "competition": "FIFA World Cup",
-      "heure": "21/06 17:00",
-      "selection": "Plus de 3.5",
-      "cote": 2.32,
-      "bookmaker": "Unibet (SE)",
-      "ev_pct": 12.1,
-      "raison": "À combiner avec le match Ecuador vs Curaçao, car les 2 matchs ont des conditions similaires pour un grand nombre de buts."
-    },
-    {
-      "type": "OPPORTUNISTE",
-      "style": "Combiné",
-      "match": "Ecuador vs Curaçao",
-      "competition": "FIFA World Cup",
-      "heure": "21/06 01:00",
-      "selection": "Plus de 2.5",
-      "cote": 1.56,
-      "bookmaker": "Unibet (SE)",
-      "ev_pct": 10.2,
-      "raison": "À combiner avec le match Spain vs Saudi Arabia, car les 2 matchs ont des conditions similaires pour un grand nombre de buts."
+      "ev_pct": 9.5,
+      "raison": "À combiner avec le match précédent"
     }
   ],
-  "note_du_jour": "La journée est riche en matchs de Coupe du Monde, avec des opportunités de paris intéressantes.",
-  "confiance": "Élevé"
+  "note_du_jour": "Journée avec quelques opportunités intéressantes, notamment dans la Coupe du Monde",
+  "confiance": "Moyen"
 }
