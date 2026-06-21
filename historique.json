@@ -1,6 +1,21 @@
 {
   "paris": [
     {
+      "type": "VALEUR",
+      "style": "Simple",
+      "match": "Belgium vs Iran",
+      "competition": "FIFA World Cup",
+      "heure": "21/06 20:00",
+      "selection": "Victoire Belgium",
+      "cote": 1.48,
+      "bookmaker": "1xBet",
+      "ev_pct": 8.2,
+      "raison": "Belgium est plus fort que Iran",
+      "resultat": "perdu",
+      "date_resultat": "2026-06-21T23:30:18.755822+01:00",
+      "verifie_auto": true
+    },
+    {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
       "match": "Tunisia vs Japan",
@@ -17,11 +32,11 @@
     }
   ],
   "stats": {
-    "total": 1,
+    "total": 2,
     "gagnes": 0,
-    "perdus": 1,
+    "perdus": 2,
     "taux": 0,
-    "derniere_maj": "2026-06-21T08:30:18.311212+01:00"
+    "derniere_maj": "2026-06-21T23:30:19.484733+01:00"
   },
   "strategie": {}
 }
