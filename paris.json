@@ -1,40 +1,28 @@
 {
   "paris": [
     {
-      "type": "ULTRA SAFE",
-      "style": "Simple",
-      "match": "Spain vs Saudi Arabia",
-      "competition": "FIFA World Cup",
-      "heure": "21/06 17:00",
-      "selection": "Handicap Saudi Arabia 2.5",
-      "cote": 1.98,
-      "bookmaker": "Matchbook",
-      "ev_pct": 12.5,
-      "raison": "Spain est favori, mais Saudi Arabia peut résister"
-    },
-    {
       "type": "VALEUR",
       "style": "Simple",
-      "match": "Belgium vs Iran",
+      "match": "Uruguay vs Cape Verde",
       "competition": "FIFA World Cup",
-      "heure": "21/06 20:00",
-      "selection": "Victoire Belgium",
-      "cote": 1.48,
-      "bookmaker": "1xBet",
-      "ev_pct": 8.2,
-      "raison": "Belgium est plus fort que Iran"
+      "heure": "21/06 23:00",
+      "selection": "Victoire Uruguay",
+      "cote": 1.45,
+      "bookmaker": "Coolbet",
+      "ev_pct": 10.0,
+      "raison": "Uruguay a une équipe plus expérimentée et mieux préparée que Cape Verde, ce qui justifie une cote inférieure à 1.50"
     },
     {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
-      "match": "Tunisia vs Japan",
+      "match": "New Zealand vs Egypt",
       "competition": "FIFA World Cup",
-      "heure": "21/06 05:00",
-      "selection": "Moins de 3.5",
-      "cote": 1.78,
-      "bookmaker": "Pinnacle",
-      "ev_pct": 10.1,
-      "raison": "À combiner avec le match suivant"
+      "heure": "22/06 02:00",
+      "selection": "Victoire Egypt",
+      "cote": 1.65,
+      "bookmaker": "Coolbet",
+      "ev_pct": 8.0,
+      "raison": "À combiner avec le pronostic suivant pour un pari opportuniste"
     },
     {
       "type": "OPPORTUNISTE",
@@ -42,13 +30,13 @@
       "match": "Uruguay vs Cape Verde",
       "competition": "FIFA World Cup",
       "heure": "21/06 23:00",
-      "selection": "Moins de 2.5",
-      "cote": 1.67,
-      "bookmaker": "Unibet (SE)",
-      "ev_pct": 9.5,
-      "raison": "À combiner avec le match précédent"
+      "selection": "Moins de 2.5 buts",
+      "cote": 1.8,
+      "bookmaker": "1xBet",
+      "ev_pct": 6.0,
+      "raison": "À combiner avec le pronostic précédent pour un pari opportuniste, car les deux équipes ont tendance à jouer de manière défensive"
     }
   ],
-  "note_du_jour": "Journée avec quelques opportunités intéressantes, notamment dans la Coupe du Monde",
+  "note_du_jour": "Journée avec quelques opportunités intéressantes, mais il faut rester prudent et sélectif",
   "confiance": "Moyen"
 }
