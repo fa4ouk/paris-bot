@@ -13,16 +13,40 @@
       "raison": "Spain est favori, mais Saudi Arabia peut résister"
     },
     {
+      "type": "VALEUR",
+      "style": "Simple",
+      "match": "Jordan vs Algeria",
+      "competition": "FIFA World Cup",
+      "heure": "23/06 04:00",
+      "selection": "Victoire Algeria",
+      "cote": 1.6,
+      "bookmaker": "Betsson",
+      "ev_pct": 12.5,
+      "raison": "Algerie a montré une meilleure forme récente et a une équipe plus équilibrée"
+    },
+    {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
-      "match": "New Zealand vs Egypt",
+      "match": "France vs Iraq",
       "competition": "FIFA World Cup",
-      "heure": "22/06 02:00",
-      "selection": "Victoire Egypt",
-      "cote": 1.65,
-      "bookmaker": "Coolbet",
-      "ev_pct": 8.0,
-      "raison": "À combiner avec le pronostic suivant pour un pari opportuniste"
+      "heure": "22/06 22:00",
+      "selection": "Handicap France -2.5",
+      "cote": 1.72,
+      "bookmaker": "GTbets",
+      "ev_pct": 8.5,
+      "raison": "À combiner avec le match Norway vs Senegal, sélection 'Victoire Norway' pour un combiné logique"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Norway vs Senegal",
+      "competition": "FIFA World Cup",
+      "heure": "23/06 01:00",
+      "selection": "Victoire Norway",
+      "cote": 2.38,
+      "bookmaker": "Matchbook",
+      "ev_pct": 6.2,
+      "raison": "À combiner avec le match France vs Iraq, sélection 'Handicap France -2.5' pour un combiné logique"
     }
   ]
 }
