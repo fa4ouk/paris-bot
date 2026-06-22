@@ -15,30 +15,6 @@
     {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
-      "match": "Uruguay vs Cape Verde",
-      "competition": "FIFA World Cup",
-      "heure": "21/06 23:00",
-      "selection": "Moins de 2.5",
-      "cote": 1.67,
-      "bookmaker": "Unibet (SE)",
-      "ev_pct": 9.5,
-      "raison": "À combiner avec le match précédent"
-    },
-    {
-      "type": "VALEUR",
-      "style": "Simple",
-      "match": "Uruguay vs Cape Verde",
-      "competition": "FIFA World Cup",
-      "heure": "21/06 23:00",
-      "selection": "Victoire Uruguay",
-      "cote": 1.45,
-      "bookmaker": "Coolbet",
-      "ev_pct": 10.0,
-      "raison": "Uruguay a une équipe plus expérimentée et mieux préparée que Cape Verde, ce qui justifie une cote inférieure à 1.50"
-    },
-    {
-      "type": "OPPORTUNISTE",
-      "style": "Combiné",
       "match": "New Zealand vs Egypt",
       "competition": "FIFA World Cup",
       "heure": "22/06 02:00",
@@ -47,18 +23,6 @@
       "bookmaker": "Coolbet",
       "ev_pct": 8.0,
       "raison": "À combiner avec le pronostic suivant pour un pari opportuniste"
-    },
-    {
-      "type": "OPPORTUNISTE",
-      "style": "Combiné",
-      "match": "Uruguay vs Cape Verde",
-      "competition": "FIFA World Cup",
-      "heure": "21/06 23:00",
-      "selection": "Moins de 2.5 buts",
-      "cote": 1.8,
-      "bookmaker": "1xBet",
-      "ev_pct": 6.0,
-      "raison": "À combiner avec le pronostic précédent pour un pari opportuniste, car les deux équipes ont tendance à jouer de manière défensive"
     }
   ]
 }
