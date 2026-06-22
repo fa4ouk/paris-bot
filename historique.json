@@ -1,6 +1,51 @@
 {
   "paris": [
     {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Uruguay vs Cape Verde",
+      "competition": "FIFA World Cup",
+      "heure": "21/06 23:00",
+      "selection": "Moins de 2.5 buts",
+      "cote": 1.8,
+      "bookmaker": "1xBet",
+      "ev_pct": 6.0,
+      "raison": "À combiner avec le pronostic précédent pour un pari opportuniste, car les deux équipes ont tendance à jouer de manière défensive",
+      "resultat": "perdu",
+      "date_resultat": "2026-06-22T02:00:17.304261+01:00",
+      "verifie_auto": true
+    },
+    {
+      "type": "VALEUR",
+      "style": "Simple",
+      "match": "Uruguay vs Cape Verde",
+      "competition": "FIFA World Cup",
+      "heure": "21/06 23:00",
+      "selection": "Victoire Uruguay",
+      "cote": 1.45,
+      "bookmaker": "Coolbet",
+      "ev_pct": 10.0,
+      "raison": "Uruguay a une équipe plus expérimentée et mieux préparée que Cape Verde, ce qui justifie une cote inférieure à 1.50",
+      "resultat": "perdu",
+      "date_resultat": "2026-06-22T02:00:17.304235+01:00",
+      "verifie_auto": true
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Uruguay vs Cape Verde",
+      "competition": "FIFA World Cup",
+      "heure": "21/06 23:00",
+      "selection": "Moins de 2.5",
+      "cote": 1.67,
+      "bookmaker": "Unibet (SE)",
+      "ev_pct": 9.5,
+      "raison": "À combiner avec le match précédent",
+      "resultat": "perdu",
+      "date_resultat": "2026-06-22T02:00:17.304205+01:00",
+      "verifie_auto": true
+    },
+    {
       "type": "VALEUR",
       "style": "Simple",
       "match": "Belgium vs Iran",
@@ -32,11 +77,31 @@
     }
   ],
   "stats": {
-    "total": 2,
+    "total": 5,
     "gagnes": 0,
-    "perdus": 2,
+    "perdus": 5,
     "taux": 0,
-    "derniere_maj": "2026-06-21T23:30:19.484733+01:00"
+    "derniere_maj": "2026-06-22T02:00:18.019506+01:00"
   },
-  "strategie": {}
+  "strategie": {
+    "alertes": [
+      {
+        "type": "VALEUR",
+        "pertes_consecutives": 2,
+        "action": "etre_plus_selectif"
+      },
+      {
+        "type": "OPPORTUNISTE",
+        "pertes_consecutives": 3,
+        "action": "eviter"
+      }
+    ],
+    "marches_faibles": [
+      {
+        "marche": "over_under",
+        "taux": 0
+      }
+    ],
+    "derniere_analyse": "2026-06-22T02:00:18.019547+01:00"
+  }
 }
