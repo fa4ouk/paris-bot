@@ -1,6 +1,36 @@
 {
   "paris": [
     {
+      "type": "ULTRA SAFE",
+      "style": "Simple",
+      "match": "Tampa Bay Rays vs Kansas City Royals",
+      "competition": "MLB",
+      "heure": "22/06 23:41",
+      "selection": "Victoire Tampa Bay Rays",
+      "cote": 1.59,
+      "bookmaker": "Matchbook",
+      "ev_pct": 4.8,
+      "raison": "Tampa Bay Rays a une meilleure équipe et est en forme récente",
+      "resultat": "gagné",
+      "date_resultat": "2026-06-22T23:30:15.519737+01:00",
+      "verifie_auto": true
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "New Zealand vs Egypt",
+      "competition": "FIFA World Cup",
+      "heure": "22/06 02:00",
+      "selection": "Victoire Egypt",
+      "cote": 1.65,
+      "bookmaker": "Coolbet",
+      "ev_pct": 8.0,
+      "raison": "À combiner avec le pronostic suivant pour un pari opportuniste",
+      "resultat": "gagné",
+      "date_resultat": "2026-06-22T23:30:15.327215+01:00",
+      "verifie_auto": true
+    },
+    {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
       "match": "Uruguay vs Cape Verde",
@@ -77,11 +107,11 @@
     }
   ],
   "stats": {
-    "total": 5,
-    "gagnes": 0,
+    "total": 7,
+    "gagnes": 2,
     "perdus": 5,
-    "taux": 0,
-    "derniere_maj": "2026-06-22T02:00:18.019506+01:00"
+    "taux": 29,
+    "derniere_maj": "2026-06-22T23:30:16.188106+01:00"
   },
   "strategie": {
     "alertes": [
@@ -89,11 +119,6 @@
         "type": "VALEUR",
         "pertes_consecutives": 2,
         "action": "etre_plus_selectif"
-      },
-      {
-        "type": "OPPORTUNISTE",
-        "pertes_consecutives": 3,
-        "action": "eviter"
       }
     ],
     "marches_faibles": [
@@ -102,6 +127,6 @@
         "taux": 0
       }
     ],
-    "derniere_analyse": "2026-06-22T02:00:18.019547+01:00"
+    "derniere_analyse": "2026-06-22T23:30:16.188142+01:00"
   }
 }
