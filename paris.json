@@ -3,40 +3,40 @@
     {
       "type": "VALEUR",
       "style": "Simple",
-      "match": "Uruguay vs Cape Verde",
+      "match": "Argentina vs Austria",
       "competition": "FIFA World Cup",
-      "heure": "21/06 23:00",
-      "selection": "Victoire Uruguay",
-      "cote": 1.45,
-      "bookmaker": "Coolbet",
+      "heure": "22/06 18:00",
+      "selection": "Victoire Argentina",
+      "cote": 1.53,
+      "bookmaker": "GTbets",
       "ev_pct": 10.0,
-      "raison": "Uruguay a une équipe plus expérimentée et mieux préparée que Cape Verde, ce qui justifie une cote inférieure à 1.50"
+      "raison": "L'Argentine a une équipe solide et bien rodée, avec des joueurs de haut niveau. L'Autriche, bien que courageuse, devrait avoir du mal à suivre le rythme des Sud-Américains."
     },
     {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
-      "match": "New Zealand vs Egypt",
+      "match": "France vs Iraq",
       "competition": "FIFA World Cup",
-      "heure": "22/06 02:00",
-      "selection": "Victoire Egypt",
-      "cote": 1.65,
-      "bookmaker": "Coolbet",
+      "heure": "22/06 22:00",
+      "selection": "Handicap France -2.5",
+      "cote": 1.73,
+      "bookmaker": "BetOnline.ag",
       "ev_pct": 8.0,
-      "raison": "À combiner avec le pronostic suivant pour un pari opportuniste"
+      "raison": "La France a une attaque très puissante et devrait marquer plusieurs buts contre l'Irak. À combiner avec le pronostic suivant."
     },
     {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
-      "match": "Uruguay vs Cape Verde",
-      "competition": "FIFA World Cup",
-      "heure": "21/06 23:00",
-      "selection": "Moins de 2.5 buts",
-      "cote": 1.8,
+      "match": "Tampa Bay Rays vs Kansas City Royals",
+      "competition": "MLB",
+      "heure": "22/06 23:41",
+      "selection": "Victoire Tampa Bay Rays",
+      "cote": 1.58,
       "bookmaker": "1xBet",
       "ev_pct": 6.0,
-      "raison": "À combiner avec le pronostic précédent pour un pari opportuniste, car les deux équipes ont tendance à jouer de manière défensive"
+      "raison": "Les Rays ont une équipe équilibrée et devraient gagner contre les Royals. À combiner avec le pronostic précédent."
     }
   ],
-  "note_du_jour": "Journée avec quelques opportunités intéressantes, mais il faut rester prudent et sélectif",
+  "note_du_jour": "Journée mitigée avec quelques opportunités intéressantes, notamment dans la Coupe du Monde. Les cotes sont généralement équilibrées, mais il y a quelques valeurs à exploiter.",
   "confiance": "Moyen"
 }
