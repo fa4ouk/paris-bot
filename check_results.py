@@ -87,17 +87,41 @@ def get_scores(sport_key, days_from=3):
     return []
 
 
+def format_heure_api(commence_time: str) -> str:
+    """Reformate commence_time (ISO, UTC) au même format que le champ 'heure'
+    des pronostics ('DD/MM HH:MM' en heure tunisienne), pour pouvoir comparer
+    si un score retourné par l'API correspond bien à LA bonne occurrence du
+    match — indispensable pour des sports comme le MLB où les mêmes équipes
+    se rejouent plusieurs jours d'affilée (séries de 3-4 matchs)."""
+    try:
+        dt = datetime.fromisoformat(commence_time.replace("Z", "+00:00"))
+        dt_local = dt.astimezone(TZ_TUNIS)
+        return dt_local.strftime("%d/%m %H:%M")
+    except Exception:
+        return ""
+
+
 def check_result(pari, matches):
     """Vérifie si un pronostic est gagné ou perdu à partir des scores The Odds API.
-    Format de match attendu : home_team, away_team, scores=[{"name":..., "score":"X"}]."""
+    Format de match attendu : home_team, away_team, scores=[{"name":..., "score":"X"}].
+    IMPORTANT : on exige une correspondance de date en plus des noms d'équipes —
+    sans ça, un autre match entre les deux mêmes équipes (fréquent en MLB) peut
+    être confondu avec celui du pronostic et donner un résultat faux."""
     match_name = pari.get("match", "")
     selection = pari.get("selection", "")
+    pari_heure = pari.get("heure", "")
 
     for m in matches:
         home = m.get("home_team", "")
         away = m.get("away_team", "")
 
         if not (home.lower() in match_name.lower() or away.lower() in match_name.lower()):
+            continue
+
+        # Vérifie que c'est bien LA bonne occurrence du match (même date/heure),
+        # pas une autre rencontre entre les mêmes équipes un autre jour
+        match_heure = format_heure_api(m.get("commence_time", ""))
+        if pari_heure and match_heure and pari_heure != match_heure:
             continue
 
         scores = m.get("scores")
@@ -311,6 +335,49 @@ def build_bilan_periodique(historique, periode="jour"):
 
 
 # ─────────────────────────────────────────
+# REGROUPEMENT PAR SESSION (matin/soir)
+# ─────────────────────────────────────────
+
+def grouper_par_session(pronostics_resolus, pronostics_en_attente):
+    """Regroupe les pronostics (résolus + en attente) par session_id
+    (ex: '2026-06-22_matin'), pour pouvoir attendre que toute une session
+    soit résolue avant d'envoyer un récap groupé sur Telegram."""
+    sessions = {}
+    for p in pronostics_resolus:
+        sid = p.get("session_id", "inconnue")
+        sessions.setdefault(sid, {"resolus": [], "en_attente": []})
+        sessions[sid]["resolus"].append(p)
+    for p in pronostics_en_attente:
+        sid = p.get("session_id", "inconnue")
+        sessions.setdefault(sid, {"resolus": [], "en_attente": []})
+        sessions[sid]["en_attente"].append(p)
+    return sessions
+
+
+def session_prete_pour_recap(session_data, delai_max_heures=24):
+    """Une session est prête pour un récap groupé si tous ses pronostics
+    sont résolus, OU si le délai de sécurité (24h par défaut) est dépassé
+    depuis la génération — pour ne jamais bloquer indéfiniment un récap
+    à cause d'un seul pronostic non vérifiable (sport non couvert, bug API...)."""
+    if not session_data["en_attente"]:
+        return True, "complet"
+
+    maintenant = datetime.now(TZ_TUNIS)
+    for p in session_data["en_attente"]:
+        date_generation = p.get("date_generation")
+        if not date_generation:
+            continue
+        try:
+            dt = datetime.fromisoformat(date_generation)
+            if (maintenant - dt) > timedelta(hours=delai_max_heures):
+                return True, "delai_depasse"
+        except Exception:
+            continue
+
+    return False, "en_cours"
+
+
+# ─────────────────────────────────────────
 # MAIN
 # ─────────────────────────────────────────
 
@@ -410,48 +477,95 @@ def main():
     attente["paris"] = toujours_en_attente
     github_save("pronostics_en_attente.json", attente, attente_sha, f"⏳ {len(toujours_en_attente)} pronostics en attente")
 
+    patterns = {}
+
     if nouveaux_resultats == 0:
         print("\n⏳ Aucun nouveau résultat disponible pour l'instant.")
-        return
-
-    # Recalcule les stats globales
-    total = len(historique["paris"])
-    gagnes = len([p for p in historique["paris"] if p.get("resultat") == "gagné"])
-    historique["stats"] = {
-        "total": total,
-        "gagnes": gagnes,
-        "perdus": total - gagnes,
-        "taux": round(gagnes / total * 100) if total else 0,
-        "derniere_maj": datetime.now(TZ_TUNIS).isoformat(),
-    }
-
-    # Analyse les patterns
-    patterns = analyze_patterns(historique)
-    historique["strategie"] = patterns
-
-    if patterns.get("alertes"):
-        print("\n⚠️  AJUSTEMENT STRATÉGIE :")
-        for alerte in patterns["alertes"]:
-            action = "plus sélectif" if alerte["action"] == "etre_plus_selectif" else "ÉVITÉ"
-            print(f"   • {alerte['type']} : {alerte['pertes_consecutives']} échecs consécutifs → {action}")
-
-    if patterns.get("marches_faibles"):
-        print("\n📉 MARCHÉS FAIBLES :")
-        for m in patterns["marches_faibles"]:
-            print(f"   • {m['marche']} : seulement {m['taux']}% de réussite")
-
-    # Sauvegarde
-    if github_save("historique.json", historique, histo_sha, f"🔍 {nouveaux_resultats} résultats vérifiés auto"):
-        print(f"\n✅ Historique mis à jour ({nouveaux_resultats} nouveaux résultats)")
-        print(f"📊 Taux global : {historique['stats']['taux']}%")
+        # IMPORTANT : on ne s'arrête PAS ici — même sans nouveau résultat ce
+        # run-ci, une session déjà partiellement résolue peut avoir dépassé
+        # le délai de sécurité de 24h et doit quand même être annoncée.
     else:
-        print("\n❌ Erreur lors de la sauvegarde")
-        return
+        # Recalcule les stats globales
+        total = len(historique["paris"])
+        gagnes = len([p for p in historique["paris"] if p.get("resultat") == "gagné"])
+        historique["stats"] = {
+            "total": total,
+            "gagnes": gagnes,
+            "perdus": total - gagnes,
+            "taux": round(gagnes / total * 100) if total else 0,
+            "derniere_maj": datetime.now(TZ_TUNIS).isoformat(),
+        }
 
-    # Envoi récap immédiat
-    nouveaux = historique["paris"][:nouveaux_resultats]
-    recap = build_recap(nouveaux, historique["stats"], patterns)
-    send_telegram(recap)
+        # Analyse les patterns
+        patterns = analyze_patterns(historique)
+        historique["strategie"] = patterns
+
+        if patterns.get("alertes"):
+            print("\n⚠️  AJUSTEMENT STRATÉGIE :")
+            for alerte in patterns["alertes"]:
+                action = "plus sélectif" if alerte["action"] == "etre_plus_selectif" else "ÉVITÉ"
+                print(f"   • {alerte['type']} : {alerte['pertes_consecutives']} échecs consécutifs → {action}")
+
+        if patterns.get("marches_faibles"):
+            print("\n📉 MARCHÉS FAIBLES :")
+            for m in patterns["marches_faibles"]:
+                print(f"   • {m['marche']} : seulement {m['taux']}% de réussite")
+
+        # Sauvegarde
+        if github_save("historique.json", historique, histo_sha, f"🔍 {nouveaux_resultats} résultats vérifiés auto"):
+            print(f"\n✅ Historique mis à jour ({nouveaux_resultats} nouveaux résultats)")
+            print(f"📊 Taux global : {historique['stats']['taux']}%")
+        else:
+            print("\n❌ Erreur lors de la sauvegarde")
+            return
+
+    # Envoi récap par session (matin/soir), pas au fil de l'eau :
+    # on attend que TOUS les pronostics d'une même session soient résolus,
+    # sauf si le délai de sécurité de 24h est dépassé pour l'un d'eux.
+    # Cette vérification a lieu À CHAQUE run, qu'il y ait eu un nouveau
+    # résultat ou non, pour que le délai de 24h puisse toujours se déclencher.
+    sessions = grouper_par_session(historique["paris"], attente["paris"])
+
+    # Marqueur pour ne pas renvoyer deux fois le récap d'une session déjà annoncée
+    sessions_envoyees = historique.get("sessions_envoyees")
+    if sessions_envoyees is None:
+        # Première exécution depuis la mise en place du regroupement par
+        # session : tout pronostic legacy sans session_id ("inconnue") a déjà
+        # été annoncé individuellement par le passé, donc on ne le réannonce pas.
+        sessions_envoyees = ["inconnue"]
+
+    au_moins_un_envoi = False
+    for session_id, session_data in sessions.items():
+        if session_id in sessions_envoyees:
+            continue  # déjà annoncée précédemment, on ne répète pas
+
+        pret, raison = session_prete_pour_recap(session_data)
+        if not pret:
+            continue
+
+        if not session_data["resolus"]:
+            continue  # rien à annoncer si aucun résultat connu pour cette session
+
+        gagnes_session = len([p for p in session_data["resolus"] if p.get("resultat") == "gagné"])
+        total_session = len(session_data["resolus"])
+
+        recap = build_recap(session_data["resolus"], historique.get("stats", {}), patterns)
+        if raison == "delai_depasse" and session_data["en_attente"]:
+            recap += f"\n\n⏱️ Note : {len(session_data['en_attente'])} pronostic(s) de cette session n'a/ont pas pu être vérifié(s) après 24h (résultat non disponible)."
+
+        send_telegram(recap)
+        sessions_envoyees.append(session_id)
+        au_moins_un_envoi = True
+        print(f"   📤 Récap envoyé pour la session {session_id} ({gagnes_session}/{total_session} gagnés, {raison})")
+
+    historique["sessions_envoyees"] = sessions_envoyees
+
+    if nouveaux_resultats == 0 and au_moins_un_envoi:
+        # Cas particulier : pas de nouveau résultat ce run-ci, mais une
+        # session a tout de même été libérée par le délai de 24h. Il faut
+        # sauvegarder sessions_envoyees maintenant, sinon le même récap
+        # serait renvoyé à chaque run suivant.
+        github_save("historique.json", historique, histo_sha, "📤 Session libérée par délai de sécurité (24h)")
 
     # Bilan quotidien (envoyé uniquement lors du dernier check du jour, vers 02h)
     heure_actuelle = datetime.now(TZ_TUNIS).hour
