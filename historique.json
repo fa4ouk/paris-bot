@@ -1,6 +1,36 @@
 {
   "paris": [
     {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Norway vs Senegal",
+      "competition": "FIFA World Cup",
+      "heure": "23/06 01:00",
+      "selection": "Victoire Norway",
+      "cote": 2.38,
+      "bookmaker": "Matchbook",
+      "ev_pct": 6.2,
+      "raison": "À combiner avec le match France vs Iraq, sélection 'Handicap France -2.5' pour un combiné logique",
+      "resultat": "gagné",
+      "date_resultat": "2026-06-23T23:30:17.017209+01:00",
+      "verifie_auto": true
+    },
+    {
+      "type": "VALEUR",
+      "style": "Simple",
+      "match": "Jordan vs Algeria",
+      "competition": "FIFA World Cup",
+      "heure": "23/06 04:00",
+      "selection": "Victoire Algeria",
+      "cote": 1.6,
+      "bookmaker": "Betsson",
+      "ev_pct": 12.5,
+      "raison": "Algerie a montré une meilleure forme récente et a une équipe plus équilibrée",
+      "resultat": "gagné",
+      "date_resultat": "2026-06-23T23:30:17.017159+01:00",
+      "verifie_auto": true
+    },
+    {
       "type": "ULTRA SAFE",
       "style": "Simple",
       "match": "Tampa Bay Rays vs Kansas City Royals",
@@ -107,26 +137,20 @@
     }
   ],
   "stats": {
-    "total": 7,
-    "gagnes": 2,
+    "total": 9,
+    "gagnes": 4,
     "perdus": 5,
-    "taux": 29,
-    "derniere_maj": "2026-06-22T23:30:16.188106+01:00"
+    "taux": 44,
+    "derniere_maj": "2026-06-23T23:30:17.941072+01:00"
   },
   "strategie": {
-    "alertes": [
-      {
-        "type": "VALEUR",
-        "pertes_consecutives": 2,
-        "action": "etre_plus_selectif"
-      }
-    ],
+    "alertes": [],
     "marches_faibles": [
       {
         "marche": "over_under",
         "taux": 0
       }
     ],
-    "derniere_analyse": "2026-06-22T23:30:16.188142+01:00"
+    "derniere_analyse": "2026-06-23T23:30:17.941116+01:00"
   }
 }
