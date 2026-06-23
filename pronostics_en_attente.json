@@ -13,18 +13,6 @@
       "raison": "Spain est favori, mais Saudi Arabia peut résister"
     },
     {
-      "type": "VALEUR",
-      "style": "Simple",
-      "match": "Jordan vs Algeria",
-      "competition": "FIFA World Cup",
-      "heure": "23/06 04:00",
-      "selection": "Victoire Algeria",
-      "cote": 1.6,
-      "bookmaker": "Betsson",
-      "ev_pct": 12.5,
-      "raison": "Algerie a montré une meilleure forme récente et a une équipe plus équilibrée"
-    },
-    {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
       "match": "France vs Iraq",
@@ -37,16 +25,60 @@
       "raison": "À combiner avec le match Norway vs Senegal, sélection 'Victoire Norway' pour un combiné logique"
     },
     {
+      "type": "ULTRA SAFE",
+      "style": "Simple",
+      "match": "England vs Ghana",
+      "competition": "FIFA World Cup",
+      "heure": "23/06 21:00",
+      "selection": "Handicap England -1.5",
+      "cote": 1.58,
+      "bookmaker": "1xBet",
+      "ev_pct": 12.5,
+      "raison": "Angleterre devrait dominer le match",
+      "session_id": "2026-06-23_soir",
+      "date_generation": "2026-06-23T20:00:41.843134"
+    },
+    {
+      "type": "VALEUR",
+      "style": "Simple",
+      "match": "Panama vs Croatia",
+      "competition": "FIFA World Cup",
+      "heure": "24/06 00:00",
+      "selection": "Victoire Croatia",
+      "cote": 1.52,
+      "bookmaker": "GTbets",
+      "ev_pct": 8.2,
+      "raison": "La Croatie est nettement favorite",
+      "session_id": "2026-06-23_soir",
+      "date_generation": "2026-06-23T20:00:41.843134"
+    },
+    {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
-      "match": "Norway vs Senegal",
+      "match": "Colombia vs DR Congo",
       "competition": "FIFA World Cup",
-      "heure": "23/06 01:00",
-      "selection": "Victoire Norway",
-      "cote": 2.38,
-      "bookmaker": "Matchbook",
-      "ev_pct": 6.2,
-      "raison": "À combiner avec le match France vs Iraq, sélection 'Handicap France -2.5' pour un combiné logique"
+      "heure": "24/06 03:00",
+      "selection": "Victoire Colombia",
+      "cote": 1.58,
+      "bookmaker": "1xBet",
+      "ev_pct": 10.1,
+      "raison": "À combiner avec le match suivant",
+      "session_id": "2026-06-23_soir",
+      "date_generation": "2026-06-23T20:00:41.843134"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Las Vegas Aces vs New York Liberty",
+      "competition": "WNBA",
+      "heure": "24/06 03:05",
+      "selection": "Victoire Las Vegas Aces",
+      "cote": 1.8,
+      "bookmaker": "888sport",
+      "ev_pct": 9.5,
+      "raison": "À combiner avec le match précédent",
+      "session_id": "2026-06-23_soir",
+      "date_generation": "2026-06-23T20:00:41.843134"
     }
   ]
 }
