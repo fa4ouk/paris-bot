@@ -1,6 +1,23 @@
 {
   "paris": [
     {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Colombia vs DR Congo",
+      "competition": "FIFA World Cup",
+      "heure": "24/06 03:00",
+      "selection": "Victoire Colombia",
+      "cote": 1.58,
+      "bookmaker": "1xBet",
+      "ev_pct": 10.1,
+      "raison": "À combiner avec le match suivant",
+      "session_id": "2026-06-23_soir",
+      "date_generation": "2026-06-23T20:00:41.843134",
+      "resultat": "gagné",
+      "date_resultat": "2026-06-24T23:30:21.090880+01:00",
+      "verifie_auto": true
+    },
+    {
       "type": "VALEUR",
       "style": "Simple",
       "match": "Panama vs Croatia",
@@ -154,11 +171,11 @@
     }
   ],
   "stats": {
-    "total": 10,
-    "gagnes": 5,
+    "total": 11,
+    "gagnes": 6,
     "perdus": 5,
-    "taux": 50,
-    "derniere_maj": "2026-06-24T02:00:17.807810+01:00"
+    "taux": 55,
+    "derniere_maj": "2026-06-24T23:30:22.031936+01:00"
   },
   "strategie": {
     "alertes": [],
@@ -168,6 +185,6 @@
         "taux": 0
       }
     ],
-    "derniere_analyse": "2026-06-24T02:00:17.807857+01:00"
+    "derniere_analyse": "2026-06-24T23:30:22.031976+01:00"
   }
 }
