@@ -485,9 +485,13 @@ def main():
         # run-ci, une session déjà partiellement résolue peut avoir dépassé
         # le délai de sécurité de 24h et doit quand même être annoncée.
     else:
-        # Recalcule les stats globales
-        total = len(historique["paris"])
-        gagnes = len([p for p in historique["paris"] if p.get("resultat") == "gagné"])
+        # Recalcule les stats globales — exclut les "non_resolu" (purgés après
+        # le délai de 24h sans jamais avoir été vérifiés) du calcul du taux,
+        # car ce ne sont ni des gains ni des pertes réelles, juste des échecs
+        # de vérification technique.
+        verifies = [p for p in historique["paris"] if p.get("resultat") in ("gagné", "perdu")]
+        total = len(verifies)
+        gagnes = len([p for p in verifies if p.get("resultat") == "gagné"])
         historique["stats"] = {
             "total": total,
             "gagnes": gagnes,
@@ -535,6 +539,7 @@ def main():
         sessions_envoyees = ["inconnue"]
 
     au_moins_un_envoi = False
+    purge_attente = False
     for session_id, session_data in sessions.items():
         if session_id in sessions_envoyees:
             continue  # déjà annoncée précédemment, on ne répète pas
@@ -542,6 +547,22 @@ def main():
         pret, raison = session_prete_pour_recap(session_data)
         if not pret:
             continue
+
+        # Si le délai de 24h est dépassé, on purge les pronostics jamais
+        # résolus de la file d'attente (sinon ils y restent pour toujours,
+        # re-tentés à chaque check sans jamais aboutir) en les archivant
+        # avec un statut explicite plutôt que de les laisser disparaître.
+        if raison == "delai_depasse" and session_data["en_attente"]:
+            for p in session_data["en_attente"]:
+                historique["paris"].insert(0, {
+                    **p,
+                    "resultat": "non_resolu",
+                    "date_resultat": datetime.now(TZ_TUNIS).isoformat(),
+                    "verifie_auto": True,
+                })
+                if p in attente["paris"]:
+                    attente["paris"].remove(p)
+            purge_attente = True
 
         if not session_data["resolus"]:
             continue  # rien à annoncer si aucun résultat connu pour cette session
@@ -560,7 +581,10 @@ def main():
 
     historique["sessions_envoyees"] = sessions_envoyees
 
-    if nouveaux_resultats == 0 and au_moins_un_envoi:
+    if purge_attente:
+        github_save("pronostics_en_attente.json", attente, attente_sha, "🧹 Purge des pronostics non résolus après 24h")
+
+    if nouveaux_resultats == 0 and (au_moins_un_envoi or purge_attente):
         # Cas particulier : pas de nouveau résultat ce run-ci, mais une
         # session a tout de même été libérée par le délai de 24h. Il faut
         # sauvegarder sessions_envoyees maintenant, sinon le même récap
