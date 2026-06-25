@@ -1,6 +1,23 @@
 {
   "paris": [
     {
+      "type": "ULTRA SAFE",
+      "style": "Simple",
+      "match": "Ecuador vs Germany",
+      "competition": "FIFA World Cup",
+      "heure": "25/06 21:00",
+      "selection": "Victoire Germany",
+      "cote": 1.81,
+      "bookmaker": "Matchbook",
+      "ev_pct": 10.0,
+      "raison": "Allemagne a une équipe plus solide et une meilleure préparation pour la Coupe du Monde",
+      "session_id": "2026-06-25_soir",
+      "date_generation": "2026-06-25T20:00:30.381510",
+      "resultat": "perdu",
+      "date_resultat": "2026-06-25T23:30:17.384849+01:00",
+      "verifie_auto": true
+    },
+    {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
       "match": "Colombia vs DR Congo",
@@ -171,11 +188,11 @@
     }
   ],
   "stats": {
-    "total": 11,
+    "total": 12,
     "gagnes": 6,
-    "perdus": 5,
-    "taux": 55,
-    "derniere_maj": "2026-06-24T23:30:22.031936+01:00"
+    "perdus": 6,
+    "taux": 50,
+    "derniere_maj": "2026-06-25T23:30:18.159071+01:00"
   },
   "strategie": {
     "alertes": [],
@@ -185,6 +202,6 @@
         "taux": 0
       }
     ],
-    "derniere_analyse": "2026-06-24T23:30:22.031976+01:00"
+    "derniere_analyse": "2026-06-25T23:30:18.159115+01:00"
   }
 }
