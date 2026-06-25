@@ -107,6 +107,48 @@
       "raison": "South Korea a montré une attaque puissante et devrait gagner facilement",
       "session_id": "2026-06-24_soir",
       "date_generation": "2026-06-24T20:00:31.647854"
+    },
+    {
+      "type": "VALEUR",
+      "style": "Simple",
+      "match": "Tunisia vs Netherlands",
+      "competition": "FIFA World Cup",
+      "heure": "26/06 00:00",
+      "selection": "Plus de 2.5",
+      "cote": 1.42,
+      "bookmaker": "Betsson",
+      "ev_pct": 8.0,
+      "raison": "Les deux équipes ont montré une tendance à jouer offensivement, augmentant les chances de buts",
+      "session_id": "2026-06-25_soir",
+      "date_generation": "2026-06-25T20:00:30.381510"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Japan vs Sweden",
+      "competition": "FIFA World Cup",
+      "heure": "26/06 00:00",
+      "selection": "Moins de 2.5",
+      "cote": 1.94,
+      "bookmaker": "Matchbook",
+      "ev_pct": 6.0,
+      "raison": "À combiner avec le match suivant pour un pari opportuniste",
+      "session_id": "2026-06-25_soir",
+      "date_generation": "2026-06-25T20:00:30.381510"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Turkey vs USA",
+      "competition": "FIFA World Cup",
+      "heure": "26/06 03:00",
+      "selection": "Moins de 2.5",
+      "cote": 2.42,
+      "bookmaker": "1xBet",
+      "ev_pct": 6.0,
+      "raison": "À combiner avec le match précédent pour un pari opportuniste, en visant des matchs avec une tendance défensive",
+      "session_id": "2026-06-25_soir",
+      "date_generation": "2026-06-25T20:00:30.381510"
     }
   ]
 }
