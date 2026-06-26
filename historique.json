@@ -1,6 +1,40 @@
 {
   "paris": [
     {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Japan vs Sweden",
+      "competition": "FIFA World Cup",
+      "heure": "26/06 00:00",
+      "selection": "Moins de 2.5",
+      "cote": 1.94,
+      "bookmaker": "Matchbook",
+      "ev_pct": 6.0,
+      "raison": "À combiner avec le match suivant pour un pari opportuniste",
+      "session_id": "2026-06-25_soir",
+      "date_generation": "2026-06-25T20:00:30.381510",
+      "resultat": "gagné",
+      "date_resultat": "2026-06-26T02:00:21.772371+01:00",
+      "verifie_auto": true
+    },
+    {
+      "type": "VALEUR",
+      "style": "Simple",
+      "match": "Tunisia vs Netherlands",
+      "competition": "FIFA World Cup",
+      "heure": "26/06 00:00",
+      "selection": "Plus de 2.5",
+      "cote": 1.42,
+      "bookmaker": "Betsson",
+      "ev_pct": 8.0,
+      "raison": "Les deux équipes ont montré une tendance à jouer offensivement, augmentant les chances de buts",
+      "session_id": "2026-06-25_soir",
+      "date_generation": "2026-06-25T20:00:30.381510",
+      "resultat": "gagné",
+      "date_resultat": "2026-06-26T02:00:21.772344+01:00",
+      "verifie_auto": true
+    },
+    {
       "type": "ULTRA SAFE",
       "style": "Simple",
       "match": "Ecuador vs Germany",
@@ -188,20 +222,15 @@
     }
   ],
   "stats": {
-    "total": 12,
-    "gagnes": 6,
+    "total": 14,
+    "gagnes": 8,
     "perdus": 6,
-    "taux": 50,
-    "derniere_maj": "2026-06-25T23:30:18.159071+01:00"
+    "taux": 57,
+    "derniere_maj": "2026-06-26T02:00:22.626242+01:00"
   },
   "strategie": {
     "alertes": [],
-    "marches_faibles": [
-      {
-        "marche": "over_under",
-        "taux": 0
-      }
-    ],
-    "derniere_analyse": "2026-06-25T23:30:18.159115+01:00"
+    "marches_faibles": [],
+    "derniere_analyse": "2026-06-26T02:00:22.626299+01:00"
   }
 }
