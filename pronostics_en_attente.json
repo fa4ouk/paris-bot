@@ -109,18 +109,32 @@
       "date_generation": "2026-06-24T20:00:31.647854"
     },
     {
-      "type": "OPPORTUNISTE",
-      "style": "Combiné",
-      "match": "Turkey vs USA",
+      "type": "VALEUR",
+      "style": "Simple",
+      "match": "Uruguay vs Spain",
       "competition": "FIFA World Cup",
-      "heure": "26/06 03:00",
+      "heure": "27/06 01:00",
       "selection": "Moins de 2.5",
-      "cote": 2.42,
+      "cote": 1.95,
+      "bookmaker": "Pinnacle",
+      "ev_pct": 12.5,
+      "raison": "Les deux équipes ont tendance à jouer de manière défensive, ce qui devrait limiter les buts.",
+      "session_id": "2026-06-26_soir",
+      "date_generation": "2026-06-26T20:00:26.668379"
+    },
+    {
+      "type": "ULTRA SAFE",
+      "style": "Simple",
+      "match": "New Zealand vs Belgium",
+      "competition": "FIFA World Cup",
+      "heure": "27/06 04:00",
+      "selection": "Moins de 3.5",
+      "cote": 2.13,
       "bookmaker": "1xBet",
-      "ev_pct": 6.0,
-      "raison": "À combiner avec le match précédent pour un pari opportuniste, en visant des matchs avec une tendance défensive",
-      "session_id": "2026-06-25_soir",
-      "date_generation": "2026-06-25T20:00:30.381510"
+      "ev_pct": 4.8,
+      "raison": "La Belgique a tendance à gérer les matches de manière à ne pas encaisser de buts, ce qui devrait limiter le score total.",
+      "session_id": "2026-06-26_soir",
+      "date_generation": "2026-06-26T20:00:26.668379"
     }
   ]
 }
