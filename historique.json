@@ -3,6 +3,57 @@
     {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
+      "match": "Senegal vs Iraq",
+      "competition": "FIFA World Cup",
+      "heure": "26/06 20:02",
+      "selection": "Moins de 3.0",
+      "cote": 1.76,
+      "bookmaker": "Pinnacle",
+      "ev_pct": 6.5,
+      "raison": "À combiner avec le match précédent pour un pari opportuniste.",
+      "session_id": "2026-06-26_soir",
+      "date_generation": "2026-06-26T20:00:26.668379",
+      "resultat": "perdu",
+      "date_resultat": "2026-06-26T23:30:15.433876+01:00",
+      "verifie_auto": true
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Norway vs France",
+      "competition": "FIFA World Cup",
+      "heure": "26/06 20:01",
+      "selection": "Moins de 5.75",
+      "cote": 1.98,
+      "bookmaker": "Pinnacle",
+      "ev_pct": 8.2,
+      "raison": "À combiner avec le match suivant pour un pari opportuniste.",
+      "session_id": "2026-06-26_soir",
+      "date_generation": "2026-06-26T20:00:26.668379",
+      "resultat": "gagné",
+      "date_resultat": "2026-06-26T23:30:15.433858+01:00",
+      "verifie_auto": true
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Turkey vs USA",
+      "competition": "FIFA World Cup",
+      "heure": "26/06 03:00",
+      "selection": "Moins de 2.5",
+      "cote": 2.42,
+      "bookmaker": "1xBet",
+      "ev_pct": 6.0,
+      "raison": "À combiner avec le match précédent pour un pari opportuniste, en visant des matchs avec une tendance défensive",
+      "session_id": "2026-06-25_soir",
+      "date_generation": "2026-06-25T20:00:30.381510",
+      "resultat": "perdu",
+      "date_resultat": "2026-06-26T23:30:15.433821+01:00",
+      "verifie_auto": true
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
       "match": "Japan vs Sweden",
       "competition": "FIFA World Cup",
       "heure": "26/06 00:00",
@@ -222,15 +273,20 @@
     }
   ],
   "stats": {
-    "total": 14,
-    "gagnes": 8,
-    "perdus": 6,
-    "taux": 57,
-    "derniere_maj": "2026-06-26T02:00:22.626242+01:00"
+    "total": 17,
+    "gagnes": 9,
+    "perdus": 8,
+    "taux": 53,
+    "derniere_maj": "2026-06-26T23:30:16.115081+01:00"
   },
   "strategie": {
     "alertes": [],
-    "marches_faibles": [],
-    "derniere_analyse": "2026-06-26T02:00:22.626299+01:00"
+    "marches_faibles": [
+      {
+        "marche": "over_under",
+        "taux": 38
+      }
+    ],
+    "derniere_analyse": "2026-06-26T23:30:16.115126+01:00"
   }
 }
