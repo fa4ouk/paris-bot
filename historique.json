@@ -288,5 +288,9 @@
       }
     ],
     "derniere_analyse": "2026-06-26T23:30:16.115126+01:00"
-  }
+  },
+  "sessions_envoyees": [
+    "inconnue",
+    "2026-06-25_soir"
+  ]
 }
