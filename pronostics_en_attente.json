@@ -137,34 +137,6 @@
       "date_generation": "2026-06-26T20:00:26.668379"
     },
     {
-      "type": "VALEUR",
-      "style": "Simple",
-      "match": "Croatia vs Ghana",
-      "competition": "FIFA World Cup",
-      "heure": "27/06 22:00",
-      "selection": "Moins de 2.5",
-      "cote": 1.63,
-      "bookmaker": "1xBet",
-      "ev_pct": 12.5,
-      "raison": "Les deux équipes ont tendance à jouer de manière défensive, ce qui devrait limiter les buts.",
-      "session_id": "2026-06-27_soir",
-      "date_generation": "2026-06-27T20:00:23.425079"
-    },
-    {
-      "type": "OPPORTUNISTE",
-      "style": "Combiné",
-      "match": "Panama vs England",
-      "competition": "FIFA World Cup",
-      "heure": "27/06 22:00",
-      "selection": "Moins de 3.5",
-      "cote": 1.85,
-      "bookmaker": "Matchbook",
-      "ev_pct": 8.2,
-      "raison": "À combiner avec le match suivant pour un pari opportuniste.",
-      "session_id": "2026-06-27_soir",
-      "date_generation": "2026-06-27T20:00:23.425079"
-    },
-    {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
       "match": "Colombia vs Portugal",
