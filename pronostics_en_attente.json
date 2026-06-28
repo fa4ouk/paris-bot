@@ -137,20 +137,6 @@
       "date_generation": "2026-06-26T20:00:26.668379"
     },
     {
-      "type": "OPPORTUNISTE",
-      "style": "Combiné",
-      "match": "Colombia vs Portugal",
-      "competition": "FIFA World Cup",
-      "heure": "28/06 00:30",
-      "selection": "Moins de 2.5",
-      "cote": 2.28,
-      "bookmaker": "BetOnline.ag",
-      "ev_pct": 10.1,
-      "raison": "À combiner avec le match précédent pour un pari opportuniste. Les deux matches ont des équipes qui pourraient jouer de manière défensive.",
-      "session_id": "2026-06-27_soir",
-      "date_generation": "2026-06-27T20:00:23.425079"
-    },
-    {
       "type": "ULTRA SAFE",
       "style": "Simple",
       "match": "Indiana Fever vs Los Angeles Sparks",
@@ -163,6 +149,48 @@
       "raison": "Indiana Fever a une équipe plus solide et devrait gagner ce match.",
       "session_id": "2026-06-27_soir",
       "date_generation": "2026-06-27T20:00:23.425079"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Dallas Wings vs Minnesota Lynx",
+      "competition": "WNBA",
+      "heure": "28/06 19:07",
+      "selection": "Handicap Dallas Wings 8.5",
+      "cote": 1.93,
+      "bookmaker": "LeoVegas (SE)",
+      "ev_pct": 8.0,
+      "raison": "À combiner avec le match suivant pour un pari opportuniste.",
+      "session_id": "2026-06-28_soir",
+      "date_generation": "2026-06-28T20:00:21.981702"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Washington Mystics vs Portland Fire",
+      "competition": "WNBA",
+      "heure": "28/06 20:03",
+      "selection": "Handicap Washington Mystics 2.5",
+      "cote": 1.88,
+      "bookmaker": "GTbets",
+      "ev_pct": 8.0,
+      "raison": "À combiner avec le match précédent pour un pari opportuniste.",
+      "session_id": "2026-06-28_soir",
+      "date_generation": "2026-06-28T20:00:21.981702"
+    },
+    {
+      "type": "ULTRA SAFE",
+      "style": "Simple",
+      "match": "Pittsburgh Pirates vs Cincinnati Reds",
+      "competition": "MLB",
+      "heure": "28/06 18:36",
+      "selection": "Moins de 10.5",
+      "cote": 2.08,
+      "bookmaker": "Pinnacle",
+      "ev_pct": 5.0,
+      "raison": "Les deux équipes ont des problèmes de lanceurs, mais la défense devrait prévaloir.",
+      "session_id": "2026-06-28_soir",
+      "date_generation": "2026-06-28T20:00:21.981702"
     }
   ]
 }
