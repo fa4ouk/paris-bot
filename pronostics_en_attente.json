@@ -191,6 +191,62 @@
       "raison": "Les deux équipes ont des problèmes de lanceurs, mais la défense devrait prévaloir.",
       "session_id": "2026-06-28_soir",
       "date_generation": "2026-06-28T20:00:21.981702"
+    },
+    {
+      "type": "VALEUR",
+      "style": "Simple",
+      "match": "Germany vs Paraguay",
+      "competition": "FIFA World Cup",
+      "heure": "29/06 21:30",
+      "selection": "Plus de 2.5",
+      "cote": 1.7,
+      "bookmaker": "1xBet",
+      "ev_pct": 12.5,
+      "raison": "Allemagne a tendance à jouer offensivement et le Paraguay a du mal à défendre",
+      "session_id": "2026-06-29_soir",
+      "date_generation": "2026-06-29T20:00:23.640327"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Netherlands vs Morocco",
+      "competition": "FIFA World Cup",
+      "heure": "30/06 02:00",
+      "selection": "Victoire Netherlands",
+      "cote": 2.5,
+      "bookmaker": "Matchbook",
+      "ev_pct": 8.2,
+      "raison": "À combiner avec le pronostic suivant",
+      "session_id": "2026-06-29_soir",
+      "date_generation": "2026-06-29T20:00:23.640327"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Netherlands vs Morocco",
+      "competition": "FIFA World Cup",
+      "heure": "30/06 02:00",
+      "selection": "Plus de 2.5",
+      "cote": 2.3,
+      "bookmaker": "Matchbook",
+      "ev_pct": 8.2,
+      "raison": "À combiner avec le pronostic précédent, les deux équipes ont tendance à jouer offensivement",
+      "session_id": "2026-06-29_soir",
+      "date_generation": "2026-06-29T20:00:23.640327"
+    },
+    {
+      "type": "ULTRA SAFE",
+      "style": "Simple",
+      "match": "Boston Red Sox vs Washington Nationals",
+      "competition": "MLB",
+      "heure": "30/06 00:11",
+      "selection": "Victoire Boston Red Sox",
+      "cote": 1.62,
+      "bookmaker": "Betfair",
+      "ev_pct": 5.1,
+      "raison": "Boston Red Sox a une équipe plus solide et une meilleure forme récente",
+      "session_id": "2026-06-29_soir",
+      "date_generation": "2026-06-29T20:00:23.640327"
     }
   ]
 }
