@@ -193,20 +193,6 @@
       "date_generation": "2026-06-28T20:00:21.981702"
     },
     {
-      "type": "VALEUR",
-      "style": "Simple",
-      "match": "Germany vs Paraguay",
-      "competition": "FIFA World Cup",
-      "heure": "29/06 21:30",
-      "selection": "Plus de 2.5",
-      "cote": 1.7,
-      "bookmaker": "1xBet",
-      "ev_pct": 12.5,
-      "raison": "Allemagne a tendance à jouer offensivement et le Paraguay a du mal à défendre",
-      "session_id": "2026-06-29_soir",
-      "date_generation": "2026-06-29T20:00:23.640327"
-    },
-    {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
       "match": "Netherlands vs Morocco",
