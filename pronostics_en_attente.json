@@ -221,18 +221,60 @@
       "date_generation": "2026-06-29T20:00:23.640327"
     },
     {
+      "type": "VALEUR",
+      "style": "Simple",
+      "match": "France vs Sweden",
+      "competition": "FIFA World Cup",
+      "heure": "30/06 22:00",
+      "selection": "Handicap France -1.5",
+      "cote": 1.79,
+      "bookmaker": "1xBet",
+      "ev_pct": 12.5,
+      "raison": "La France a montré une grande solidité défensive et une attaque efficace, ce qui devrait lui permettre de gagner avec au moins deux buts d'avance.",
+      "session_id": "2026-06-30_soir",
+      "date_generation": "2026-06-30T20:00:22.981682"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Mexico vs Ecuador",
+      "competition": "FIFA World Cup",
+      "heure": "01/07 02:00",
+      "selection": "Plus de 1.5",
+      "cote": 1.65,
+      "bookmaker": "1xBet",
+      "ev_pct": 8.2,
+      "raison": "Combiné avec le match suivant, ce pronostic offre une bonne valeur en raison de la tendance offensives des deux équipes.",
+      "session_id": "2026-06-30_soir",
+      "date_generation": "2026-06-30T20:00:22.981682"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "New York Yankees vs Detroit Tigers",
+      "competition": "MLB",
+      "heure": "01/07 00:06",
+      "selection": "Plus de 7.0",
+      "cote": 1.98,
+      "bookmaker": "Pinnacle",
+      "ev_pct": 7.5,
+      "raison": "À combiner avec le match Mexico vs Ecuador, ce pronostic profite de la tendance de ces équipes à marquer des points.",
+      "session_id": "2026-06-30_soir",
+      "date_generation": "2026-06-30T20:00:22.981682"
+    },
+    {
       "type": "ULTRA SAFE",
       "style": "Simple",
-      "match": "Boston Red Sox vs Washington Nationals",
+      "match": "Philadelphia Phillies vs Pittsburgh Pirates",
       "competition": "MLB",
-      "heure": "30/06 00:11",
-      "selection": "Victoire Boston Red Sox",
-      "cote": 1.62,
-      "bookmaker": "Betfair",
+      "heure": "30/06 23:41",
+      "selection": "Victoire Philadelphia Phillies",
+      "cote": 1.5,
+      "bookmaker": "Matchbook",
       "ev_pct": 5.1,
-      "raison": "Boston Red Sox a une équipe plus solide et une meilleure forme récente",
-      "session_id": "2026-06-29_soir",
-      "date_generation": "2026-06-29T20:00:23.640327"
+      "raison": "Les Phillies ont une équipe solide et devraient gagner contre les Pirates, qui ont des difficultés cette saison.",
+      "session_id": "2026-06-30_soir",
+      "date_generation": "2026-06-30T20:00:22.981682"
     }
   ]
 }
