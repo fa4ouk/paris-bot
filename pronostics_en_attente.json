@@ -249,32 +249,60 @@
       "date_generation": "2026-06-30T20:00:22.981682"
     },
     {
-      "type": "OPPORTUNISTE",
-      "style": "Combiné",
-      "match": "New York Yankees vs Detroit Tigers",
-      "competition": "MLB",
-      "heure": "01/07 00:06",
-      "selection": "Plus de 7.0",
-      "cote": 1.98,
-      "bookmaker": "Pinnacle",
-      "ev_pct": 7.5,
-      "raison": "À combiner avec le match Mexico vs Ecuador, ce pronostic profite de la tendance de ces équipes à marquer des points.",
-      "session_id": "2026-06-30_soir",
-      "date_generation": "2026-06-30T20:00:22.981682"
-    },
-    {
       "type": "ULTRA SAFE",
       "style": "Simple",
-      "match": "Philadelphia Phillies vs Pittsburgh Pirates",
-      "competition": "MLB",
-      "heure": "30/06 23:41",
-      "selection": "Victoire Philadelphia Phillies",
-      "cote": 1.5,
+      "match": "USA vs Bosnia & Herzegovina",
+      "competition": "FIFA World Cup",
+      "heure": "02/07 01:00",
+      "selection": "Victoire USA",
+      "cote": 1.4,
       "bookmaker": "Matchbook",
-      "ev_pct": 5.1,
-      "raison": "Les Phillies ont une équipe solide et devraient gagner contre les Pirates, qui ont des difficultés cette saison.",
-      "session_id": "2026-06-30_soir",
-      "date_generation": "2026-06-30T20:00:22.981682"
+      "ev_pct": 10.0,
+      "raison": "USA est nettement favori dans ce match et la cote de 1.4 reflète une probabilité élevée de victoire.",
+      "session_id": "2026-07-01_soir",
+      "date_generation": "2026-07-01T20:00:27.520905"
+    },
+    {
+      "type": "VALEUR",
+      "style": "Simple",
+      "match": "Belgium vs Senegal",
+      "competition": "FIFA World Cup",
+      "heure": "01/07 21:00",
+      "selection": "Victoire Belgium",
+      "cote": 2.05,
+      "bookmaker": "Betsson",
+      "ev_pct": 5.0,
+      "raison": "La cote de 2.05 sous-estime légèrement les chances de la Belgique, offrant une valeur positive.",
+      "session_id": "2026-07-01_soir",
+      "date_generation": "2026-07-01T20:00:27.520905"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "USA vs Bosnia & Herzegovina",
+      "competition": "FIFA World Cup",
+      "heure": "02/07 01:00",
+      "selection": "Victoire USA et Plus de 2.5",
+      "cote": 2.28,
+      "bookmaker": "Unibet (SE)",
+      "ev_pct": 8.0,
+      "raison": "Combinez la victoire de l'USA avec plus de 2.5 buts pour un pari opportuniste, à combiner avec d'autres sélections similaires pour une cote plus élevée.",
+      "session_id": "2026-07-01_soir",
+      "date_generation": "2026-07-01T20:00:27.520905"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Belgium vs Senegal",
+      "competition": "FIFA World Cup",
+      "heure": "01/07 21:00",
+      "selection": "Victoire Belgium et Plus de 2.5",
+      "cote": 3.5,
+      "bookmaker": "Pinnacle",
+      "ev_pct": 12.0,
+      "raison": "Ce combiné offre une cote intéressante pour ceux qui pensent que la Belgique gagnera avec un score élevé, à combiner avec d'autres sélections pour une stratégie plus agressive.",
+      "session_id": "2026-07-01_soir",
+      "date_generation": "2026-07-01T20:00:27.520905"
     }
   ]
 }
