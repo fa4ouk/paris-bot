@@ -3,6 +3,40 @@
     {
       "type": "ULTRA SAFE",
       "style": "Simple",
+      "match": "Philadelphia Phillies vs Pittsburgh Pirates",
+      "competition": "MLB",
+      "heure": "30/06 23:41",
+      "selection": "Victoire Philadelphia Phillies",
+      "cote": 1.5,
+      "bookmaker": "Matchbook",
+      "ev_pct": 5.1,
+      "raison": "Les Phillies ont une équipe solide et devraient gagner contre les Pirates, qui ont des difficultés cette saison.",
+      "session_id": "2026-06-30_soir",
+      "date_generation": "2026-06-30T20:00:22.981682",
+      "resultat": "gagné",
+      "date_resultat": "2026-07-01T23:30:17.862926+01:00",
+      "verifie_auto": true
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "New York Yankees vs Detroit Tigers",
+      "competition": "MLB",
+      "heure": "01/07 00:06",
+      "selection": "Plus de 7.0",
+      "cote": 1.98,
+      "bookmaker": "Pinnacle",
+      "ev_pct": 7.5,
+      "raison": "À combiner avec le match Mexico vs Ecuador, ce pronostic profite de la tendance de ces équipes à marquer des points.",
+      "session_id": "2026-06-30_soir",
+      "date_generation": "2026-06-30T20:00:22.981682",
+      "resultat": "gagné",
+      "date_resultat": "2026-07-01T23:30:17.862895+01:00",
+      "verifie_auto": true
+    },
+    {
+      "type": "ULTRA SAFE",
+      "style": "Simple",
       "match": "Boston Red Sox vs Washington Nationals",
       "competition": "MLB",
       "heure": "30/06 00:11",
@@ -375,16 +409,16 @@
     }
   ],
   "stats": {
-    "total": 23,
-    "gagnes": 13,
+    "total": 25,
+    "gagnes": 15,
     "perdus": 10,
-    "taux": 57,
-    "derniere_maj": "2026-06-30T23:30:17.959139+01:00"
+    "taux": 60,
+    "derniere_maj": "2026-07-01T23:30:18.685459+01:00"
   },
   "strategie": {
     "alertes": [],
     "marches_faibles": [],
-    "derniere_analyse": "2026-06-30T23:30:17.959191+01:00"
+    "derniere_analyse": "2026-07-01T23:30:18.685499+01:00"
   },
   "sessions_envoyees": [
     "inconnue",
