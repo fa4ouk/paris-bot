@@ -263,20 +263,6 @@
       "date_generation": "2026-07-01T20:00:27.520905"
     },
     {
-      "type": "VALEUR",
-      "style": "Simple",
-      "match": "Belgium vs Senegal",
-      "competition": "FIFA World Cup",
-      "heure": "01/07 21:00",
-      "selection": "Victoire Belgium",
-      "cote": 2.05,
-      "bookmaker": "Betsson",
-      "ev_pct": 5.0,
-      "raison": "La cote de 2.05 sous-estime légèrement les chances de la Belgique, offrant une valeur positive.",
-      "session_id": "2026-07-01_soir",
-      "date_generation": "2026-07-01T20:00:27.520905"
-    },
-    {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
       "match": "USA vs Bosnia & Herzegovina",
@@ -287,20 +273,6 @@
       "bookmaker": "Unibet (SE)",
       "ev_pct": 8.0,
       "raison": "Combinez la victoire de l'USA avec plus de 2.5 buts pour un pari opportuniste, à combiner avec d'autres sélections similaires pour une cote plus élevée.",
-      "session_id": "2026-07-01_soir",
-      "date_generation": "2026-07-01T20:00:27.520905"
-    },
-    {
-      "type": "OPPORTUNISTE",
-      "style": "Combiné",
-      "match": "Belgium vs Senegal",
-      "competition": "FIFA World Cup",
-      "heure": "01/07 21:00",
-      "selection": "Victoire Belgium et Plus de 2.5",
-      "cote": 3.5,
-      "bookmaker": "Pinnacle",
-      "ev_pct": 12.0,
-      "raison": "Ce combiné offre une cote intéressante pour ceux qui pensent que la Belgique gagnera avec un score élevé, à combiner avec d'autres sélections pour une stratégie plus agressive.",
       "session_id": "2026-07-01_soir",
       "date_generation": "2026-07-01T20:00:27.520905"
     }
