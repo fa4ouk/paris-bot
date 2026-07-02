@@ -3,6 +3,57 @@
     {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
+      "match": "Spain vs Austria",
+      "competition": "FIFA World Cup",
+      "heure": "02/07 20:00",
+      "selection": "Plus de 2.5",
+      "cote": 1.81,
+      "bookmaker": "Matchbook",
+      "ev_pct": 10.2,
+      "raison": "À combiner avec le pronostic suivant pour un pari combiné",
+      "session_id": "2026-07-02_soir",
+      "date_generation": "2026-07-02T20:00:32.726939",
+      "resultat": "gagné",
+      "date_resultat": "2026-07-02T23:30:22.170806+01:00",
+      "verifie_auto": true
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "USA vs Bosnia & Herzegovina",
+      "competition": "FIFA World Cup",
+      "heure": "02/07 01:00",
+      "selection": "Victoire USA et Plus de 2.5",
+      "cote": 2.28,
+      "bookmaker": "Unibet (SE)",
+      "ev_pct": 8.0,
+      "raison": "Combinez la victoire de l'USA avec plus de 2.5 buts pour un pari opportuniste, à combiner avec d'autres sélections similaires pour une cote plus élevée.",
+      "session_id": "2026-07-01_soir",
+      "date_generation": "2026-07-01T20:00:27.520905",
+      "resultat": "gagné",
+      "date_resultat": "2026-07-02T23:30:22.170773+01:00",
+      "verifie_auto": true
+    },
+    {
+      "type": "ULTRA SAFE",
+      "style": "Simple",
+      "match": "USA vs Bosnia & Herzegovina",
+      "competition": "FIFA World Cup",
+      "heure": "02/07 01:00",
+      "selection": "Victoire USA",
+      "cote": 1.4,
+      "bookmaker": "Matchbook",
+      "ev_pct": 10.0,
+      "raison": "USA est nettement favori dans ce match et la cote de 1.4 reflète une probabilité élevée de victoire.",
+      "session_id": "2026-07-01_soir",
+      "date_generation": "2026-07-01T20:00:27.520905",
+      "resultat": "gagné",
+      "date_resultat": "2026-07-02T23:30:22.170745+01:00",
+      "verifie_auto": true
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
       "match": "Belgium vs Senegal",
       "competition": "FIFA World Cup",
       "heure": "01/07 21:00",
@@ -443,16 +494,16 @@
     }
   ],
   "stats": {
-    "total": 27,
-    "gagnes": 17,
+    "total": 30,
+    "gagnes": 20,
     "perdus": 10,
-    "taux": 63,
-    "derniere_maj": "2026-07-02T02:00:21.961384+01:00"
+    "taux": 67,
+    "derniere_maj": "2026-07-02T23:30:22.966204+01:00"
   },
   "strategie": {
     "alertes": [],
     "marches_faibles": [],
-    "derniere_analyse": "2026-07-02T02:00:21.961432+01:00"
+    "derniere_analyse": "2026-07-02T23:30:22.966259+01:00"
   },
   "sessions_envoyees": [
     "inconnue",
