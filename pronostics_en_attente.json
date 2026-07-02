@@ -251,30 +251,44 @@
     {
       "type": "ULTRA SAFE",
       "style": "Simple",
-      "match": "USA vs Bosnia & Herzegovina",
+      "match": "Spain vs Austria",
       "competition": "FIFA World Cup",
-      "heure": "02/07 01:00",
-      "selection": "Victoire USA",
-      "cote": 1.4,
+      "heure": "02/07 20:00",
+      "selection": "Handicap Spain -0.75",
+      "cote": 1.81,
+      "bookmaker": "Pinnacle",
+      "ev_pct": 12.3,
+      "raison": "Probabilité élevée de victoire de l'Espagne avec un handicap raisonnable",
+      "session_id": "2026-07-02_soir",
+      "date_generation": "2026-07-02T20:00:32.726939"
+    },
+    {
+      "type": "VALEUR",
+      "style": "Simple",
+      "match": "Portugal vs Croatia",
+      "competition": "FIFA World Cup",
+      "heure": "03/07 00:00",
+      "selection": "Victoire Portugal",
+      "cote": 1.73,
       "bookmaker": "Matchbook",
-      "ev_pct": 10.0,
-      "raison": "USA est nettement favori dans ce match et la cote de 1.4 reflète une probabilité élevée de victoire.",
-      "session_id": "2026-07-01_soir",
-      "date_generation": "2026-07-01T20:00:27.520905"
+      "ev_pct": 8.5,
+      "raison": "Cote sous-évaluée par le marché pour la victoire du Portugal",
+      "session_id": "2026-07-02_soir",
+      "date_generation": "2026-07-02T20:00:32.726939"
     },
     {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
-      "match": "USA vs Bosnia & Herzegovina",
+      "match": "Portugal vs Croatia",
       "competition": "FIFA World Cup",
-      "heure": "02/07 01:00",
-      "selection": "Victoire USA et Plus de 2.5",
-      "cote": 2.28,
-      "bookmaker": "Unibet (SE)",
-      "ev_pct": 8.0,
-      "raison": "Combinez la victoire de l'USA avec plus de 2.5 buts pour un pari opportuniste, à combiner avec d'autres sélections similaires pour une cote plus élevée.",
-      "session_id": "2026-07-01_soir",
-      "date_generation": "2026-07-01T20:00:27.520905"
+      "heure": "03/07 00:00",
+      "selection": "Plus de 2.5",
+      "cote": 1.8,
+      "bookmaker": "Matchbook",
+      "ev_pct": 9.1,
+      "raison": "À combiner avec le pronostic précédent pour un pari combiné",
+      "session_id": "2026-07-02_soir",
+      "date_generation": "2026-07-02T20:00:32.726939"
     }
   ]
 }
