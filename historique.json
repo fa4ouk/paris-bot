@@ -1,6 +1,40 @@
 {
   "paris": [
     {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Belgium vs Senegal",
+      "competition": "FIFA World Cup",
+      "heure": "01/07 21:00",
+      "selection": "Victoire Belgium et Plus de 2.5",
+      "cote": 3.5,
+      "bookmaker": "Pinnacle",
+      "ev_pct": 12.0,
+      "raison": "Ce combiné offre une cote intéressante pour ceux qui pensent que la Belgique gagnera avec un score élevé, à combiner avec d'autres sélections pour une stratégie plus agressive.",
+      "session_id": "2026-07-01_soir",
+      "date_generation": "2026-07-01T20:00:27.520905",
+      "resultat": "gagné",
+      "date_resultat": "2026-07-02T02:00:21.148099+01:00",
+      "verifie_auto": true
+    },
+    {
+      "type": "VALEUR",
+      "style": "Simple",
+      "match": "Belgium vs Senegal",
+      "competition": "FIFA World Cup",
+      "heure": "01/07 21:00",
+      "selection": "Victoire Belgium",
+      "cote": 2.05,
+      "bookmaker": "Betsson",
+      "ev_pct": 5.0,
+      "raison": "La cote de 2.05 sous-estime légèrement les chances de la Belgique, offrant une valeur positive.",
+      "session_id": "2026-07-01_soir",
+      "date_generation": "2026-07-01T20:00:27.520905",
+      "resultat": "gagné",
+      "date_resultat": "2026-07-02T02:00:21.148068+01:00",
+      "verifie_auto": true
+    },
+    {
       "type": "ULTRA SAFE",
       "style": "Simple",
       "match": "Philadelphia Phillies vs Pittsburgh Pirates",
@@ -409,16 +443,16 @@
     }
   ],
   "stats": {
-    "total": 25,
-    "gagnes": 15,
+    "total": 27,
+    "gagnes": 17,
     "perdus": 10,
-    "taux": 60,
-    "derniere_maj": "2026-07-01T23:30:18.685459+01:00"
+    "taux": 63,
+    "derniere_maj": "2026-07-02T02:00:21.961384+01:00"
   },
   "strategie": {
     "alertes": [],
     "marches_faibles": [],
-    "derniere_analyse": "2026-07-01T23:30:18.685499+01:00"
+    "derniere_analyse": "2026-07-02T02:00:21.961432+01:00"
   },
   "sessions_envoyees": [
     "inconnue",
