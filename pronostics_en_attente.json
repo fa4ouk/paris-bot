@@ -263,32 +263,46 @@
       "date_generation": "2026-07-02T20:00:32.726939"
     },
     {
+      "type": "ULTRA SAFE",
+      "style": "Simple",
+      "match": "Argentina vs Cape Verde",
+      "competition": "FIFA World Cup",
+      "heure": "03/07 23:00",
+      "selection": "Handicap Argentina -2.0",
+      "cote": 1.79,
+      "bookmaker": "Pinnacle",
+      "ev_pct": 12.5,
+      "raison": "Argentina est nettement supérieure à Cape Verde et devrait gagner avec une marge confortable",
+      "session_id": "2026-07-03_soir",
+      "date_generation": "2026-07-03T20:00:30.532354"
+    },
+    {
       "type": "VALEUR",
       "style": "Simple",
-      "match": "Portugal vs Croatia",
+      "match": "Colombia vs Ghana",
       "competition": "FIFA World Cup",
-      "heure": "03/07 00:00",
-      "selection": "Victoire Portugal",
-      "cote": 1.73,
-      "bookmaker": "Matchbook",
-      "ev_pct": 8.5,
-      "raison": "Cote sous-évaluée par le marché pour la victoire du Portugal",
-      "session_id": "2026-07-02_soir",
-      "date_generation": "2026-07-02T20:00:32.726939"
+      "heure": "04/07 02:30",
+      "selection": "Handicap Colombia -1.0",
+      "cote": 1.71,
+      "bookmaker": "BetOnline.ag",
+      "ev_pct": 8.2,
+      "raison": "La Colombie a une équipe solide et devrait battre le Ghana, la cote est sous-évaluée",
+      "session_id": "2026-07-03_soir",
+      "date_generation": "2026-07-03T20:00:30.532354"
     },
     {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
-      "match": "Portugal vs Croatia",
-      "competition": "FIFA World Cup",
-      "heure": "03/07 00:00",
-      "selection": "Plus de 2.5",
-      "cote": 1.8,
-      "bookmaker": "Matchbook",
-      "ev_pct": 9.1,
-      "raison": "À combiner avec le pronostic précédent pour un pari combiné",
-      "session_id": "2026-07-02_soir",
-      "date_generation": "2026-07-02T20:00:32.726939"
+      "match": "New York Yankees vs Minnesota Twins",
+      "competition": "MLB",
+      "heure": "04/07 00:05",
+      "selection": "Victoire New York Yankees",
+      "cote": 1.5,
+      "bookmaker": "William Hill",
+      "ev_pct": 5.8,
+      "raison": "À combiner avec le match Australia vs Egypt pour un pari opportuniste",
+      "session_id": "2026-07-03_soir",
+      "date_generation": "2026-07-03T20:00:30.532354"
     }
   ]
 }
