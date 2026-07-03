@@ -3,6 +3,57 @@
     {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
+      "match": "Australia vs Egypt",
+      "competition": "FIFA World Cup",
+      "heure": "03/07 19:00",
+      "selection": "Match Nul",
+      "cote": 1.7,
+      "bookmaker": "Tipico",
+      "ev_pct": 6.5,
+      "raison": "À combiner avec le match suivant pour un pari opportuniste",
+      "session_id": "2026-07-03_soir",
+      "date_generation": "2026-07-03T20:00:30.532354",
+      "resultat": "gagné",
+      "date_resultat": "2026-07-03T23:30:22.760200+01:00",
+      "verifie_auto": true
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Portugal vs Croatia",
+      "competition": "FIFA World Cup",
+      "heure": "03/07 00:00",
+      "selection": "Plus de 2.5",
+      "cote": 1.8,
+      "bookmaker": "Matchbook",
+      "ev_pct": 9.1,
+      "raison": "À combiner avec le pronostic précédent pour un pari combiné",
+      "session_id": "2026-07-02_soir",
+      "date_generation": "2026-07-02T20:00:32.726939",
+      "resultat": "gagné",
+      "date_resultat": "2026-07-03T23:30:22.760175+01:00",
+      "verifie_auto": true
+    },
+    {
+      "type": "VALEUR",
+      "style": "Simple",
+      "match": "Portugal vs Croatia",
+      "competition": "FIFA World Cup",
+      "heure": "03/07 00:00",
+      "selection": "Victoire Portugal",
+      "cote": 1.73,
+      "bookmaker": "Matchbook",
+      "ev_pct": 8.5,
+      "raison": "Cote sous-évaluée par le marché pour la victoire du Portugal",
+      "session_id": "2026-07-02_soir",
+      "date_generation": "2026-07-02T20:00:32.726939",
+      "resultat": "gagné",
+      "date_resultat": "2026-07-03T23:30:22.760149+01:00",
+      "verifie_auto": true
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
       "match": "Spain vs Austria",
       "competition": "FIFA World Cup",
       "heure": "02/07 20:00",
@@ -494,16 +545,16 @@
     }
   ],
   "stats": {
-    "total": 30,
-    "gagnes": 20,
+    "total": 33,
+    "gagnes": 23,
     "perdus": 10,
-    "taux": 67,
-    "derniere_maj": "2026-07-02T23:30:22.966204+01:00"
+    "taux": 70,
+    "derniere_maj": "2026-07-03T23:30:23.385722+01:00"
   },
   "strategie": {
     "alertes": [],
     "marches_faibles": [],
-    "derniere_analyse": "2026-07-02T23:30:22.966259+01:00"
+    "derniere_analyse": "2026-07-03T23:30:23.385800+01:00"
   },
   "sessions_envoyees": [
     "inconnue",
