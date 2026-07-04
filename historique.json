@@ -3,6 +3,23 @@
     {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
+      "match": "New York Yankees vs Minnesota Twins",
+      "competition": "MLB",
+      "heure": "04/07 18:39",
+      "selection": "Plus de 12.5",
+      "cote": 1.57,
+      "bookmaker": "888sport",
+      "ev_pct": 10.1,
+      "raison": "Combiné avec le match suivant pour un pari opportuniste",
+      "session_id": "2026-07-04_soir",
+      "date_generation": "2026-07-04T20:00:30.227558",
+      "resultat": "gagné",
+      "date_resultat": "2026-07-04T23:30:24.481407+01:00",
+      "verifie_auto": true
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
       "match": "Australia vs Egypt",
       "competition": "FIFA World Cup",
       "heure": "03/07 19:00",
@@ -545,16 +562,16 @@
     }
   ],
   "stats": {
-    "total": 33,
-    "gagnes": 23,
+    "total": 34,
+    "gagnes": 24,
     "perdus": 10,
-    "taux": 70,
-    "derniere_maj": "2026-07-03T23:30:23.385722+01:00"
+    "taux": 71,
+    "derniere_maj": "2026-07-04T23:30:25.292830+01:00"
   },
   "strategie": {
     "alertes": [],
     "marches_faibles": [],
-    "derniere_analyse": "2026-07-03T23:30:23.385800+01:00"
+    "derniere_analyse": "2026-07-04T23:30:25.292889+01:00"
   },
   "sessions_envoyees": [
     "inconnue",
