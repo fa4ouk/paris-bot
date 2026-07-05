@@ -331,6 +331,34 @@
       "raison": "Seattle Storm a une équipe plus équilibrée et devrait gagner contre Portland Fire",
       "session_id": "2026-07-04_soir",
       "date_generation": "2026-07-04T20:00:30.227558"
+    },
+    {
+      "type": "VALEUR",
+      "style": "Simple",
+      "match": "Las Vegas Aces vs Indiana Fever",
+      "competition": "WNBA",
+      "heure": "06/07 00:00",
+      "selection": "Victoire Las Vegas Aces",
+      "cote": 1.68,
+      "bookmaker": "Betfair",
+      "ev_pct": 8.5,
+      "raison": "Les Las Vegas Aces ont une équipe solide et devraient gagner contre les Indiana Fever, la cote est sous-évaluée.",
+      "session_id": "2026-07-05_soir",
+      "date_generation": "2026-07-05T20:00:42.710433"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Mexico vs England",
+      "competition": "FIFA World Cup",
+      "heure": "06/07 01:00",
+      "selection": "Moins de 2.5 buts",
+      "cote": 1.64,
+      "bookmaker": "Matchbook",
+      "ev_pct": 10.2,
+      "raison": "Ce match pourrait être défensif, combiné avec le match suivant pour un pari opportuniste.",
+      "session_id": "2026-07-05_soir",
+      "date_generation": "2026-07-05T20:00:42.710433"
     }
   ]
 }
