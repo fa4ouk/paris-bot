@@ -331,20 +331,6 @@
       "raison": "Seattle Storm a une équipe plus équilibrée et devrait gagner contre Portland Fire",
       "session_id": "2026-07-04_soir",
       "date_generation": "2026-07-04T20:00:30.227558"
-    },
-    {
-      "type": "OPPORTUNISTE",
-      "style": "Combiné",
-      "match": "Texas Rangers vs Detroit Tigers",
-      "competition": "MLB",
-      "heure": "04/07 21:06",
-      "selection": "Plus de 8.5",
-      "cote": 1.98,
-      "bookmaker": "Matchbook",
-      "ev_pct": 9.5,
-      "raison": "Combiné avec le match précédent pour un pari opportuniste",
-      "session_id": "2026-07-04_soir",
-      "date_generation": "2026-07-04T20:00:30.227558"
     }
   ]
 }
