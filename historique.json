@@ -3,6 +3,23 @@
     {
       "type": "ULTRA SAFE",
       "style": "Simple",
+      "match": "Portugal vs Spain",
+      "competition": "FIFA World Cup",
+      "heure": "06/07 20:00",
+      "selection": "Moins de 1.5",
+      "cote": 2.18,
+      "bookmaker": "Matchbook",
+      "ev_pct": 12.5,
+      "raison": "Les deux équipes ont tendance à jouer de manière défensive dans les matchs importants, ce qui devrait limiter les buts.",
+      "session_id": "2026-07-06_soir",
+      "date_generation": "2026-07-06T20:00:43.089483",
+      "resultat": "gagné",
+      "date_resultat": "2026-07-06T23:30:28.314586+01:00",
+      "verifie_auto": true
+    },
+    {
+      "type": "ULTRA SAFE",
+      "style": "Simple",
       "match": "Brazil vs Norway",
       "competition": "FIFA World Cup",
       "heure": "05/07 21:00",
@@ -596,16 +613,16 @@
     }
   ],
   "stats": {
-    "total": 36,
-    "gagnes": 24,
+    "total": 37,
+    "gagnes": 25,
     "perdus": 12,
-    "taux": 67,
-    "derniere_maj": "2026-07-05T23:30:27.080925+01:00"
+    "taux": 68,
+    "derniere_maj": "2026-07-06T23:30:28.959618+01:00"
   },
   "strategie": {
     "alertes": [],
     "marches_faibles": [],
-    "derniere_analyse": "2026-07-05T23:30:27.080982+01:00"
+    "derniere_analyse": "2026-07-06T23:30:28.959672+01:00"
   },
   "sessions_envoyees": [
     "inconnue",
