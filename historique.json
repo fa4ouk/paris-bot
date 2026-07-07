@@ -1,6 +1,23 @@
 {
   "paris": [
     {
+      "type": "VALEUR",
+      "style": "Simple",
+      "match": "USA vs Belgium",
+      "competition": "FIFA World Cup",
+      "heure": "07/07 01:00",
+      "selection": "Moins de 2.5",
+      "cote": 2.28,
+      "bookmaker": "Unibet (SE)",
+      "ev_pct": 8.2,
+      "raison": "Les États-Unis ont montré une solide défense dans leurs matchs précédents, et la Belgique n'a pas été très prolifique en attaque.",
+      "session_id": "2026-07-06_soir",
+      "date_generation": "2026-07-06T20:00:43.089483",
+      "resultat": "perdu",
+      "date_resultat": "2026-07-07T23:30:38.841951+01:00",
+      "verifie_auto": true
+    },
+    {
       "type": "ULTRA SAFE",
       "style": "Simple",
       "match": "Portugal vs Spain",
@@ -613,16 +630,16 @@
     }
   ],
   "stats": {
-    "total": 37,
+    "total": 38,
     "gagnes": 25,
-    "perdus": 12,
-    "taux": 68,
-    "derniere_maj": "2026-07-06T23:30:28.959618+01:00"
+    "perdus": 13,
+    "taux": 66,
+    "derniere_maj": "2026-07-07T23:30:39.515088+01:00"
   },
   "strategie": {
     "alertes": [],
     "marches_faibles": [],
-    "derniere_analyse": "2026-07-06T23:30:28.959672+01:00"
+    "derniere_analyse": "2026-07-07T23:30:39.515151+01:00"
   },
   "sessions_envoyees": [
     "inconnue",
