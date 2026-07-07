@@ -361,20 +361,6 @@
       "date_generation": "2026-07-05T20:00:42.710433"
     },
     {
-      "type": "VALEUR",
-      "style": "Simple",
-      "match": "USA vs Belgium",
-      "competition": "FIFA World Cup",
-      "heure": "07/07 01:00",
-      "selection": "Moins de 2.5",
-      "cote": 2.28,
-      "bookmaker": "Unibet (SE)",
-      "ev_pct": 8.2,
-      "raison": "Les États-Unis ont montré une solide défense dans leurs matchs précédents, et la Belgique n'a pas été très prolifique en attaque.",
-      "session_id": "2026-07-06_soir",
-      "date_generation": "2026-07-06T20:00:43.089483"
-    },
-    {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
       "match": "Los Angeles Sparks vs Seattle Storm",
@@ -401,6 +387,62 @@
       "raison": "À combiner avec le pronostic précédent. Les Sparks ont tendance à jouer de manière défensive, et les Storm n'ont pas été très efficaces en attaque ces derniers temps.",
       "session_id": "2026-07-06_soir",
       "date_generation": "2026-07-06T20:00:43.089483"
+    },
+    {
+      "type": "ULTRA SAFE",
+      "style": "Simple",
+      "match": "Switzerland vs Colombia",
+      "competition": "FIFA World Cup",
+      "heure": "07/07 21:05",
+      "selection": "Moins de 2.5",
+      "cote": 1.64,
+      "bookmaker": "1xBet",
+      "ev_pct": 12.5,
+      "raison": "Les deux équipes ont tendance à jouer de manière défensive, ce qui devrait limiter les buts.",
+      "session_id": "2026-07-07_soir",
+      "date_generation": "2026-07-07T20:00:40.730133"
+    },
+    {
+      "type": "VALEUR",
+      "style": "Simple",
+      "match": "New York Liberty vs Dallas Wings",
+      "competition": "WNBA",
+      "heure": "08/07 01:00",
+      "selection": "Victoire New York Liberty",
+      "cote": 1.6,
+      "bookmaker": "Betfair",
+      "ev_pct": 8.3,
+      "raison": "Les Liberty ont une meilleure forme récente et devraient gagner à domicile.",
+      "session_id": "2026-07-07_soir",
+      "date_generation": "2026-07-07T20:00:40.730133"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "St. Louis Cardinals vs Milwaukee Brewers",
+      "competition": "MLB",
+      "heure": "07/07 19:16",
+      "selection": "Handicap St. Louis Cardinals 1.5",
+      "cote": 1.97,
+      "bookmaker": "Unibet (NL)",
+      "ev_pct": 10.2,
+      "raison": "À combiner avec le match suivant pour un combiné logique.",
+      "session_id": "2026-07-07_soir",
+      "date_generation": "2026-07-07T20:00:40.730133"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Detroit Tigers vs Athletics",
+      "competition": "MLB",
+      "heure": "07/07 23:41",
+      "selection": "Victoire Detroit Tigers",
+      "cote": 1.51,
+      "bookmaker": "1xBet",
+      "ev_pct": 9.5,
+      "raison": "À combiner avec le match précédent pour un combiné logique.",
+      "session_id": "2026-07-07_soir",
+      "date_generation": "2026-07-07T20:00:40.730133"
     }
   ]
 }
