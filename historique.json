@@ -1,6 +1,23 @@
 {
   "paris": [
     {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Detroit Tigers vs Athletics",
+      "competition": "MLB",
+      "heure": "07/07 23:41",
+      "selection": "Victoire Detroit Tigers",
+      "cote": 1.51,
+      "bookmaker": "1xBet",
+      "ev_pct": 9.5,
+      "raison": "À combiner avec le match précédent pour un combiné logique.",
+      "session_id": "2026-07-07_soir",
+      "date_generation": "2026-07-07T20:00:40.730133",
+      "resultat": "gagné",
+      "date_resultat": "2026-07-08T23:30:44.596319+01:00",
+      "verifie_auto": true
+    },
+    {
       "type": "VALEUR",
       "style": "Simple",
       "match": "USA vs Belgium",
@@ -630,16 +647,16 @@
     }
   ],
   "stats": {
-    "total": 38,
-    "gagnes": 25,
+    "total": 39,
+    "gagnes": 26,
     "perdus": 13,
-    "taux": 66,
-    "derniere_maj": "2026-07-07T23:30:39.515088+01:00"
+    "taux": 67,
+    "derniere_maj": "2026-07-08T23:30:45.430364+01:00"
   },
   "strategie": {
     "alertes": [],
     "marches_faibles": [],
-    "derniere_analyse": "2026-07-07T23:30:39.515151+01:00"
+    "derniere_analyse": "2026-07-08T23:30:45.430449+01:00"
   },
   "sessions_envoyees": [
     "inconnue",
