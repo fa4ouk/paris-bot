@@ -431,18 +431,60 @@
       "date_generation": "2026-07-07T20:00:40.730133"
     },
     {
+      "type": "ULTRA SAFE",
+      "style": "Simple",
+      "match": "Los Angeles Dodgers vs Colorado Rockies",
+      "competition": "MLB",
+      "heure": "09/07 03:11",
+      "selection": "Victoire Los Angeles Dodgers",
+      "cote": 1.44,
+      "bookmaker": "Betfair",
+      "ev_pct": 5.0,
+      "raison": "Les Dodgers ont une équipe solide et une bonne forme actuelle",
+      "session_id": "2026-07-08_soir",
+      "date_generation": "2026-07-08T20:00:46.694359"
+    },
+    {
+      "type": "VALEUR",
+      "style": "Simple",
+      "match": "Cincinnati Reds vs Philadelphia Phillies",
+      "competition": "MLB",
+      "heure": "09/07 00:11",
+      "selection": "Victoire Cincinnati Reds",
+      "cote": 1.77,
+      "bookmaker": "Betfair",
+      "ev_pct": 8.0,
+      "raison": "Les Reds ont une bonne équipe et une cote sous-évaluée",
+      "session_id": "2026-07-08_soir",
+      "date_generation": "2026-07-08T20:00:46.694359"
+    },
+    {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
-      "match": "Detroit Tigers vs Athletics",
-      "competition": "MLB",
-      "heure": "07/07 23:41",
-      "selection": "Victoire Detroit Tigers",
-      "cote": 1.51,
-      "bookmaker": "1xBet",
-      "ev_pct": 9.5,
-      "raison": "À combiner avec le match précédent pour un combiné logique.",
-      "session_id": "2026-07-07_soir",
-      "date_generation": "2026-07-07T20:00:40.730133"
+      "match": "Toronto Tempo vs Golden State Valkyries",
+      "competition": "WNBA",
+      "heure": "09/07 00:00",
+      "selection": "Plus de 168.5",
+      "cote": 2.06,
+      "bookmaker": "Betsson",
+      "ev_pct": 10.0,
+      "raison": "À combiner avec le match Connecticut Sun vs Minnesota Lynx, plus de 166.5",
+      "session_id": "2026-07-08_soir",
+      "date_generation": "2026-07-08T20:00:46.694359"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Connecticut Sun vs Minnesota Lynx",
+      "competition": "WNBA",
+      "heure": "09/07 00:30",
+      "selection": "Plus de 166.5",
+      "cote": 1.97,
+      "bookmaker": "Matchbook",
+      "ev_pct": 10.0,
+      "raison": "À combiner avec le match Toronto Tempo vs Golden State Valkyries, plus de 168.5",
+      "session_id": "2026-07-08_soir",
+      "date_generation": "2026-07-08T20:00:46.694359"
     }
   ]
 }
