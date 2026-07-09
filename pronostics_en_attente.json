@@ -431,34 +431,6 @@
       "date_generation": "2026-07-07T20:00:40.730133"
     },
     {
-      "type": "ULTRA SAFE",
-      "style": "Simple",
-      "match": "Los Angeles Dodgers vs Colorado Rockies",
-      "competition": "MLB",
-      "heure": "09/07 03:11",
-      "selection": "Victoire Los Angeles Dodgers",
-      "cote": 1.44,
-      "bookmaker": "Betfair",
-      "ev_pct": 5.0,
-      "raison": "Les Dodgers ont une équipe solide et une bonne forme actuelle",
-      "session_id": "2026-07-08_soir",
-      "date_generation": "2026-07-08T20:00:46.694359"
-    },
-    {
-      "type": "VALEUR",
-      "style": "Simple",
-      "match": "Cincinnati Reds vs Philadelphia Phillies",
-      "competition": "MLB",
-      "heure": "09/07 00:11",
-      "selection": "Victoire Cincinnati Reds",
-      "cote": 1.77,
-      "bookmaker": "Betfair",
-      "ev_pct": 8.0,
-      "raison": "Les Reds ont une bonne équipe et une cote sous-évaluée",
-      "session_id": "2026-07-08_soir",
-      "date_generation": "2026-07-08T20:00:46.694359"
-    },
-    {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
       "match": "Toronto Tempo vs Golden State Valkyries",
@@ -485,6 +457,34 @@
       "raison": "À combiner avec le match Toronto Tempo vs Golden State Valkyries, plus de 168.5",
       "session_id": "2026-07-08_soir",
       "date_generation": "2026-07-08T20:00:46.694359"
+    },
+    {
+      "type": "ULTRA SAFE",
+      "style": "Simple",
+      "match": "France vs Morocco",
+      "competition": "FIFA World Cup",
+      "heure": "09/07 21:05",
+      "selection": "Victoire France",
+      "cote": 1.63,
+      "bookmaker": "1xBet",
+      "ev_pct": 10.0,
+      "raison": "France a montré une grande solidité défensive et une attaque efficace, ce qui fait d'elle la favorite logique pour ce match.",
+      "session_id": "2026-07-09_soir",
+      "date_generation": "2026-07-09T20:00:34.797435"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "France vs Morocco et Atlanta Braves vs Pittsburgh Pirates",
+      "competition": "FIFA World Cup et MLB",
+      "heure": "09/07 21:05 et 09/07 17:37",
+      "selection": "Victoire France et Victoire Atlanta Braves",
+      "cote": 2.54,
+      "bookmaker": "1xBet et Betsson",
+      "ev_pct": 12.0,
+      "raison": "Combiner ces deux sélections offre une cote intéressante et une probabilité de gain raisonnable, à combiner ensemble pour un pari opportuniste.",
+      "session_id": "2026-07-09_soir",
+      "date_generation": "2026-07-09T20:00:34.797435"
     }
   ]
 }
