@@ -1,6 +1,57 @@
 {
   "paris": [
     {
+      "type": "VALEUR",
+      "style": "Simple",
+      "match": "Atlanta Braves vs Pittsburgh Pirates",
+      "competition": "MLB",
+      "heure": "09/07 17:37",
+      "selection": "Victoire Atlanta Braves",
+      "cote": 1.61,
+      "bookmaker": "Betsson",
+      "ev_pct": 8.0,
+      "raison": "Les Braves ont une équipe plus équilibrée et une meilleure forme récente, ce qui les rend favoris pour ce match.",
+      "session_id": "2026-07-09_soir",
+      "date_generation": "2026-07-09T20:00:34.797435",
+      "resultat": "gagné",
+      "date_resultat": "2026-07-09T23:30:33.616569+01:00",
+      "verifie_auto": true
+    },
+    {
+      "type": "VALEUR",
+      "style": "Simple",
+      "match": "Cincinnati Reds vs Philadelphia Phillies",
+      "competition": "MLB",
+      "heure": "09/07 00:11",
+      "selection": "Victoire Cincinnati Reds",
+      "cote": 1.77,
+      "bookmaker": "Betfair",
+      "ev_pct": 8.0,
+      "raison": "Les Reds ont une bonne équipe et une cote sous-évaluée",
+      "session_id": "2026-07-08_soir",
+      "date_generation": "2026-07-08T20:00:46.694359",
+      "resultat": "gagné",
+      "date_resultat": "2026-07-09T23:30:33.616505+01:00",
+      "verifie_auto": true
+    },
+    {
+      "type": "ULTRA SAFE",
+      "style": "Simple",
+      "match": "Los Angeles Dodgers vs Colorado Rockies",
+      "competition": "MLB",
+      "heure": "09/07 03:11",
+      "selection": "Victoire Los Angeles Dodgers",
+      "cote": 1.44,
+      "bookmaker": "Betfair",
+      "ev_pct": 5.0,
+      "raison": "Les Dodgers ont une équipe solide et une bonne forme actuelle",
+      "session_id": "2026-07-08_soir",
+      "date_generation": "2026-07-08T20:00:46.694359",
+      "resultat": "gagné",
+      "date_resultat": "2026-07-09T23:30:33.616468+01:00",
+      "verifie_auto": true
+    },
+    {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
       "match": "Detroit Tigers vs Athletics",
@@ -647,16 +698,16 @@
     }
   ],
   "stats": {
-    "total": 39,
-    "gagnes": 26,
+    "total": 42,
+    "gagnes": 29,
     "perdus": 13,
-    "taux": 67,
-    "derniere_maj": "2026-07-08T23:30:45.430364+01:00"
+    "taux": 69,
+    "derniere_maj": "2026-07-09T23:30:34.426930+01:00"
   },
   "strategie": {
     "alertes": [],
     "marches_faibles": [],
-    "derniere_analyse": "2026-07-08T23:30:45.430449+01:00"
+    "derniere_analyse": "2026-07-09T23:30:34.426996+01:00"
   },
   "sessions_envoyees": [
     "inconnue",
