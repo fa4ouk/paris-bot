@@ -485,6 +485,48 @@
       "raison": "Combiner ces deux sélections offre une cote intéressante et une probabilité de gain raisonnable, à combiner ensemble pour un pari opportuniste.",
       "session_id": "2026-07-09_soir",
       "date_generation": "2026-07-09T20:00:34.797435"
+    },
+    {
+      "type": "VALEUR",
+      "style": "Simple",
+      "match": "Los Angeles Sparks vs Chicago Sky",
+      "competition": "WNBA",
+      "heure": "11/07 03:10",
+      "selection": "Victoire Los Angeles Sparks",
+      "cote": 1.87,
+      "bookmaker": "BetOnline.ag",
+      "ev_pct": 8.2,
+      "raison": "Les Sparks ont une bonne équipe avec des joueuses expérimentées et une bonne défense.",
+      "session_id": "2026-07-10_soir",
+      "date_generation": "2026-07-10T20:00:34.453974"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Detroit Tigers vs Philadelphia Phillies",
+      "competition": "MLB",
+      "heure": "10/07 23:41",
+      "selection": "Victoire Detroit Tigers",
+      "cote": 1.9,
+      "bookmaker": "Matchbook",
+      "ev_pct": 10.1,
+      "raison": "À combiner avec le match suivant pour un pari opportuniste.",
+      "session_id": "2026-07-10_soir",
+      "date_generation": "2026-07-10T20:00:34.453974"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Pittsburgh Pirates vs Milwaukee Brewers",
+      "competition": "MLB",
+      "heure": "10/07 23:41",
+      "selection": "Victoire Pittsburgh Pirates",
+      "cote": 1.84,
+      "bookmaker": "Matchbook",
+      "ev_pct": 9.5,
+      "raison": "À combiner avec le match précédent pour un pari opportuniste.",
+      "session_id": "2026-07-10_soir",
+      "date_generation": "2026-07-10T20:00:34.453974"
     }
   ]
 }
