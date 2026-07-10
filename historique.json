@@ -1,6 +1,23 @@
 {
   "paris": [
     {
+      "type": "ULTRA SAFE",
+      "style": "Simple",
+      "match": "Spain vs Belgium",
+      "competition": "FIFA World Cup",
+      "heure": "10/07 20:00",
+      "selection": "Victoire Spain",
+      "cote": 1.84,
+      "bookmaker": "Matchbook",
+      "ev_pct": 12.5,
+      "raison": "Spain a une équipe solide et bien préparée, avec une bonne défense et une attaque efficace.",
+      "session_id": "2026-07-10_soir",
+      "date_generation": "2026-07-10T20:00:34.453974",
+      "resultat": "gagné",
+      "date_resultat": "2026-07-10T23:30:39.895971+01:00",
+      "verifie_auto": true
+    },
+    {
       "type": "VALEUR",
       "style": "Simple",
       "match": "Atlanta Braves vs Pittsburgh Pirates",
@@ -698,16 +715,16 @@
     }
   ],
   "stats": {
-    "total": 42,
-    "gagnes": 29,
+    "total": 43,
+    "gagnes": 30,
     "perdus": 13,
-    "taux": 69,
-    "derniere_maj": "2026-07-09T23:30:34.426930+01:00"
+    "taux": 70,
+    "derniere_maj": "2026-07-10T23:30:40.810629+01:00"
   },
   "strategie": {
     "alertes": [],
     "marches_faibles": [],
-    "derniere_analyse": "2026-07-09T23:30:34.426996+01:00"
+    "derniere_analyse": "2026-07-10T23:30:40.810685+01:00"
   },
   "sessions_envoyees": [
     "inconnue",
