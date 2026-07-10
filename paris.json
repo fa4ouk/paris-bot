@@ -7,26 +7,40 @@
       "competition": "FIFA World Cup",
       "heure": "10/07 20:00",
       "selection": "Victoire Spain",
-      "cote": 1.69,
+      "cote": 1.84,
       "bookmaker": "Matchbook",
-      "ev_pct": 10.0,
-      "raison": "Probabilité élevée de victoire de l'Espagne contre la Belgique",
-      "session_id": "2026-07-10_matin",
-      "date_generation": "2026-07-10T07:30:29.434091"
+      "ev_pct": 12.5,
+      "raison": "Spain a une équipe solide et bien préparée, avec une bonne défense et une attaque efficace.",
+      "session_id": "2026-07-10_soir",
+      "date_generation": "2026-07-10T20:00:34.453974"
     },
     {
       "type": "VALEUR",
       "style": "Simple",
+      "match": "Los Angeles Sparks vs Chicago Sky",
+      "competition": "WNBA",
+      "heure": "11/07 03:10",
+      "selection": "Victoire Los Angeles Sparks",
+      "cote": 1.87,
+      "bookmaker": "BetOnline.ag",
+      "ev_pct": 8.2,
+      "raison": "Les Sparks ont une bonne équipe avec des joueuses expérimentées et une bonne défense.",
+      "session_id": "2026-07-10_soir",
+      "date_generation": "2026-07-10T20:00:34.453974"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
       "match": "Detroit Tigers vs Philadelphia Phillies",
       "competition": "MLB",
       "heure": "10/07 23:41",
       "selection": "Victoire Detroit Tigers",
-      "cote": 1.88,
-      "bookmaker": "Betfair",
-      "ev_pct": 5.0,
-      "raison": "Cote sous-évaluée pour la victoire des Tigers",
-      "session_id": "2026-07-10_matin",
-      "date_generation": "2026-07-10T07:30:29.434091"
+      "cote": 1.9,
+      "bookmaker": "Matchbook",
+      "ev_pct": 10.1,
+      "raison": "À combiner avec le match suivant pour un pari opportuniste.",
+      "session_id": "2026-07-10_soir",
+      "date_generation": "2026-07-10T20:00:34.453974"
     },
     {
       "type": "OPPORTUNISTE",
@@ -35,28 +49,14 @@
       "competition": "MLB",
       "heure": "10/07 23:41",
       "selection": "Victoire Pittsburgh Pirates",
-      "cote": 1.83,
-      "bookmaker": "Pinnacle",
-      "ev_pct": 8.0,
-      "raison": "À combiner avec le pronostic suivant pour un pari opportuniste",
-      "session_id": "2026-07-10_matin",
-      "date_generation": "2026-07-10T07:30:29.434091"
-    },
-    {
-      "type": "OPPORTUNISTE",
-      "style": "Combiné",
-      "match": "Washington Nationals vs New York Yankees",
-      "competition": "MLB",
-      "heure": "10/07 23:46",
-      "selection": "Victoire New York Yankees",
-      "cote": 1.66,
-      "bookmaker": "1xBet",
-      "ev_pct": 8.0,
-      "raison": "À combiner avec le pronostic précédent pour un pari opportuniste",
-      "session_id": "2026-07-10_matin",
-      "date_generation": "2026-07-10T07:30:29.434091"
+      "cote": 1.84,
+      "bookmaker": "Matchbook",
+      "ev_pct": 9.5,
+      "raison": "À combiner avec le match précédent pour un pari opportuniste.",
+      "session_id": "2026-07-10_soir",
+      "date_generation": "2026-07-10T20:00:34.453974"
     }
   ],
-  "note_du_jour": "Journée avec des opportunités intéressantes, notamment dans la Coupe du Monde et les matchs de baseball",
+  "note_du_jour": "La journée offre quelques opportunités intéressantes, notamment dans la Coupe du Monde et les matchs de baseball.",
   "confiance": "Moyen"
 }
