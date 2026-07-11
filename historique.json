@@ -1,6 +1,40 @@
 {
   "paris": [
     {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Minnesota Twins vs Los Angeles Angels",
+      "competition": "MLB",
+      "heure": "11/07 19:37",
+      "selection": "Victoire Minnesota Twins",
+      "cote": 1.49,
+      "bookmaker": "Betfair",
+      "ev_pct": 6.2,
+      "raison": "À combiner avec le match suivant pour un pari opportuniste",
+      "session_id": "2026-07-11_soir",
+      "date_generation": "2026-07-11T20:00:34.557887",
+      "resultat": "gagné",
+      "date_resultat": "2026-07-11T23:30:32.038955+01:00",
+      "verifie_auto": true
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Detroit Tigers vs Philadelphia Phillies",
+      "competition": "MLB",
+      "heure": "10/07 23:41",
+      "selection": "Victoire Detroit Tigers",
+      "cote": 1.9,
+      "bookmaker": "Matchbook",
+      "ev_pct": 10.1,
+      "raison": "À combiner avec le match suivant pour un pari opportuniste.",
+      "session_id": "2026-07-10_soir",
+      "date_generation": "2026-07-10T20:00:34.453974",
+      "resultat": "gagné",
+      "date_resultat": "2026-07-11T23:30:32.038861+01:00",
+      "verifie_auto": true
+    },
+    {
       "type": "ULTRA SAFE",
       "style": "Simple",
       "match": "Spain vs Belgium",
@@ -715,16 +749,16 @@
     }
   ],
   "stats": {
-    "total": 43,
-    "gagnes": 30,
+    "total": 45,
+    "gagnes": 32,
     "perdus": 13,
-    "taux": 70,
-    "derniere_maj": "2026-07-10T23:30:40.810629+01:00"
+    "taux": 71,
+    "derniere_maj": "2026-07-11T23:30:32.651160+01:00"
   },
   "strategie": {
     "alertes": [],
     "marches_faibles": [],
-    "derniere_analyse": "2026-07-10T23:30:40.810685+01:00"
+    "derniere_analyse": "2026-07-11T23:30:32.651228+01:00"
   },
   "sessions_envoyees": [
     "inconnue",
