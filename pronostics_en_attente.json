@@ -503,20 +503,6 @@
     {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
-      "match": "Detroit Tigers vs Philadelphia Phillies",
-      "competition": "MLB",
-      "heure": "10/07 23:41",
-      "selection": "Victoire Detroit Tigers",
-      "cote": 1.9,
-      "bookmaker": "Matchbook",
-      "ev_pct": 10.1,
-      "raison": "À combiner avec le match suivant pour un pari opportuniste.",
-      "session_id": "2026-07-10_soir",
-      "date_generation": "2026-07-10T20:00:34.453974"
-    },
-    {
-      "type": "OPPORTUNISTE",
-      "style": "Combiné",
       "match": "Pittsburgh Pirates vs Milwaukee Brewers",
       "competition": "MLB",
       "heure": "10/07 23:41",
@@ -527,6 +513,48 @@
       "raison": "À combiner avec le match précédent pour un pari opportuniste.",
       "session_id": "2026-07-10_soir",
       "date_generation": "2026-07-10T20:00:34.453974"
+    },
+    {
+      "type": "ULTRA SAFE",
+      "style": "Simple",
+      "match": "Norway vs England",
+      "competition": "FIFA World Cup",
+      "heure": "11/07 22:00",
+      "selection": "Victoire England",
+      "cote": 1.93,
+      "bookmaker": "GTbets",
+      "ev_pct": 12.1,
+      "raison": "Angle d'attaque supérieur et défense plus solide pour l'Angleterre",
+      "session_id": "2026-07-11_soir",
+      "date_generation": "2026-07-11T20:00:34.557887"
+    },
+    {
+      "type": "VALEUR",
+      "style": "Simple",
+      "match": "Argentina vs Switzerland",
+      "competition": "FIFA World Cup",
+      "heure": "12/07 02:00",
+      "selection": "Victoire Argentina",
+      "cote": 1.76,
+      "bookmaker": "Matchbook",
+      "ev_pct": 8.5,
+      "raison": "Supériorité argentine en termes de talent et d'expérience",
+      "session_id": "2026-07-11_soir",
+      "date_generation": "2026-07-11T20:00:34.557887"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Washington Nationals vs New York Yankees",
+      "competition": "MLB",
+      "heure": "11/07 21:05",
+      "selection": "Victoire New York Yankees",
+      "cote": 1.56,
+      "bookmaker": "1xBet",
+      "ev_pct": 5.8,
+      "raison": "À combiner avec le match précédent pour un pari opportuniste",
+      "session_id": "2026-07-11_soir",
+      "date_generation": "2026-07-11T20:00:34.557887"
     }
   ]
 }
