@@ -541,20 +541,6 @@
       "raison": "Supériorité argentine en termes de talent et d'expérience",
       "session_id": "2026-07-11_soir",
       "date_generation": "2026-07-11T20:00:34.557887"
-    },
-    {
-      "type": "OPPORTUNISTE",
-      "style": "Combiné",
-      "match": "Washington Nationals vs New York Yankees",
-      "competition": "MLB",
-      "heure": "11/07 21:05",
-      "selection": "Victoire New York Yankees",
-      "cote": 1.56,
-      "bookmaker": "1xBet",
-      "ev_pct": 5.8,
-      "raison": "À combiner avec le match précédent pour un pari opportuniste",
-      "session_id": "2026-07-11_soir",
-      "date_generation": "2026-07-11T20:00:34.557887"
     }
   ]
 }
