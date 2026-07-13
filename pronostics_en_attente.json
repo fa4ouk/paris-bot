@@ -527,6 +527,62 @@
       "raison": "Angle d'attaque supérieur et défense plus solide pour l'Angleterre",
       "session_id": "2026-07-11_soir",
       "date_generation": "2026-07-11T20:00:34.557887"
+    },
+    {
+      "type": "ULTRA SAFE",
+      "style": "Simple",
+      "match": "Minnesota Lynx vs Phoenix Mercury",
+      "competition": "WNBA",
+      "heure": "14/07 02:00",
+      "selection": "Handicap Minnesota Lynx -12.0",
+      "cote": 1.97,
+      "bookmaker": "Pinnacle",
+      "ev_pct": 5.0,
+      "raison": "Minnesota Lynx a montré une forte domination dans ses derniers matchs, et Phoenix Mercury a du mal à suivre leur rythme offensif.",
+      "session_id": "2026-07-13_soir",
+      "date_generation": "2026-07-13T20:00:37.474044"
+    },
+    {
+      "type": "VALEUR",
+      "style": "Simple",
+      "match": "Atlanta Dream vs Los Angeles Sparks",
+      "competition": "WNBA",
+      "heure": "14/07 00:00",
+      "selection": "Plus de 181.5",
+      "cote": 1.96,
+      "bookmaker": "Unibet (NL)",
+      "ev_pct": 8.0,
+      "raison": "Les deux équipes ont une attaque puissante et les statistiques suggèrent que les matchs entre elles dépassent souvent les totaux proposés.",
+      "session_id": "2026-07-13_soir",
+      "date_generation": "2026-07-13T20:00:37.474044"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Atlanta Dream vs Los Angeles Sparks",
+      "competition": "WNBA",
+      "heure": "14/07 00:00",
+      "selection": "Handicap Atlanta Dream -8.5",
+      "cote": 1.91,
+      "bookmaker": "MyBookie.ag",
+      "ev_pct": 12.0,
+      "raison": "À combiner avec le pronostic suivant pour un pari opportuniste.",
+      "session_id": "2026-07-13_soir",
+      "date_generation": "2026-07-13T20:00:37.474044"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Minnesota Lynx vs Phoenix Mercury",
+      "competition": "WNBA",
+      "heure": "14/07 02:00",
+      "selection": "Handicap Minnesota Lynx -11.5",
+      "cote": 1.91,
+      "bookmaker": "1xBet",
+      "ev_pct": 12.0,
+      "raison": "À combiner avec le pronostic précédent pour un pari opportuniste, profitant des handicaps favorables pour les deux équipes fortes.",
+      "session_id": "2026-07-13_soir",
+      "date_generation": "2026-07-13T20:00:37.474044"
     }
   ]
 }
