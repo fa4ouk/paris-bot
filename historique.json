@@ -1,6 +1,23 @@
 {
   "paris": [
     {
+      "type": "ULTRA SAFE",
+      "style": "Simple",
+      "match": "Los Angeles Dodgers vs Arizona Diamondbacks",
+      "competition": "MLB",
+      "heure": "12/07 21:11",
+      "selection": "Victoire Los Angeles Dodgers",
+      "cote": 1.48,
+      "bookmaker": "1xBet",
+      "ev_pct": 5.0,
+      "raison": "Les Dodgers ont une équipe très solide et les Diamondbacks ont des difficultés à gagner à domicile.",
+      "session_id": "2026-07-12_soir",
+      "date_generation": "2026-07-12T20:00:37.405041",
+      "resultat": "perdu",
+      "date_resultat": "2026-07-13T02:00:39.476897+01:00",
+      "verifie_auto": true
+    },
+    {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
       "match": "Miami Marlins vs Cleveland Guardians",
@@ -834,16 +851,16 @@
     }
   ],
   "stats": {
-    "total": 50,
+    "total": 51,
     "gagnes": 36,
-    "perdus": 14,
-    "taux": 72,
-    "derniere_maj": "2026-07-12T23:30:42.536634+01:00"
+    "perdus": 15,
+    "taux": 71,
+    "derniere_maj": "2026-07-13T02:00:40.042721+01:00"
   },
   "strategie": {
     "alertes": [],
     "marches_faibles": [],
-    "derniere_analyse": "2026-07-12T23:30:42.536702+01:00"
+    "derniere_analyse": "2026-07-13T02:00:40.042903+01:00"
   },
   "sessions_envoyees": [
     "inconnue",
