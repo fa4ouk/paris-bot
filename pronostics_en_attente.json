@@ -583,6 +583,48 @@
       "raison": "À combiner avec le pronostic précédent pour un pari opportuniste, profitant des handicaps favorables pour les deux équipes fortes.",
       "session_id": "2026-07-13_soir",
       "date_generation": "2026-07-13T20:00:37.474044"
+    },
+    {
+      "type": "VALEUR",
+      "style": "Simple",
+      "match": "National League vs American League",
+      "competition": "MLB",
+      "heure": "15/07 01:01",
+      "selection": "Victoire National League",
+      "cote": 1.79,
+      "bookmaker": "BetOnline.ag",
+      "ev_pct": 8.5,
+      "raison": "La National League a montré une meilleure forme récemment et les cotes sous-estiment légèrement leurs chances.",
+      "session_id": "2026-07-14_soir",
+      "date_generation": "2026-07-14T20:00:37.580144"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Toronto Tempo vs Washington Mystics",
+      "competition": "WNBA",
+      "heure": "15/07 00:10",
+      "selection": "Victoire Washington Mystics",
+      "cote": 1.9,
+      "bookmaker": "Betfair",
+      "ev_pct": 6.2,
+      "raison": "À combiner avec le pronostic suivant pour un pari combiné.",
+      "session_id": "2026-07-14_soir",
+      "date_generation": "2026-07-14T20:00:37.580144"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Toronto Tempo vs Washington Mystics",
+      "competition": "WNBA",
+      "heure": "15/07 00:10",
+      "selection": "Moins de 171.5",
+      "cote": 2.0,
+      "bookmaker": "Matchbook",
+      "ev_pct": 5.8,
+      "raison": "À combiner avec le pronostic précédent pour un pari combiné. Les deux équipes ont tendance à jouer de manière défensive, ce qui devrait limiter les points.",
+      "session_id": "2026-07-14_soir",
+      "date_generation": "2026-07-14T20:00:37.580144"
     }
   ]
 }
