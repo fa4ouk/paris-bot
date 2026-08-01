@@ -625,6 +625,48 @@
       "raison": "À combiner avec le pronostic précédent pour un pari combiné. Les deux équipes ont tendance à jouer de manière défensive, ce qui devrait limiter les points.",
       "session_id": "2026-07-14_soir",
       "date_generation": "2026-07-14T20:00:37.580144"
+    },
+    {
+      "type": "VALEUR",
+      "style": "Simple",
+      "match": "New York Mets vs Miami Marlins",
+      "competition": "MLB",
+      "heure": "01/08 21:11",
+      "selection": "Victoire New York Mets",
+      "cote": 1.81,
+      "bookmaker": "Matchbook",
+      "ev_pct": 8.5,
+      "raison": "Les Mets ont une légère supériorité sur les Marlins et la cote reflète mal cette différence.",
+      "session_id": "2026-08-01_soir",
+      "date_generation": "2026-08-01T20:00:20.491150"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Seattle Mariners vs Minnesota Twins",
+      "competition": "MLB",
+      "heure": "01/08 21:11",
+      "selection": "Victoire Seattle Mariners",
+      "cote": 1.65,
+      "bookmaker": "Matchbook",
+      "ev_pct": 10.3,
+      "raison": "À combiner avec le pronostic suivant pour un pari combiné.",
+      "session_id": "2026-08-01_soir",
+      "date_generation": "2026-08-01T20:00:20.491150"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Cincinnati Reds vs Pittsburgh Pirates",
+      "competition": "MLB",
+      "heure": "01/08 23:41",
+      "selection": "Victoire Cincinnati Reds",
+      "cote": 2.16,
+      "bookmaker": "Matchbook",
+      "ev_pct": 9.2,
+      "raison": "À combiner avec le pronostic précédent pour un pari combiné.",
+      "session_id": "2026-08-01_soir",
+      "date_generation": "2026-08-01T20:00:20.491150"
     }
   ]
 }
