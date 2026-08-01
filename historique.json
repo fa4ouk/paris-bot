@@ -3,6 +3,23 @@
     {
       "type": "ULTRA SAFE",
       "style": "Simple",
+      "match": "Toronto Blue Jays vs St. Louis Cardinals",
+      "competition": "MLB",
+      "heure": "01/08 20:08",
+      "selection": "Victoire Toronto Blue Jays",
+      "cote": 1.51,
+      "bookmaker": "Pinnacle",
+      "ev_pct": 12.1,
+      "raison": "Les Blue Jays ont une forte équipe et affrontent les Cardinals qui sont en difficile période.",
+      "session_id": "2026-08-01_soir",
+      "date_generation": "2026-08-01T20:00:20.491150",
+      "resultat": "gagné",
+      "date_resultat": "2026-08-01T23:30:22.966111+01:00",
+      "verifie_auto": true
+    },
+    {
+      "type": "ULTRA SAFE",
+      "style": "Simple",
       "match": "France vs Spain",
       "competition": "FIFA World Cup",
       "heure": "14/07 20:00",
@@ -868,16 +885,16 @@
     }
   ],
   "stats": {
-    "total": 52,
-    "gagnes": 37,
+    "total": 53,
+    "gagnes": 38,
     "perdus": 15,
-    "taux": 71,
-    "derniere_maj": "2026-07-14T23:30:41.519139+01:00"
+    "taux": 72,
+    "derniere_maj": "2026-08-01T23:30:23.804571+01:00"
   },
   "strategie": {
     "alertes": [],
     "marches_faibles": [],
-    "derniere_analyse": "2026-07-14T23:30:41.519207+01:00"
+    "derniere_analyse": "2026-08-01T23:30:23.804642+01:00"
   },
   "sessions_envoyees": [
     "inconnue",
