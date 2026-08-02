@@ -3,6 +3,40 @@
     {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
+      "match": "Portland Fire vs Los Angeles Sparks",
+      "competition": "WNBA",
+      "heure": "02/08 20:43",
+      "selection": "Victoire Portland Fire",
+      "cote": 1.56,
+      "bookmaker": "Betfair",
+      "ev_pct": 10.2,
+      "raison": "À combiner avec le pronostic suivant",
+      "session_id": "2026-08-02_soir",
+      "date_generation": "2026-08-02T20:00:16.740779",
+      "resultat": "perdu",
+      "date_resultat": "2026-08-02T23:30:18.291560+01:00",
+      "verifie_auto": true
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Cincinnati Reds vs Pittsburgh Pirates",
+      "competition": "MLB",
+      "heure": "01/08 23:41",
+      "selection": "Victoire Cincinnati Reds",
+      "cote": 2.16,
+      "bookmaker": "Matchbook",
+      "ev_pct": 9.2,
+      "raison": "À combiner avec le pronostic précédent pour un pari combiné.",
+      "session_id": "2026-08-01_soir",
+      "date_generation": "2026-08-01T20:00:20.491150",
+      "resultat": "perdu",
+      "date_resultat": "2026-08-02T23:30:18.291474+01:00",
+      "verifie_auto": true
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
       "match": "Seattle Mariners vs Minnesota Twins",
       "competition": "MLB",
       "heure": "01/08 21:11",
@@ -902,16 +936,22 @@
     }
   ],
   "stats": {
-    "total": 54,
+    "total": 56,
     "gagnes": 39,
-    "perdus": 15,
-    "taux": 72,
-    "derniere_maj": "2026-08-02T02:00:21.429468+01:00"
+    "perdus": 17,
+    "taux": 70,
+    "derniere_maj": "2026-08-02T23:30:19.105232+01:00"
   },
   "strategie": {
-    "alertes": [],
+    "alertes": [
+      {
+        "type": "OPPORTUNISTE",
+        "pertes_consecutives": 2,
+        "action": "etre_plus_selectif"
+      }
+    ],
     "marches_faibles": [],
-    "derniere_analyse": "2026-08-02T02:00:21.429526+01:00"
+    "derniere_analyse": "2026-08-02T23:30:19.105307+01:00"
   },
   "sessions_envoyees": [
     "inconnue",
