@@ -643,20 +643,6 @@
     {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
-      "match": "Seattle Mariners vs Minnesota Twins",
-      "competition": "MLB",
-      "heure": "01/08 21:11",
-      "selection": "Victoire Seattle Mariners",
-      "cote": 1.65,
-      "bookmaker": "Matchbook",
-      "ev_pct": 10.3,
-      "raison": "À combiner avec le pronostic suivant pour un pari combiné.",
-      "session_id": "2026-08-01_soir",
-      "date_generation": "2026-08-01T20:00:20.491150"
-    },
-    {
-      "type": "OPPORTUNISTE",
-      "style": "Combiné",
       "match": "Cincinnati Reds vs Pittsburgh Pirates",
       "competition": "MLB",
       "heure": "01/08 23:41",
