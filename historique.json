@@ -1,6 +1,23 @@
 {
   "paris": [
     {
+      "type": "ULTRA SAFE",
+      "style": "Simple",
+      "match": "Los Angeles Dodgers vs Boston Red Sox",
+      "competition": "MLB",
+      "heure": "03/08 00:21",
+      "selection": "Victoire Los Angeles Dodgers",
+      "cote": 1.6,
+      "bookmaker": "Betfair",
+      "ev_pct": 12.5,
+      "raison": "Los Angeles Dodgers a une forte équipe et une bonne forme actuelle",
+      "session_id": "2026-08-02_soir",
+      "date_generation": "2026-08-02T20:00:16.740779",
+      "resultat": "perdu",
+      "date_resultat": "2026-08-03T23:30:21.855785+01:00",
+      "verifie_auto": true
+    },
+    {
       "type": "VALEUR",
       "style": "Simple",
       "match": "Seattle Mariners vs Minnesota Twins",
@@ -953,11 +970,11 @@
     }
   ],
   "stats": {
-    "total": 57,
+    "total": 58,
     "gagnes": 40,
-    "perdus": 17,
-    "taux": 70,
-    "derniere_maj": "2026-08-03T02:00:19.586472+01:00"
+    "perdus": 18,
+    "taux": 69,
+    "derniere_maj": "2026-08-03T23:30:22.648629+01:00"
   },
   "strategie": {
     "alertes": [
@@ -968,7 +985,7 @@
       }
     ],
     "marches_faibles": [],
-    "derniere_analyse": "2026-08-03T02:00:19.586533+01:00"
+    "derniere_analyse": "2026-08-03T23:30:22.648705+01:00"
   },
   "sessions_envoyees": [
     "inconnue",
