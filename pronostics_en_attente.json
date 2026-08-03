@@ -641,20 +641,6 @@
       "date_generation": "2026-08-01T20:00:20.491150"
     },
     {
-      "type": "ULTRA SAFE",
-      "style": "Simple",
-      "match": "Los Angeles Dodgers vs Boston Red Sox",
-      "competition": "MLB",
-      "heure": "03/08 00:21",
-      "selection": "Victoire Los Angeles Dodgers",
-      "cote": 1.6,
-      "bookmaker": "Betfair",
-      "ev_pct": 12.5,
-      "raison": "Los Angeles Dodgers a une forte équipe et une bonne forme actuelle",
-      "session_id": "2026-08-02_soir",
-      "date_generation": "2026-08-02T20:00:16.740779"
-    },
-    {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
       "match": "Dallas Wings vs Connecticut Sun",
@@ -667,6 +653,62 @@
       "raison": "À combiner avec le pronostic précédent",
       "session_id": "2026-08-02_soir",
       "date_generation": "2026-08-02T20:00:16.740779"
+    },
+    {
+      "type": "ULTRA SAFE",
+      "style": "Simple",
+      "match": "New York Yankees vs St. Louis Cardinals",
+      "competition": "MLB",
+      "heure": "04/08 00:06",
+      "selection": "Victoire New York Yankees",
+      "cote": 1.5,
+      "bookmaker": "1xBet",
+      "ev_pct": 12.5,
+      "raison": "Les Yankees ont une forte équipe et affrontent les Cardinals, qui ont des difficultés cette saison.",
+      "session_id": "2026-08-03_soir",
+      "date_generation": "2026-08-03T20:00:18.498114"
+    },
+    {
+      "type": "VALEUR",
+      "style": "Simple",
+      "match": "Atlanta Dream vs Las Vegas Aces",
+      "competition": "WNBA",
+      "heure": "04/08 00:30",
+      "selection": "Victoire Atlanta Dream",
+      "cote": 1.76,
+      "bookmaker": "Matchbook",
+      "ev_pct": 8.1,
+      "raison": "Les Dream ont une bonne équipe et les Aces ont des problèmes de blessures.",
+      "session_id": "2026-08-03_soir",
+      "date_generation": "2026-08-03T20:00:18.498114"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Chicago Sky vs Phoenix Mercury",
+      "competition": "WNBA",
+      "heure": "04/08 02:00",
+      "selection": "Victoire Chicago Sky",
+      "cote": 2.1,
+      "bookmaker": "Matchbook",
+      "ev_pct": 15.2,
+      "raison": "À combiner avec le pronostic suivant pour un pari combiné.",
+      "session_id": "2026-08-03_soir",
+      "date_generation": "2026-08-03T20:00:18.498114"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Texas Rangers vs San Francisco Giants",
+      "competition": "MLB",
+      "heure": "04/08 01:06",
+      "selection": "Victoire Texas Rangers",
+      "cote": 1.86,
+      "bookmaker": "Betfair",
+      "ev_pct": 10.5,
+      "raison": "À combiner avec le pronostic précédent pour un pari combiné.",
+      "session_id": "2026-08-03_soir",
+      "date_generation": "2026-08-03T20:00:18.498114"
     }
   ]
 }
