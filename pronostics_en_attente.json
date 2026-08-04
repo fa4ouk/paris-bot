@@ -655,20 +655,6 @@
       "date_generation": "2026-08-02T20:00:16.740779"
     },
     {
-      "type": "ULTRA SAFE",
-      "style": "Simple",
-      "match": "New York Yankees vs St. Louis Cardinals",
-      "competition": "MLB",
-      "heure": "04/08 00:06",
-      "selection": "Victoire New York Yankees",
-      "cote": 1.5,
-      "bookmaker": "1xBet",
-      "ev_pct": 12.5,
-      "raison": "Les Yankees ont une forte équipe et affrontent les Cardinals, qui ont des difficultés cette saison.",
-      "session_id": "2026-08-03_soir",
-      "date_generation": "2026-08-03T20:00:18.498114"
-    },
-    {
       "type": "VALEUR",
       "style": "Simple",
       "match": "Atlanta Dream vs Las Vegas Aces",
@@ -697,18 +683,60 @@
       "date_generation": "2026-08-03T20:00:18.498114"
     },
     {
+      "type": "ULTRA SAFE",
+      "style": "Simple",
+      "match": "New York Yankees vs St. Louis Cardinals",
+      "competition": "MLB",
+      "heure": "05/08 00:06",
+      "selection": "Victoire New York Yankees",
+      "cote": 1.55,
+      "bookmaker": "Matchbook",
+      "ev_pct": 10.0,
+      "raison": "Les Yankees ont une forte équipe et affrontent les Cardinals, qui ont des difficultés cette saison.",
+      "session_id": "2026-08-04_soir",
+      "date_generation": "2026-08-04T20:00:29.283001"
+    },
+    {
+      "type": "VALEUR",
+      "style": "Simple",
+      "match": "Atlanta Braves vs Miami Marlins",
+      "competition": "MLB",
+      "heure": "05/08 00:16",
+      "selection": "Victoire Atlanta Braves",
+      "cote": 1.72,
+      "bookmaker": "1xBet",
+      "ev_pct": 8.0,
+      "raison": "Les Braves ont une meilleure équipe et les cotes sont sous-évaluées par le marché.",
+      "session_id": "2026-08-04_soir",
+      "date_generation": "2026-08-04T20:00:29.283001"
+    },
+    {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
       "match": "Texas Rangers vs San Francisco Giants",
       "competition": "MLB",
-      "heure": "04/08 01:06",
+      "heure": "05/08 01:06",
       "selection": "Victoire Texas Rangers",
-      "cote": 1.86,
-      "bookmaker": "Betfair",
-      "ev_pct": 10.5,
-      "raison": "À combiner avec le pronostic précédent pour un pari combiné.",
-      "session_id": "2026-08-03_soir",
-      "date_generation": "2026-08-03T20:00:18.498114"
+      "cote": 1.55,
+      "bookmaker": "Matchbook",
+      "ev_pct": 12.0,
+      "raison": "À combiner avec le match suivant pour un pari combiné logique.",
+      "session_id": "2026-08-04_soir",
+      "date_generation": "2026-08-04T20:00:29.283001"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Houston Astros vs Toronto Blue Jays",
+      "competition": "MLB",
+      "heure": "05/08 01:10",
+      "selection": "Victoire Houston Astros",
+      "cote": 1.8,
+      "bookmaker": "1xBet",
+      "ev_pct": 10.0,
+      "raison": "À combiner avec le match précédent pour un pari combiné logique.",
+      "session_id": "2026-08-04_soir",
+      "date_generation": "2026-08-04T20:00:29.283001"
     }
   ]
 }
