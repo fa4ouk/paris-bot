@@ -1,6 +1,40 @@
 {
   "paris": [
     {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Texas Rangers vs San Francisco Giants",
+      "competition": "MLB",
+      "heure": "04/08 01:06",
+      "selection": "Victoire Texas Rangers",
+      "cote": 1.86,
+      "bookmaker": "Betfair",
+      "ev_pct": 10.5,
+      "raison": "À combiner avec le pronostic précédent pour un pari combiné.",
+      "session_id": "2026-08-03_soir",
+      "date_generation": "2026-08-03T20:00:18.498114",
+      "resultat": "perdu",
+      "date_resultat": "2026-08-04T23:30:27.742483+01:00",
+      "verifie_auto": true
+    },
+    {
+      "type": "ULTRA SAFE",
+      "style": "Simple",
+      "match": "New York Yankees vs St. Louis Cardinals",
+      "competition": "MLB",
+      "heure": "04/08 00:06",
+      "selection": "Victoire New York Yankees",
+      "cote": 1.5,
+      "bookmaker": "1xBet",
+      "ev_pct": 12.5,
+      "raison": "Les Yankees ont une forte équipe et affrontent les Cardinals, qui ont des difficultés cette saison.",
+      "session_id": "2026-08-03_soir",
+      "date_generation": "2026-08-03T20:00:18.498114",
+      "resultat": "perdu",
+      "date_resultat": "2026-08-04T23:30:27.742419+01:00",
+      "verifie_auto": true
+    },
+    {
       "type": "ULTRA SAFE",
       "style": "Simple",
       "match": "Los Angeles Dodgers vs Boston Red Sox",
@@ -970,22 +1004,27 @@
     }
   ],
   "stats": {
-    "total": 58,
+    "total": 60,
     "gagnes": 40,
-    "perdus": 18,
-    "taux": 69,
-    "derniere_maj": "2026-08-03T23:30:22.648629+01:00"
+    "perdus": 20,
+    "taux": 67,
+    "derniere_maj": "2026-08-04T23:30:28.639541+01:00"
   },
   "strategie": {
     "alertes": [
       {
-        "type": "OPPORTUNISTE",
+        "type": "ULTRA SAFE",
         "pertes_consecutives": 2,
         "action": "etre_plus_selectif"
+      },
+      {
+        "type": "OPPORTUNISTE",
+        "pertes_consecutives": 3,
+        "action": "eviter"
       }
     ],
     "marches_faibles": [],
-    "derniere_analyse": "2026-08-03T23:30:22.648705+01:00"
+    "derniere_analyse": "2026-08-04T23:30:28.639610+01:00"
   },
   "sessions_envoyees": [
     "inconnue",
