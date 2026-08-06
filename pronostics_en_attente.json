@@ -711,32 +711,46 @@
       "date_generation": "2026-08-05T20:00:22.122101"
     },
     {
-      "type": "OPPORTUNISTE",
-      "style": "Combiné",
-      "match": "Atlanta Braves vs Miami Marlins",
+      "type": "ULTRA SAFE",
+      "style": "Simple",
+      "match": "Cincinnati Reds vs Athletics",
       "competition": "MLB",
-      "heure": "06/08 00:16",
-      "selection": "Victoire Atlanta Braves",
-      "cote": 1.84,
+      "heure": "06/08 17:40",
+      "selection": "Victoire Cincinnati Reds",
+      "cote": 1.66,
       "bookmaker": "Matchbook",
-      "ev_pct": 6.5,
-      "raison": "À combiner avec le pronostic suivant pour un pari opportuniste.",
-      "session_id": "2026-08-05_soir",
-      "date_generation": "2026-08-05T20:00:22.122101"
+      "ev_pct": 12.1,
+      "raison": "Cincinnati Reds a une forte équipe et une bonne forme actuelle",
+      "session_id": "2026-08-06_matin",
+      "date_generation": "2026-08-06T07:30:26.819186"
     },
     {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
-      "match": "Milwaukee Brewers vs Pittsburgh Pirates",
+      "match": "Seattle Mariners vs Detroit Tigers",
       "competition": "MLB",
-      "heure": "06/08 00:40",
-      "selection": "Victoire Milwaukee Brewers",
+      "heure": "06/08 21:11",
+      "selection": "Victoire Seattle Mariners",
       "cote": 1.83,
-      "bookmaker": "Matchbook",
+      "bookmaker": "1xBet",
       "ev_pct": 6.2,
-      "raison": "À combiner avec le pronostic précédent pour un pari opportuniste.",
-      "session_id": "2026-08-05_soir",
-      "date_generation": "2026-08-05T20:00:22.122101"
+      "raison": "À combiner avec le match suivant pour un pari opportuniste",
+      "session_id": "2026-08-06_matin",
+      "date_generation": "2026-08-06T07:30:26.819186"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Philadelphia Phillies vs Washington Nationals",
+      "competition": "MLB",
+      "heure": "06/08 23:06",
+      "selection": "Handicap Philadelphia Phillies -1.5",
+      "cote": 1.68,
+      "bookmaker": "Matchbook",
+      "ev_pct": 5.9,
+      "raison": "À combiner avec le match précédent pour un pari opportuniste",
+      "session_id": "2026-08-06_matin",
+      "date_generation": "2026-08-06T07:30:26.819186"
     }
   ]
 }
