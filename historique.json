@@ -1,6 +1,57 @@
 {
   "paris": [
     {
+      "type": "VALEUR",
+      "style": "Simple",
+      "match": "Milwaukee Brewers vs Pittsburgh Pirates",
+      "competition": "MLB",
+      "heure": "06/08 19:11",
+      "selection": "Victoire Milwaukee Brewers",
+      "cote": 1.77,
+      "bookmaker": "1xBet",
+      "ev_pct": 8.5,
+      "raison": "Milwaukee Brewers a une meilleure équipe et une bonne chance de gagner",
+      "session_id": "2026-08-06_matin",
+      "date_generation": "2026-08-06T07:30:26.819186",
+      "resultat": "gagné",
+      "date_resultat": "2026-08-06T23:30:26.702472+01:00",
+      "verifie_auto": true
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Milwaukee Brewers vs Pittsburgh Pirates",
+      "competition": "MLB",
+      "heure": "06/08 00:40",
+      "selection": "Victoire Milwaukee Brewers",
+      "cote": 1.83,
+      "bookmaker": "Matchbook",
+      "ev_pct": 6.2,
+      "raison": "À combiner avec le pronostic précédent pour un pari opportuniste.",
+      "session_id": "2026-08-05_soir",
+      "date_generation": "2026-08-05T20:00:22.122101",
+      "resultat": "gagné",
+      "date_resultat": "2026-08-06T23:30:26.702415+01:00",
+      "verifie_auto": true
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Atlanta Braves vs Miami Marlins",
+      "competition": "MLB",
+      "heure": "06/08 00:16",
+      "selection": "Victoire Atlanta Braves",
+      "cote": 1.84,
+      "bookmaker": "Matchbook",
+      "ev_pct": 6.5,
+      "raison": "À combiner avec le pronostic suivant pour un pari opportuniste.",
+      "session_id": "2026-08-05_soir",
+      "date_generation": "2026-08-05T20:00:22.122101",
+      "resultat": "gagné",
+      "date_resultat": "2026-08-06T23:30:26.702373+01:00",
+      "verifie_auto": true
+    },
+    {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
       "match": "Houston Astros vs Toronto Blue Jays",
@@ -1072,16 +1123,16 @@
     }
   ],
   "stats": {
-    "total": 64,
-    "gagnes": 44,
+    "total": 67,
+    "gagnes": 47,
     "perdus": 20,
-    "taux": 69,
-    "derniere_maj": "2026-08-05T23:30:23.795336+01:00"
+    "taux": 70,
+    "derniere_maj": "2026-08-06T23:30:27.316174+01:00"
   },
   "strategie": {
     "alertes": [],
     "marches_faibles": [],
-    "derniere_analyse": "2026-08-05T23:30:23.795400+01:00"
+    "derniere_analyse": "2026-08-06T23:30:27.316255+01:00"
   },
   "sessions_envoyees": [
     "inconnue",
