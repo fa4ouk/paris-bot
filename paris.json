@@ -1,62 +1,34 @@
 {
   "paris": [
     {
-      "type": "ULTRA SAFE",
-      "style": "Simple",
-      "match": "Cincinnati Reds vs Athletics",
-      "competition": "MLB",
-      "heure": "06/08 17:40",
-      "selection": "Victoire Cincinnati Reds",
-      "cote": 1.66,
-      "bookmaker": "Matchbook",
-      "ev_pct": 12.1,
-      "raison": "Cincinnati Reds a une forte équipe et une bonne forme actuelle",
-      "session_id": "2026-08-06_matin",
-      "date_generation": "2026-08-06T07:30:26.819186"
-    },
-    {
       "type": "VALEUR",
       "style": "Simple",
-      "match": "Milwaukee Brewers vs Pittsburgh Pirates",
+      "match": "Philadelphia Phillies vs Toronto Blue Jays",
       "competition": "MLB",
-      "heure": "06/08 19:11",
-      "selection": "Victoire Milwaukee Brewers",
-      "cote": 1.77,
+      "heure": "07/08 23:41",
+      "selection": "Victoire Philadelphia Phillies",
+      "cote": 1.49,
       "bookmaker": "1xBet",
+      "ev_pct": 12.1,
+      "raison": "Cote sous-évaluée par le marché",
+      "session_id": "2026-08-07_matin",
+      "date_generation": "2026-08-07T07:30:16.220199"
+    },
+    {
+      "type": "ULTRA SAFE",
+      "style": "Simple",
+      "match": "Trukon Carson vs Trey Waters",
+      "competition": "MMA",
+      "heure": "07/08 23:40",
+      "selection": "Victoire Trey Waters",
+      "cote": 1.42,
+      "bookmaker": "BetOnline.ag",
       "ev_pct": 8.5,
-      "raison": "Milwaukee Brewers a une meilleure équipe et une bonne chance de gagner",
-      "session_id": "2026-08-06_matin",
-      "date_generation": "2026-08-06T07:30:26.819186"
-    },
-    {
-      "type": "OPPORTUNISTE",
-      "style": "Combiné",
-      "match": "Seattle Mariners vs Detroit Tigers",
-      "competition": "MLB",
-      "heure": "06/08 21:11",
-      "selection": "Victoire Seattle Mariners",
-      "cote": 1.83,
-      "bookmaker": "1xBet",
-      "ev_pct": 6.2,
-      "raison": "À combiner avec le match suivant pour un pari opportuniste",
-      "session_id": "2026-08-06_matin",
-      "date_generation": "2026-08-06T07:30:26.819186"
-    },
-    {
-      "type": "OPPORTUNISTE",
-      "style": "Combiné",
-      "match": "Philadelphia Phillies vs Washington Nationals",
-      "competition": "MLB",
-      "heure": "06/08 23:06",
-      "selection": "Handicap Philadelphia Phillies -1.5",
-      "cote": 1.68,
-      "bookmaker": "Matchbook",
-      "ev_pct": 5.9,
-      "raison": "À combiner avec le match précédent pour un pari opportuniste",
-      "session_id": "2026-08-06_matin",
-      "date_generation": "2026-08-06T07:30:26.819186"
+      "raison": "Probabilité élevée de victoire",
+      "session_id": "2026-08-07_matin",
+      "date_generation": "2026-08-07T07:30:16.220199"
     }
   ],
-  "note_du_jour": "Journée avec quelques opportunités intéressantes, mais il faut être prudent",
+  "note_du_jour": "Journée avec peu d'opportunités de pari intéressantes, mais quelques valeurs sûres",
   "confiance": "Moyen"
 }
