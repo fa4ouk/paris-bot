@@ -727,20 +727,6 @@
     {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
-      "match": "Seattle Mariners vs Detroit Tigers",
-      "competition": "MLB",
-      "heure": "06/08 21:11",
-      "selection": "Victoire Seattle Mariners",
-      "cote": 1.83,
-      "bookmaker": "1xBet",
-      "ev_pct": 6.2,
-      "raison": "À combiner avec le match suivant pour un pari opportuniste",
-      "session_id": "2026-08-06_matin",
-      "date_generation": "2026-08-06T07:30:26.819186"
-    },
-    {
-      "type": "OPPORTUNISTE",
-      "style": "Combiné",
       "match": "Philadelphia Phillies vs Washington Nationals",
       "competition": "MLB",
       "heure": "06/08 23:06",
