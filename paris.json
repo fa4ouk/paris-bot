@@ -1,34 +1,62 @@
 {
   "paris": [
     {
+      "type": "ULTRA SAFE",
+      "style": "Simple",
+      "match": "Boston Red Sox vs Athletics",
+      "competition": "MLB",
+      "heure": "08/08 00:11",
+      "selection": "Victoire Boston Red Sox",
+      "cote": 1.4,
+      "bookmaker": "1xBet",
+      "ev_pct": 12.5,
+      "raison": "Boston Red Sox a une forte équipe et une bonne forme actuelle",
+      "session_id": "2026-08-07_soir",
+      "date_generation": "2026-08-07T20:00:22.397994"
+    },
+    {
       "type": "VALEUR",
       "style": "Simple",
       "match": "Philadelphia Phillies vs Toronto Blue Jays",
       "competition": "MLB",
       "heure": "07/08 23:41",
       "selection": "Victoire Philadelphia Phillies",
-      "cote": 1.49,
+      "cote": 1.51,
       "bookmaker": "1xBet",
-      "ev_pct": 12.1,
-      "raison": "Cote sous-évaluée par le marché",
-      "session_id": "2026-08-07_matin",
-      "date_generation": "2026-08-07T07:30:16.220199"
+      "ev_pct": 8.2,
+      "raison": "Philadelphia Phillies a une bonne équipe et une cote sous-évaluée",
+      "session_id": "2026-08-07_soir",
+      "date_generation": "2026-08-07T20:00:22.397994"
     },
     {
-      "type": "ULTRA SAFE",
-      "style": "Simple",
-      "match": "Trukon Carson vs Trey Waters",
-      "competition": "MMA",
-      "heure": "07/08 23:40",
-      "selection": "Victoire Trey Waters",
-      "cote": 1.42,
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Washington Mystics vs Atlanta Dream",
+      "competition": "WNBA",
+      "heure": "08/08 00:30",
+      "selection": "Victoire Atlanta Dream",
+      "cote": 1.48,
       "bookmaker": "BetOnline.ag",
-      "ev_pct": 8.5,
-      "raison": "Probabilité élevée de victoire",
-      "session_id": "2026-08-07_matin",
-      "date_generation": "2026-08-07T07:30:16.220199"
+      "ev_pct": 10.1,
+      "raison": "À combiner avec le match suivant pour un combiné logique",
+      "session_id": "2026-08-07_soir",
+      "date_generation": "2026-08-07T20:00:22.397994"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Connecticut Sun vs Phoenix Mercury",
+      "competition": "WNBA",
+      "heure": "08/08 00:30",
+      "selection": "Victoire Phoenix Mercury",
+      "cote": 1.48,
+      "bookmaker": "BetOnline.ag",
+      "ev_pct": 9.5,
+      "raison": "À combiner avec le match précédent pour un combiné logique",
+      "session_id": "2026-08-07_soir",
+      "date_generation": "2026-08-07T20:00:22.397994"
     }
   ],
-  "note_du_jour": "Journée avec peu d'opportunités de pari intéressantes, mais quelques valeurs sûres",
+  "note_du_jour": "Journée avec quelques opportunités intéressantes, mais il faut être sélectif",
   "confiance": "Moyen"
 }
