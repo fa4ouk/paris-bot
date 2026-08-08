@@ -739,20 +739,6 @@
       "date_generation": "2026-08-06T07:30:26.819186"
     },
     {
-      "type": "ULTRA SAFE",
-      "style": "Simple",
-      "match": "Boston Red Sox vs Athletics",
-      "competition": "MLB",
-      "heure": "08/08 00:11",
-      "selection": "Victoire Boston Red Sox",
-      "cote": 1.4,
-      "bookmaker": "1xBet",
-      "ev_pct": 12.5,
-      "raison": "Boston Red Sox a une forte équipe et une bonne forme actuelle",
-      "session_id": "2026-08-07_soir",
-      "date_generation": "2026-08-07T20:00:22.397994"
-    },
-    {
       "type": "VALEUR",
       "style": "Simple",
       "match": "Philadelphia Phillies vs Toronto Blue Jays",
@@ -793,6 +779,62 @@
       "raison": "À combiner avec le match précédent pour un combiné logique",
       "session_id": "2026-08-07_soir",
       "date_generation": "2026-08-07T20:00:22.397994"
+    },
+    {
+      "type": "ULTRA SAFE",
+      "style": "Simple",
+      "match": "Chicago Cubs vs Kansas City Royals",
+      "competition": "MLB",
+      "heure": "09/08 00:10",
+      "selection": "Victoire Chicago Cubs",
+      "cote": 1.67,
+      "bookmaker": "Matchbook",
+      "ev_pct": 12.1,
+      "raison": "Le Chicago Cubs a une forte équipe et affronte une équipe plus faible, les Kansas City Royals.",
+      "session_id": "2026-08-08_soir",
+      "date_generation": "2026-08-08T20:00:23.622144"
+    },
+    {
+      "type": "VALEUR",
+      "style": "Simple",
+      "match": "San Francisco Giants vs Detroit Tigers",
+      "competition": "MLB",
+      "heure": "09/08 00:16",
+      "selection": "Victoire San Francisco Giants",
+      "cote": 2.08,
+      "bookmaker": "GTbets",
+      "ev_pct": 8.5,
+      "raison": "Les San Francisco Giants ont une bonne équipe et la cote est sous-évaluée par le marché.",
+      "session_id": "2026-08-08_soir",
+      "date_generation": "2026-08-08T20:00:23.622144"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Los Angeles Dodgers vs Arizona Diamondbacks",
+      "competition": "MLB",
+      "heure": "09/08 01:11",
+      "selection": "Victoire Los Angeles Dodgers",
+      "cote": 1.57,
+      "bookmaker": "1xBet",
+      "ev_pct": 10.3,
+      "raison": "À combiner avec le match suivant pour un pari opportuniste.",
+      "session_id": "2026-08-08_soir",
+      "date_generation": "2026-08-08T20:00:23.622144"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Seattle Mariners vs Tampa Bay Rays",
+      "competition": "MLB",
+      "heure": "09/08 02:50",
+      "selection": "Victoire Seattle Mariners",
+      "cote": 1.92,
+      "bookmaker": "Matchbook",
+      "ev_pct": 9.2,
+      "raison": "À combiner avec le match précédent pour un pari opportuniste.",
+      "session_id": "2026-08-08_soir",
+      "date_generation": "2026-08-08T20:00:23.622144"
     }
   ]
 }
