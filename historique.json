@@ -1,6 +1,91 @@
 {
   "paris": [
     {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Washington Mystics vs Phoenix Mercury",
+      "competition": "WNBA",
+      "heure": "09/08 20:04",
+      "selection": "Plus de 169.5",
+      "cote": 1.93,
+      "bookmaker": "Matchbook",
+      "ev_pct": 8.0,
+      "raison": "Combiner avec le match précédent pour un pari combiné",
+      "session_id": "2026-08-09_soir",
+      "date_generation": "2026-08-09T20:00:16.290013",
+      "resultat": "gagné",
+      "date_resultat": "2026-08-09T23:30:17.720667+01:00",
+      "verifie_auto": true
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Minnesota Lynx vs Dallas Wings",
+      "competition": "WNBA",
+      "heure": "09/08 20:42",
+      "selection": "Plus de 177.5",
+      "cote": 1.8,
+      "bookmaker": "888sport",
+      "ev_pct": 8.0,
+      "raison": "Combiner avec le match suivant pour un pari combiné",
+      "session_id": "2026-08-09_soir",
+      "date_generation": "2026-08-09T20:00:16.290013",
+      "resultat": "gagné",
+      "date_resultat": "2026-08-09T23:30:17.720645+01:00",
+      "verifie_auto": true
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Los Angeles Dodgers vs Arizona Diamondbacks",
+      "competition": "MLB",
+      "heure": "09/08 01:11",
+      "selection": "Victoire Los Angeles Dodgers",
+      "cote": 1.57,
+      "bookmaker": "1xBet",
+      "ev_pct": 10.3,
+      "raison": "À combiner avec le match suivant pour un pari opportuniste.",
+      "session_id": "2026-08-08_soir",
+      "date_generation": "2026-08-08T20:00:23.622144",
+      "resultat": "gagné",
+      "date_resultat": "2026-08-09T23:30:17.720559+01:00",
+      "verifie_auto": true
+    },
+    {
+      "type": "VALEUR",
+      "style": "Simple",
+      "match": "San Francisco Giants vs Detroit Tigers",
+      "competition": "MLB",
+      "heure": "09/08 00:16",
+      "selection": "Victoire San Francisco Giants",
+      "cote": 2.08,
+      "bookmaker": "GTbets",
+      "ev_pct": 8.5,
+      "raison": "Les San Francisco Giants ont une bonne équipe et la cote est sous-évaluée par le marché.",
+      "session_id": "2026-08-08_soir",
+      "date_generation": "2026-08-08T20:00:23.622144",
+      "resultat": "perdu",
+      "date_resultat": "2026-08-09T23:30:17.720530+01:00",
+      "verifie_auto": true
+    },
+    {
+      "type": "ULTRA SAFE",
+      "style": "Simple",
+      "match": "Chicago Cubs vs Kansas City Royals",
+      "competition": "MLB",
+      "heure": "09/08 00:10",
+      "selection": "Victoire Chicago Cubs",
+      "cote": 1.67,
+      "bookmaker": "Matchbook",
+      "ev_pct": 12.1,
+      "raison": "Le Chicago Cubs a une forte équipe et affronte une équipe plus faible, les Kansas City Royals.",
+      "session_id": "2026-08-08_soir",
+      "date_generation": "2026-08-08T20:00:23.622144",
+      "resultat": "perdu",
+      "date_resultat": "2026-08-09T23:30:17.720496+01:00",
+      "verifie_auto": true
+    },
+    {
       "type": "ULTRA SAFE",
       "style": "Simple",
       "match": "Boston Red Sox vs Athletics",
@@ -1157,16 +1242,16 @@
     }
   ],
   "stats": {
-    "total": 69,
-    "gagnes": 48,
-    "perdus": 21,
-    "taux": 70,
-    "derniere_maj": "2026-08-08T23:30:24.736179+01:00"
+    "total": 74,
+    "gagnes": 51,
+    "perdus": 23,
+    "taux": 69,
+    "derniere_maj": "2026-08-09T23:30:18.509518+01:00"
   },
   "strategie": {
     "alertes": [],
     "marches_faibles": [],
-    "derniere_analyse": "2026-08-08T23:30:24.736295+01:00"
+    "derniere_analyse": "2026-08-09T23:30:18.509606+01:00"
   },
   "sessions_envoyees": [
     "inconnue",
