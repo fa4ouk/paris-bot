@@ -3,6 +3,23 @@
     {
       "type": "ULTRA SAFE",
       "style": "Simple",
+      "match": "Arizona Diamondbacks vs Colorado Rockies",
+      "competition": "MLB",
+      "heure": "11/08 02:40",
+      "selection": "Victoire Arizona Diamondbacks",
+      "cote": 1.53,
+      "bookmaker": "Matchbook",
+      "ev_pct": 5.0,
+      "raison": "Arizona Diamondbacks a une forte équipe et une bonne forme actuelle",
+      "session_id": "2026-08-10_soir",
+      "date_generation": "2026-08-10T20:00:17.401509",
+      "resultat": "gagné",
+      "date_resultat": "2026-08-11T23:30:17.245124+01:00",
+      "verifie_auto": true
+    },
+    {
+      "type": "ULTRA SAFE",
+      "style": "Simple",
       "match": "Chicago White Sox vs Cleveland Guardians",
       "competition": "MLB",
       "heure": "09/08 19:10",
@@ -1259,22 +1276,16 @@
     }
   ],
   "stats": {
-    "total": 75,
-    "gagnes": 51,
+    "total": 76,
+    "gagnes": 52,
     "perdus": 24,
     "taux": 68,
-    "derniere_maj": "2026-08-10T02:00:19.477290+01:00"
+    "derniere_maj": "2026-08-11T23:30:17.886304+01:00"
   },
   "strategie": {
-    "alertes": [
-      {
-        "type": "ULTRA SAFE",
-        "pertes_consecutives": 2,
-        "action": "etre_plus_selectif"
-      }
-    ],
+    "alertes": [],
     "marches_faibles": [],
-    "derniere_analyse": "2026-08-10T02:00:19.477373+01:00"
+    "derniere_analyse": "2026-08-11T23:30:17.886398+01:00"
   },
   "sessions_envoyees": [
     "inconnue",
