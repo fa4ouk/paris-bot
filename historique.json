@@ -1,6 +1,57 @@
 {
   "paris": [
     {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "San Francisco Giants vs Houston Astros",
+      "competition": "MLB",
+      "heure": "12/08 20:46",
+      "selection": "Moins de 7.5",
+      "cote": 1.9,
+      "bookmaker": "Coolbet",
+      "ev_pct": 12.0,
+      "raison": "À combiner avec le match précédent pour un pari opportuniste",
+      "session_id": "2026-08-12_soir",
+      "date_generation": "2026-08-12T20:00:24.868971",
+      "resultat": "gagné",
+      "date_resultat": "2026-08-12T23:30:17.635129+01:00",
+      "verifie_auto": true
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "St. Louis Cardinals vs Philadelphia Phillies",
+      "competition": "MLB",
+      "heure": "12/08 00:46",
+      "selection": "Victoire Philadelphia Phillies",
+      "cote": 1.64,
+      "bookmaker": "1xBet",
+      "ev_pct": 10.0,
+      "raison": "Combiner avec le match précédent pour un pari opportuniste",
+      "session_id": "2026-08-11_soir",
+      "date_generation": "2026-08-11T20:00:20.800592",
+      "resultat": "perdu",
+      "date_resultat": "2026-08-12T23:30:17.635041+01:00",
+      "verifie_auto": true
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Chicago White Sox vs Cincinnati Reds",
+      "competition": "MLB",
+      "heure": "12/08 00:41",
+      "selection": "Victoire Chicago White Sox",
+      "cote": 1.68,
+      "bookmaker": "Matchbook",
+      "ev_pct": 10.0,
+      "raison": "Combiner avec le match suivant pour un pari opportuniste",
+      "session_id": "2026-08-11_soir",
+      "date_generation": "2026-08-11T20:00:20.800592",
+      "resultat": "perdu",
+      "date_resultat": "2026-08-12T23:30:17.635009+01:00",
+      "verifie_auto": true
+    },
+    {
       "type": "ULTRA SAFE",
       "style": "Simple",
       "match": "Arizona Diamondbacks vs Colorado Rockies",
@@ -1276,16 +1327,16 @@
     }
   ],
   "stats": {
-    "total": 76,
-    "gagnes": 52,
-    "perdus": 24,
-    "taux": 68,
-    "derniere_maj": "2026-08-11T23:30:17.886304+01:00"
+    "total": 79,
+    "gagnes": 53,
+    "perdus": 26,
+    "taux": 67,
+    "derniere_maj": "2026-08-12T23:30:18.252597+01:00"
   },
   "strategie": {
     "alertes": [],
     "marches_faibles": [],
-    "derniere_analyse": "2026-08-11T23:30:17.886398+01:00"
+    "derniere_analyse": "2026-08-12T23:30:18.252677+01:00"
   },
   "sessions_envoyees": [
     "inconnue",
