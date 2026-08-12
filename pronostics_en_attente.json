@@ -879,32 +879,46 @@
       "date_generation": "2026-08-11T20:00:20.800592"
     },
     {
-      "type": "OPPORTUNISTE",
-      "style": "Combiné",
-      "match": "Chicago White Sox vs Cincinnati Reds",
+      "type": "ULTRA SAFE",
+      "style": "Simple",
+      "match": "Atlanta Braves vs New York Mets",
       "competition": "MLB",
-      "heure": "12/08 00:41",
-      "selection": "Victoire Chicago White Sox",
-      "cote": 1.68,
+      "heure": "13/08 00:15",
+      "selection": "Victoire Atlanta Braves",
+      "cote": 1.59,
+      "bookmaker": "1xBet",
+      "ev_pct": 5.0,
+      "raison": "Atlanta Braves en forme avec une équipe solide",
+      "session_id": "2026-08-12_soir",
+      "date_generation": "2026-08-12T20:00:24.868971"
+    },
+    {
+      "type": "VALEUR",
+      "style": "Simple",
+      "match": "Los Angeles Dodgers vs Kansas City Royals",
+      "competition": "MLB",
+      "heure": "13/08 03:10",
+      "selection": "Victoire Los Angeles Dodgers",
+      "cote": 1.51,
       "bookmaker": "Matchbook",
-      "ev_pct": 10.0,
-      "raison": "Combiner avec le match suivant pour un pari opportuniste",
-      "session_id": "2026-08-11_soir",
-      "date_generation": "2026-08-11T20:00:20.800592"
+      "ev_pct": 8.0,
+      "raison": "Los Angeles Dodgers avec une équipe très forte",
+      "session_id": "2026-08-12_soir",
+      "date_generation": "2026-08-12T20:00:24.868971"
     },
     {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
-      "match": "St. Louis Cardinals vs Philadelphia Phillies",
+      "match": "Chicago White Sox vs Cincinnati Reds",
       "competition": "MLB",
-      "heure": "12/08 00:46",
-      "selection": "Victoire Philadelphia Phillies",
-      "cote": 1.64,
-      "bookmaker": "1xBet",
+      "heure": "13/08 00:40",
+      "selection": "Victoire Chicago White Sox",
+      "cote": 1.73,
+      "bookmaker": "Matchbook",
       "ev_pct": 10.0,
-      "raison": "Combiner avec le match précédent pour un pari opportuniste",
-      "session_id": "2026-08-11_soir",
-      "date_generation": "2026-08-11T20:00:20.800592"
+      "raison": "À combiner avec le match suivant pour un pari opportuniste",
+      "session_id": "2026-08-12_soir",
+      "date_generation": "2026-08-12T20:00:24.868971"
     }
   ]
 }
