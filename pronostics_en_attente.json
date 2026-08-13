@@ -907,18 +907,46 @@
       "date_generation": "2026-08-12T20:00:24.868971"
     },
     {
+      "type": "ULTRA SAFE",
+      "style": "Simple",
+      "match": "Las Vegas Aces vs Washington Mystics",
+      "competition": "WNBA",
+      "heure": "14/08 03:00",
+      "selection": "Victoire Las Vegas Aces",
+      "cote": 1.49,
+      "bookmaker": "Betfair",
+      "ev_pct": 10.2,
+      "raison": "Las Vegas Aces a une forte équipe et une bonne forme actuelle",
+      "session_id": "2026-08-13_soir",
+      "date_generation": "2026-08-13T20:00:19.089975"
+    },
+    {
+      "type": "VALEUR",
+      "style": "Simple",
+      "match": "New York Liberty vs Los Angeles Sparks",
+      "competition": "WNBA",
+      "heure": "14/08 01:00",
+      "selection": "Moins de 186.5",
+      "cote": 1.93,
+      "bookmaker": "Coolbet",
+      "ev_pct": 5.5,
+      "raison": "Les deux équipes ont une tendance à jouer des matchs défensifs",
+      "session_id": "2026-08-13_soir",
+      "date_generation": "2026-08-13T20:00:19.089975"
+    },
+    {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
-      "match": "Chicago White Sox vs Cincinnati Reds",
-      "competition": "MLB",
-      "heure": "13/08 00:40",
-      "selection": "Victoire Chicago White Sox",
-      "cote": 1.73,
-      "bookmaker": "Matchbook",
-      "ev_pct": 10.0,
-      "raison": "À combiner avec le match suivant pour un pari opportuniste",
-      "session_id": "2026-08-12_soir",
-      "date_generation": "2026-08-12T20:00:24.868971"
+      "match": "Connecticut Sun vs Atlanta Dream",
+      "competition": "WNBA",
+      "heure": "14/08 00:00",
+      "selection": "Handicap Atlanta Dream -9.5",
+      "cote": 1.8,
+      "bookmaker": "888sport",
+      "ev_pct": 8.1,
+      "raison": "À combiner avec le pronostic suivant",
+      "session_id": "2026-08-13_soir",
+      "date_generation": "2026-08-13T20:00:19.089975"
     }
   ]
 }
