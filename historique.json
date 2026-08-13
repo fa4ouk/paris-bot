@@ -3,6 +3,23 @@
     {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
+      "match": "Chicago White Sox vs Cincinnati Reds",
+      "competition": "MLB",
+      "heure": "13/08 00:40",
+      "selection": "Victoire Chicago White Sox",
+      "cote": 1.73,
+      "bookmaker": "Matchbook",
+      "ev_pct": 10.0,
+      "raison": "À combiner avec le match suivant pour un pari opportuniste",
+      "session_id": "2026-08-12_soir",
+      "date_generation": "2026-08-12T20:00:24.868971",
+      "resultat": "gagné",
+      "date_resultat": "2026-08-13T23:30:18.212669+01:00",
+      "verifie_auto": true
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
       "match": "San Francisco Giants vs Houston Astros",
       "competition": "MLB",
       "heure": "12/08 20:46",
@@ -1327,16 +1344,16 @@
     }
   ],
   "stats": {
-    "total": 79,
-    "gagnes": 53,
+    "total": 80,
+    "gagnes": 54,
     "perdus": 26,
-    "taux": 67,
-    "derniere_maj": "2026-08-12T23:30:18.252597+01:00"
+    "taux": 68,
+    "derniere_maj": "2026-08-13T23:30:18.954713+01:00"
   },
   "strategie": {
     "alertes": [],
     "marches_faibles": [],
-    "derniere_analyse": "2026-08-12T23:30:18.252677+01:00"
+    "derniere_analyse": "2026-08-13T23:30:18.954791+01:00"
   },
   "sessions_envoyees": [
     "inconnue",
