@@ -947,6 +947,62 @@
       "raison": "À combiner avec le pronostic suivant",
       "session_id": "2026-08-13_soir",
       "date_generation": "2026-08-13T20:00:19.089975"
+    },
+    {
+      "type": "ULTRA SAFE",
+      "style": "Simple",
+      "match": "Atlanta Braves vs Arizona Diamondbacks",
+      "competition": "MLB",
+      "heure": "15/08 00:16",
+      "selection": "Victoire Atlanta Braves",
+      "cote": 1.56,
+      "bookmaker": "Betfair",
+      "ev_pct": 12.5,
+      "raison": "Atlanta Braves a une forte équipe et une bonne forme actuelle",
+      "session_id": "2026-08-14_soir",
+      "date_generation": "2026-08-14T20:00:17.266589"
+    },
+    {
+      "type": "VALEUR",
+      "style": "Simple",
+      "match": "Cincinnati Reds vs Miami Marlins",
+      "competition": "MLB",
+      "heure": "14/08 23:11",
+      "selection": "Victoire Cincinnati Reds",
+      "cote": 1.92,
+      "bookmaker": "Matchbook",
+      "ev_pct": 8.2,
+      "raison": "Cincinnati Reds a une légère avance sur Miami Marlins dans les stats récentes",
+      "session_id": "2026-08-14_soir",
+      "date_generation": "2026-08-14T20:00:17.266589"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Tampa Bay Rays vs Baltimore Orioles",
+      "competition": "MLB",
+      "heure": "15/08 00:11",
+      "selection": "Victoire Tampa Bay Rays",
+      "cote": 1.66,
+      "bookmaker": "Betfair",
+      "ev_pct": 10.1,
+      "raison": "À combiner avec le pronostic suivant pour un pari combiné",
+      "session_id": "2026-08-14_soir",
+      "date_generation": "2026-08-14T20:00:17.266589"
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "New York Mets vs Washington Nationals",
+      "competition": "MLB",
+      "heure": "15/08 00:11",
+      "selection": "Victoire New York Mets",
+      "cote": 1.9,
+      "bookmaker": "Matchbook",
+      "ev_pct": 9.5,
+      "raison": "À combiner avec le pronostic précédent pour un pari combiné",
+      "session_id": "2026-08-14_soir",
+      "date_generation": "2026-08-14T20:00:17.266589"
     }
   ]
 }
