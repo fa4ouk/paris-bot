@@ -963,20 +963,6 @@
       "date_generation": "2026-08-14T20:00:17.266589"
     },
     {
-      "type": "VALEUR",
-      "style": "Simple",
-      "match": "Cincinnati Reds vs Miami Marlins",
-      "competition": "MLB",
-      "heure": "14/08 23:11",
-      "selection": "Victoire Cincinnati Reds",
-      "cote": 1.92,
-      "bookmaker": "Matchbook",
-      "ev_pct": 8.2,
-      "raison": "Cincinnati Reds a une légère avance sur Miami Marlins dans les stats récentes",
-      "session_id": "2026-08-14_soir",
-      "date_generation": "2026-08-14T20:00:17.266589"
-    },
-    {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
       "match": "Tampa Bay Rays vs Baltimore Orioles",
