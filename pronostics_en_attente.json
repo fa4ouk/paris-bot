@@ -949,34 +949,6 @@
       "date_generation": "2026-08-13T20:00:19.089975"
     },
     {
-      "type": "ULTRA SAFE",
-      "style": "Simple",
-      "match": "San Francisco Giants vs Colorado Rockies",
-      "competition": "MLB",
-      "heure": "15/08 21:06",
-      "selection": "Victoire San Francisco Giants",
-      "cote": 1.63,
-      "bookmaker": "Matchbook",
-      "ev_pct": 12.1,
-      "raison": "Les Giants ont une meilleure équipe et sont à domicile",
-      "session_id": "2026-08-15_soir",
-      "date_generation": "2026-08-15T20:00:20.905402"
-    },
-    {
-      "type": "VALEUR",
-      "style": "Simple",
-      "match": "New York Mets vs Washington Nationals",
-      "competition": "MLB",
-      "heure": "15/08 21:11",
-      "selection": "Victoire New York Mets",
-      "cote": 1.77,
-      "bookmaker": "Betfair",
-      "ev_pct": 8.5,
-      "raison": "Les Mets ont une meilleure équipe et sont en forme",
-      "session_id": "2026-08-15_soir",
-      "date_generation": "2026-08-15T20:00:20.905402"
-    },
-    {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
       "match": "Los Angeles Dodgers vs Milwaukee Brewers",
