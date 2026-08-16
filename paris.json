@@ -3,16 +3,16 @@
     {
       "type": "ULTRA SAFE",
       "style": "Simple",
-      "match": "New York Mets vs Washington Nationals",
+      "match": "Chicago White Sox vs Detroit Tigers",
       "competition": "MLB",
       "heure": "16/08 18:41",
-      "selection": "Victoire New York Mets",
-      "cote": 1.63,
-      "bookmaker": "1xBet",
-      "ev_pct": 12.1,
-      "raison": "Les Mets ont une forte équipe et affrontent une équipe plus faible, ce qui justifie une cote modeste mais fiable.",
-      "session_id": "2026-08-16_matin",
-      "date_generation": "2026-08-16T07:30:17.004615"
+      "selection": "Victoire Chicago White Sox",
+      "cote": 1.47,
+      "bookmaker": "Coolbet",
+      "ev_pct": 10.0,
+      "raison": "Chicago White Sox a une forte équipe et Detroit Tigers est en difficulté",
+      "session_id": "2026-08-16_soir",
+      "date_generation": "2026-08-16T20:00:18.823555"
     },
     {
       "type": "VALEUR",
@@ -21,42 +21,28 @@
       "competition": "MLB",
       "heure": "16/08 21:10",
       "selection": "Victoire Los Angeles Dodgers",
-      "cote": 1.61,
-      "bookmaker": "1xBet",
-      "ev_pct": 8.5,
-      "raison": "Les Dodgers ont une équipe solide et une cote sous-évaluée par le marché.",
-      "session_id": "2026-08-16_matin",
-      "date_generation": "2026-08-16T07:30:17.004615"
-    },
-    {
-      "type": "OPPORTUNISTE",
-      "style": "Combiné",
-      "match": "Atlanta Braves vs Arizona Diamondbacks",
-      "competition": "MLB",
-      "heure": "16/08 18:36",
-      "selection": "Victoire Atlanta Braves",
-      "cote": 1.85,
+      "cote": 1.56,
       "bookmaker": "Matchbook",
-      "ev_pct": 6.2,
-      "raison": "À combiner avec le pronostic suivant pour un pari combiné logique.",
-      "session_id": "2026-08-16_matin",
-      "date_generation": "2026-08-16T07:30:17.004615"
+      "ev_pct": 8.0,
+      "raison": "Los Angeles Dodgers a une équipe solide et Milwaukee Brewers est en doute",
+      "session_id": "2026-08-16_soir",
+      "date_generation": "2026-08-16T20:00:18.823555"
     },
     {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
-      "match": "Seattle Storm vs Chicago Sky",
+      "match": "Seattle Storm vs Chicago Sky et Phoenix Mercury vs Portland Fire",
       "competition": "WNBA",
-      "heure": "16/08 22:00",
-      "selection": "Victoire Chicago Sky",
-      "cote": 1.85,
-      "bookmaker": "Betfair",
-      "ev_pct": 5.8,
-      "raison": "À combiner avec le pronostic précédent pour un pari combiné logique.",
-      "session_id": "2026-08-16_matin",
-      "date_generation": "2026-08-16T07:30:17.004615"
+      "heure": "16/08 22:00 et 17/08 00:00",
+      "selection": "Victoire Chicago Sky et Victoire Phoenix Mercury",
+      "cote": 2.5,
+      "bookmaker": "Betfair et Matchbook",
+      "ev_pct": 15.0,
+      "raison": "Combinaison logique de deux équipes favorites",
+      "session_id": "2026-08-16_soir",
+      "date_generation": "2026-08-16T20:00:18.823555"
     }
   ],
-  "note_du_jour": "Journée avec des opportunités intéressantes, mais il faut rester sélectif.",
+  "note_du_jour": "Journée avec des matchs intéressants en MLB et WNBA",
   "confiance": "Moyen"
 }
