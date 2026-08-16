@@ -1,6 +1,40 @@
 {
   "paris": [
     {
+      "type": "ULTRA SAFE",
+      "style": "Simple",
+      "match": "Chicago White Sox vs Detroit Tigers",
+      "competition": "MLB",
+      "heure": "16/08 18:41",
+      "selection": "Victoire Chicago White Sox",
+      "cote": 1.47,
+      "bookmaker": "Coolbet",
+      "ev_pct": 10.0,
+      "raison": "Chicago White Sox a une forte équipe et Detroit Tigers est en difficulté",
+      "session_id": "2026-08-16_soir",
+      "date_generation": "2026-08-16T20:00:18.823555",
+      "resultat": "gagné",
+      "date_resultat": "2026-08-16T23:30:17.009907+01:00",
+      "verifie_auto": true
+    },
+    {
+      "type": "OPPORTUNISTE",
+      "style": "Combiné",
+      "match": "Los Angeles Dodgers vs Milwaukee Brewers",
+      "competition": "MLB",
+      "heure": "16/08 00:15",
+      "selection": "Victoire Los Angeles Dodgers",
+      "cote": 2.16,
+      "bookmaker": "Matchbook",
+      "ev_pct": 10.3,
+      "raison": "À combiner avec le match suivant pour un pari opportuniste",
+      "session_id": "2026-08-15_soir",
+      "date_generation": "2026-08-15T20:00:20.905402",
+      "resultat": "perdu",
+      "date_resultat": "2026-08-16T23:30:17.009842+01:00",
+      "verifie_auto": true
+    },
+    {
       "type": "VALEUR",
       "style": "Simple",
       "match": "New York Mets vs Washington Nationals",
@@ -1446,16 +1480,16 @@
     }
   ],
   "stats": {
-    "total": 86,
-    "gagnes": 58,
-    "perdus": 28,
+    "total": 88,
+    "gagnes": 59,
+    "perdus": 29,
     "taux": 67,
-    "derniere_maj": "2026-08-16T02:00:21.540798+01:00"
+    "derniere_maj": "2026-08-16T23:30:17.763519+01:00"
   },
   "strategie": {
     "alertes": [],
     "marches_faibles": [],
-    "derniere_analyse": "2026-08-16T02:00:21.540874+01:00"
+    "derniere_analyse": "2026-08-16T23:30:17.763613+01:00"
   },
   "sessions_envoyees": [
     "inconnue",
