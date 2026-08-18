@@ -977,34 +977,6 @@
       "date_generation": "2026-08-16T20:00:18.823555"
     },
     {
-      "type": "VALEUR",
-      "style": "Simple",
-      "match": "Tampa Bay Rays vs Baltimore Orioles",
-      "competition": "MLB",
-      "heure": "17/08 23:05",
-      "selection": "Victoire Tampa Bay Rays",
-      "cote": 1.67,
-      "bookmaker": "1xBet",
-      "ev_pct": 12.5,
-      "raison": "Tampa Bay Rays a une meilleure équipe et une meilleure forme récente",
-      "session_id": "2026-08-17_matin",
-      "date_generation": "2026-08-17T07:30:18.244952"
-    },
-    {
-      "type": "OPPORTUNISTE",
-      "style": "Combiné",
-      "match": "Tampa Bay Rays vs Baltimore Orioles",
-      "competition": "MLB",
-      "heure": "17/08 23:05",
-      "selection": "Victoire Tampa Bay Rays et Plus de 7.5",
-      "cote": 3.15,
-      "bookmaker": "1xBet",
-      "ev_pct": 8.1,
-      "raison": "À combiner avec le pronostic suivant pour un pari combiné",
-      "session_id": "2026-08-17_matin",
-      "date_generation": "2026-08-17T07:30:18.244952"
-    },
-    {
       "type": "OPPORTUNISTE",
       "style": "Combiné",
       "match": "Philadelphia Phillies vs Miami Marlins",
