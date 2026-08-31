@@ -5,7 +5,7 @@ Récupère matchs et cotes directement depuis The Odds API
 
 import requests
 import json
-from datetime import datetime, timedelta, timezone  # ← AJOUT de timezone ici
+from datetime import datetime, timedelta
 import os
 import base64
 
@@ -52,7 +52,7 @@ def get_matches_and_odds(sport_key: str) -> list:
     url = f"{BASE_URL_ODDS}/sports/{sport_key}/odds"
     params = {
         "apiKey": ODDS_API_KEY,
-        "regions": "eu,us",  # Ajout US pour plus de bookmakers
+        "regions": "eu,us",
         "markets": MARCHES,
         "oddsFormat": "decimal",
         "dateFormat": "iso",
@@ -83,7 +83,6 @@ def collect_matches() -> list:
     for sport in SPORTS_ACTIFS:
         matches = get_matches_and_odds(sport["key"])
         if matches:
-            # Ajoute le nom de la compétition
             for m in matches:
                 m["_competition_name"] = sport["name"]
                 m["_sport_key"] = sport["key"]
@@ -92,18 +91,17 @@ def collect_matches() -> list:
         else:
             print(f"   ⚠️  {sport['name']}: 0 matchs")
     
-    print(f"📊 Total : {len(all_matches)} matchs du jour")
+    print(f"📊 Total : {len(all_matches)} matchs")
     return all_matches
 
 
 # ─────────────────────────────────────────
-# 2. FILTRAGE DES MATCHS DU JOUR UNIQUEMENT
+# 2. FILTRAGE DES MATCHS DU JOUR (SANS timezone)
 # ─────────────────────────────────────────
 
 def filter_today_matches(matches: list) -> list:
     """Garde uniquement les matchs du jour"""
-    tz_tunis = timezone(timedelta(hours=1))
-    aujourd_hui = datetime.now(tz_tunis).date()
+    today_str = datetime.now().strftime("%Y-%m-%d")
     filtered = []
     
     for match in matches:
@@ -111,12 +109,11 @@ def filter_today_matches(matches: list) -> list:
             commence = match.get("commence_time", "")
             if not commence:
                 continue
-                
-            dt = datetime.fromisoformat(commence.replace("Z", "+00:00"))
-            dt_local = dt.astimezone(tz_tunis)
-            date_match = dt_local.date()
             
-            if date_match == aujourd_hui:
+            # Extrait juste la date (YYYY-MM-DD)
+            match_date = commence[:10]
+            
+            if match_date == today_str:
                 filtered.append(match)
         except Exception:
             continue
@@ -129,11 +126,15 @@ def filter_today_matches(matches: list) -> list:
 # ─────────────────────────────────────────
 
 def format_heure(iso_str: str) -> str:
+    """Formatage simple sans timezone"""
     try:
-        dt = datetime.fromisoformat(iso_str.replace("Z", "+00:00"))
-        tz_tunis = timezone(timedelta(hours=1))
-        dt_local = dt.astimezone(tz_tunis)
-        return dt_local.strftime("%d/%m %H:%M")
+        # Extrait juste l'heure
+        if iso_str:
+            # Format: 2026-08-31T15:00:00Z
+            date_part = iso_str[:10]
+            time_part = iso_str[11:16]
+            return f"{date_part[8:10]}/{date_part[5:7]} {time_part}"
+        return iso_str
     except Exception:
         return iso_str
 
@@ -517,13 +518,11 @@ def main():
         print(f"   - {sport['name']} ({sport['key']})")
     print("=" * 50)
 
-    # Collecte des matchs avec cotes
     matches = collect_matches()
     if not matches:
         send_telegram("⚠️ Aucun match disponible. Vérifie la clé API.")
         return
 
-    # Filtre matchs du jour
     matches_today = filter_today_matches(matches)
     print(f"\n📅 Après filtrage: {len(matches_today)} matchs du jour")
 
@@ -531,7 +530,6 @@ def main():
         send_telegram("⚠️ Aucun match du jour disponible.")
         return
 
-    # Préparation des données
     data = prepare_data(matches_today)
     print(f"📊 {len(data)} matchs avec cotes dans la plage {COTE_MIN}→{COTE_MAX}")
 
@@ -539,7 +537,6 @@ def main():
         send_telegram(f"📋 Aucune cote entre {COTE_MIN} et {COTE_MAX} aujourd'hui.")
         return
 
-    # Lecture historique
     print("\n📚 Lecture de l'historique...")
     historique = get_historique()
     if historique.get("total_paris", 0) > 0:
@@ -547,7 +544,6 @@ def main():
     else:
         print("   Pas encore d'historique")
 
-    # Analyse IA
     print("\n🤖 Analyse IA...")
     raw = analyze_with_ai(data, historique)
 
@@ -555,7 +551,6 @@ def main():
         send_telegram("❌ Erreur analyse IA.")
         return
 
-    # Parse JSON
     try:
         clean = raw.strip().replace("```json", "").replace("```", "").strip()
         result = json.loads(clean)
@@ -564,7 +559,6 @@ def main():
         send_telegram(f"❌ Erreur de parsing.\n{raw[:500]}")
         return
 
-    # Session ID
     now_tunis = datetime.now()
     moment = "matin" if now_tunis.hour < 15 else "soir"
     session_id = f"{now_tunis.strftime('%Y-%m-%d')}_{moment}"
@@ -573,16 +567,13 @@ def main():
         p["session_id"] = session_id
         p["date_generation"] = date_generation
 
-    # Sauvegarde
     with open("paris_du_jour.json", "w", encoding="utf-8") as f:
         json.dump(result, f, ensure_ascii=False, indent=2)
     print("💾 Résultats sauvegardés")
 
-    # Push GitHub
     print("\n📤 Push vers GitHub...")
     push_to_github(result)
 
-    # Envoi Telegram
     message = build_message(result)
     print("\n--- APERÇU ---")
     print(message)
