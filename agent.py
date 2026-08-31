@@ -1,7 +1,6 @@
 """
-🏆 Agent Parieur Pro - Version Double API
-Football-Data.org pour les matchs + The Odds API pour les cotes
-Matchs du jour uniquement
+🏆 Agent Parieur Pro - Version The Odds API uniquement
+Récupère matchs et cotes directement depuis The Odds API
 """
 
 import requests
@@ -14,14 +13,13 @@ import base64
 # ou depuis config.py en local
 try:
     from config import (
-        FOOTBALL_DATA_API_KEY, ODDS_API_KEY, GROQ_API_KEY,
+        ODDS_API_KEY, GROQ_API_KEY,
         TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID,
         COTE_MIN, COTE_MAX
     )
     GH_TOKEN = os.environ.get("GH_TOKEN", "")
     GH_REPO = os.environ.get("GH_REPO", "")
 except ImportError:
-    FOOTBALL_DATA_API_KEY = os.environ.get("FOOTBALL_DATA_API_KEY", "")
     ODDS_API_KEY = os.environ.get("ODDS_API_KEY", "")
     GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
     TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
@@ -31,172 +29,99 @@ except ImportError:
     GH_TOKEN = os.environ.get("GH_TOKEN", "")
     GH_REPO = os.environ.get("GH_REPO", "")
 
-# 🏆 Championnats avec leurs IDs Football-Data.org
-COMPETITIONS = {
-    "PL": "Premier League",           # Premier League
-    "PD": "La Liga",                  # La Liga
-    "FL1": "Ligue 1",                 # Ligue 1
-    "BL1": "Bundesliga",              # Bundesliga
-    "SA": "Serie A",                  # Serie A
-    "CL": "Champions League",         # Champions League
-}
+# 🏆 Championnats avec leurs clés The Odds API
+SPORTS_ACTIFS = [
+    {"key": "soccer_epl", "name": "Premier League"},
+    {"key": "soccer_spain_la_liga", "name": "La Liga"},
+    {"key": "soccer_france_ligue_one", "name": "Ligue 1"},
+    {"key": "soccer_germany_bundesliga", "name": "Bundesliga"},
+    {"key": "soccer_italy_serie_a", "name": "Serie A"},
+    {"key": "soccer_uefa_champions_league", "name": "Champions League"},
+]
 
-# Mapping des noms de compétitions pour The Odds API
-ODDS_SPORT_MAPPING = {
-    "Premier League": "soccer_epl",
-    "La Liga": "soccer_spain_la_liga",
-    "Ligue 1": "soccer_france_ligue_one",
-    "Bundesliga": "soccer_germany_bundesliga",
-    "Serie A": "soccer_italy_serie_a",
-    "Champions League": "soccer_uefa_champions_league",
-}
-
-BASE_URL_FOOTBALL = "https://api.football-data.org/v4"
 BASE_URL_ODDS = "https://api.the-odds-api.com/v4"
 MARCHES = "h2h,totals,spreads"
 
 
 # ─────────────────────────────────────────
-# 1. RÉCUPÉRATION DES MATCHS DU JOUR UNIQUEMENT
+# 1. RÉCUPÉRATION DES MATCHS ET COTES
 # ─────────────────────────────────────────
 
-def get_matches_by_competition(competition_code: str) -> list:
-    """Récupère les matchs du jour pour une compétition"""
-    today = datetime.now().strftime("%Y-%m-%d")
-    
-    url = f"{BASE_URL_FOOTBALL}/competitions/{competition_code}/matches"
-    params = {
-        "dateFrom": today,
-        "dateTo": today,  # UNIQUEMENT AUJOURD'HUI
-        "status": "SCHEDULED",
-    }
-    headers = {
-        "X-Auth-Token": FOOTBALL_DATA_API_KEY,
-    }
-    
-    try:
-        r = requests.get(url, headers=headers, params=params, timeout=10)
-        if r.status_code == 200:
-            data = r.json()
-            matches = data.get("matches", [])
-            # Ajoute l'info de la compétition
-            for match in matches:
-                match["_competition_code"] = competition_code
-                match["_competition_name"] = COMPETITIONS.get(competition_code, competition_code)
-                match["_sport"] = "soccer"
-                # Ajoute le nom de la compétition pour l'API Odds
-                match["_odds_sport"] = ODDS_SPORT_MAPPING.get(
-                    COMPETITIONS.get(competition_code, ""), 
-                    ""
-                )
-            return matches
-        else:
-            print(f"   ⚠️  {competition_code} ({COMPETITIONS.get(competition_code, '?')}): {r.status_code}")
-            if r.status_code == 401:
-                print("   ❌ Clé API Football-Data invalide !")
-            return []
-    except Exception as e:
-        print(f"   ❌ {competition_code}: {e}")
-        return []
-
-
-def collect_matches() -> list:
-    """Collecte les matchs du jour pour toutes les compétitions"""
-    all_matches = []
-    print("📡 Collecte des matchs du jour...")
-    today = datetime.now().strftime("%d/%m/%Y")
-    print(f"   📅 Date : {today}")
-    print(f"   🏆 Compétitions actives: {len(COMPETITIONS)}")
-    
-    for code, name in COMPETITIONS.items():
-        matches = get_matches_by_competition(code)
-        if matches:
-            all_matches.extend(matches)
-            print(f"   ✅ {name} ({code}): {len(matches)} matchs")
-        else:
-            print(f"   ⚠️  {name} ({code}): 0 matchs aujourd'hui")
-    
-    print(f"📊 Total : {len(all_matches)} matchs du jour")
-    return all_matches
-
-
-# ─────────────────────────────────────────
-# 2. RÉCUPÉRATION DES COTES DEPUIS THE ODDS API
-# ─────────────────────────────────────────
-
-def get_odds_for_match(home_team: str, away_team: str, competition: str) -> dict:
-    """Récupère les cotes pour un match spécifique"""
-    # Récupère le sport key
-    sport_key = ODDS_SPORT_MAPPING.get(competition, "")
-    if not sport_key:
-        return {}
-    
+def get_matches_and_odds(sport_key: str) -> list:
+    """Récupère les matchs avec leurs cotes pour un sport"""
     url = f"{BASE_URL_ODDS}/sports/{sport_key}/odds"
     params = {
         "apiKey": ODDS_API_KEY,
-        "regions": "eu",
+        "regions": "eu,us",  # Ajout US pour plus de bookmakers
         "markets": MARCHES,
         "oddsFormat": "decimal",
         "dateFormat": "iso",
     }
     
     try:
-        r = requests.get(url, params=params, timeout=10)
+        r = requests.get(url, params=params, timeout=15)
         if r.status_code == 200:
-            matches = r.json()
-            # Cherche le match correspondant
-            for match in matches:
-                if (match.get("home_team") == home_team and 
-                    match.get("away_team") == away_team):
-                    # Extrait les meilleures cotes
-                    best_odds = extract_best_odds(match, home_team, away_team)
-                    return best_odds
-        return {}
+            return r.json()
+        else:
+            print(f"   ⚠️  {sport_key}: {r.status_code}")
+            if r.status_code == 401:
+                print("   ❌ Clé API invalide ! Vérifie ODDS_API_KEY")
+            return []
     except Exception as e:
-        print(f"   ⚠️  Erreur cotes pour {home_team} vs {away_team}: {e}")
-        return {}
+        print(f"   ❌ {sport_key}: {e}")
+        return []
 
 
-def extract_best_odds(match: dict, home_team: str, away_team: str) -> dict:
-    """Extrait les meilleures cotes pour un match"""
-    best = {}
+def collect_matches() -> list:
+    """Collecte les matchs du jour avec cotes"""
+    all_matches = []
+    print("📡 Collecte des matchs du jour via The Odds API...")
+    today = datetime.now().strftime("%d/%m/%Y")
+    print(f"   📅 Date : {today}")
+    print(f"   🏆 Compétitions actives: {len(SPORTS_ACTIFS)}")
     
-    for bookie in match.get("bookmakers", []):
-        bookie_name = bookie.get("title", "?")
-        for market in bookie.get("markets", []):
-            mkey = market.get("key", "")
-            for outcome in market.get("outcomes", []):
-                name = outcome.get("name", "?")
-                cote = outcome.get("price", 0)
-                point = outcome.get("point", None)
-                
-                # Label lisible
-                if mkey == "h2h":
-                    if name == home_team:
-                        label = f"Victoire {home_team}"
-                    elif name == away_team:
-                        label = f"Victoire {away_team}"
-                    else:
-                        label = "Match Nul"
-                elif mkey == "totals":
-                    direction = "Plus" if name == "Over" else "Moins"
-                    label = f"{direction} de {point}"
-                elif mkey == "spreads":
-                    label = f"Handicap {name} {point}"
-                else:
-                    label = f"{name}"
-                
-                uid = f"{mkey}_{name}_{point}"
-                if cote > 0:  # Garde toutes les cotes
-                    if uid not in best or cote > best[uid]["cote"]:
-                        best[uid] = {
-                            "label": label,
-                            "cote": cote,
-                            "bookmaker": bookie_name,
-                            "market": mkey,
-                        }
+    for sport in SPORTS_ACTIFS:
+        matches = get_matches_and_odds(sport["key"])
+        if matches:
+            # Ajoute le nom de la compétition
+            for m in matches:
+                m["_competition_name"] = sport["name"]
+                m["_sport_key"] = sport["key"]
+            all_matches.extend(matches)
+            print(f"   ✅ {sport['name']}: {len(matches)} matchs")
+        else:
+            print(f"   ⚠️  {sport['name']}: 0 matchs")
     
-    return best
+    print(f"📊 Total : {len(all_matches)} matchs du jour")
+    return all_matches
+
+
+# ─────────────────────────────────────────
+# 2. FILTRAGE DES MATCHS DU JOUR UNIQUEMENT
+# ─────────────────────────────────────────
+
+def filter_today_matches(matches: list) -> list:
+    """Garde uniquement les matchs du jour"""
+    tz_tunis = timezone(timedelta(hours=1))
+    aujourd_hui = datetime.now(tz_tunis).date()
+    filtered = []
+    
+    for match in matches:
+        try:
+            commence = match.get("commence_time", "")
+            if not commence:
+                continue
+                
+            dt = datetime.fromisoformat(commence.replace("Z", "+00:00"))
+            dt_local = dt.astimezone(tz_tunis)
+            date_match = dt_local.date()
+            
+            if date_match == aujourd_hui:
+                filtered.append(match)
+        except Exception:
+            continue
+    
+    return filtered
 
 
 # ─────────────────────────────────────────
@@ -206,7 +131,6 @@ def extract_best_odds(match: dict, home_team: str, away_team: str) -> dict:
 def format_heure(iso_str: str) -> str:
     try:
         dt = datetime.fromisoformat(iso_str.replace("Z", "+00:00"))
-        # Tunisie = UTC+1
         tz_tunis = timezone(timedelta(hours=1))
         dt_local = dt.astimezone(tz_tunis)
         return dt_local.strftime("%d/%m %H:%M")
@@ -215,47 +139,63 @@ def format_heure(iso_str: str) -> str:
 
 
 def prepare_data(matches: list) -> list:
-    """Prépare les données avec les cotes"""
+    """Prépare les données avec les meilleures cotes"""
     data = []
-    tz_tunis = timezone(timedelta(hours=1))
-    maintenant = datetime.now(tz_tunis)
-    aujourd_hui = maintenant.date()
     
-    print("\n🔍 Récupération des cotes...")
-    
-    for idx, match in enumerate(matches, 1):
+    for match in matches:
         try:
-            home = match.get("homeTeam", {}).get("name", "?")
-            away = match.get("awayTeam", {}).get("name", "?")
+            home = match.get("home_team", "?")
+            away = match.get("away_team", "?")
             competition = match.get("_competition_name", "?")
-            heure = format_heure(match.get("utcDate", ""))
+            heure = format_heure(match.get("commence_time", ""))
             
-            # Récupère les cotes pour ce match
-            print(f"   [{idx}/{len(matches)}] {home} vs {away}...", end=" ")
-            best_odds = get_odds_for_match(home, away, competition)
+            # Extrait les meilleures cotes
+            best = {}
+            for bookie in match.get("bookmakers", []):
+                bookie_name = bookie.get("title", "?")
+                for market in bookie.get("markets", []):
+                    mkey = market.get("key", "")
+                    for outcome in market.get("outcomes", []):
+                        name = outcome.get("name", "?")
+                        cote = outcome.get("price", 0)
+                        point = outcome.get("point", None)
+                        
+                        # Label lisible
+                        if mkey == "h2h":
+                            if name == home:
+                                label = f"Victoire {home}"
+                            elif name == away:
+                                label = f"Victoire {away}"
+                            else:
+                                label = "Match Nul"
+                        elif mkey == "totals":
+                            direction = "Plus" if name == "Over" else "Moins"
+                            label = f"{direction} de {point}"
+                        elif mkey == "spreads":
+                            label = f"Handicap {name} {point}"
+                        else:
+                            label = f"{name}"
+                        
+                        uid = f"{mkey}_{name}_{point}"
+                        if COTE_MIN <= cote <= COTE_MAX:
+                            if uid not in best or cote > best[uid]["cote"]:
+                                best[uid] = {
+                                    "label": label,
+                                    "cote": cote,
+                                    "bookmaker": bookie_name,
+                                    "market": mkey,
+                                }
             
-            if best_odds:
-                print(f"✅ {len(best_odds)} cotes trouvées")
-                # Filtre selon COTE_MIN et COTE_MAX
-                filtered_odds = []
-                for key, odds in best_odds.items():
-                    if COTE_MIN <= odds["cote"] <= COTE_MAX:
-                        filtered_odds.append(odds)
-                
-                if filtered_odds:
-                    data.append({
-                        "match": f"{home} vs {away}",
-                        "competition": competition,
-                        "heure": heure,
-                        "selections": filtered_odds,
-                    })
-                else:
-                    print(f"⚠️  Aucune cote dans la plage {COTE_MIN}→{COTE_MAX}")
-            else:
-                print("❌ Aucune cote trouvée")
+            if best:
+                data.append({
+                    "match": f"{home} vs {away}",
+                    "competition": competition,
+                    "heure": heure,
+                    "selections": list(best.values()),
+                })
                 
         except Exception as e:
-            print(f"❌ Erreur: {e}")
+            print(f"⚠️  Erreur préparation match: {e}")
             continue
     
     return data
@@ -283,7 +223,6 @@ def get_historique() -> dict:
         if not paris:
             return {}
 
-        # Analyse par type
         types = ["ULTRA SAFE", "VALEUR", "OPPORTUNISTE"]
         analyse = {}
         for t in types:
@@ -292,7 +231,6 @@ def get_historique() -> dict:
             taux = round(len(gagnes) / len(subset) * 100) if subset else None
             analyse[t] = {"total": len(subset), "gagnes": len(gagnes), "taux": taux}
 
-        # Analyse par marché
         marches = {}
         for p in paris:
             sel = p.get("selection", "")
@@ -339,7 +277,6 @@ def analyze_with_ai(data: list, historique: dict = None) -> str:
     if historique is None:
         historique = {}
 
-    # Compression pour rester sous la limite de tokens
     compressed = []
     for m in data[:25]:
         compressed.append({
@@ -351,7 +288,6 @@ def analyze_with_ai(data: list, historique: dict = None) -> str:
 
     summary = json.dumps(compressed, ensure_ascii=False, separators=(",", ":"))
 
-    # Prépare le contexte historique
     histo_context = ""
     if historique and historique.get("total_paris", 0) > 0:
         h = historique
@@ -375,7 +311,6 @@ RÈGLES D'ADAPTATION basées sur l'historique :
 - Si taux < 50% sur un type → sois plus sélectif
 - Si taux > 70% sur un type → tu peux être plus généreux
 - Évite les marchés où tu te trompes souvent
-- Mentionne dans ta note comment tu adaptes ta stratégie
 """
     else:
         histo_context = "Pas encore d'historique disponible — stratégie prudente par défaut."
@@ -578,19 +513,27 @@ def main():
     print(f"📅 {datetime.now().strftime('%d/%m/%Y %H:%M')}")
     print(f"🎯 Cotes : {COTE_MIN}→{COTE_MAX}")
     print("🏆 Compétitions actives:")
-    for code, name in COMPETITIONS.items():
-        print(f"   - {name} ({code})")
+    for sport in SPORTS_ACTIFS:
+        print(f"   - {sport['name']} ({sport['key']})")
     print("=" * 50)
 
-    # Collecte des matchs du jour
+    # Collecte des matchs avec cotes
     matches = collect_matches()
     if not matches:
+        send_telegram("⚠️ Aucun match disponible. Vérifie la clé API.")
+        return
+
+    # Filtre matchs du jour
+    matches_today = filter_today_matches(matches)
+    print(f"\n📅 Après filtrage: {len(matches_today)} matchs du jour")
+
+    if not matches_today:
         send_telegram("⚠️ Aucun match du jour disponible.")
         return
 
-    # Préparation avec cotes
-    data = prepare_data(matches)
-    print(f"\n📊 {len(data)} matchs avec cotes dans la plage {COTE_MIN}→{COTE_MAX}")
+    # Préparation des données
+    data = prepare_data(matches_today)
+    print(f"📊 {len(data)} matchs avec cotes dans la plage {COTE_MIN}→{COTE_MAX}")
 
     if not data:
         send_telegram(f"📋 Aucune cote entre {COTE_MIN} et {COTE_MAX} aujourd'hui.")
