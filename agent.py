@@ -5,7 +5,7 @@ Récupère matchs et cotes directement depuis The Odds API
 
 import requests
 import json
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone  # ← AJOUT de timezone ici
 import os
 import base64
 
