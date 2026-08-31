@@ -5,7 +5,7 @@ Analyse les marchés du jour et génère des paris via Groq AI.
 
 import requests
 import json
-from datetime import datetime
+from datetime import datetime, timedelta
 import os
 import base64
 
@@ -29,11 +29,14 @@ except ImportError:
     GH_TOKEN = os.environ.get("GH_TOKEN", "")
     GH_REPO = os.environ.get("GH_REPO", "")
 
+# 🏆 CHAMPIONNATS EUROPEENS - MODIFICATION PRINCIPALE
 SPORTS_ACTIFS = [
-    "soccer_fifa_world_cup",
-    "basketball_wnba",
-    "baseball_mlb",
-    "mma_mixed_martial_arts",
+    "soccer_epl",                        # Premier League (Angleterre) 🇬🇧
+    "soccer_spain_la_liga",              # La Liga (Espagne) 🇪🇸  
+    "soccer_france_ligue_one",           # Ligue 1 (France) 🇫🇷
+    "soccer_germany_bundesliga",         # Bundesliga (Allemagne) 🇩🇪
+    "soccer_italy_serie_a",              # Serie A (Italie) 🇮🇹
+    "soccer_uefa_champions_league",      # Champions League 🇪🇺
 ]
 
 # Tous les marchés disponibles
@@ -69,6 +72,7 @@ def get_odds(sport_key: str) -> list:
 def collect_matches() -> list:
     all_matches = []
     print("📡 Collecte des matchs...")
+    print(f"   Ligues actives: {len(SPORTS_ACTIFS)} championnats")
     for sport in SPORTS_ACTIFS:
         matches = get_odds(sport)
         for m in matches:
@@ -76,6 +80,8 @@ def collect_matches() -> list:
         if matches:
             all_matches.extend(matches)
             print(f"   ✅ {sport}: {len(matches)} matchs")
+        else:
+            print(f"   ⚠️  {sport}: 0 matchs (vérifie la clé API)")
     print(f"📊 Total : {len(all_matches)} matchs")
     return all_matches
 
@@ -88,7 +94,6 @@ def format_heure(iso_str: str) -> str:
     try:
         dt = datetime.fromisoformat(iso_str.replace("Z", "+00:00"))
         # Tunisie = UTC+1
-        from datetime import timezone, timedelta
         tz_tunis = timezone(timedelta(hours=1))
         dt_local = dt.astimezone(tz_tunis)
         return dt_local.strftime("%d/%m %H:%M")
@@ -101,7 +106,6 @@ def prepare_data(matches: list) -> list:
     # Filtre les matchs selon l'heure de lancement
     # Matin (avant 15h) → matchs du jour uniquement
     # Soir (après 15h) → matchs du jour + lendemain avant 6h (pour les noctambules)
-    from datetime import timezone, timedelta
     tz_tunis = timezone(timedelta(hours=1))
     maintenant = datetime.now(tz_tunis)
     aujourd_hui = maintenant.date()
@@ -333,7 +337,7 @@ RÈGLES STRICTES :
 - OPPORTUNISTE = combiné logique 2-3 sélections max
 - Pour les combinés : mets chaque sélection comme un pronostic séparé avec le même type "OPPORTUNISTE" et indique dans la raison que c'est à combiner ensemble
 - ev_pct : ton estimation de l'Expected Value en %
-- Priorise la Coupe du Monde
+- Priorise les championnats européens majeurs (Premier League, La Liga, Ligue 1, Bundesliga, Serie A, Champions League)
 - Si la journée est vraiment pauvre, génère seulement 1-2 pronostics ULTRA SAFE
 - Réponds UNIQUEMENT avec le JSON, rien d'autre"""
 
@@ -363,7 +367,7 @@ RÈGLES STRICTES :
 
 
 # ─────────────────────────────────────────
-# 4. FORMATAGE DU MESSAGE TELEGRAM
+# 5. FORMATAGE DU MESSAGE TELEGRAM
 # ─────────────────────────────────────────
 
 TYPE_EMOJI = {
@@ -373,10 +377,13 @@ TYPE_EMOJI = {
 }
 
 SPORT_EMOJI = {
-    "FIFA World Cup": "🌍",
-    "WNBA": "🏀",
-    "MLB": "⚾",
-    "MMA": "🥊",
+    "Premier League": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+    "La Liga": "🇪🇸",
+    "Ligue 1": "🇫🇷",
+    "Bundesliga": "🇩🇪",
+    "Serie A": "🇮🇹",
+    "Champions League": "🇪🇺",
+    "Europa League": "🇪🇺",
 }
 
 
@@ -396,11 +403,17 @@ def build_message(result: dict) -> str:
         ptype = pari.get("type", "PRONO")
         emoji_type = TYPE_EMOJI.get(ptype, "⚽️")
         comp = pari.get("competition", "")
-        emoji_sport = next((v for k, v in SPORT_EMOJI.items() if k.lower() in comp.lower()), "⚽️")
+        
+        # Trouve l'emoji du championnat
+        emoji_sport = "⚽️"
+        for key, emoji in SPORT_EMOJI.items():
+            if key.lower() in comp.lower():
+                emoji_sport = emoji
+                break
 
         lines.append(f"{emoji_type} PRONO {i} — {ptype}")
         lines.append(f"📋 {pari.get('match', '?')}")
-        lines.append(f"🏆 {comp}")
+        lines.append(f"🏆 {comp} {emoji_sport}")
         lines.append(f"⏰ {pari.get('heure', '?')}")
         lines.append(f"🎲 {pari.get('selection', '?')} ({pari.get('style', '')})")
         lines.append(f"📉 Cote : {pari.get('cote', '?')} sur {pari.get('bookmaker', '?')}")
@@ -417,7 +430,7 @@ def build_message(result: dict) -> str:
 
 
 # ─────────────────────────────────────────
-# 5. PUSH VERS GITHUB (pour le dashboard web)
+# 6. PUSH VERS GITHUB (pour le dashboard web)
 # ─────────────────────────────────────────
 
 def push_to_github(result: dict):
@@ -463,7 +476,7 @@ def push_to_github(result: dict):
 
 
 # ─────────────────────────────────────────
-# 6. ENVOI TELEGRAM
+# 7. ENVOI TELEGRAM
 # ─────────────────────────────────────────
 
 def send_telegram(message: str):
@@ -485,7 +498,7 @@ def send_telegram(message: str):
 
 
 # ─────────────────────────────────────────
-# 6. MAIN
+# 8. MAIN
 # ─────────────────────────────────────────
 
 def main():
@@ -493,6 +506,9 @@ def main():
     print("🏆 AGENT PARIEUR PRO — Démarrage")
     print(f"📅 {datetime.now().strftime('%d/%m/%Y %H:%M')}")
     print(f"🎯 Cotes : {COTE_MIN}→{COTE_MAX}")
+    print("🏆 Championnats actifs:")
+    for sport in SPORTS_ACTIFS:
+        print(f"   - {sport}")
     print("=" * 50)
 
     # Collecte
