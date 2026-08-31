@@ -9,7 +9,6 @@ import json
 from datetime import datetime, timedelta
 import os
 import base64
-from dateutil import parser
 
 # Lecture depuis variables d'environnement (GitHub Actions)
 # ou depuis config.py en local
@@ -669,4 +668,3 @@ if __name__ == "__main__":
         except Exception:
             print("❌ Impossible d'envoyer l'alerte Telegram.")
         raise
-    
